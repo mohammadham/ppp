@@ -1,0 +1,1566 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>افزایش امنیت و حریم خصوصی در تصاویر پزشکی با استفاده از رمزگذاری و استگانوگرافی مبتنی بر یادگیری عمیق و نظریه آشوب</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --secondary: #64748b;
+            --accent: #0ea5e9;
+            --neutral: #f8fafc;
+            --base-100: #ffffff;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            overflow-x: hidden;
+        }
+        
+        .serif-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(14, 165, 233, 0.8) 100%);
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+        }
+        
+        .bento-main {
+            grid-row: 1 / 3;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            width: 280px;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-main {
+            margin-left: 320px;
+            margin-right: 0;
+        }
+        
+@media (max-width: 1280px) {
+    .toc-fixed {
+        display: none;
+    }
+    .content-main {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .mermaid-control-btn:not(.reset-zoom) {
+        display: none;
+    }
+    .mermaid-controls {
+        top: auto;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+        
+        .citation-link {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--accent);
+            transition: all 0.2s ease;
+        }
+        
+        .citation-link:hover {
+            background-color: rgba(14, 165, 233, 0.1);
+            border-bottom-style: solid;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+            margin: 3rem 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* Mermaid diagram styling */
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* Enhanced mermaid theme overrides with better contrast */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node ellipse,
+        .mermaid .node polygon {
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .node .label {
+            color: #1f2937 !important;
+            font-weight: 600 !important;
+            font-size: 14px !important;
+        }
+        
+        .mermaid .edgeLabel {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            color: #374151 !important;
+            font-weight: 600 !important;
+            padding: 4px 8px !important;
+            border-radius: 6px !important;
+            border: 1px solid #d1d5db !important;
+            font-size: 12px !important;
+        }
+        
+        .mermaid .flowchart-link {
+            stroke: #6b7280 !important;
+            stroke-width: 2px !important;
+        }
+        
+        /* Specific node styling for better contrast */
+        .mermaid .node[class*="default"] rect {
+            fill: #f8fafc !important;
+            stroke: #64748b !important;
+        }
+        
+        .mermaid .node[class*="default"] .label {
+            color: #1e293b !important;
+            font-weight: 600 !important;
+        }
+    </style>
+  </head>
+
+  <body class="bg-gradient-to-br from-slate-50 to-slate-200">
+    <!-- Fixed Table of Contents -->
+    <nav class="toc-fixed">
+      <h3 class="text-lg font-bold text-slate-800 mb-4 serif-display">فهرست مطالب</h3>
+      <ul class="space-y-2 text-sm">
+        <li>
+          <a href="#problem-statement" class="citation-link">بیان مسئله</a>
+        </li>
+        <li>
+          <a href="#importance" class="citation-link">اهمیت و ضرورت تحقیق</a>
+        </li>
+        <li>
+          <a href="#literature" class="citation-link">مرور ادبیات و سوابق پژوهش</a>
+        </li>
+        <li>
+          <a href="#innovation" class="citation-link">جنبه جدید بودن و نوآوری</a>
+        </li>
+        <li>
+          <a href="#objectives" class="citation-link">اهداف تحقیق</a>
+        </li>
+        <li>
+          <a href="#hypotheses" class="citation-link">سوالات و فرضیه‌ها</a>
+        </li>
+        <li>
+          <a href="#definitions" class="citation-link">تعاریف متغیرها</a>
+        </li>
+        <li>
+          <a href="#methodology" class="citation-link">روش شناسی پژوهش</a>
+        </li>
+        <li>
+          <a href="#ethics" class="citation-link">ضوابط اخلاقی</a>
+        </li>
+        <li>
+          <a href="#timeline" class="citation-link">زمان‌بندی اجرا</a>
+        </li>
+        <li>
+          <a href="#limitations" class="citation-link">محدودیت‌های اجرا</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content-main p-8">
+      <!-- Hero Section with Bento Grid -->
+      <section class="mb-16">
+        <div class="bento-grid">
+          <!-- Main Content Area -->
+          <div class="bento-main relative overflow-hidden rounded-2xl bg-white shadow-2xl">
+            <div class="relative h-full min-h-[400px]">
+              <img src="https://kimi-web-img.moonshot.cn/img/developer-blogs.nvidia.com/895cf33850819865dc84dcc998950466ff7b3076.jpg" alt="تجزیه و تحلیل تصاویر پزشکی توسط هوش مصنوعی" class="absolute inset-0 w-full h-full object-cover opacity-20" size="wallpaper" aspect="wide" style="photo" query="AI medical image analysis" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              <div class="hero-gradient absolute inset-0"></div>
+              <div class="relative z-10 p-8 h-full flex flex-col justify-center">
+                <h1 class="serif-display text-3xl md:text-4xl font-bold text-white mb-6 leading-normal">
+                  <em class="not-italic">افزایش امنیت و حریم خصوصی در تصاویر پزشکی با استفاده از رمزگذاری و استگانوگرافی مبتنی بر یادگیری عمیق و نظریه آشوب</em>
+                </h1>
+                <p class="text-lg md:text-xl text-blue-100 leading-relaxed">
+                  یک چارچوب یکپارچه برای حفاظت چندلایه از داده‌های حساس پزشکی در عصر دیجیتال
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Panels -->
+          <div class="space-y-6">
+            <!-- Key Highlights -->
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <h3 class="serif-display text-lg font-bold text-slate-800 mb-4">نکات کلیدی</h3>
+              <ul class="space-y-3 text-sm text-slate-600">
+                <li class="flex items-center">
+                  <i class="fas fa-shield-alt text-blue-500 ml-2"></i>
+                  امنیت چندلایه با ترکیب رمزگذاری و استگانوگرافی
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-brain text-blue-500 ml-2"></i>
+                  استفاده از یادگیری عمیق برای تقسیم‌بندی هوشمند
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-infinity text-blue-500 ml-2"></i>
+                  بهره‌گیری از نظریه آشوب برای تولید کلیدهای امن
+                </li>
+              </ul>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="bg-gradient-to-br from-blue-50 to-slate-50 rounded-xl p-6 shadow-lg">
+              <h3 class="serif-display text-lg font-bold text-slate-800 mb-4">آمار پژوهش</h3>
+              <div class="grid grid-cols-2 gap-4 text-center">
+                <div>
+                  <div class="text-2xl font-bold text-blue-600">۴</div>
+                  <div class="text-xs text-slate-600">حوزه علمی</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-blue-600">۱۲</div>
+                  <div class="text-xs text-slate-600">ماه تحقیق</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-blue-600">۵</div>
+                  <div class="text-xs text-slate-600">مقاله مرجع</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-blue-600">۳</div>
+                  <div class="text-xs text-slate-600">نوع تصویر</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Problem Statement -->
+      <section id="problem-statement" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="serif-display text-3xl font-bold text-slate-800 mb-8">
+            <i class="fas fa-exclamation-triangle text-amber-500 ml-3"></i>
+            بیان مسئله
+          </h2>
+
+          <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6">
+            <div class="highlight-box p-6 rounded-lg">
+              <h3 class="serif-display text-xl font-bold text-slate-800 mb-4">اهمیت حفاظت از تصاویر پزشکی</h3>
+              <p>
+                در عصر دیجیتالی شدن خدمات سلامت، تصاویر پزشکی نقش بی‌بدیلی در تشخیص، درمان و پژوهش‌های پزشکی ایفا می‌کنند. این تصاویر، که شامل MRI، CT-Scan، X-Ray و سایر مدالیته‌های تصویربرداری می‌شوند، حاوی اطلاعات حساس و خصوصی بیماران هستند. با گسترش سیستم‌های سلامت دیجیتال و تله‌مدیسین، این تصاویر به‌طور فزاینده‌ای در شبکه‌های رایانه‌ای و فضاهای ابری ذخیره‌سازی و تبادل می‌شوند.
+              </p>
+              <p>
+                دسترسی غیرمجاز به تصاویر پزشکی می‌تواند منجر به نقض حریم خصوصی بیمار، سرقت هویت، تغییر غیرمجاز در داده‌های تشخیصی و حتی سوءاستفاده‌های مالی و اجتماعی شود. الزامات قانونی سخت‌گیرانه مانند HIPAA در ایالات متحده و GDPR در اتحادیه اروپا نیز بر اهمیت فزاینده حفاظت از داده‌های سلامت تأکید دارند.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-red-50 border border-red-200 p-6 rounded-lg">
+                <h4 class="serif-display text-lg font-bold text-red-800 mb-3">
+                  <i class="fas fa-lock text-red-600 ml-2"></i>
+                  چالش‌های رمزگذاری سنتی
+                </h4>
+                <ul class="text-red-700 space-y-2 text-sm">
+                  <li>• Overhead محاسباتی بالا</li>
+                  <li>• از بین رفتن ویژگی‌های تشخیصی کلیدی</li>
+                  <li>• وابستگی به کلیدهای ثابت</li>
+                  <li>• تأخیر در کاربردهای واقع‌زمان</li>
+                </ul>
+              </div>
+
+              <div class="bg-orange-50 border border-orange-200 p-6 rounded-lg">
+                <h4 class="serif-display text-lg font-bold text-orange-800 mb-3">
+                  <i class="fas fa-eye-slash text-orange-600 ml-2"></i>
+                  محدودیت‌های استگانوگرافی
+                </h4>
+                <ul class="text-orange-700 space-y-2 text-sm">
+                  <li>• ظرفیت پنهان‌سازی پایین</li>
+                  <li>• آسیب‌پذیری در برابر حملات تصویرپردازی</li>
+                  <li>• الگوهای آماری قابل تشخیص</li>
+                  <li>• استحکام پایین در برابر نویز</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg">
+              <h4 class="serif-display text-lg font-bold text-blue-800 mb-3">
+                <i class="fas fa-lightbulb text-blue-600 ml-2"></i>
+                مداخلات پیشنهادی
+              </h4>
+              <p>
+                برای مقابله با چالش‌ها و تهدیدات فوق، این پژوهش یک چارچوب ترکیبی پیشنهاد می‌کند که از تلفیق یادگیری عمیق و نظریه آشوب بهره می‌برد. این مداخلات شامل استفاده از شبکه‌های عصبی عمیق مانند CNN یا U-Net برای تقسیم‌بندی معنایی تصویر پزشکی، سیستم‌های آشوبی مانند نقشه لژستیک یا سیستم چن برای تولید کلیدهای رمزنگاری، و استگانوگرافی مبتنی بر یادگیری عمیق برای افزایش لایه امنیتی است.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Importance and Necessity -->
+      <section id="importance" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="serif-display text-3xl font-bold text-slate-800 mb-8">
+            <i class="fas fa-star text-yellow-500 ml-3"></i>
+            اهمیت و ضرورت تحقیق
+          </h2>
+
+          <div class="grid lg:grid-cols-2 gap-8 mb-8">
+            <div class="space-y-6">
+              <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
+                <h3 class="serif-display text-xl font-bold text-purple-800 mb-4">
+                  خلأهای موجود در پژوهش‌های پیشین
+                </h3>
+                <div class="space-y-4 text-sm">
+                  <div>
+                    <h4 class="font-semibold text-purple-700 mb-2">پژوهش‌های داخلی</h4>
+                    <p class="text-purple-600 leading-relaxed">
+                      بیشتر پژوهش‌ها بر روی طراحی الگوریتم‌های رمزگذاری مبتنی بر نظریه آشوب تمرکز دارند. ترکیب این روش‌ها با یادگیری عمیق در یک چارچوب یکپارچه برای تصاویر پزشکی در پژوهش‌های داخلی به ندرت دیده می‌شود.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-purple-700 mb-2">پژوهش‌های خارجی</h4>
+                    <p class="text-purple-600 leading-relaxed">
+                      هنوز یک چارچوب جامع که به طور همزمان از رمزگذاری، استگانوگرافی، یادگیری عمیق و نظریه آشوب در یک معماری واحد استفاده کند، ارائه نشده است.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
+                <h3 class="serif-display text-xl font-bold text-green-800 mb-4">
+                  فواید نظری و عملی
+                </h3>
+                <div class="space-y-4 text-sm">
+                  <div>
+                    <h4 class="font-semibold text-green-700 mb-2">فواید نظری</h4>
+                    <ul class="text-green-600 space-y-1">
+                      <li>• توسعه چارچوب‌های نوین در امنیت داده</li>
+                      <li>• ارائه بینش‌های جدید در هم‌افزایی حوزه‌ها</li>
+                      <li>• پایه‌ای برای تحقیقات آینده</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-green-700 mb-2">فواید عملی</h4>
+                    <ul class="text-green-600 space-y-1">
+                      <li>• پیاده‌سازی در بیمارستان‌های هوشمند</li>
+                      <li>• استفاده در سیستم‌های تله‌مدیسین</li>
+                      <li>• بهبود امنیت آرشیوهای ابری</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-xl">
+            <h3 class="serif-display text-2xl font-bold mb-4">
+              نوآوری در مواد و روش
+            </h3>
+            <p class="text-lg leading-relaxed">
+              نوآوری اصلی این پژوهش در <strong>تلفیق چهار حوزه علمی کلیدی</strong> (رمزگذاری، استگانوگرافی، یادگیری عمیق و نظریه آشوب) در یک چارچوب یکپارچه و هماهنگ نهفته است. این ترکیب نوآورانه به دنبال غلبه بر محدودیت‌های روش‌های سنتی است.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Literature Review -->
+      <section id="literature" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="serif-display text-3xl font-bold text-slate-800 mb-8">
+            <i class="fas fa-book-open text-indigo-500 ml-3"></i>
+            مرور ادبیات و سوابق پژوهش
+          </h2>
+
+          <div class="space-y-8">
+            <!-- Featured Research Papers -->
+            <div class="grid gap-6">
+              <div class="bg-gradient-to-r from-slate-50 to-blue-50 border border-slate-200 p-6 rounded-xl">
+                <h3 class="serif-display text-lg font-bold text-slate-800 mb-3">
+                  &#34;Enhanced security for medical images using a new 5D hyper chaotic map and deep learning based segmentation&#34; (2025)
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <h4 class="font-semibold text-slate-700 mb-1">هدف مطالعه</h4>
+                    <p class="text-slate-600">ارائه الگوریتم رمزگذاری پیشرفته با ترکیب نقشه آشوبی 5 بعدی و مدل U-Net</p>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-slate-700 mb-1">روش‌شناسی</h4>
+                    <p class="text-slate-600">تقسیم‌بندی تصویر با U-Net و تولید کلید وابسته به محتوا برای رمزگذاری</p>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-slate-700 mb-1">محدودیت‌ها</h4>
+                    <p class="text-slate-600">فقط بر روی رمزگذاری تمرکز دارد و به استگانوگرافی نمی‌پردازد</p>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <a href="https://www.nature.com/articles/s41598-025-74060-1" class="citation-link text-sm">منبع: Nature</a>
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-r from-slate-50 to-purple-50 border border-slate-200 p-6 rounded-xl">
+                <h3 class="serif-display text-lg font-bold text-slate-800 mb-3">
+                  &#34;Steganography-based voice hiding in medical images of COVID-19 patients&#34; (2025)
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <h4 class="font-semibold text-slate-700 mb-1">هدف مطالعه</h4>
+                    <p class="text-slate-600">پنهان‌سازی داده‌های صوتی پزشکان در تصاویر پزشکی بیماران COVID-19</p>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-slate-700 mb-1">روش‌شناسی</h4>
+                    <p class="text-slate-600">ترکیب رمزگذاری مبتنی بر آشوب و استگانوگرافی برای پنهان‌سازی داده‌ها</p>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-slate-700 mb-1">محدودیت‌ها</h4>
+                    <p class="text-slate-600">فقط بر روی داده‌های صوتی تمرکز دارد و ظرفیت محدودی دارد</p>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11866736/" class="citation-link text-sm">منبع: PubMed Central</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Research Gap Visualization -->
+            <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 p-6 rounded-xl">
+              <h3 class="serif-display text-xl font-bold text-amber-800 mb-4">
+                <i class="fas fa-puzzle-piece text-amber-600 ml-2"></i>
+                شکاف تحقیقاتی موجود
+              </h3>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 class="font-semibold text-amber-700 mb-2">نبود روشی یکپارچه</h4>
+                  <p class="text-amber-600 text-sm leading-relaxed">
+                    نبود یک چارچوب یکپارچه که بتواند به‌طور همزمان هم رمزگذاری قوی و هم استگانوگرافی با ظرفیت بالا را ارائه دهد.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-amber-700 mb-2">تناقض امنیت و سرعت</h4>
+                  <p class="text-amber-600 text-sm leading-relaxed">
+                    تعادل بین سطح امنیت و کارایی محاسباتی، روش‌های امن معمولاً Overhead محاسباتی زیادی دارند.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Innovation Section -->
+      <section id="innovation" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="serif-display text-3xl font-bold text-slate-800 mb-8">
+            <i class="fas fa-rocket text-emerald-500 ml-3"></i>
+            جنبه جدید بودن و نوآوری در تحقیق
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200 p-6 rounded-xl">
+              <div class="text-center mb-4">
+                <i class="fas fa-layer-group text-3xl text-blue-600"></i>
+              </div>
+              <h3 class="serif-display text-lg font-bold text-blue-800 mb-3 text-center">معماری هیبرید جدید</h3>
+              <p class="text-blue-600 text-sm leading-relaxed">
+                طراحی و پیاده‌سازی یک معماری هیبرید جدید که برای اولین بار چهار حوزه علمی کلیدی را در یک چارچوب یکپارچه ترکیب می‌کند.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 p-6 rounded-xl">
+              <div class="text-center mb-4">
+                <i class="fas fa-key text-3xl text-purple-600"></i>
+              </div>
+              <h3 class="serif-display text-lg font-bold text-purple-800 mb-3 text-center">نقشه آشوبی بهبودیافته</h3>
+              <p class="text-purple-600 text-sm leading-relaxed">
+                استفاده از یک نقشه آشوبی بهبودیافته برای تولید کلیدهای رمزنگاری وابسته به محتوا که امنیت را به‌طور چشمگیری افزایش می‌دهد.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 p-6 rounded-xl">
+              <div class="text-center mb-4">
+                <i class="fas fa-eye-slash text-3xl text-green-600"></i>
+              </div>
+              <h3 class="serif-display text-lg font-bold text-green-800 mb-3 text-center">شبکه مولد برای استگانوگرافی</h3>
+              <p class="text-green-600 text-sm leading-relaxed">
+                استفاده از یک شبکه مولد برای پنهان‌سازی داده با ظرفیت بالا و آسیب‌زدایی کمتر به تصویر پوشاننده.
+              </p>
+            </div>
+          </div>
+
+          <!-- System Architecture Diagram -->
+          <div class="bg-gradient-to-br from-slate-50 to-blue-50 border border-slate-200 p-6 rounded-xl">
+            <h3 class="serif-display text-xl font-bold text-slate-800 mb-6 text-center">
+              معماری کلی چارچوب پیشنهادی
+            </h3>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="بزرگنمایی">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="کوچکنمایی">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="بازنشانی">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="تمام صفحه">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid" id="system-architecture-diagram">
+                graph TB
+                A[&#34;تصویر پزشکی ورودی&#34;] --&gt; B[&#34;شبکه عصبی عمیق
+                <br/>U-Net/Transformer&#34;]
+                B --&gt; C[&#34;تقسیم‌بندی معنایی
+                <br/>ROI Detection&#34;]
+                C --&gt; D[&#34;سیستم آشوبی
+                <br/>Logistic Map/Chen System&#34;]
+                D --&gt; E[&#34;تولید کلید رمزنگاری
+                <br/>وابسته به محتوا&#34;]
+                C --&gt; F[&#34;استخراج ویژگی‌های ROI&#34;]
+                F --&gt; E
+                E --&gt; G[&#34;رمزگذاری تصویر
+                <br/>Encryption&#34;]
+                G --&gt; H[&#34;داده‌های رمزگذاری شده&#34;]
+                H --&gt; I[&#34;شبکه مولد GAN
+                <br/>Generator Network&#34;]
+                J[&#34;تصویر پوشاننده&#34;] --&gt; I
+                I --&gt; K[&#34;تصویر نهایی
+                <br/>Stego-Image&#34;]
+
+                style A fill:#dbeafe,stroke:#1e40af,stroke-width:3px,color:#1e293b
+                style B fill:#e0e7ff,stroke:#4338ca,stroke-width:3px,color:#1e293b
+                style C fill:#fef3c7,stroke:#f59e0b,stroke-width:3px,color:#1e293b
+                style D fill:#f3e8ff,stroke:#7c3aed,stroke-width:3px,color:#1e293b
+                style E fill:#fce7f3,stroke:#ec4899,stroke-width:3px,color:#1e293b
+                style F fill:#fef3c7,stroke:#f59e0b,stroke-width:3px,color:#1e293b
+                style G fill:#dcfce7,stroke:#16a34a,stroke-width:3px,color:#1e293b
+                style H fill:#dcfce7,stroke:#16a34a,stroke-width:3px,color:#1e293b
+                style I fill:#fed7aa,stroke:#ea580c,stroke-width:3px,color:#1e293b
+                style J fill:#ffe4e6,stroke:#e11d48,stroke-width:3px,color:#1e293b
+                style K fill:#ecfdf5,stroke:#059669,stroke-width:3px,color:#1e293b
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Objectives -->
+      <section id="objectives" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="serif-display text-3xl font-bold text-slate-800 mb-8">
+            <i class="fas fa-target text-red-500 ml-3"></i>
+            اهداف تحقیق
+          </h2>
+
+          <div class="space-y-8">
+            <!-- General Objective -->
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-xl">
+              <h3 class="serif-display text-2xl font-bold mb-4">
+                <i class="fas fa-bullseye ml-2"></i>
+                هدف کلی
+              </h3>
+              <p class="text-lg leading-relaxed">
+                طراحی، پیاده‌سازی و ارزیابی یک چارچوب یکپارچه و نوآورانه برای افزایش امنیت و حریم خصوصی تصاویر پزشکی با استفاده از ترکیب رمزگذاری و استگانوگرافی، هر دو تقویت‌شده با یادگیری عمیق و نظریه آشوب.
+              </p>
+            </div>
+
+            <!-- Specific Objectives -->
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-gradient-to-br from-slate-50 to-blue-50 border border-slate-200 p-6 rounded-xl">
+                <h3 class="serif-display text-xl font-bold text-slate-800 mb-4">
+                  <i class="fas fa-list-check text-blue-600 ml-2"></i>
+                  اهداف اختصاصی
+                </h3>
+                <ol class="space-y-3 text-slate-700">
+                  <li class="flex items-start">
+                    <span class="bg-blue-100 text-blue-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold ml-3 mt-0.5">۱</span>
+                    <span class="text-sm">بررسی و مقایسه سیستم‌های آشوبی موجود برای تولید کلیدهای رمزنگاری</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="bg-blue-100 text-blue-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold ml-3 mt-0.5">۲</span>
+                    <span class="text-sm">طراحی و آموزش یک شبکه عصبی عمیق برای تقسیم‌بندی معنایی تصاویر پزشکی</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="bg-blue-100 text-blue-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold ml-3 mt-0.5">۳</span>
+                    <span class="text-sm">توسعه یک الگوریتم رمزگذاری ترکیبی با کلیدهای وابسته به محتوا</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="bg-blue-100 text-blue-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold ml-3 mt-0.5">۴</span>
+                    <span class="text-sm">طراحی و آموزش یک شبکه مولد برای استگانوگرافی با ظرفیت بالا</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="bg-blue-100 text-blue-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold ml-3 mt-0.5">۵</span>
+                    <span class="text-sm">ارزیابی جامع چارچوب پیشنهادی با معیارهای امنیتی و کیفیتی</span>
+                  </li>
+                </ol>
+              </div>
+
+              <div class="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 p-6 rounded-xl">
+                <h3 class="serif-display text-xl font-bold text-green-800 mb-4">
+                  <i class="fas fa-users text-green-600 ml-2"></i>
+                  بهره‌وران و کاربردها
+                </h3>
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <i class="fas fa-hospital text-green-600 ml-3"></i>
+                    <span class="text-green-700 text-sm">بیمارستان‌های دانشگاهی و دولتی</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-microchip text-green-600 ml-3"></i>
+                    <span class="text-green-700 text-sm">شرکت‌های ارائه‌دهنده نرم‌افزارهای PACS</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-video text-green-600 ml-3"></i>
+                    <span class="text-green-700 text-sm">کلینیک‌های تله‌مدیسین</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-gavel text-green-600 ml-3"></i>
+                    <span class="text-green-700 text-sm">نهادهای قانون‌گذار در حوزه سلامت دیجیتال</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Hypotheses -->
+      <section id="hypotheses" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="serif-display text-3xl font-bold text-slate-800 mb-8">
+            <i class="fas fa-question-circle text-cyan-500 ml-3"></i>
+            سوالات و فرضیه‌های تحقیق
+          </h2>
+
+          <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Research Questions -->
+            <div class="bg-gradient-to-br from-cyan-50 to-blue-50 border border-cyan-200 p-6 rounded-xl">
+              <h3 class="serif-display text-xl font-bold text-cyan-800 mb-4">
+                <i class="fas fa-question text-cyan-600 ml-2"></i>
+                سوالات تحقیق
+              </h3>
+              <div class="space-y-4">
+                <div class="bg-white p-4 rounded-lg border border-cyan-100">
+                  <p class="text-cyan-700 text-sm leading-relaxed">
+                    آیا چارچوب پیشنهادی می‌تواند در مقایسه با روش‌های متعارف، نرخ <strong>Peak Signal-to-Noise Ratio (PSNR)</strong> بالاتری را در تصویر رمزگذاری شده ایجاد کند؟
+                  </p>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-cyan-100">
+                  <p class="text-cyan-700 text-sm leading-relaxed">
+                    آیا استفاده از کلیدهای رمزنگاری وابسته به محتوا می‌تواند <strong>آنتروپی اطلاعات</strong> تصویر خروجی را به‌طور معناداری افزایش دهد؟
+                  </p>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-cyan-100">
+                  <p class="text-cyan-700 text-sm leading-relaxed">
+                    آیا چارچوب پیشنهادی می‌تواند <strong>ظرفیت پنهان‌سازی</strong> بالاتری را نسبت به روش‌های استگانوگرافی سنتی ارائه دهد؟
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hypotheses -->
+            <div class="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 p-6 rounded-xl">
+              <h3 class="serif-display text-xl font-bold text-purple-800 mb-4">
+                <i class="fas fa-lightbulb text-purple-600 ml-2"></i>
+                فرضیه‌های تحقیق
+              </h3>
+              <div class="space-y-4">
+                <div class="bg-white p-4 rounded-lg border border-purple-100">
+                  <h4 class="font-semibold text-purple-700 mb-2">فرضیه ۱</h4>
+                  <p class="text-purple-600 text-sm leading-relaxed">
+                    به کارگیری نظریه آشوب در تولید کلید، آنتروپی تصویر خروجی را به طور معناداری افزایش می‌دهد.
+                    <br/>
+                    <span class="text-xs text-purple-500">(H0: تأثیر معناداری ندارد)</span>
+                  </p>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-purple-100">
+                  <h4 class="font-semibold text-purple-700 mb-2">فرضیه ۲</h4>
+                  <p class="text-purple-600 text-sm leading-relaxed">
+                    استفاده از یادگیری عمیق برای تقسیم‌بندی تصویر و رمزگذاری انتخابی، منجر به بهبود PSNR در تصویر رمزگذاری شده می‌شود.
+                    <br/>
+                    <span class="text-xs text-purple-500">(H0: تأثیر معناداری ندارد)</span>
+                  </p>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-purple-100">
+                  <h4 class="font-semibold text-purple-700 mb-2">فرضیه ۳</h4>
+                  <p class="text-purple-600 text-sm leading-relaxed">
+                    ترکیب رمزگذاری و استگانوگرافی در یک چارچوب یکپارچه، امنیت کلی سیستم را به‌طور معناداری افزایش می‌دهد.
+                    <br/>
+                    <span class="text-xs text-purple-500">(H0: تأثیر معناداری ندارد)</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Definitions -->
+      <section id="definitions" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="serif-display text-3xl font-bold text-slate-800 mb-8">
+            <i class="fas fa-book text-teal-500 ml-3"></i>
+            تعاریف نظری و عملیاتی متغیرها
+          </h2>
+
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl overflow-hidden">
+              <thead>
+                <tr class="bg-gradient-to-r from-slate-700 to-slate-800 text-white">
+                  <th class="p-4 text-right font-bold">نام متغیر/پدیده</th>
+                  <th class="p-4 text-right font-bold">تعریف مفهومی</th>
+                  <th class="p-4 text-right font-bold">تعریف عملیاتی</th>
+                  <th class="p-4 text-right font-bold">نوع متغیر</th>
+                  <th class="p-4 text-right font-bold">واحد اندازه‌گیری</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                <tr class="border-b border-slate-200 hover:bg-white transition-colors">
+                  <td class="p-4 font-semibold text-slate-800">آنتروپی اطلاعات</td>
+                  <td class="p-4 text-slate-600">معیاری برای اندازه‌گیری میزان تصادفی بودن یا عدم قطعیت در یک سیستم</td>
+                  <td class="p-4 text-slate-600">محاسبه با استفاده از فرمول Shannon&#39;s entropy</td>
+                  <td class="p-4"><span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">وابسته</span></td>
+                  <td class="p-4 text-slate-600">بیت</td>
+                </tr>
+                <tr class="border-b border-slate-200 hover:bg-white transition-colors">
+                  <td class="p-4 font-semibold text-slate-800">PSNR</td>
+                  <td class="p-4 text-slate-600">معیاری برای اندازه‌گیری کیفیت بازسازی یک تصویر فشرده یا تغییر یافته</td>
+                  <td class="p-4 text-slate-600">محاسبه با استفاده از کتابخانه‌های پردازش تصویر مانند OpenCV</td>
+                  <td class="p-4"><span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">وابسته</span></td>
+                  <td class="p-4 text-slate-600">دسی‌بل (dB)</td>
+                </tr>
+                <tr class="border-b border-slate-200 hover:bg-white transition-colors">
+                  <td class="p-4 font-semibold text-slate-800">SSIM</td>
+                  <td class="p-4 text-slate-600">معیاری برای اندازه‌گیری شباهت ساختاری بین دو تصویر</td>
+                  <td class="p-4 text-slate-600">محاسبه با استفاده از کتابخانه‌های پردازش تصویر مانند scikit-image</td>
+                  <td class="p-4"><span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">وابسته</span></td>
+                  <td class="p-4 text-slate-600">عددی بین 0 و 1</td>
+                </tr>
+                <tr class="border-b border-slate-200 hover:bg-white transition-colors">
+                  <td class="p-4 font-semibold text-slate-800">ظرفیت پنهان‌سازی</td>
+                  <td class="p-4 text-slate-600">میزان داده‌ای که می‌توان در یک رسانه پوشاننده بدون ایجاد تغییرات قابل توجه پنهان کرد</td>
+                  <td class="p-4 text-slate-600">نسبت تعداد بیت‌های داده مخفی به تعداد پیکسل‌های تصویر پوشاننده</td>
+                  <td class="p-4"><span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">وابسته</span></td>
+                  <td class="p-4 text-slate-600">بیت در هر پیکسل (bpp)</td>
+                </tr>
+                <tr class="border-b border-slate-200 hover:bg-white transition-colors">
+                  <td class="p-4 font-semibold text-slate-800">نوع تصویر پزشکی</td>
+                  <td class="p-4 text-slate-600">نوع داده تصویری مانند MRI، CT-Scan یا X-Ray</td>
+                  <td class="p-4 text-slate-600">انتخاب از پایگاه داده استاندارد مانند BraTS یا COVIDx</td>
+                  <td class="p-4"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">مستقل</span></td>
+                  <td class="p-4 text-slate-600">-</td>
+                </tr>
+                <tr class="hover:bg-white transition-colors">
+                  <td class="p-4 font-semibold text-slate-800">زمان پردازش</td>
+                  <td class="p-4 text-slate-600">زمان لازم برای اجرای یک الگوریتم</td>
+                  <td class="p-4 text-slate-600">زمان سپری‌شده از شروع تا پایان اجرای الگوریتم</td>
+                  <td class="p-4"><span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">وابسته</span></td>
+                  <td class="p-4 text-slate-600">ثانیه (s) یا میلی‌ثانیه (ms)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Methodology -->
+      <section id="methodology" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="serif-display text-3xl font-bold text-slate-800 mb-8">
+            <i class="fas fa-cogs text-indigo-500 ml-3"></i>
+            روش شناسی پژوهش
+          </h2>
+
+          <div class="space-y-8">
+            <!-- Research Type and Data -->
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 p-6 rounded-xl">
+                <h3 class="serif-display text-lg font-bold text-blue-800 mb-4">
+                  <i class="fas fa-flask text-blue-600 ml-2"></i>
+                  نوع تحقیق و داده‌ها
+                </h3>
+                <div class="space-y-3 text-sm">
+                  <div>
+                    <span class="font-semibold text-blue-700">نوع تحقیق:</span>
+                    <span class="text-blue-600"> کمی (Quantitative)</span>
+                  </div>
+                  <div>
+                    <span class="font-semibold text-blue-700">روش:</span>
+                    <span class="text-blue-600"> شبیه‌سازی محاسباتی</span>
+                  </div>
+                  <div>
+                    <span class="font-semibold text-blue-700">نوع داده‌ها:</span>
+                    <span class="text-blue-600"> تصاویر پزشکی دیجیتال</span>
+                  </div>
+                  <div>
+                    <span class="font-semibold text-blue-700">منابع داده:</span>
+                    <span class="text-blue-600"> BraTS, COVIDx CXR</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 p-6 rounded-xl">
+                <h3 class="serif-display text-lg font-bold text-green-800 mb-4">
+                  <i class="fas fa-tools text-green-600 ml-2"></i>
+                  مواد و تجهیزات
+                </h3>
+                <div class="space-y-3 text-sm">
+                  <div>
+                    <span class="font-semibold text-green-700">نرم‌افزار:</span>
+                    <span class="text-green-600"> Python, TensorFlow/PyTorch</span>
+                  </div>
+                  <div>
+                    <span class="font-semibold text-green-700">کتابخانه‌ها:</span>
+                    <span class="text-green-600"> OpenCV, scikit-image</span>
+                  </div>
+                  <div>
+                    <span class="font-semibold text-green-700">سخت‌افزار:</span>
+                    <span class="text-green-600"> CPU/GPU قدرتمند</span>
+                  </div>
+                  <div>
+                    <span class="font-semibold text-green-700">استانداردها:</span>
+                    <span class="text-green-600"> DICOM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Implementation Stages -->
+            <div class="bg-gradient-to-br from-slate-50 to-purple-50 border border-slate-200 p-6 rounded-xl">
+              <h3 class="serif-display text-xl font-bold text-slate-800 mb-6">
+                <i class="fas fa-list-ol text-purple-600 ml-2"></i>
+                مراحل اجرای پژوهش
+              </h3>
+              <div class="space-y-4">
+                <div class="flex items-center bg-white p-4 rounded-lg border border-slate-100">
+                  <div class="bg-purple-100 text-purple-600 rounded-full w-8 h-8 flex items-center justify-center font-bold ml-4">۱</div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 mb-1">مطالعه پایه و جمع‌آوری داده‌ها</h4>
+                    <p class="text-slate-600 text-sm">مطالعه جامع ادبیات و جمع‌آوری تصاویر پزشکی از پایگاه‌های داده استاندارد</p>
+                  </div>
+                </div>
+                <div class="flex items-center bg-white p-4 rounded-lg border border-slate-100">
+                  <div class="bg-purple-100 text-purple-600 rounded-full w-8 h-8 flex items-center justify-center font-bold ml-4">۲</div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 mb-1">طراحی و پیاده‌سازی مدل اولیه</h4>
+                    <p class="text-slate-600 text-sm">طراحی معماری کلی چارچوب و پیاده‌سازی ماژول‌های مجزا</p>
+                  </div>
+                </div>
+                <div class="flex items-center bg-white p-4 rounded-lg border border-slate-100">
+                  <div class="bg-purple-100 text-purple-600 rounded-full w-8 h-8 flex items-center justify-center font-bold ml-4">۳</div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 mb-1">آموزش مدل و بهینه‌سازی</h4>
+                    <p class="text-slate-600 text-sm">آموزش شبکه‌های عصبی عمیق با استفاده از داده‌های آموزش</p>
+                  </div>
+                </div>
+                <div class="flex items-center bg-white p-4 rounded-lg border border-slate-100">
+                  <div class="bg-purple-100 text-purple-600 rounded-full w-8 h-8 flex items-center justify-center font-bold ml-4">۴</div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 mb-1">انجام آزمایش‌ها و ارزیابی</h4>
+                    <p class="text-slate-600 text-sm">اجرای چارچوب بر روی داده‌های آزمایش و ثبت نتایج</p>
+                  </div>
+                </div>
+                <div class="flex items-center bg-white p-4 rounded-lg border border-slate-100">
+                  <div class="bg-purple-100 text-purple-600 rounded-full w-8 h-8 flex items-center justify-center font-bold ml-4">۵</div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 mb-1">تجزیه و تحلیل نتایج</h4>
+                    <p class="text-slate-600 text-sm">تجزیه و تحلیل نتایج و مقایسه با روش‌های دیگر</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Statistical Analysis -->
+            <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 p-6 rounded-xl">
+              <h3 class="serif-display text-xl font-bold text-amber-800 mb-4">
+                <i class="fas fa-chart-line text-amber-600 ml-2"></i>
+                روش‌های تجزیه و تحلیل داده‌ها
+              </h3>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 class="font-semibold text-amber-700 mb-3">روش‌های آماری</h4>
+                  <ul class="space-y-2 text-sm text-amber-600">
+                    <li>• آزمون t زوجی (Paired t-test)</li>
+                    <li>• آزمون ANOVA</li>
+                    <li>• تحلیل رگرسیون</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-amber-700 mb-3">معیارهای ارزیابی</h4>
+                  <ul class="space-y-2 text-sm text-amber-600">
+                    <li>• آنتروپی اطلاعات</li>
+                    <li>• PSNR و SSIM</li>
+                    <li>• ظرفیت پنهان‌سازی (bpp)</li>
+                    <li>• نرخ خطای بیت (BER)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Ethics -->
+      <section id="ethics" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="serif-display text-3xl font-bold text-slate-800 mb-8">
+            <i class="fas fa-balance-scale text-emerald-500 ml-3"></i>
+            ضوابط اخلاقی
+          </h2>
+
+          <div class="bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-200 p-6 rounded-xl">
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <i class="fas fa-shield-alt text-emerald-600 text-xl ml-4 mt-1"></i>
+                <div>
+                  <h3 class="font-bold text-emerald-800 mb-2">حفظ حریم خصوصی</h3>
+                  <p class="text-emerald-700 text-sm leading-relaxed">
+                    این تحقیق بر روی داده‌های تصویری پزشکی انجام می‌شود که از پایگاه‌های داده استاندارد و عمومی در دسترس هستند. این مجموعه‌داده‌ها به‌صورت ناشناس (de-identified) ارائه می‌شوند و اطلاعات شخصی بیماران از آن‌ها حذف شده است.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <i class="fas fa-copyright text-emerald-600 text-xl ml-4 mt-1"></i>
+                <div>
+                  <h3 class="font-bold text-emerald-800 mb-2">رعایت حق نشر</h3>
+                  <p class="text-emerald-700 text-sm leading-relaxed">
+                    حق نشر مجموعه‌داده‌ها به‌طور کامل رعایت خواهد شد و منبع هر مجموعه‌داده به‌طور دقیق ذکر می‌شود. این امر شامل ارجاع به مقالات اصلی و وب‌سایت‌های رسمی پایگاه‌های داده است.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <i class="fas fa-user-secret text-emerald-600 text-xl ml-4 mt-1"></i>
+                <div>
+                  <h3 class="font-bold text-emerald-800 mb-2">ناشناس ماندن داده‌ها</h3>
+                  <p class="text-emerald-700 text-sm leading-relaxed">
+                    ذات ناشناس بودن داده‌ها حفظ خواهد شد و هیچ تلاشی برای شناسایی بیماران انجام نخواهد شد. نتایج این تحقیق صرفاً به‌صورت کلی و آماری ارائه خواهد شد.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Timeline -->
+      <section id="timeline" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="serif-display text-3xl font-bold text-slate-800 mb-8">
+            <i class="fas fa-calendar-alt text-violet-500 ml-3"></i>
+            زمان‌بندی اجرای پژوهش
+          </h2>
+
+          <div class="bg-gradient-to-br from-violet-50 to-purple-50 border border-violet-200 p-6 rounded-xl">
+            <h3 class="serif-display text-xl font-bold text-violet-800 mb-6 text-center">
+              جدول گانت ۱۲ ماهه
+            </h3>
+
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse bg-white rounded-lg overflow-hidden shadow-sm">
+                <thead>
+                  <tr class="bg-gradient-to-r from-violet-600 to-purple-600 text-white">
+                    <th class="p-3 text-right font-bold">فعالیت</th>
+                    <th class="p-3 text-center font-bold">ماه ۱-۲</th>
+                    <th class="p-3 text-center font-bold">ماه ۳-۵</th>
+                    <th class="p-3 text-center font-bold">ماه ۶-۷</th>
+                    <th class="p-3 text-center font-bold">ماه ۸-۹</th>
+                    <th class="p-3 text-center font-bold">ماه ۱۰-۱۱</th>
+                    <th class="p-3 text-center font-bold">ماه ۱۲</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm">
+                  <tr class="border-b border-violet-100 hover:bg-violet-50 transition-colors">
+                    <td class="p-3 font-semibold text-violet-800">مطالعه پایه و گردآوری داده‌ها</td>
+                    <td class="p-3">
+                      <div class="w-full bg-violet-200 rounded-full h-2">
+                        <div class="bg-violet-600 h-2 rounded-full" style="width: 100%"></div>
+                      </div>
+                    </td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                  </tr>
+                  <tr class="border-b border-violet-100 hover:bg-violet-50 transition-colors">
+                    <td class="p-3 font-semibold text-violet-800">طراحی و پیاده‌سازی مدل اولیه</td>
+                    <td class="p-3"></td>
+                    <td class="p-3">
+                      <div class="w-full bg-violet-200 rounded-full h-2">
+                        <div class="bg-violet-600 h-2 rounded-full" style="width: 100%"></div>
+                      </div>
+                    </td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                  </tr>
+                  <tr class="border-b border-violet-100 hover:bg-violet-50 transition-colors">
+                    <td class="p-3 font-semibold text-violet-800">آموزش مدل و بهینه‌سازی</td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3">
+                      <div class="w-full bg-violet-200 rounded-full h-2">
+                        <div class="bg-violet-600 h-2 rounded-full" style="width: 100%"></div>
+                      </div>
+                    </td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                  </tr>
+                  <tr class="border-b border-violet-100 hover:bg-violet-50 transition-colors">
+                    <td class="p-3 font-semibold text-violet-800">انجام آزمایش‌ها و ارزیابی</td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3">
+                      <div class="w-full bg-violet-200 rounded-full h-2">
+                        <div class="bg-violet-600 h-2 rounded-full" style="width: 100%"></div>
+                      </div>
+                    </td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                  </tr>
+                  <tr class="border-b border-violet-100 hover:bg-violet-50 transition-colors">
+                    <td class="p-3 font-semibold text-violet-800">تجزیه و تحلیل نتایج و نگارش</td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3">
+                      <div class="w-full bg-violet-200 rounded-full h-2">
+                        <div class="bg-violet-600 h-2 rounded-full" style="width: 100%"></div>
+                      </div>
+                    </td>
+                    <td class="p-3"></td>
+                  </tr>
+                  <tr class="hover:bg-violet-50 transition-colors">
+                    <td class="p-3 font-semibold text-violet-800">تکمیل نهایی و آماده‌سازی برای دفاع</td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3"></td>
+                    <td class="p-3">
+                      <div class="w-full bg-violet-200 rounded-full h-2">
+                        <div class="bg-violet-600 h-2 rounded-full" style="width: 100%"></div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Limitations -->
+      <section id="limitations" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="serif-display text-3xl font-bold text-slate-800 mb-8">
+            <i class="fas fa-exclamation-triangle text-amber-500 ml-3"></i>
+            محدودیت‌های اجرای طرح
+          </h2>
+
+          <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Limitations -->
+            <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 p-6 rounded-xl">
+              <h3 class="serif-display text-xl font-bold text-amber-800 mb-6">
+                <i class="fas fa-minus-circle text-amber-600 ml-2"></i>
+                محدودیت‌های احتمالی
+              </h3>
+              <div class="space-y-4">
+                <div class="bg-white p-4 rounded-lg border border-amber-100">
+                  <h4 class="font-semibold text-amber-700 mb-2">منابع سخت‌افزاری</h4>
+                  <p class="text-amber-600 text-sm leading-relaxed">
+                    آموزش مدل‌های یادگیری عمیق، به‌ویژه شبکه‌های تولیدکننده (GANs)، نیازمند کارت‌های گرافیک (GPU) با حافظه بالا است. در صورت عدم دسترسی به چنین منابعی، آموزش مدل‌ها می‌تواند بسیار زمان‌بر شود.
+                  </p>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-amber-100">
+                  <h4 class="font-semibold text-amber-700 mb-2">حجم داده‌ها</h4>
+                  <p class="text-amber-600 text-sm leading-relaxed">
+                    برخی مجموعه‌داده‌های تصاویر پزشکی، به‌ویژه اسکن‌های 3D، حجم بسیار بالایی دارند. پردازش این حجم زیاد داده می‌تواند چالش‌برانگیز باشد.
+                  </p>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-amber-100">
+                  <h4 class="font-semibold text-amber-700 mb-2">تعمیم‌پذیری</h4>
+                  <p class="text-amber-600 text-sm leading-relaxed">
+                    نتایج به‌دست‌آمده از یک مجموعه‌داده ممکن است به‌طور مستقیم به مجموعه‌داده‌های دیگر تعمیم پیدا نکند. مدل آموزش‌دیده بر روی تصاویر MRI ممکن است بر روی تصاویر CT-Scan عملکرد خوبی نداشته باشد.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Solutions -->
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 p-6 rounded-xl">
+              <h3 class="serif-display text-xl font-bold text-green-800 mb-6">
+                <i class="fas fa-lightbulb text-green-600 ml-2"></i>
+                راهکارهای پیشنهادی
+              </h3>
+              <div class="space-y-4">
+                <div class="bg-white p-4 rounded-lg border border-green-100">
+                  <h4 class="font-semibold text-green-700 mb-2">سرویس‌های ابری</h4>
+                  <p class="text-green-600 text-sm leading-relaxed">
+                    برای غلبه بر محدودیت‌های سخت‌افزاری، می‌توان از سرویس‌های ابری مانند Google Colab یا Amazon Web Services (AWS) که دسترسی به GPUهای قدرتمند را فراهم می‌کنند، استفاده کرد.
+                  </p>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-green-100">
+                  <h4 class="font-semibold text-green-700 mb-2">نمونه‌گیری استراتیفاید</h4>
+                  <p class="text-green-600 text-sm leading-relaxed">
+                    برای بررسی تعمیم‌پذیری مدل‌ها، می‌توان از روش نمونه‌گیری استراتیفاید استفاده کرد تا اطمینان حاصل شود که داده‌های آموزش و آزمایش از انواع مختلف تصاویر پزشکی نماینده هستند.
+                  </p>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-green-100">
+                  <h4 class="font-semibold text-green-700 mb-2">تحقیقات آتی</h4>
+                  <p class="text-green-600 text-sm leading-relaxed">
+                    در صورت بروز محدودیت‌های جدی، می‌توان تمرکز را بر روی یک نوع خاص از تصاویر پزشکی قرار داد و در تحقیقات آتی، چارچوب را برای انواع دیگر تصاویر گسترش داد.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer with References -->
+      <footer class="mt-16 bg-gradient-to-br from-slate-800 to-slate-900 text-white rounded-2xl p-8">
+        <div class="text-center mb-8">
+          <h3 class="serif-display text-2xl font-bold mb-4">منابع و مآخذ</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            این پروپوزال بر اساس منابع علمی معتبر و مقالات منتشر شده در مجلات بین‌المللی تهیه شده است.
+            تمامی منابع به سبک APA نسخه ۷ تنظیم شده‌اند.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-sm">
+          <div class="bg-slate-700 bg-opacity-50 p-4 rounded-lg">
+            <h4 class="font-bold text-slate-200 mb-3">منابع انگلیسی</h4>
+            <ul class="space-y-2 text-slate-300">
+              <li>• <a href="https://www.nature.com/articles/s41598-025-74060-1" class="citation-link">Nature - Enhanced security for medical images using 5D hyper chaotic map</a>
+              </li>
+              <li>• <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11866736/" class="citation-link">PubMed Central - Steganography-based voice hiding</a>
+              </li>
+              <li>• <a href="https://www.sciencedirect.com/science/article/pii/S2352914825002120" class="citation-link">ScienceDirect - Deep learning-based encryption</a>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-slate-700 bg-opacity-50 p-4 rounded-lg">
+            <h4 class="font-bold text-slate-200 mb-3">منابع فارسی</h4>
+            <ul class="space-y-2 text-slate-300">
+              <li>• <a href="https://civilica.com/doc/1613726/" class="citation-link">سیویلیکا - ارائه روشی جدید مبتنی بر الگوریتم پروانه</a>
+              </li>
+              <li>• <a href="https://magiran.com/paper/2547477" class="citation-link">مگیران - رمزگذاری تصویر مبتنی بر نظریه آشوب</a>
+              </li>
+              <li>• <a href="https://www.ganj.irandoc.ac.ir/article/1202312" class="citation-link">گنجوره - رویکرد یادگیری عمیق در قطعه‌بندی معنایی</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center mt-8 pt-6 border-t border-slate-700">
+          <p class="text-slate-400 text-xs">
+            این طرح تحقیقاتی در تاریخ ۲۰۲۵/۰۶/۱۵ تهیه شده و تمامی حقوق محفوظ است.
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+        // Initialize Mermaid with enhanced configuration for better contrast and styling
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                // Primary colors with high contrast
+                primaryColor: '#dbeafe',
+                primaryTextColor: '#1f2937',
+                primaryBorderColor: '#1e40af',
+                lineColor: '#6b7280',
+                
+                // Secondary colors
+                secondaryColor: '#dcfce7',
+                secondaryTextColor: '#1f2937',
+                secondaryBorderColor: '#16a34a',
+                
+                // Tertiary colors
+                tertiaryColor: '#fef3c7',
+                tertiaryTextColor: '#1f2937',
+                tertiaryBorderColor: '#f59e0b',
+                
+                // Background colors
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                
+                // Node styling for better contrast
+                nodeBkg: '#f8fafc',
+                nodeTextColor: '#1f2937',
+                nodeBorder: '#374151',
+                
+                // Edge styling
+                edgeLabelBackground: '#ffffff',
+                edgeLabelText: '#1f2937',
+                
+                // Cluster styling
+                clusterBkg: '#f1f5f9',
+                clusterBorder: '#64748b',
+                
+                // Text colors for better readability
+                textColor: '#1f2937',
+                titleColor: '#1f2937',
+                
+                // Additional colors for variety with good contrast
+                cScale0: '#dbeafe',
+                cScale1: '#dcfce7', 
+                cScale2: '#fef3c7',
+                cScale3: '#f3e8ff',
+                cScale4: '#fce7f3',
+                cScale5: '#fed7aa',
+                cScale6: '#ffedd5',
+                cScale7: '#ecfdf5',
+                cScale8: '#eff6ff',
+                cScale9: '#fdf4ff',
+                
+                // Ensure all text has good contrast
+                c0: '#1f2937',
+                c1: '#1f2937',
+                c2: '#1f2937',
+                c3: '#1f2937',
+                c4: '#1f2937',
+                c5: '#1f2937',
+                c6: '#1f2937',
+                c7: '#1f2937'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20,
+                nodeSpacing: 50,
+                rankSpacing: 80,
+                diagramPadding: 20
+            },
+            fontFamily: 'Vazirmatn, sans-serif',
+            fontSize: 14,
+            fontWeight: 600
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        initializeMermaidControls();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active state to TOC links based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPosition = window.scrollY + 100;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                const tocLink = document.querySelector(`a[href="#${sectionId}"]`);
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.toc-fixed a').forEach(link => {
+                        link.classList.remove('bg-blue-100', 'text-blue-700');
+                    });
+                    if (tocLink) {
+                        tocLink.classList.add('bg-blue-100', 'text-blue-700');
+                    }
+                }
+            });
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            //  لمس برای بزرگنمایی
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                scale = Math.min(Math.max(0.3, scale * delta), 4);
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            });
+
+            // کلیک دکمه برای بزرگنمایی
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                if (scale > 1) {
+                    container.classList.add('zoomed');
+                } else {
+                    container.classList.remove('zoomed');
+                }
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                if (scale > 1) {
+                    container.classList.add('zoomed');
+                } else {
+                    container.classList.remove('zoomed');
+                }
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                container.classList.remove('zoomed');
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                }
+            });
+
+            // لمس برای حرکت
+            mermaidElement.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) {
+                isDragging = true;
+                startX = e.touches[0].clientX - translateX;
+                startY = e.touches[0].clientY - translateY;
+                e.preventDefault();
+                }
+            });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (isDragging && e.touches.length === 1) {
+                translateX = e.touches[0].clientX - startX;
+                translateY = e.touches[0].clientY - startY;
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                e.preventDefault();
+                }
+            });
+
+            mermaidElement.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+
+            // Initialize display
+            mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            mermaidElement.style.cursor = 'grab';
+            });
+        }
+    </script>
+  
+
+</body></html>
