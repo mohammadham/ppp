@@ -93,6 +93,9 @@ def setup():
     element(d.settings.element, 'themeFontLang', val='en-US', bidi='fa-IR')
     return d
 
+def persian(text):
+    # A line with no Arabic-script letters is Latin (e.g. English abstract) and flows LTR.
+    return bool(re.search(r'[\u0600-\u06FF]', text))
 
 def markdown(doc, text):
     lines = text.strip().splitlines()
@@ -123,11 +126,11 @@ def markdown(doc, text):
             continue
         match = re.match(r'^(#{1,3}) (.+)', line)
         if match:
-            paragraph(doc, match[2], f'Heading {len(match[1])}')
+            paragraph(doc, match[2], f'Heading {len(match[1])}', rtl=persian(match[2]))
         elif line.startswith('$$'):
             paragraph(doc, line.strip('$'), rtl=False, center=True)
         elif line.startswith('جدول ') or line.startswith('شکل '):
             p = paragraph(doc, line, 'Caption', center=True)
             p.paragraph_format.keep_with_next = line.startswith('جدول ')
         else:
-            paragraph(doc, line)
+            paragraph(doc, line, rtl=persian(line))
