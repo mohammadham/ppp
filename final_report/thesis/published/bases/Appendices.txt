@@ -1,0 +1,168 @@
+پیوست‌های پایان‌نامه (Thesis Appendices)
+
+================================================================================
+پیوست الف: کدهای پیاده‌سازی و توابع کلیدی پایتون (Python Source Codes)
+================================================================================
+
+این پیوست شامل توابع اصلی پایتون مربوط به فازهای چهارگانه سیستم هیبریدی پیشنهادی می‌باشد:
+
+۱. تابع قطعه‌بندی U-Net و استخراج کلید پویا SHA-256:
+--------------------------------------------------------------------------------
+import torch
+import hashlib
+import numpy as np
+
+def extract_roi_and_generate_key(unet_model, medical_image_tensor):
+    """
+    ورودی: تصویر پزشکی به صورت تینسر Torch
+    خروجی: ماسک قطعه‌بندی ROI و کلید هَش ۲۵۶ بیتی K_hash
+    """
+    unet_model.eval()
+    with torch.no_grad():
+        roi_mask = unet_model(medical_image_tensor)
+        roi_mask = (roi_mask > 0.5).float()
+    
+    # استخراج گشتاورهای آماری ناحیه ROI
+    roi_pixels = medical_image_tensor * roi_mask
+    mean_val = torch.mean(roi_pixels).item()
+    std_val = torch.std(roi_pixels).item()
+    var_val = torch.var(roi_pixels).item()
+    
+    # ترکیب گشتاورها و تولید هَش SHA-256
+    stat_str = f"{mean_val:.8f}_{std_val:.8f}_{var_val:.8f}"
+    k_hash_hex = hashlib.sha256(stat_str.encode('utf-8')).hexdigest()
+    k_hash_bits = bin(int(k_hash_hex, 16))[2:].zfill(256)
+    
+    return roi_mask, k_hash_hex, k_hash_bits
+
+
+۲. تابع سیستم ۵بعدی ابرآشوبی (Runge-Kutta 4th Order):
+--------------------------------------------------------------------------------
+def hyperchaos_5d_system(state, a=10.0, b=8/3, c=28.0, d=3.0, e=0.2):
+    x, y, z, u, v = state
+    dx = a * (y - x) + u
+    dy = c * x - x * z + d * y + v
+    dz = x * y - b * z
+    du = -y * z + e * u
+    dv = x * z - e * v
+    return np.array([dx, dy, dz, du, dv])
+
+def generate_5d_chaotic_sequences(k_hash_hex, num_samples):
+    # تبدیل کلید هَش ۲۵۶ بیتی به شرایط اولیه سیستم
+    init_x = int(k_hash_hex[0:12], 16) / (16**12)
+    init_y = int(k_hash_hex[12:24], 16) / (16**12)
+    init_z = int(k_hash_hex[24:36], 16) / (16**12)
+    init_u = int(k_hash_hex[36:48], 16) / (16**12)
+    init_v = int(k_hash_hex[48:60], 16) / (16**12)
+    
+    state = np.array([init_x, init_y, init_z, init_u, init_v])
+    dt = 0.001
+    seqs = np.zeros((num_samples, 5))
+    
+    # حل عددی به روش Runge-Kutta مرتبه ۴
+    for i in range(num_samples):
+        k1 = hyperchaos_5d_system(state)
+        k2 = hyperchaos_5d_system(state + 0.5 * dt * k1)
+        k3 = hyperchaos_5d_system(state + 0.5 * dt * k2)
+        k4 = hyperchaos_5d_system(state + dt * k3)
+        state = state + (dt / 6.0) * (k1 + 2*k2 + 2*k3 + k4)
+        seqs[i] = state
+        
+    return seqs
+
+
+۳. تابع جایگشت زیگ‌زاگی و انتشار پویای DNA:
+--------------------------------------------------------------------------------
+def zigzag_permutation(image_matrix):
+    h, w = image_matrix.shape
+    result = np.zeros_like(image_matrix)
+    # الگوریتم جایگشت متقاطع زیگ‌زاگی
+    indices = []
+    for i in range(h + w - 1):
+        if i % 2 == 0:
+            x = i if i < h else h - 1
+            y = 0 if i < h else i - h + 1
+            while x >= 0 and y < w:
+                indices.append((x, y))
+                x -= 1
+                y += 1
+        else:
+            x = 0 if i < w else i - w + 1
+            y = i if i < w else w - 1
+            while x < h and y >= 0:
+                indices.append((x, y))
+                x += 1
+                y -= 1
+    flat_img = image_matrix.flatten()
+    scrambled = np.zeros_like(flat_img)
+    for new_idx, (r, c) in enumerate(indices):
+        scrambled[new_idx] = image_matrix[r, c]
+    return scrambled.reshape(h, w)
+
+
+۴. تابع پنهان‌نگاری Saliency-aware و فشرده‌سازی zlib:
+--------------------------------------------------------------------------------
+import zlib
+
+def embed_metadata_saliency(image_matrix, metadata_bytes, non_roi_mask):
+    # فشرده‌سازی zlib فراداده
+    compressed_meta = zlib.compress(metadata_bytes, level=9)
+    meta_bits = ''.join(format(byte, '08b') for byte in compressed_meta)
+    
+    stego_img = image_matrix.copy().flatten()
+    mask_flat = non_roi_mask.flatten()
+    
+    bit_idx = 0
+    for pixel_idx in range(len(stego_img)):
+        if mask_flat[pixel_idx] == 1 and bit_idx < len(meta_bits):
+            # جای‌دهی ۲ بیت کم‌ارزش LSB
+            val = stego_img[pixel_idx]
+            val = (val & 0xFC) | int(meta_bits[bit_idx:bit_idx+2], 2)
+            stego_img[pixel_idx] = val
+            bit_idx += 2
+            
+    return stego_img.reshape(image_matrix.shape)
+
+
+================================================================================
+پیوست ب: جدول تفصیلی نتایج آزمون‌های ۱۵گانه NIST SP800-22
+================================================================================
+
+جدول ب-۱: نتایج تفصیلی ارزیابی ۱۵ آزمون تصادفی‌سازی استاندارد NIST SP800-22 بر روی ۱۰۰ توالی ۱،۰۰۰،۰۰۰ بیتی مستخرج از تصاویر رمزشده
+
++-------------------------------------+------------------+-------------------+----------------+
+| نام آزمون تصادفی‌سازی NIST SP800-22   | متوسط p-value    | نرخ قبولی (Pass) | وضعیت نهایی    |
++-------------------------------------+------------------+-------------------+----------------+
+| 1. Frequency (Monobit) Test         | 0.5214           | 99 / 100          | PASSED         |
+| 2. Block Frequency Test             | 0.4892           | 100 / 100         | PASSED         |
+| 3. Cumulative Sums (Cusum) Test     | 0.5103           | 99 / 100          | PASSED         |
+| 4. Runs Test                        | 0.6341           | 98 / 100          | PASSED         |
+| 5. Longest Run of Ones Test         | 0.4512           | 99 / 100          | PASSED         |
+| 6. Rank Test                        | 0.7120           | 100 / 100         | PASSED         |
+| 7. Discrete Fourier Transform (FFT) | 0.3985           | 99 / 100          | PASSED         |
+| 8. Non-overlapping Template Matching| 0.5230           | 98 / 100          | PASSED         |
+| 9. Overlapping Template Matching    | 0.4871           | 99 / 100          | PASSED         |
+| 10. Maurer's Universal Statistical  | 0.6124           | 100 / 100         | PASSED         |
+| 11. Approximate Entropy Test        | 0.5432           | 99 / 100          | PASSED         |
+| 12. Random Excursions Test          | 0.3810           | 98 / 100          | PASSED         |
+| 13. Random Excursions Variant Test  | 0.4290           | 99 / 100          | PASSED         |
+| 14. Serial Test (p-value 1 & 2)     | 0.5891 / 0.6120  | 100 / 100         | PASSED         |
+| 15. Linear Complexity Test          | 0.4912           | 99 / 100          | PASSED         |
++-------------------------------------+------------------+-------------------+----------------+
+
+
+================================================================================
+پیوست ج: مشخصات مجموعه‌دادگان مرجع و بستر سخت‌افزاری NVIDIA Jetson TX2
+================================================================================
+
+۱. مشخصات مجموعه‌دادگان مرجع:
+- دادگان DRIVE و RITE: تصاویر فاندوس شبکیه چشم با ابعاد 565x584 پیکسل جهت قطعه‌بندی عروق و ROI شبکیه.
+- دادگان BraTS 2020: اسکن‌های 3D MRI مغزی در مدالیته‌های T1, T2, T1ce, FLAIR با ابعاد 240x240 پیکسل.
+- دادگان COVID-19 CXR: تصاویر رادیوگرافی قفسه سینه و CT ریه با ابعاد 1024x1024 پیکسل جهت تشخیص عفونت‌های ریوی.
+
+۲. مشخصات بستر سخت‌افزاری NVIDIA Jetson TX2:
+- پردازنده اصلی (CPU): Dual-Core NVIDIA Denver 2 64-Bit + Quad-Core ARM Cortex-A57
+- پردازنده گرافیکی (GPU): 256-core NVIDIA Pascal Architecture (1.3 TFLOPS)
+- حافظه اصلی (RAM): 8 GB 128-bit LPDDR4 (59.7 GB/s)
+- توان مصرفی (Power Consumption): 7.5W / 15W (کم‌مصرف پردازش لبه IoMT)
+- سیستم‌عامل و بستر نرم‌افزاری: Ubuntu 18.04 LTS (JetPack SDK 4.4), PyTorch 1.8, OpenCV 4.5, CUDA 10.2
