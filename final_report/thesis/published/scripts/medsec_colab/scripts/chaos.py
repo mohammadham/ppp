@@ -1,6 +1,7 @@
 """Float64 RK4; no fastmath, no random or solver fallback."""
 import hashlib
 import json
+import warnings
 import numpy as np
 from numba import njit
 from .config import ode_parameters
@@ -53,7 +54,7 @@ def integrate(s, n, transient, dt, p, variant):
     for i in range(n+transient):
         s=step(s,dt,p,variant)
         if not np.isfinite(s).all() or np.max(np.abs(s))>1e12:
-            raise ValueError('ODE diverged/nonfinite; experiment stopped, no RNG substitution')
+            raise ValueError('ODE diverged/nonfinite at integration step '+str(i+1)+'; stopped, no RNG substitution')
         if i>=transient: out[i-transient]=s
     return out
 
@@ -62,6 +63,8 @@ def stream(digest, n, cfg, raw=False):
     states=integrate(initial_state(digest,cfg['hash_mapping']), n, cfg['transient'], cfg['dt'],
                      ode_parameters(cfg), 0 if cfg['system']=='equation_3_2' else 1)
     if raw: return states
+    if np.any(np.abs(states)*cfg['scale'] > 2**53):
+        warnings.warn('Quantization exceeds float64 exact-integer range; low-bit precision loss, not evidence of randomness', RuntimeWarning)
     # np.remainder BEFORE integer conversion avoids int64 overflow.
     return np.remainder(np.floor(np.abs(states)*cfg['scale']),256).astype(np.uint8)
 

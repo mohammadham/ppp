@@ -1,0 +1,11 @@
+{
+  "filename": "نسخه نهایی جمع اوردی شده از نوت بوک.docx",
+  "sha256": "7b9662ecfeb00eb197f599b73e48739bc3caad981130e90ee73d45ff3506742d",
+  "paragraph_index": "zero-based body paragraphs",
+  "figures": {
+    "eq3_1_sha256_key_gen.png": "05e2611e71a7f46e6f82579841d4d70107fe7bc420780801d972d9125203a583",
+    "eq3_2_5d_hyperchaos_rk4.png": "09cc722cf9edd2d0ec164e51a7256f77c6982305270fc47894914e8a0be28411",
+    "eq3_3_zigzag_dna.png": "fcbe4af9b525558edb1b8cc540ae23f38be04874ba68c3281327da7af7b7f1fa",
+    "eq3_4_saliency_stego.png": "5e3fec0e9a5c2cf8b869bf4d00ea524f1ce4a762243df383c808aa28205c4f1b"
+  }
+}

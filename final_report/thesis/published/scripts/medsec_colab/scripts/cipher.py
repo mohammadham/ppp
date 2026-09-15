@@ -41,6 +41,7 @@ def dna_transform(values,keys,variant,inverse=False):
 
 def encrypt(image,roi,cfg,digest=None):
     if image.ndim!=2 or image.dtype!=np.uint8: raise ValueError('2D uint8 only')
+    if roi.shape != image.shape or roi.dtype != bool: raise ValueError('Boolean aligned ROI required')
     digest=digest or roi_digest(image,roi)[0]
     keys=stream(digest,image.size,cfg)
     idx=zigzag_indices(*image.shape) if not cfg.get('no_zigzag') else np.arange(image.size)
@@ -49,6 +50,7 @@ def encrypt(image,roi,cfg,digest=None):
     return cipher.reshape(image.shape),digest
 
 def decrypt(cipher,digest,cfg):
+    if cipher.ndim != 2 or cipher.dtype != np.uint8: raise ValueError('2D uint8 cipher required')
     keys=stream(digest,cipher.size,cfg)
     idx=zigzag_indices(*cipher.shape) if not cfg.get('no_zigzag') else np.arange(cipher.size)
     flat=cipher.ravel() if cfg.get('no_dna') else dna_transform(cipher.ravel(),keys,cfg['dna_variant'],True)

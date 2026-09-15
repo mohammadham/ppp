@@ -1,0 +1,11 @@
+method,evidence_type,source,datasets,entropy,npcr,uaci,psnr,ssim,seconds,independently_verified,reexecuted
+Pourasad et al. 2021,quoted_thesis_not_reproduced,DOCX P966,"Lena;Peppers",7.9950,99.62,33.12,>38,,1.85,false,false
+Subathra et al. 2025,quoted_thesis_not_reproduced,DOCX P967,"DRIVE;RITE;MRI",7.9971,99.61,33.49,,,2.93,false,false
+Alarood et al. 2023,quoted_thesis_not_reproduced,DOCX P968,General/E-Health,~8.000,99.61,33.42,,,4.12,false,false
+Alshamrani et al. 2025,quoted_thesis_not_reproduced,DOCX P969,General,,,,>45,0.998,0.85,false,false
+Yildirim 2021,quoted_thesis_not_reproduced,DOCX P970,COVID19 CT,7.9993,99.80,33.56,,0.8337,3.50,false,false
+Issac et al. 2025,quoted_thesis_not_reproduced,DOCX P971,"MRI;OCT",,,,39.02,0.9757,5.20,false,false
+Saidi et al. 2024,quoted_thesis_not_reproduced,DOCX P972,CHAOS CT/MRI,,,,>48,0.992,6.80,false,false
+Husamuldeen et al. 2025,quoted_thesis_not_reproduced,DOCX P973,"MRI;CT;Fundus",7.9988,99.62,36.30,,,2.10,false,false
+Kumar et al. 2025,quoted_thesis_not_reproduced,DOCX P974,Breast/Brain MRI,7.9993,99.60,33.37,,,12.40,false,false
+Preethi et al. 2025,quoted_thesis_not_reproduced,DOCX P975,MRI/CT,>7.990,99.60,33.40,,,3.10,false,false
