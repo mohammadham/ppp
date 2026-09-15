@@ -1,0 +1,13 @@
+{
+  "profile": "chapter3_pseudocode_with_equation_3_2",
+  "system": "equation_3_2",
+  "parameters": {"a": null, "b": null, "c": null, "d": null, "k": null, "h": null, "w": null},
+  "parameter_source": "UNRESOLVED: no numeric values in eq3_2_5d_hyperchaos_rk4.png",
+  "dt": 0.001, "transient": 1000, "scale": 100000000000000.0,
+  "hash_mapping": "mod_1e8", "dna_variant": "pseudocode_3_3",
+  "saliency_quantile": 0.6, "saliency_filter": 3, "saliency_sigma": 2.5,
+  "roi_coordinates": "permuted_union_original", "compression_level": 9,
+  "seed": 2026, "correlation_pairs": 10000, "differential_trials": 100,
+  "training": {"epochs": 100, "batch_size": 4, "learning_rate": 0.001, "base_channels": 32, "size": 256, "patience": 15, "threshold": 0.5},
+  "implementation_choices": "Training hyperparameters, saliency thresholds, moment serialization, XOR table and receiver sidecar are explicit implementation decisions, not specified thesis facts."
+}
