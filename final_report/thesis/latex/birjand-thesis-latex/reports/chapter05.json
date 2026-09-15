@@ -25,7 +25,7 @@
   "images": [
     {
       "type": "رابطه",
-      "number": "۵-۰",
+      "number": "۵-۱",
       "caption": "فرمول‌بندی ریاضی سه‌گانه متعارض رمزشناسی تصویر پزشکی و تابع هدف بهینه‌سازی",
       "filename": "eq5_0_trilemma_tradeoff.png",
       "exists": true,
@@ -43,7 +43,7 @@
     },
     {
       "type": "رابطه",
-      "number": "۵-۱",
+      "number": "۵-۳",
       "caption": "فرمول‌بندی ریاضی ماتریس ارزیابی و اثبات تجربی فرضیات سه‌گانه پایان‌نامه",
       "filename": "eq5_1_hypotheses_matrix.png",
       "exists": true,
@@ -52,7 +52,7 @@
     },
     {
       "type": "رابطه",
-      "number": "۵-۳",
+      "number": "۵-۴",
       "caption": "فرمول‌بندی ریاضی پاسخگویی به پرسش‌های پژوهش و انطباق دستاوردهای تجربی با شکاف‌های علمی",
       "filename": "eq5_3_gaps_mapping_math.png",
       "exists": true,
@@ -61,7 +61,7 @@
     },
     {
       "type": "رابطه",
-      "number": "۵-۴",
+      "number": "۵-۵",
       "caption": "فرمول‌بندی ریاضی دستاوردهای روش‌شناختی و کاربردهای بالینی در شبکه IoMT",
       "filename": "eq5_4_clinical_contributions_math.png",
       "exists": true,
@@ -70,7 +70,7 @@
     },
     {
       "type": "رابطه",
-      "number": "۵-۵",
+      "number": "۵-۶",
       "caption": "فرمول‌بندی ریاضی مرزها و محدودیت‌های واقعی فنی پژوهش",
       "filename": "eq5_5_technical_boundaries_math.png",
       "exists": true,
@@ -79,7 +79,7 @@
     },
     {
       "type": "رابطه",
-      "number": "۵-۶",
+      "number": "۵-۷",
       "caption": "فرمول‌بندی ریاضی پیشنهادهای کاربردی و نقشه راه پژوهش‌های آتی",
       "filename": "eq5_6_future_roadmap_math.png",
       "exists": true,
@@ -88,7 +88,7 @@
     },
     {
       "type": "رابطه",
-      "number": "۵-۷",
+      "number": "۵-۸",
       "caption": "فرمول‌بندی ریاضی جمع‌بندی نهایی پایان‌نامه و پارادایم امنیتی IoMT",
       "filename": "eq5_7_final_takeaway_math.png",
       "exists": true,
@@ -127,8 +127,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "5e32df7791ae68dead757dfe07e9be9e42c141a2cab246545560cd03d2709492",
-      "tex_sha256": "4c3b4f679fd0c7c5331d3cc14817f4629178788b63fbb5d192636aaa2c09eafb"
+      "source_sha256": "7ee04488a60c892f0ebc9eb2b56a122514f670685eb1f1e38c1782477e9875f6",
+      "tex_sha256": "3e5362a8205a3b2f6578cf5fd2459de274986910a845c8faffd056f596d5e300"
     },
     {
       "source": "Introduction_Chapter5.txt",
@@ -143,8 +143,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "06873628065c185efa7b650203f8080527d6353141a1b7be9af81a95d54d9e2a",
-      "tex_sha256": "637f932c18254ab10b79cd4c1bc7257d4060e8d5fb79e3416f7963f1a13c37c9"
+      "source_sha256": "cbab8e56321db8d7623cea334e486903baa9168bea6b17ee5c2bfeccb788258c",
+      "tex_sha256": "6a489ab70a2faa08b5fdaeae8addf4fef576ec172f8127b45a099ff13da5b591"
     },
     {
       "source": "Introduction_Chapter5.txt",
@@ -159,8 +159,8 @@
       "start": 7,
       "end": 7,
       "kind": "image",
-      "source_sha256": "d6e02be8e4e3698bb2ac483f44bd964bd79498e02837c1ca28418b5e69c20992",
-      "tex_sha256": "c92827ad7fde93c6c6c7999368db6e6313bda314c3669f908d8800d1213fa8db"
+      "source_sha256": "8f3eaaf38942344bc2155b37e0b083c427ff777184b36ef0ac518bcc19d9afb3",
+      "tex_sha256": "94eae815eedf93cc904e2a26c07b8ad841e706330782981a0c4675ea79d4717d"
     },
     {
       "source": "Introduction_Chapter5.txt",
@@ -175,8 +175,8 @@
       "start": 9,
       "end": 9,
       "kind": "paragraph",
-      "source_sha256": "d63af071764f384feeb43c16bb9f64fa27fccd7be7acb49445d74c93ddd0cc44",
-      "tex_sha256": "4718f7fe10326421df9741beec0f6cd62d997bd35b407cb76dc1b471774b6599"
+      "source_sha256": "ad451b5a73aa6edb1902957751c798582b286b04f54f7e556178e17607f942f6",
+      "tex_sha256": "1f29a096b850bdb35ea41919c557a7956ca33d053e54dcecf8b683245ffc5b4c"
     },
     {
       "source": "Introduction_Chapter5.txt",
@@ -207,8 +207,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "39667a4098fe3764b4cd834825a9c6ba0ba8a4f726d2bb89064052ae6574816a",
-      "tex_sha256": "d0d14e817394b01d66ba91c7d6f384daade2217d81638de2feb3cdd3d9f9259a"
+      "source_sha256": "176495668a4c1c9525b29f240a3645d9161f374d8ff8a2770ed7d0ab5ec9784f",
+      "tex_sha256": "641a9d49ba2522dd3f7089eb7638ca34d30775e6241413432768674de95a798f"
     },
     {
       "source": "Synthesis_Findings_Chapter5.txt",
@@ -231,8 +231,8 @@
       "start": 6,
       "end": 6,
       "kind": "paragraph",
-      "source_sha256": "911141b66db335914a83acab7ae88935c55e9539577d59b366491690c39b556d",
-      "tex_sha256": "126c2aaed954964770f92344e2b72697ace08840f8a426359365dc62992fd906"
+      "source_sha256": "6bbe7bad2dfa2a62c62a8e7710bc5ec5d8f90ce2a43b83164b2a94041e909fa5",
+      "tex_sha256": "6808eda2c0242959ae1a386bb24503ebdf0550017f21c637a52f2185cf51fc4f"
     },
     {
       "source": "Synthesis_Findings_Chapter5.txt",
@@ -255,8 +255,8 @@
       "start": 9,
       "end": 9,
       "kind": "paragraph",
-      "source_sha256": "372c910afdc997b0aa09386bbde305f838af03b8e2fae620975c3ea93f783cbc",
-      "tex_sha256": "1dbcc556f55669ac8ccb58a094b16c9999744807a14b36ce85ac8118c6c9e9fe"
+      "source_sha256": "5d07135d02f4cda9838bded0ab5458cf2c69f94fdea0d12ec1a5017923a66762",
+      "tex_sha256": "46086dcf97c0afae4053a66ad7a4e4b159b0168a93a4a27437484da0b263522f"
     },
     {
       "source": "Synthesis_Findings_Chapter5.txt",
@@ -279,8 +279,8 @@
       "start": 12,
       "end": 12,
       "kind": "paragraph",
-      "source_sha256": "d892ecafc7b8d6c47c650a4b23ca31b89d24c14e81cd2a98b60750d82584111a",
-      "tex_sha256": "cec57e8a875fc4976ed45436e259629b71fe41d0dd59715c47ca621b6b1f099b"
+      "source_sha256": "7a4b22a69432737c76d9c40d7052414983983b3e4e413a1491bce3b712352d59",
+      "tex_sha256": "6674d4429b1cc70d2130762a740c17f34a054b7c8e8e16dc2e1cc2ec30a153d0"
     },
     {
       "source": "Synthesis_Findings_Chapter5.txt",
@@ -303,8 +303,8 @@
       "start": 15,
       "end": 15,
       "kind": "paragraph",
-      "source_sha256": "54272e0439cadac48086f02a880e4f709a0d537ad3c8a982ac4c26601758ead8",
-      "tex_sha256": "e0c5c3f564d2dde48b4652f24a518098d70a7e622e678c761d4c224a9a5518bf"
+      "source_sha256": "66ec1675497cbb40817a1598dc58d3c07ae445b27851a8fa8c396b7ce94db636",
+      "tex_sha256": "47fe68c03bc6cb1009f2195c2dec3053c55bf8b1b5ce23b1380615720a8a30ea"
     },
     {
       "source": "Synthesis_Findings_Chapter5.txt",
@@ -319,8 +319,8 @@
       "start": 17,
       "end": 17,
       "kind": "paragraph",
-      "source_sha256": "6df72d07d16697abad35d4a33b29d4605ec40b48a806a2a9038cac856ca3960a",
-      "tex_sha256": "9ab708317a04b55988fab57dd820d9ede8a5e9e5508f4ea8f494b85299277102"
+      "source_sha256": "be3e3013ecc0d4c13f573f9ff364204224c7608027f2d860d5828378ff6bc235",
+      "tex_sha256": "f9ff3a30ed821c9fe909cf24740575c857411e11c4e3a391dc249b1792d6ece3"
     },
     {
       "source": "Synthesis_Findings_Chapter5.txt",
@@ -367,8 +367,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "485abeebe97c6d44e3889e7c8690dfea684b3855f6e3b19439abf4714e87b498",
-      "tex_sha256": "9383ac6fec825c8c5749ae3373f9d5c08eeaef3f59193a7eb882019ca88deda5"
+      "source_sha256": "83162e9a5dc36f86d5da235ece0698abad5b30ff669ffc929aa093ae19564a1b",
+      "tex_sha256": "dc974e51d0a538973099fba1f9fbab2e5da85928180d9932733c2db44881d8bd"
     },
     {
       "source": "Hypotheses_Verification_Chapter5.txt",
@@ -439,8 +439,8 @@
       "start": 24,
       "end": 24,
       "kind": "paragraph",
-      "source_sha256": "588cbecaf71c8c1111faf374037d14bad39b22cc0c43eea6b03db224d928fe4d",
-      "tex_sha256": "45312b630ff3a46eea4c578b92a1c0b67515ce7f8708d31fab7c522729d7ed11"
+      "source_sha256": "beadeb63b9d029615f3bf4a18651b1e2a3c0ecfde393540435c5c1862b5fd1e3",
+      "tex_sha256": "a7eb1972558cbfe7b02ea58d2933099ce1be07b10dd520feda27fbd82793111f"
     },
     {
       "source": "Hypotheses_Verification_Chapter5.txt",
@@ -463,8 +463,8 @@
       "start": 27,
       "end": 27,
       "kind": "paragraph",
-      "source_sha256": "e20dbabe691f9406d0e8387619f30ab7efd563ed895075672242980d1f170db9",
-      "tex_sha256": "1a52390902747f34c8e7baff439ed29172f77279a38ff24e58a9a8e83c3ce9dc"
+      "source_sha256": "8a11f8ffd321e8405f4d4bc4861a7f339560fcced2ee7c5987cc1e30f8bf97bf",
+      "tex_sha256": "75c215590be209105111e33c7c80204d2e5742e1d8095e70eec4948c38f04ccd"
     },
     {
       "source": "Hypotheses_Verification_Chapter5.txt",
@@ -487,8 +487,8 @@
       "start": 30,
       "end": 30,
       "kind": "paragraph",
-      "source_sha256": "58d1e6995ed99e37e971b4bc99db318e1daa49b3344c81ebf12acee3f200260e",
-      "tex_sha256": "dfc19d7e96b79dcb6c5dcc6d23b43143c105566b260deb16b8d6457f48291e54"
+      "source_sha256": "5274ff8abacb54a6843f39500e54daf4c279dcdaa0e0481a454c6d00a334714d",
+      "tex_sha256": "884b6184d79c89deb216668a164f2a3d0c60ca8dce8dc9fb327e5476516f000e"
     },
     {
       "source": "Hypotheses_Verification_Chapter5.txt",
@@ -503,8 +503,8 @@
       "start": 32,
       "end": 32,
       "kind": "paragraph",
-      "source_sha256": "4623d16b6deebf2ad488e06417d80056705f62d111b2adb4642ccd163fbe92a6",
-      "tex_sha256": "3f580fc99564b68cc5df2993ba39909404923a5b23d00803593b73c6ea8a8d0c"
+      "source_sha256": "80754378828b781731fe7f4151ea95a0344a1346ecc3253bebae70aa8745912a",
+      "tex_sha256": "74afbb80da626a0ffb7bfaa2ebcb3ffcc869bc46aee0da7d849c43a0c44c60a0"
     },
     {
       "source": "Hypotheses_Verification_Chapter5.txt",
@@ -519,8 +519,8 @@
       "start": 34,
       "end": 34,
       "kind": "image",
-      "source_sha256": "048ba9b1e46dedb329b41ca5b66ff052a160ce1b85d8bffd6a0542d6010f9a2d",
-      "tex_sha256": "fee4ab08752d6e9adf78259bb584d79e147c01a9cf013bca3814aa042d068d43"
+      "source_sha256": "1b71f1771e35157cdac910dacf77d656cd9ac545f2e77c8ef464aa4c7c4916b3",
+      "tex_sha256": "64ea746db5cf892389da9f36f99b7f2662032054ea653f381421b8b56129ba64"
     },
     {
       "source": "Hypotheses_Verification_Chapter5.txt",
@@ -551,8 +551,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "6bdd651df48db746ce9ac1308a291025e4ae67731419632f91d777ec4dd7fb94",
-      "tex_sha256": "23452ee8ddbc0bba9a01964ae03eda9c827673a5317736d085b351247d1ea468"
+      "source_sha256": "006503075c13141220a6dfdc4c6c6e5cb1fbc4a3f715fa405ee0c139cceb1539",
+      "tex_sha256": "77aea53718e3e4a5ae163f4cc1659dee5b2f0cf2d433bb57f2982c3cb30fec43"
     },
     {
       "source": "Addressing_Gaps_Chapter5.txt",
@@ -575,16 +575,16 @@
       "start": 6,
       "end": 6,
       "kind": "paragraph",
-      "source_sha256": "ad99db5b5a0dcac1aeffed44bebe42f8f1dde6b92d9c0df5bc166808e6bc72ae",
-      "tex_sha256": "77be243533d97526e3c72f911554248bbd568d7127223202c1d4ff0bfde6ae6d"
+      "source_sha256": "6f957c04ec59b917b4066794b5eea45e06b9fde2a078572d65eb496a6f84e7be",
+      "tex_sha256": "1984631641675dab90c4b5910229d3699a29c00e822470dab6745f97ebd418fa"
     },
     {
       "source": "Addressing_Gaps_Chapter5.txt",
       "start": 7,
       "end": 7,
       "kind": "paragraph",
-      "source_sha256": "8c9859425e9b811c4cbe88ef6f5096899f8925ad1191ba1655ebe3b04aa218cf",
-      "tex_sha256": "f30a871b32ce972fe8935ad019118a217f033ac74b57210d0e3c0c943f5ed0d0"
+      "source_sha256": "30f4ac6aa55b6ed25897496d4b54c557f0124af6c5ad591d509d77c0d7cf72ba",
+      "tex_sha256": "8706cc76fe6bef43a4b8d13c53464780e16cd99f4d0cecb39ba8ebe98ce16528"
     },
     {
       "source": "Addressing_Gaps_Chapter5.txt",
@@ -607,16 +607,16 @@
       "start": 10,
       "end": 10,
       "kind": "paragraph",
-      "source_sha256": "525da3161f918588ce0c933708dd3e1cdf62058f6784baecadd71e5ae8feb3c0",
-      "tex_sha256": "9386fd7731d43ccc447ce98869e7c83d160119f1d387da9a9204a02f8b8eee9a"
+      "source_sha256": "e93f47596e260050c127be086891f601efe4b5f8b5b0f01789c5abd9cea1ce58",
+      "tex_sha256": "f4290a35827d226335aacb3634452a9d8b9aef583c2dee6bcd7c92db8f79aa9a"
     },
     {
       "source": "Addressing_Gaps_Chapter5.txt",
       "start": 11,
       "end": 11,
       "kind": "paragraph",
-      "source_sha256": "f57169733a12ed9dca039df71cfb006eaa81a5d4783e063f97cbb1694d92c89c",
-      "tex_sha256": "2e37077fb0113fc8b30cdcecc34da8b572a715dca814fe720a8b20fe95655cda"
+      "source_sha256": "d73a77028977e24ab69ced28a03f11112e2d060f7c00ed05e48cc962f0c96f92",
+      "tex_sha256": "ba4cd3302d05478b93117ab235d81bcbd038cebc4efd278ee70b298b04991649"
     },
     {
       "source": "Addressing_Gaps_Chapter5.txt",
@@ -639,16 +639,16 @@
       "start": 14,
       "end": 14,
       "kind": "paragraph",
-      "source_sha256": "b68c666474b9ea3e7f5da7fd7ba1608d5b8835377324cb03d62dd464476959cf",
-      "tex_sha256": "d905cf78869e4deab27474198a3b78abc6d079a88bdc67a01241d278914da548"
+      "source_sha256": "3bf3992f4bc98b171d9932bb246b8cac74676ba2d8b2c83e37f9751d21b28963",
+      "tex_sha256": "13c4fc9e9e04bf2bad17387e2fcff00cd400792f6275c0166753f4d02f1c43a5"
     },
     {
       "source": "Addressing_Gaps_Chapter5.txt",
       "start": 15,
       "end": 15,
       "kind": "paragraph",
-      "source_sha256": "cd22f6e4b19971b73d9b3d30e4dadea516cf7e73793933b48af09aa709486629",
-      "tex_sha256": "7a8ddaa5cd18c270da4aceb8f97643e4932fe38f7491b53e9ac353dbc9c30399"
+      "source_sha256": "e96ebff9a3519b1c639933ae8753fe79b920ff80a8f08ac5bb92be0e6620a04e",
+      "tex_sha256": "84c91e1283f8103a1be438b466b4cfcaefc7ed337b6407fbcb19534cff877572"
     },
     {
       "source": "Addressing_Gaps_Chapter5.txt",
@@ -663,8 +663,8 @@
       "start": 17,
       "end": 17,
       "kind": "paragraph",
-      "source_sha256": "9c4dc9ec0b534ef7a565f1a5887d675d7d2ceb3d173fa61f3d7c91f421b620e0",
-      "tex_sha256": "9c8b2d233633ce2fcfad68db7c23604755901dbdc95409ac87c6c170e9a20698"
+      "source_sha256": "a523a7a3c045ee3c1ae78868dd1807017bafb0d72e4973d8d185aa69238442cf",
+      "tex_sha256": "8560e51ae94eb9b0b9edb9f570421ee46028ca6d631997b78fb922e5a295044b"
     },
     {
       "source": "Addressing_Gaps_Chapter5.txt",
@@ -679,8 +679,8 @@
       "start": 19,
       "end": 19,
       "kind": "image",
-      "source_sha256": "26185a48929d30ccce25c53081905ea0d769dc71c851099cc0f03c8144e91c41",
-      "tex_sha256": "525f4b441591356be949823c3c73b5ded75cfb231db17e7177cf2e9dcfdb6ba0"
+      "source_sha256": "0f747bdbc90b0eba81b74d911f2befaa4c2c1bcaf97aebe8ff52576727fb37c6",
+      "tex_sha256": "79a8ddaf98aa37172619f5d8666301d6aed8823d0de64ef565a4446eee909ffb"
     },
     {
       "source": "Methodological_Contributions_Chapter5.txt",
@@ -703,8 +703,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "910f8b80fc90ed6a005d347b0aca35873ae8eaf8750fcc0cd668ff0526346afd",
-      "tex_sha256": "0a86ab961a6295cb71d1e8237835ff9c106892b59b986bdb1c8b9eccf7b4b42e"
+      "source_sha256": "8759a15df650da533a9b6ca26332289ff4cdcfc3c4a872049c5a382095ef8678",
+      "tex_sha256": "18f41c8120dedeb3eee1e81acf5c3116c137dcdebed600d70c94b225a175037f"
     },
     {
       "source": "Methodological_Contributions_Chapter5.txt",
@@ -727,8 +727,8 @@
       "start": 6,
       "end": 6,
       "kind": "paragraph",
-      "source_sha256": "92f6722bb0c8c329ccacf89b117a99fd567a5368609b46e1d1fb4514f4accd44",
-      "tex_sha256": "e9c655a984e7f124962a20dde1f1c631c59662097e5f15bf95c543f472f7744d"
+      "source_sha256": "8b535714ababa678a999587f739eca2c40434a38d210024c17e080539236b5d0",
+      "tex_sha256": "070a8c7e540334a2f285f12be3434ca490285af55457b2e2e8b0416bcd3dae97"
     },
     {
       "source": "Methodological_Contributions_Chapter5.txt",
@@ -751,8 +751,8 @@
       "start": 9,
       "end": 9,
       "kind": "paragraph",
-      "source_sha256": "183ac29ed62ea9843f9de64786cd6cf7d9735b8932e27bc5083d0f1254405147",
-      "tex_sha256": "84586d99cb15d78fbb850707b9ab059ec3ef4a4a4e35e3023a57067fe546e906"
+      "source_sha256": "8a4e2d1e2a27e4e7196f75ba5cf28e4c3d3c28044141d8bf63fae37cba4bc626",
+      "tex_sha256": "96caee52813187d07f77bed9f287b1e730620be55d146ff3b4d36d3664385a31"
     },
     {
       "source": "Methodological_Contributions_Chapter5.txt",
@@ -775,8 +775,8 @@
       "start": 12,
       "end": 12,
       "kind": "paragraph",
-      "source_sha256": "087e41349c182e1810f7b2a80fcd93ccb97c7f74564532e840d54d3c9cca511e",
-      "tex_sha256": "e548d8e67785dc9ec61f98c1e09b232948be4b8a8baefbb48f1d41be5a55fe33"
+      "source_sha256": "71c9dc933c63e18e38233c995f12eb7138dcee5c7245fbab555b008ae57c9aa5",
+      "tex_sha256": "8b8d6394597c53c70dbde336d76ab7414ccc46b4a587344a1408ae1c2b043165"
     },
     {
       "source": "Methodological_Contributions_Chapter5.txt",
@@ -799,8 +799,8 @@
       "start": 15,
       "end": 15,
       "kind": "paragraph",
-      "source_sha256": "e3c58d2d1facda170a85b7eb2aba020e290383d62101d6a05ef890855bb08f34",
-      "tex_sha256": "c54877394c02f7576bc8b10439148ca47b9ee5b4ca3ce663e37b84f2a5287244"
+      "source_sha256": "080e9fd43c1dc1c7efb474b92ca1a9b20334680353f109a588734c9ead9751e3",
+      "tex_sha256": "ec7787bca1f533ae678aa009b299e086a54cee952262d99cdcfa21fecf9003b4"
     },
     {
       "source": "Methodological_Contributions_Chapter5.txt",
@@ -815,8 +815,8 @@
       "start": 17,
       "end": 17,
       "kind": "paragraph",
-      "source_sha256": "bca85beaafd77d6b4f96c2d823b58bcaeebfe025584704e7748b0c0f66b19f21",
-      "tex_sha256": "d6202be6299b7fa5b339f46f0e4b6292ada2693de0c5e493bbce4820c1291464"
+      "source_sha256": "16741ab4611ca46be8174d3d22d25a8ec06eed06780b21a62e1921b96f347724",
+      "tex_sha256": "67e2e2e20f89c7b4ad5593aa8fc0311a52b85f7fb9b342d66ce701325b24eb57"
     },
     {
       "source": "Methodological_Contributions_Chapter5.txt",
@@ -831,8 +831,8 @@
       "start": 19,
       "end": 19,
       "kind": "image",
-      "source_sha256": "9e58fac985ea1b049da199ac2015d46660e214cd2ba8ee0965ae0b31c5c264f4",
-      "tex_sha256": "e0956586c72fb7896ba6199cc8f0bd32f07b787d356a81a33e573201a1c60386"
+      "source_sha256": "4820e231f3e667749262263db16256d50853726cc48f43b593408d45277ff541",
+      "tex_sha256": "7efb646b5f297662aa0e7242aab909f7b2edc7dd1a6df0a62c80ec6e365cedfb"
     },
     {
       "source": "Methodological_Contributions_Chapter5.txt",
@@ -863,8 +863,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "3786fc7d58d4cbda30e7cba779d84a7972cc1e838419d6b52350460a33a1b829",
-      "tex_sha256": "d6dba0c714373ead0e4d85bc68be61113af00ff6c2527c2afa211b1f1285168e"
+      "source_sha256": "d3d5c2603e174a577bb3ef62ba6f5c17b229e901e760921ee6964dca4ba18654",
+      "tex_sha256": "846b31965cb248ed86ca5d2c321c4a52028fd6e903fb3ea81caaf61c7db647f5"
     },
     {
       "source": "Technical_Boundaries_Chapter5.txt",
@@ -887,8 +887,8 @@
       "start": 6,
       "end": 6,
       "kind": "paragraph",
-      "source_sha256": "8028c53c77979d4a6a65a00bcd1921b06b4beb6e5bf2e423b8a9ea9f2e57b27e",
-      "tex_sha256": "7493e550360fb143cbfaf058625424d4ba1199135daf1968edfde79d9fc83fb3"
+      "source_sha256": "d935d5bcb2ab4c313e2aa7491015eef9277a23eca5b4411c34bc1ddf69d0cef8",
+      "tex_sha256": "c8a6437c5185ab671f6385360b6c6f95454f3cee6447b481c14547615131c763"
     },
     {
       "source": "Technical_Boundaries_Chapter5.txt",
@@ -911,8 +911,8 @@
       "start": 9,
       "end": 9,
       "kind": "paragraph",
-      "source_sha256": "8179da5b44adba70b60374387a16125b10580df8a7e91e9e83b5cc8095038154",
-      "tex_sha256": "f6e2cbdfaf4befafb524b4b9cd51ea61cb027acf62ad25690b7d35a700d30bfc"
+      "source_sha256": "cb9134f78fdb4a59308a6e9fd42446974169c5f4f3979df94d2876a3075b4329",
+      "tex_sha256": "b7a61897aa1e3442966d2197164b59838d5dc47d8ae44724d2829f6a6e773afa"
     },
     {
       "source": "Technical_Boundaries_Chapter5.txt",
@@ -935,8 +935,8 @@
       "start": 12,
       "end": 12,
       "kind": "paragraph",
-      "source_sha256": "9fa73584d3c2d28974d1e3c9002b12344871e5daaeaa93fa31eb22d36109d260",
-      "tex_sha256": "629ee5c5f37a081bf7375f6dc1827d456c6c7232b30579a599e038154fc4f7e6"
+      "source_sha256": "19877bbe47dcfa8a8a8a7061e9e66b6c129f37bfcc8e56a8ff71f39e19d0da4e",
+      "tex_sha256": "6933cb0ff8cb8d27c2cda23d0779f5e337807ff4d2c0939425d86174305ad552"
     },
     {
       "source": "Technical_Boundaries_Chapter5.txt",
@@ -959,8 +959,8 @@
       "start": 15,
       "end": 15,
       "kind": "paragraph",
-      "source_sha256": "0ff2b2e224b3f92e05720120c93eaa76e244071c2f05e42d98ac431befa06551",
-      "tex_sha256": "a3274d2455253c6a8bc65ef2f9e2f97f7519ee6fcece42c94e2bb10c596e93d9"
+      "source_sha256": "293d5cef53fbd6b82a10ee8f40288f4c5e5bc168d75db02cd633b40092896399",
+      "tex_sha256": "4b24fa0aeabc4fc9f83b80d62caf850b344bffe5d07c96153da01fd796902b12"
     },
     {
       "source": "Technical_Boundaries_Chapter5.txt",
@@ -975,8 +975,8 @@
       "start": 17,
       "end": 17,
       "kind": "paragraph",
-      "source_sha256": "6d9162811f10ea25a2816e7286edc971dab95f35b78252f757e781d958b4e94f",
-      "tex_sha256": "f4133f5414573eb5541713abc7924affc90c520d8f37008cbf2a960e5f568ea5"
+      "source_sha256": "ece8a50e43e354e0d754843bb987393def0f2ff10d8e4dd8833ac3bdcbaf580d",
+      "tex_sha256": "00487861abddd41fda3e9b5fe68afd8e3adb2adc02f5c185eb042c32b921ff58"
     },
     {
       "source": "Technical_Boundaries_Chapter5.txt",
@@ -991,8 +991,8 @@
       "start": 19,
       "end": 19,
       "kind": "image",
-      "source_sha256": "9c8520afc346e33e606ae8ecb7d907cc786a9d6547e1eac722fd08b2ec4e1986",
-      "tex_sha256": "c4823d1b9b991178040310ce49d241ea575912ebfa0c13b0e6ea7d1c3eba012c"
+      "source_sha256": "e0d715d811975967833af135ffa0046d13be4df1167e2ba8fc6d1aa81c833215",
+      "tex_sha256": "292269dcfc22c5f8c2d5b64d3c91cab5d23c910e633cca3dc50c7c6e092ab6d7"
     },
     {
       "source": "Technical_Boundaries_Chapter5.txt",
@@ -1023,8 +1023,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "d4c10685b6f5ef5c3fbcf6ad4a4ed5bfb20b2e69ba2680ca0b6d3daafa17d6e3",
-      "tex_sha256": "0bb282fa62af975de2c55e876d0f9a94507dcb468bfffde996e14e334d41361a"
+      "source_sha256": "7d669e440ca01ea82ad772dcc3ac70f1dec75d119a6493f96267d0a9697d723a",
+      "tex_sha256": "6b91d21ac4fced93cde73051ab414eb6ffec4485e07ce30350268c29d34bc9ef"
     },
     {
       "source": "Future_Recommendations_Chapter5.txt",
@@ -1055,8 +1055,8 @@
       "start": 7,
       "end": 7,
       "kind": "paragraph",
-      "source_sha256": "8b8be24d05a98938574f96461779c996ea7d67aa8ff9e8d84fe363568434469f",
-      "tex_sha256": "f771d82686b1e3e823550146c185288939f19279adfa68ea0efb30939385ca9f"
+      "source_sha256": "c72c503bec155cf968bf1044605ec1edee41d3afd8a0cc56408f3d6bdf529500",
+      "tex_sha256": "6fd375bf790163dbbc22e05c88f0c93d45a31148fcb92bfb7fb438b329c2abdc"
     },
     {
       "source": "Future_Recommendations_Chapter5.txt",
@@ -1079,8 +1079,8 @@
       "start": 10,
       "end": 10,
       "kind": "paragraph",
-      "source_sha256": "0639921ee28dc73be06ecd64a050aaa1aa94a1a71b455e8e00e54a341ae72f56",
-      "tex_sha256": "7892e77fce305e098e0eead2ed8b6f61ea2a5aa449b93bc857945bbcc830be95"
+      "source_sha256": "86a8ae7c48ef3ad847e67a6ad5c0fd45fc1ee360d5ce637c8dee180881c49c4d",
+      "tex_sha256": "96d2fdc5ce4cc45f5397e945da40800a5be8af8875e742262a75c9ac36ccf872"
     },
     {
       "source": "Future_Recommendations_Chapter5.txt",
@@ -1111,8 +1111,8 @@
       "start": 14,
       "end": 14,
       "kind": "paragraph",
-      "source_sha256": "4fe76065022b5073b627fd4c42e262ae0100b82afbf2bfdec60386db4e71a5df",
-      "tex_sha256": "bd2dfb9413565a19a90dcc6f3b6b083f6d8545536601464be43817754d501d34"
+      "source_sha256": "05991eda87a678a330f3793c200d8959a4039aebc7160b71b7de3a18e6058b24",
+      "tex_sha256": "b1c602ef31965f0f0f2afa64fcc77281c4efbd88c40ad7b3fcf1c7c79bebd274"
     },
     {
       "source": "Future_Recommendations_Chapter5.txt",
@@ -1135,8 +1135,8 @@
       "start": 17,
       "end": 17,
       "kind": "paragraph",
-      "source_sha256": "784006f2f0dc0294407387032b75127647ff045764a5097041d5a2bc341f1277",
-      "tex_sha256": "44841c0d45b580c8c1f42d593bf50ce4bf37c1d0d5b2b2befae7b022e4283ccf"
+      "source_sha256": "dc237f757b788d6d21373a30090682ce6ed13123f00c39eec0148dfca4dc10aa",
+      "tex_sha256": "d8979de7e31fddef0558b98296169162f193691dd8561cdccb7c37c24f02ff66"
     },
     {
       "source": "Future_Recommendations_Chapter5.txt",
@@ -1159,8 +1159,8 @@
       "start": 20,
       "end": 20,
       "kind": "paragraph",
-      "source_sha256": "05f61eea03fe89967667b2bc833c9d085d3c58ae481131ff0043f9c8d4cf90ab",
-      "tex_sha256": "31f455054e3a73338780cb5b6316d43f4b0b5f764ebcf5a0327ac62157a43f4c"
+      "source_sha256": "f39b7f07a9b1ff3ab5206d0f0cfd5f5a90659b6cc7affe2a8973ecdb7cb6eda3",
+      "tex_sha256": "00afc31ff424b8b96d34b694d5ec2a5658ddb50c0c14d6b50b03b68eadccadf0"
     },
     {
       "source": "Future_Recommendations_Chapter5.txt",
@@ -1175,8 +1175,8 @@
       "start": 22,
       "end": 22,
       "kind": "paragraph",
-      "source_sha256": "4d9ca82d6e034b5e79745195e05731db59abdad9fc4bf7d4d9383d9e2216c2b3",
-      "tex_sha256": "305b7c5cf80406c1ddc868c4aca706688f4e1792a796642d5e5ae1586978f4d8"
+      "source_sha256": "c936b0d8d2970a601acc74e951cd14d7e5e63e17c1ac6d641b26ebee25e7c249",
+      "tex_sha256": "a73a78e333d2c157e8a2715cfba7a922833ca69b14381888fad4e1a1ab251da1"
     },
     {
       "source": "Future_Recommendations_Chapter5.txt",
@@ -1191,8 +1191,8 @@
       "start": 24,
       "end": 24,
       "kind": "image",
-      "source_sha256": "b2c2f1f0074093949b8872b630c94a24d55fabdf03ee827a87a28ca47cb1879f",
-      "tex_sha256": "2fb068630c7cfbee98815eec07b1949a133d8d5a41ac5c353337092e54fddd5b"
+      "source_sha256": "c7b2f9f9bff3d7879f89477d6cc3dea497e2ea297dc3c625af88dcdec43e2f8f",
+      "tex_sha256": "55bff65527ad76d247ca4fff9703dcadae6fb555d689254514cf492c9875d04c"
     },
     {
       "source": "Future_Recommendations_Chapter5.txt",
@@ -1223,8 +1223,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "b7328a0fc53a57957da1fc833846ae4d0945b14ccfc60085231c6e7b7180cb63",
-      "tex_sha256": "b3455984e74adc4313da31713af576c26131f55ac6761ed4d25c64519245d5b7"
+      "source_sha256": "36ecc7c4fc9f50bc0196b1a37448ad2da0dcfe4c7f80ea61d5c5d728261b1264",
+      "tex_sha256": "75fa5f5047421470f4d55354e810e0eac66eee1af90d42471597b5a8003841d4"
     },
     {
       "source": "Final_Remarks_Chapter5.txt",
@@ -1239,8 +1239,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "c235de003e88c37181da7c980d901e8ac8a89d129efbb610f8962ca94e1d1d8e",
-      "tex_sha256": "a98f2c7e4aca5b67be539435d0088f78b78fb80c7cb47946407c76c8e81df267"
+      "source_sha256": "b1df0ce4172c3dd783652c6fd164043aad883f59f1d9d550fd99f324918b4aa6",
+      "tex_sha256": "cd2ca4592a915f145fa01eaae674991eb881f6d0da940bee3d6bcb595bcffcb1"
     },
     {
       "source": "Final_Remarks_Chapter5.txt",
@@ -1255,8 +1255,8 @@
       "start": 7,
       "end": 7,
       "kind": "paragraph",
-      "source_sha256": "0a7f311094debf8edf27ffb23f85426269cc262950adaf09c1dac36c97599d03",
-      "tex_sha256": "abf9ea2e3fffbe49a2f119371af856916529e07b89cd4259a4c9e5c9976a5502"
+      "source_sha256": "e194906fa4f668cd9fb9811a580a96872bf9ae39d256bd73f83e2d9c12701a94",
+      "tex_sha256": "a62daff6b472702a885aa272c0b95d987cf33ccb2317cdc8ef912f0bf6cbc3e1"
     },
     {
       "source": "Final_Remarks_Chapter5.txt",
@@ -1271,8 +1271,8 @@
       "start": 9,
       "end": 9,
       "kind": "image",
-      "source_sha256": "4ff3e14640c99de2b7646b18ec2f7ed6eb3bf9dd84635ebd983e7d6177ee4254",
-      "tex_sha256": "0e86d0e60efc0013a74a32dc41bda3903f3967deefdb4700d09ffdbef6c6378e"
+      "source_sha256": "c76e497f2b2d79a2d735f888adf6089ddf7a8df1f5a103a093298e1a4cf77871",
+      "tex_sha256": "5aa1764305bb6fc2ccbb6e4e5286c47c7e9bfeca87105a231b207021dddd9204"
     },
     {
       "source": "Final_Remarks_Chapter5.txt",
@@ -1396,5 +1396,5 @@
     }
   ],
   "tex_file": "chapters/chapter05.tex",
-  "tex_sha256": "4d047b4ad4d88e9f7e5b28185e8d96af81f9ab37092170de80391014676829bd"
+  "tex_sha256": "dbb9299fbb5cc34eae551b8d88f2a5af21c4bfd65a12acd9d704ba860273adbd"
 }

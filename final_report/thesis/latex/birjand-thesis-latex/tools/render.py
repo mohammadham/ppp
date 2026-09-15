@@ -46,7 +46,7 @@ def prose(text, latin=False):
 def inline(text, latin=False):
     result = []
     # Bold delimiters and valid math are formatting, not manuscript wording.
-    for token in re.split(r'(\$\$.*?\$\$|\$[^$\n]*?\$|\*\*.*?\*\*)', text, flags=re.S):
+    for token in re.split(r'(\$\$.*?\$\$|\$[^$\n]*?\$|\*\*.*?\*\*|\[[1-9][0-9]*\])', text, flags=re.S):
         if token.startswith('**') and token.endswith('**') and len(token) > 4:
             result.append(r'\textbf{' + inline(token[2:-2], latin) + '}')
         elif token.startswith('$') and token.endswith('$') and len(token) > 1:
@@ -56,6 +56,8 @@ def inline(text, latin=False):
                 result.append(r'\[' + math_text(token[2:-2]) + r'\]')
             else:
                 result.append('$' + math_text(token[1:-1]) + '$')
+        elif re.fullmatch(r'\[[1-9][0-9]*\]', token):
+            result.append(r'\ThesisCite{' + token[1:-1] + '}')
         else:
             result.append(prose(token, latin))
     return ''.join(result)
@@ -126,6 +128,8 @@ class Renderer:
 
     def convert(self, filename, text=None, skip_chapter_title=True, latin=False, line_offset=0):
         raw = (self.source/filename).read_bytes().decode('utf-8') if text is None else text
+        from editorial import review_text
+        raw = review_text(filename, raw, line_offset)
         lines = raw.split('\n')  # splitlines would silently eat damaged \f / \v source characters.
         out, i, in_references = [], 0, False
         while i < len(lines):

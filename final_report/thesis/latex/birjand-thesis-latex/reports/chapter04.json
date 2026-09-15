@@ -121,7 +121,7 @@
     },
     {
       "type": "شکل",
-      "number": "۴-۶",
+      "number": "۴-۵",
       "caption": "ارزیابی بصری و کمّی مقاومت سیستم در برابر حملات نویز و برش",
       "filename": "chapter4_attack_robustness.png",
       "exists": true,
@@ -139,7 +139,7 @@
     },
     {
       "type": "شکل",
-      "number": "۴-۷",
+      "number": "۴-۶",
       "caption": "جدول نتایج آزمون‌های ۱۵گانه تصادفی‌سازی استاندارد NIST SP800-22",
       "filename": "chapter4_nist_table.png",
       "exists": true,
@@ -157,7 +157,7 @@
     },
     {
       "type": "شکل",
-      "number": "۴-۸",
+      "number": "۴-۷",
       "caption": "نمودار میله‌ای مقایسه‌ای آنتروپی اطلاعات روش پیشنهادی با کارهای مرجع",
       "filename": "chapter4_comparative_chart.png",
       "exists": true,
@@ -175,7 +175,7 @@
     },
     {
       "type": "شکل",
-      "number": "۴-۹",
+      "number": "۴-۸",
       "caption": "نقشه راه تجربی و زنجیره ارزیابی کمّی فصل چهارم",
       "filename": "chapter4_experimental_roadmap.png",
       "exists": true,
@@ -216,54 +216,7 @@
     }
   ],
   "code_blocks": [],
-  "issues": [
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Entropy_Histogram_Chapter4.txt",
-      "line": 5,
-      "controls": [
-        "U+000C",
-        "U+0007"
-      ],
-      "text": "یک الگوریتم رمزنگاری ایده‌آل باید تمامی اطلاعات ساختاری و بافتی تصویر را به یک ساختار شبه‌نویز با توزیع کاملاً یکنواخت و تخت (Flat Uniform Histogram) تبدیل نماید، به طوری که احتمال وقوع هر یک از ۲۵۶ سطح روشنایی پیکسل‌ها ($i \\in [0, 255]$) برابر با $P(i) = \frac{1}{256} \u0007pprox 0.003906$ گردد. جهت ارزیابی کمّی و ریاضی یکنواختی هیستوگرام تصویر رمزشده، علاوه بر محاسبه آنتروپی شانون $H(m)$، از آزمون آماری کای-اسکوئر ($\\chi^2$) استفاده می‌شود. فرمول‌بندی دقیق ریاضی این دو شاخص در رابطه ۴-۲ ارائه گردیده است [1, 8]."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Entropy_Histogram_Chapter4.txt",
-      "line": 9,
-      "controls": [
-        "U+0007"
-      ],
-      "text": "در آزمون کای-اسکوئر، مقدار محاسبه‌شده $\\chi^2$ برای تصویر رمزشده با مقدار بحرانی جدول توزیع کای-اسکوئر در سطح اطمینان ٪۹۵ ($\u0007lpha = 0.05$) و درجه آزادی $255$ (برابر با $\\chi^2_{0.05}(255) = 293.2478$) مقایسه می‌شود. اگر $\\chi^2 < 293.2478$ باشد، فرض صفر ($H_0$) مبنی بر یکنواختی کامل هیستوگرام پذیرفته می‌شود."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Correlation_Chapter4.txt",
-      "line": 3,
-      "controls": [
-        "U+0007"
-      ],
-      "text": "تصاویر پزشکی اولیه به دلیل پیوستگی آناتومیک بافت‌های بیولوژیکی و نمونه‌برداری پیکسلی متراکم، دارای همبستگی مکانی خطی بسیار شدیدی ($r_{xy} \u0007pprox 0.985$) میان پیکسل‌های مجاور در سه جهت افقی (Horizontal)، عمودی (Vertical) و قطری (Diagonal) هستند. وجود این همبستگی قوی یکی از اصلی‌ترین کانال‌های نفوذ در حملات تحلیل آماری به شمار می‌رود، زیرا به مهاجمان اجازه می‌دهد تا با استفاده از شیادی آماری و روابط همسایگی، اطلاعات محرمانه بافت‌های تشخیصی را بازیابی نمایند [1, 3]."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Correlation_Chapter4.txt",
-      "line": 5,
-      "controls": [
-        "U+0007"
-      ],
-      "text": "یک سیستم رمزنگاری ایده‌آل باید بتواند از طریق فاز جایگشت (Confusion) موقعیت مکانی پیکسل‌ها را کاملاً برهم زده و از طریق فاز انتشار (Diffusion) مقادیر عددی آن‌ها را تغییر دهد، به طوری که همبستگی میان هر دو پیکسل مجاور در تصویر رمزشده به سمت صفر ($r_{xy} \u0007pprox 0.0000$) سوق یابد [2, 8]."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Correlation_Chapter4.txt",
-      "line": 29,
-      "controls": [
-        "U+0009"
-      ],
-      "text": "شکل ۴-۴ نمودارهای پراکندگی (Scatter Plots) مقدار شدت روشنایی پیکسل $x$ در برابر پیکسل مجاور افقی $y$ را قبل و بعد از رمزنگاری به تصویر می‌کشد. در تصویر اولیه، تمام نقاط حول خط قطری $y = x$ انباشته شده‌اند که همبستگی شدید پیکسلی را تایید می‌کند؛ اما در تصویر رمزشده، نقاط به صورت کاملاً یکنواخت و تصادفی در سراسر فضای حالت $[0, 255] \times [0, 255]$ پخش گردیده‌اند که گواه عدم وجود هرگونه الگوی خطی یا غیرخطی میان پیکسل‌های همجوار است."
-    }
-  ],
+  "issues": [],
   "records": [
     {
       "source": "Introduction_Chapter4.txt",
@@ -294,8 +247,8 @@
       "start": 4,
       "end": 4,
       "kind": "paragraph",
-      "source_sha256": "fe859bd83b578408950dcce3d6aeedd2e630f4c8bf898d0a9c062b5b3e419077",
-      "tex_sha256": "a3620e4b73c2582ba69afb4c4efdf4f9070b564f84721dd001d62bf9b92286a6"
+      "source_sha256": "76c235a99a38e84acaa4d46befc5f56ebd10cb1a24fc1085aec12c6cd4838b11",
+      "tex_sha256": "0bc86ee925e11be84ef788092d127224a7666dbaabbdb089ce54f676bda7c7b4"
     },
     {
       "source": "Introduction_Chapter4.txt",
@@ -310,8 +263,8 @@
       "start": 6,
       "end": 6,
       "kind": "paragraph",
-      "source_sha256": "c8e69ad4f485a0790aecc550ceb74c7a1a9acdcf8c7a9f89a57c5201c222cf8b",
-      "tex_sha256": "75c96b60e826715d267ee3d97f06001e5ecd69a7d05778816d984f1b529e1dd0"
+      "source_sha256": "7b2b86803f0d7a3d44590c72466fd223de61c4b5c112cf2db5f0756e10457464",
+      "tex_sha256": "9bd9ddaac510002413892588db6ab31d17f38131e671f4780eca9c46f0a8f385"
     },
     {
       "source": "Introduction_Chapter4.txt",
@@ -366,8 +319,8 @@
       "start": 2,
       "end": 2,
       "kind": "paragraph",
-      "source_sha256": "de85c44e8e882c4692a1aabadc59234f60c30c6ccc1c8109d99aa59a5272e670",
-      "tex_sha256": "c3749724a5649743dfbbd0c455f7e673464ca02e3f02663f73f025df95cec1f0"
+      "source_sha256": "d1b949e88e5525651b9089700e4a35c74aacb0885c886fc9f660257e6cdb5ae8",
+      "tex_sha256": "66a4031189dba8aad9d1a453db6e3f7d433df75fd014e1ebb9f2eff4a8625c75"
     },
     {
       "source": "Datasets_Chapter4.txt",
@@ -391,7 +344,7 @@
       "end": 5,
       "kind": "paragraph",
       "source_sha256": "b38c5ebc9109b365ae880b598b95967435ecd5dd21868eb021ff9dc04f7a1a18",
-      "tex_sha256": "889d3c05b6ce931c66d5a59afb416b7570bb8f9bbca6da289efda19254a8761c"
+      "tex_sha256": "9f06a059ac98553ce64681fcf919953ea3d1f4f26236e01157da6b50aaac8f9a"
     },
     {
       "source": "Datasets_Chapter4.txt",
@@ -415,7 +368,7 @@
       "end": 8,
       "kind": "paragraph",
       "source_sha256": "3e6818f7789c468bc3d059d0429e5b441d32c971cb4c2a39c63ba71dc93f0f20",
-      "tex_sha256": "926f53ee799aba7be2bd6e760343feccd301e031b495950fc6ffa0940ce3a979"
+      "tex_sha256": "a55b8fec751e3ce965a58a59ff44dac10961aadc62837f2f5bb369e4bed57014"
     },
     {
       "source": "Datasets_Chapter4.txt",
@@ -438,8 +391,8 @@
       "start": 11,
       "end": 11,
       "kind": "paragraph",
-      "source_sha256": "ed63ef5a5fb53d0cbde258da1f52e5eaf4c002b070a5e19454711c872ce046c1",
-      "tex_sha256": "7a126a802eac341747673462c84b55a504691a97c273ea0631d242fe9831edbd"
+      "source_sha256": "2222b7ccaf1f8d148b07d8d4391973e452f0b75caa9901614181f345bc2ab50f",
+      "tex_sha256": "bc1027548e58a53c573ba3243149d7c9cfdb106526130d4151238dd6cebe8cc0"
     },
     {
       "source": "Datasets_Chapter4.txt",
@@ -462,8 +415,8 @@
       "start": 14,
       "end": 14,
       "kind": "paragraph",
-      "source_sha256": "b8a48463a218e7a2f3654c05c2f283bcbb37143cb1bddb88e3d7841413a19292",
-      "tex_sha256": "89d91f4ff420755a47a8f704a67bf87770ecd60e5fa9bc440b6994b132683829"
+      "source_sha256": "2e0ea719b1fc4dbab371ac3f2528bfa59eba7cd929e1dd5da4f54ce674262cf3",
+      "tex_sha256": "7c51f13b238bb3a8fa7b575a3e1b4111a8cb0099e267b75e213c023c8ea2ad82"
     },
     {
       "source": "Datasets_Chapter4.txt",
@@ -550,8 +503,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "113d24ee88a7e80002fa326b7925ffc40c8ebc62c35d696ecb50d66429fbbf16",
-      "tex_sha256": "4a2a8ce4c0260f4fc1de128baf75760c8c2898016839992aa83f3798a06b4d1d"
+      "source_sha256": "c22ad0581a1ad23a3e2e3185e549b70aea4e47298764b494bda6974523eac59f",
+      "tex_sha256": "30becf442f186ba12a1155ad217ca455b8ff5086ec0c7302572b026d631febe1"
     },
     {
       "source": "Evaluation_Metrics_Chapter4.txt",
@@ -574,8 +527,8 @@
       "start": 6,
       "end": 6,
       "kind": "paragraph",
-      "source_sha256": "1f87e2a0b0155d95a2d2d9fa1d03e0dcffde6bc49fa1365118e5627974710cca",
-      "tex_sha256": "5e004728dc0b342abc5a7dec0379b150aab90c84c2f86dbc9656a1b7c58d9c33"
+      "source_sha256": "e2f5a5a3d91a48b9fa680ff8d49b05710924181eeca0f0b9b40a430813d625c0",
+      "tex_sha256": "d5b0d9c8f63b6171e4ab261949f2c62b376850b253f79e600cbf8d05c20a0e95"
     },
     {
       "source": "Evaluation_Metrics_Chapter4.txt",
@@ -598,8 +551,8 @@
       "start": 9,
       "end": 9,
       "kind": "paragraph",
-      "source_sha256": "03d0a8fe82b852423c3a24bec3c9b5e42536714b954ea680b476b7db787c44cd",
-      "tex_sha256": "5289d2d55fc80056d20e9d3f4e7449d73c3b43be9bc6319c854811fa05ef5b96"
+      "source_sha256": "9cf55f52b8e3e3bb03c3e2bd65fa969a3c3bccf044c1748578270a8e37696aa5",
+      "tex_sha256": "c8ed374ad43b923db71c620055a3b0487212eeaa86823d237383a87945ec6c33"
     },
     {
       "source": "Evaluation_Metrics_Chapter4.txt",
@@ -622,8 +575,8 @@
       "start": 12,
       "end": 12,
       "kind": "paragraph",
-      "source_sha256": "0bd3a7eac03d45b5e255f10d61a49b7fe95e631d57ff9c41dbab89fbc2b7b09d",
-      "tex_sha256": "ac4eaf1d265123ef8f87f021bed450ea05c02b5b580c9c30383e87df6b711d80"
+      "source_sha256": "20818d48529ee5f555af06b70f1f83e8a3fb95360500c9daf560229d08e554a8",
+      "tex_sha256": "938a2c39690645420fedc88f8784c7d90b3c2732902e1061feb80d5219c60612"
     },
     {
       "source": "Evaluation_Metrics_Chapter4.txt",
@@ -646,8 +599,8 @@
       "start": 15,
       "end": 15,
       "kind": "paragraph",
-      "source_sha256": "98cec57bbd8fdf6c322c19b688d51bd58db5cef0ff5f363e1fe365007c17b8e2",
-      "tex_sha256": "43a69657cf8cd30c397fa05163fe3c40f80533b2a51447371a7cd3994e3de1cf"
+      "source_sha256": "0d904f9d8d278754d14084cf274e401f89615afc1382e62bdf65205c37ed0201",
+      "tex_sha256": "dfb6cd1bc7d81885cf52ab48a12a999dc5f22a0ffdbfa01262868ec0aa914c3d"
     },
     {
       "source": "Evaluation_Metrics_Chapter4.txt",
@@ -702,8 +655,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "d69b8aae88fabcb7461cb7c7c6c06cc7ebce862494c3405799d6f1e89b362bc5",
-      "tex_sha256": "1c47aa773446b1ef7215ffa9c4e4b5d2b86e1c737c9cd15be959945f165bda6c"
+      "source_sha256": "5338b2cd3bd50a05b8d5838c1dd47927b32c08f9adddfa3b8d3c38952caf2fb3",
+      "tex_sha256": "ef694fc2b76f57d5d924496cad54ae0dfc7f738748f2356cb6ae47f81a809109"
     },
     {
       "source": "Entropy_Histogram_Chapter4.txt",
@@ -718,8 +671,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "0cd7d722d99f98cd33ef2e9120fd65f8c043a8204715197860932af2e0c7f16e",
-      "tex_sha256": "45980ca6872cc8f6311cc47f32160cb4458422b8262e0a69892507d8cd5e4808"
+      "source_sha256": "806ce608d048e2a51ed584bf3795429dbd45ca3ea430f36f9cfc6f367658e5e4",
+      "tex_sha256": "98e16345a65853d342ca585af7293edcb016ff06555970edb9afcbeb50190ca2"
     },
     {
       "source": "Entropy_Histogram_Chapter4.txt",
@@ -750,8 +703,8 @@
       "start": 9,
       "end": 9,
       "kind": "paragraph",
-      "source_sha256": "910e0e0133663d39bd1bc4ec4dd3072ce65e53a851467aa242651b695269a0fe",
-      "tex_sha256": "0f1e650a620b50445d91dd2ea99acfed1f5950fe44edf73ab7cc0dea267ef7e3"
+      "source_sha256": "7ed8bd3b693419cebf53a871cd25ba937b7be1ec965bf7b372dcc31d0a3e0202",
+      "tex_sha256": "90c85f563c8a9baf3baa0b9e0a9dc00e67bb522faf0cf335050f17d6379a3c03"
     },
     {
       "source": "Entropy_Histogram_Chapter4.txt",
@@ -775,7 +728,7 @@
       "end": 12,
       "kind": "paragraph",
       "source_sha256": "4f53294c7eb1f3a55d5942fce341ea75195ab6aba0de115e8f9c4f803fe02b50",
-      "tex_sha256": "b056975b70f94ace992dadf5989382ec7953c974fcf483eef7e53311df70855a"
+      "tex_sha256": "0ceff99ad5af6845f963bfccc945a56c20d021c70dd259f768522a5faaa00ac5"
     },
     {
       "source": "Entropy_Histogram_Chapter4.txt",
@@ -783,23 +736,23 @@
       "end": 13,
       "kind": "paragraph",
       "source_sha256": "009e9c1eccfc494ec148084236f3cf6f826f36cfeb14e76eb9164c96bb057ad7",
-      "tex_sha256": "50b59f267127abe136d680a7d87b5da967113db2a98877a7544fb3e1ad623142"
+      "tex_sha256": "17e4ed90eb646ee90d881064d55dc6ae76c6051848004600f9a5f82d904a9294"
     },
     {
       "source": "Entropy_Histogram_Chapter4.txt",
       "start": 14,
       "end": 14,
       "kind": "paragraph",
-      "source_sha256": "1f2bc2e9c306dcf97d8750fce859b23086192670b9ddc092e1c33eeeda0e7487",
-      "tex_sha256": "0be8b3e283f81aed83715ef04d60d75d4549cc478def14984eae370e50080c9d"
+      "source_sha256": "13ad675d2f2a9cf198779bc0d16d992dada01a766357873ebf8524b38c51ca0f",
+      "tex_sha256": "48075dea26f4af0149422ecf1f2e7789260bfb8a08e8fe5b00958f8a7ca4c2b2"
     },
     {
       "source": "Entropy_Histogram_Chapter4.txt",
       "start": 15,
       "end": 15,
       "kind": "paragraph",
-      "source_sha256": "70c809bd7d02e3c6e93fc25a8f30a9e16952aca2dde77d35dcea3687029767e5",
-      "tex_sha256": "d1106e000560724c4e6b74413ee2ee66cbf9f4b38c095c939e4639827e8103c3"
+      "source_sha256": "a3a25381c3a42b423b5049089faf0ed3a98f5bd80dd7c8613f536da3bada7ab1",
+      "tex_sha256": "91db78f95aa22bdcb253fe143ce0841d0ad6c84f3d81a3e40459e606bc276fb0"
     },
     {
       "source": "Entropy_Histogram_Chapter4.txt",
@@ -862,8 +815,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "5e946e4e53898aa762a0614c2b28b950a3a180e7da91bcab955f3c14fcadcfd0",
-      "tex_sha256": "b0e8d6ff81db220195d8bc4ed5118bf7be8b50e628afe5aff063d386ff829703"
+      "source_sha256": "c0d3eefcfdda55134c6a2eda6191540854c28d4c178e1a6b0f7988533423837f",
+      "tex_sha256": "c9cab08d39bf9d7f910cb52dcb2d03232e6ccb5550b0b75a582c55c697851b30"
     },
     {
       "source": "Correlation_Chapter4.txt",
@@ -878,8 +831,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "0e8bfa36a4c443b3ab617250544684271a1831c99d0d67fcc6a7eae5bd622328",
-      "tex_sha256": "ab0107403a9d06f53820c9a98c90b7fe6ff01079d160489e8ef10360cffcf784"
+      "source_sha256": "55043463640fe3a9c2c85dad77f70b0c3ffdaa6a0071c4d70d65bd536e6e5396",
+      "tex_sha256": "49a03a94aefe7cc83ee0b2d7099f054e59b523f0efec2eb3ec6ee8e94e67c74b"
     },
     {
       "source": "Correlation_Chapter4.txt",
@@ -990,8 +943,8 @@
       "start": 29,
       "end": 29,
       "kind": "paragraph",
-      "source_sha256": "af10f19a94f02844ea3941da243d23b7391d73ebf2fbd5e174cec223388d3ccd",
-      "tex_sha256": "58fa51d8e82f7cdb4b91a7f20e11bb3e7fc20f3f11e9a7e75f12c548101e595c"
+      "source_sha256": "5a2c6358ddc3364eb81e7d3ba1e8678b338b38c27521109cf8a46a65f36ce8b3",
+      "tex_sha256": "9efeefdfcba37a5e6d09acc9035f214d178af1300958b4954fba51d654385e36"
     },
     {
       "source": "Correlation_Chapter4.txt",
@@ -1030,8 +983,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "c68fbd3f0095e7f3c304d2b8397ae934f25be573984c5e1cbe69299b948c3c51",
-      "tex_sha256": "cda4e442d096d3aecfbaad0cfb9f606de6af8aaca4e7b40a33088ff264435a98"
+      "source_sha256": "5bd964459eb31477b5581466aa2f4b8b9ec28413a9087090eb82a3ce013d3b69",
+      "tex_sha256": "3432fa1f0e12e8637fd30425b88db4d21769352948b014ab84665d307329274d"
     },
     {
       "source": "Differential_Attacks_Chapter4.txt",
@@ -1046,8 +999,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "8aa02a42db6f9cd3e176afbb649c76213a0d6dc14a97a26961d86b0fd4e71b4a",
-      "tex_sha256": "5211ac21959cc191c52a095537acaebe45c67a116040da816225b22f5f729bde"
+      "source_sha256": "74962bc4561a38c25977a728100d85141aa2dac7aea0c9be9ecc89bf4d39ce10",
+      "tex_sha256": "a949be34fd53202e10a857996f3d249f8a08bdc3a06724222345188079507219"
     },
     {
       "source": "Differential_Attacks_Chapter4.txt",
@@ -1062,8 +1015,8 @@
       "start": 7,
       "end": 7,
       "kind": "paragraph",
-      "source_sha256": "16e3b2fdbf00e31f319f2017c72af71feeeb9ba83ac5428060dc21aec136a8f8",
-      "tex_sha256": "ac1b3e7b94515109f8ce5347367193c94112113163954133383fba7fed67c9db"
+      "source_sha256": "31454a14ffa93d08c9077821f97dd064d51e391020a66da4829785d7bb2fe633",
+      "tex_sha256": "2ead89196b3c4d3a0024ef87b35454667500f3e7ed23cab648b9cd3cf908a436"
     },
     {
       "source": "Differential_Attacks_Chapter4.txt",
@@ -1094,8 +1047,8 @@
       "start": 11,
       "end": 11,
       "kind": "paragraph",
-      "source_sha256": "bf782edd8218d587a2b580314344e37c96c862be800386ab57e1c84c9a9b2590",
-      "tex_sha256": "6cc1122901e19962ff3564eecc1acfa236eea37278fe19e63ad2a60f8578ea48"
+      "source_sha256": "dab252a23cf0c31b705f14ae97bc9199a23dc439e2063861efbd5297aeafb82e",
+      "tex_sha256": "ab063784d392b68bcf36304c06952c2506ac29b9baf87564bc244d090844b354"
     },
     {
       "source": "Differential_Attacks_Chapter4.txt",
@@ -1190,8 +1143,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "eaaf4c3b801b9fd60324ebd1e42f274d86cfe1b77332a3182254281d8f1413da",
-      "tex_sha256": "ac5652ac7539765871caef2d56dce2acd11059d6099cc006cc0b76becd0fdb96"
+      "source_sha256": "9b917b7c67586601c149987eb91a544fbe886fc5c40cdd47142a2fcc12399219",
+      "tex_sha256": "0884b5e46a6bca2f5b1b6463f2bf2ef957015e5fd43b544e9314cf037427a81e"
     },
     {
       "source": "Stego_Quality_Chapter4.txt",
@@ -1206,8 +1159,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "3ec6419501c7489d475308a03472313dff35e0871741d35de860526ad350227e",
-      "tex_sha256": "493e330e0d4f4feb6ced0b25387a965a33974eee6b42df519dae8c70eef15091"
+      "source_sha256": "9fbf1542981b62c86565ad67bc9af51761ced1b0f46dd735ece434057338d9a0",
+      "tex_sha256": "58286f8c24258f69274c3ddc0255c0fa022da342ec1ace0fc8f1b5a073c6e77d"
     },
     {
       "source": "Stego_Quality_Chapter4.txt",
@@ -1222,8 +1175,8 @@
       "start": 7,
       "end": 7,
       "kind": "paragraph",
-      "source_sha256": "c79896e521fab6ce1dc71413770748ca210ddae127edc98e1573610a88c4b6c8",
-      "tex_sha256": "32033c3b4f4df7643ef7ff903147f1d1ecc9c2d85801477dfe356280a89c66c1"
+      "source_sha256": "fdc9826e019d1d99196149e27f33bee83cce7a429e46bc25ef4e70bc8a9b76cf",
+      "tex_sha256": "1718cee4e1f2560f5ac0b8b3a0cdb2bafb06e208d7565a7f922e1c45e2cd68aa"
     },
     {
       "source": "Stego_Quality_Chapter4.txt",
@@ -1254,8 +1207,8 @@
       "start": 11,
       "end": 11,
       "kind": "paragraph",
-      "source_sha256": "82484b295a425c46e953ae53bfb22f070be2df3da7bf434dd73d46b8ffd1f311",
-      "tex_sha256": "d5139a50fb3423f5b4a05f275e1bec19b6c72aa7c2818a46c6e82956d0213676"
+      "source_sha256": "91f0ece73a60499b117b487469f4ddcaea4ac345663e54aee12785969fe78b4d",
+      "tex_sha256": "370b7b18be9010f402ca93f8e1742e899b6585d624d16d8b2281fd8fa2933716"
     },
     {
       "source": "Stego_Quality_Chapter4.txt",
@@ -1302,8 +1255,8 @@
       "start": 27,
       "end": 27,
       "kind": "paragraph",
-      "source_sha256": "fbb37acadc165ef0ab12a90d0d0c581662eef002386f1e30555f6cd957e51898",
-      "tex_sha256": "65ac4cb4f153aeae501143b934af416d8182faeb55d58598cd6433e0f23b1435"
+      "source_sha256": "35c14e97c529894626cc8c71e7a442ee1be85d583158c2f63d7b705b91892b12",
+      "tex_sha256": "087d0e7e0d83436ef93c6166c93c51872583dafcc21c932daa3fefda8358cadb"
     },
     {
       "source": "Stego_Quality_Chapter4.txt",
@@ -1350,8 +1303,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "f1eaede9e142db1fb0d788b8316da445047f776f7755b777ae39a8ec00493f53",
-      "tex_sha256": "cd38d308128549700933ef47e40950ac024d2130ee4b21ad97e977dfd6a49b3b"
+      "source_sha256": "c88ed574c0ea9ee52607f553819963e095e3e549cac38eea20792da83a50a773",
+      "tex_sha256": "d4427d43a01df8ed3d8ea01ea7746c7e3e56f450035541cfe36a5ad09f5c9afe"
     },
     {
       "source": "Cyber_Attacks_Chapter4.txt",
@@ -1366,8 +1319,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "ef9bfb3c3f0188f857f84774cae3fc88984b1b14b3a7d7c009a9bba7d1348978",
-      "tex_sha256": "d3e3d8d48cd1e0c759f72275f7fe9aab1369bde9a799ef7ce9e85b475bf6ea03"
+      "source_sha256": "49e8fa8f634a347ae6ebc5cc9bed4ed50174580c045115805199667bbc2f954b",
+      "tex_sha256": "33317195a3d9e4ba80649ab970847b462d5fa3ab83d1690dc0f43a21a1d48480"
     },
     {
       "source": "Cyber_Attacks_Chapter4.txt",
@@ -1382,8 +1335,8 @@
       "start": 7,
       "end": 7,
       "kind": "paragraph",
-      "source_sha256": "9a43020638fa26a1620bcd0ebe764c8bdae6ef485119d371b110fe8b86fc23f7",
-      "tex_sha256": "1c5d66d8e537560150b97128aa0255f368a7c7ea05fb04afd4e433b9d04ed307"
+      "source_sha256": "e86e1b863afa0bcb97f974557958d201f7adfc3dff4ff5aac1a0affeba0ecbce",
+      "tex_sha256": "89e2f8928157cb6e4bbced3ed2b8e27bfd38bf598a9d384476758cae851d0912"
     },
     {
       "source": "Cyber_Attacks_Chapter4.txt",
@@ -1438,8 +1391,8 @@
       "start": 14,
       "end": 14,
       "kind": "paragraph",
-      "source_sha256": "2f9ebcc410bd0e7685b550c2fcfc1b0f3b1bffc452f404672b3456205ce0d7bf",
-      "tex_sha256": "61edefaad9a72669013c51154958502ded525752a9c5428804751e828b98bee1"
+      "source_sha256": "860c76fa395284bcb02558d78ccddcafbba74bbf80ac75a80cfe1bb9d1440fc6",
+      "tex_sha256": "5e49fee90d577263d7350c4748285274acf5bcbdcbbba09376a681e4130030d9"
     },
     {
       "source": "Cyber_Attacks_Chapter4.txt",
@@ -1462,8 +1415,8 @@
       "start": 17,
       "end": 17,
       "kind": "paragraph",
-      "source_sha256": "b7db2dfb8a82c0404a179023842074a4dfa8552371929d35d531a1ae37f71ef7",
-      "tex_sha256": "94be4ee9ca2e8868bdc27594e4c56eb639459322e80a3b3034cdcea363b61bfa"
+      "source_sha256": "f6e7009498f5bfed7d90bf645c64343abed672c30cbdcdf646d8aa8416a51b2a",
+      "tex_sha256": "a885313d5d17e6daf35650227cf0362ad5246a15e9f28de044f91e9fc2eafc3d"
     },
     {
       "source": "Cyber_Attacks_Chapter4.txt",
@@ -1486,8 +1439,8 @@
       "start": 20,
       "end": 20,
       "kind": "paragraph",
-      "source_sha256": "d2ebcf69331ba8737b6ddefb4ce61a3a8d07dc6ce13b0d07d0c4107032721d99",
-      "tex_sha256": "955c1b2ba6b5e9a347ae00d6df437a682bbe0c03296b5c19a4d0c96984cd261c"
+      "source_sha256": "47de6d98c37c9d5fe42fc8d5ea0c164803604b383bb5529c0922a62285c355d1",
+      "tex_sha256": "b0d0d5e083ce9302bf9cd44a1bde1b11315b0a50216100e0656c7d7be4a5b69c"
     },
     {
       "source": "Cyber_Attacks_Chapter4.txt",
@@ -1510,8 +1463,8 @@
       "start": 23,
       "end": 23,
       "kind": "paragraph",
-      "source_sha256": "15dba691b0eab56f8626e3f94d5dd4dbe6d38404649ce395da5b646d045f174c",
-      "tex_sha256": "11563bf3a8d0bf74a464f2163636601a7270fc70bbb6bf279921594d8542f043"
+      "source_sha256": "1763104a8d44952c852b5d8d642c1f42c530fbe449b27b3525fc4f2d1f9c2a8a",
+      "tex_sha256": "ad56be08ae4cf4de9740b722d47152b3544a475b2dccefc9b36f99cf3271bc0c"
     },
     {
       "source": "Cyber_Attacks_Chapter4.txt",
@@ -1526,8 +1479,8 @@
       "start": 25,
       "end": 25,
       "kind": "paragraph",
-      "source_sha256": "8ecb35e3b8bf7be65c905f12a00433578ab95f7204ceb4c73b3becdc8749e6e0",
-      "tex_sha256": "4dded18954d846ee73309082c52d8d445e38875dfd263d66aaad39df87c0998a"
+      "source_sha256": "25d35cd847da20e5beba6fad6e6a20dd5b7990637a92bcbc106f3596ffcbf966",
+      "tex_sha256": "ada4639e9e058e256fc021a657e43774cf6cfeb959a05acdd426f7d5150a10d6"
     },
     {
       "source": "Cyber_Attacks_Chapter4.txt",
@@ -1558,8 +1511,8 @@
       "start": 39,
       "end": 39,
       "kind": "paragraph",
-      "source_sha256": "2f97e6e6e55da5bb980ba8c3e173c0309e4ac5225f8ea8c11a64ecc6803e203b",
-      "tex_sha256": "4a652b90ff44d7659f90d3d0cb9eb807732926331cd159033faadd31063fa5cd"
+      "source_sha256": "788af062ece391fb8c8406c8a38574f8daa3ea461df0e5e2a912bcfe9838a7bd",
+      "tex_sha256": "1999d13c0e11901c0c06d86e7b96589edb71f6ee9e7322da052299555a56cabe"
     },
     {
       "source": "Cyber_Attacks_Chapter4.txt",
@@ -1574,8 +1527,8 @@
       "start": 41,
       "end": 41,
       "kind": "image",
-      "source_sha256": "6ab237c72f6d47498e26495e605f70ba57145a8af45a02c31ebe1eecff9b9847",
-      "tex_sha256": "80555c64e0c62107c48cd26fe10a3b56e3afe6b68a06e22e3151fcff12b9bb34"
+      "source_sha256": "c516a5441d0df61b5b772233091bbc6fc25b40e0ceeece4cc1b8b9c72b3845f3",
+      "tex_sha256": "dfedfd8f5475df17233211e46205d3ba19d1974a6677898012c859cde34b4a32"
     },
     {
       "source": "NIST_Tests_Chapter4.txt",
@@ -1598,8 +1551,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "22dd567057ea21af7f8ffa78f73c5542d838707f4330ea02d9fe98426dd7f1fb",
-      "tex_sha256": "b881a8c84f7d490abf5300e57d339125f4d9c76ea1682981f7b33927538fc17d"
+      "source_sha256": "ac1cb3d74bbf12cec2b17270013c034195f71c128f3bf6a6a0c55ab1b6a387c4",
+      "tex_sha256": "82e26a7600db8d82f05b39e7d1e0a0142e161191a8f55f9c0f4c59b10d7fae69"
     },
     {
       "source": "NIST_Tests_Chapter4.txt",
@@ -1614,8 +1567,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "6eeb62cd4742b6cf1344a0b099b8ee9aeed4dd1d38dc9e0f5a8d8abf4ea25864",
-      "tex_sha256": "f83cc7a730403b08dee2912ec486f1214e85dbb434a254ec47c93edb7946c367"
+      "source_sha256": "b335eb14c19a91ba27b43f06a9bbf432f831648b3ee6df67fb71d8abd34ddd6c",
+      "tex_sha256": "111964aa0b08fce089950e9e3e95ec3a8ee4a9ff905a7583249f0e18c8ed3f49"
     },
     {
       "source": "NIST_Tests_Chapter4.txt",
@@ -1646,16 +1599,16 @@
       "start": 9,
       "end": 9,
       "kind": "paragraph",
-      "source_sha256": "0d6993fb6f020ef99cbb362910d8df05f6432ac8c1c7a958e8bc0f8df9c8cea8",
-      "tex_sha256": "150a73463f8b3132c795c6a16272f05b9d7da355727a4a7a28d28f7b689e0ea4"
+      "source_sha256": "3d6f3b93e4fd6a933bcba0e5fef29ee53e13ae3c2eed0a9965669454a095f2d9",
+      "tex_sha256": "b86f2566d77dd3a770ff6847fd8eadde2b2a2b709074f9c622352aff808dfbc9"
     },
     {
       "source": "NIST_Tests_Chapter4.txt",
       "start": 10,
       "end": 10,
       "kind": "paragraph",
-      "source_sha256": "787ddb6cad4ff5cb520a15fd725397a474f23ad5dc52e103abd1355b31771e43",
-      "tex_sha256": "c51ba937f2c9accbeb2e432039314bc93351d0cc8807208bc8dcba37c1296d49"
+      "source_sha256": "9d8ac67276edc8062b23969429dce2783c1e7f77ff376b5fd18d029e71ee95d3",
+      "tex_sha256": "d2c2c50a761b8e830daecfef2c86842e2e5c5fccd3e14ebe9f1d2fe80340584e"
     },
     {
       "source": "NIST_Tests_Chapter4.txt",
@@ -1670,8 +1623,8 @@
       "start": 12,
       "end": 12,
       "kind": "paragraph",
-      "source_sha256": "6559dd27d1bab3f45b7ccdd2b11fd85d08d7981bba26b2ec9cfd20f06c6a0538",
-      "tex_sha256": "f9e35e561af663de0e0f971e48a27fcdc00941d0b811d0f0eb9e90a6b635622d"
+      "source_sha256": "7394bfc985d627778e9736e513f26695de528992e72bea1bd17c28060822d3a5",
+      "tex_sha256": "5acf3f0d9952e06dd427823af1a12fb5ec1643af860d039f5573b808c9f882fa"
     },
     {
       "source": "NIST_Tests_Chapter4.txt",
@@ -1782,8 +1735,8 @@
       "start": 26,
       "end": 26,
       "kind": "paragraph",
-      "source_sha256": "f2d35726fdf7cab9d22fde801b695c6a76ec9083822355cab40c42c4a7c42e64",
-      "tex_sha256": "494bc2e9bbbc39afa90b58dd46964493dd10daad89c60cd167322a72c72a89be"
+      "source_sha256": "66088e30c3eb0b6b6fe5a049d4f5ce1c5ab2e4728a4ad167e85d91db886ba49d",
+      "tex_sha256": "886a3c0b725537396d52a1ba305b16d165b539ebb07d61cb8c839347e7d0ad33"
     },
     {
       "source": "NIST_Tests_Chapter4.txt",
@@ -1798,8 +1751,8 @@
       "start": 28,
       "end": 28,
       "kind": "paragraph",
-      "source_sha256": "585389aa8f228ee1587aae968014528beef6df5b19c4fdae80e5d1d6d780b217",
-      "tex_sha256": "c72855ab8dd824c99e24d117b2bdd03e64dcd3d23e62853ba823bd3c6d51700e"
+      "source_sha256": "5a2ab8535f9a18bb54372dc18aa12c295f9397dd837a0fd687c42953b4595731",
+      "tex_sha256": "c6f32e069507ebf7c0f736f537bb8aeff83a1d44342954c003b1cd3feb06721f"
     },
     {
       "source": "NIST_Tests_Chapter4.txt",
@@ -1814,8 +1767,8 @@
       "start": 30,
       "end": 30,
       "kind": "image",
-      "source_sha256": "63668b5cfad7e49d525a766468ea8a27839d071ab19681ef874c85ce49dd38f1",
-      "tex_sha256": "f0e721b073ad15214295358c1322fde6cd2761e14927ab993e7788e35fe810ed"
+      "source_sha256": "40563ecdaea805cc33dc0147ece479d0dd0f72bccbe6ef0603f268596bfe8cd6",
+      "tex_sha256": "bc39d2590373be8d52d7ab8ef95d2e2e44aab4dce00412d024f7acf4183134d5"
     },
     {
       "source": "Comparative_Analysis_Chapter4.txt",
@@ -1838,8 +1791,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "1ae10dd88995157fb23207d35fdea7b836c509d3496db069281e4bae7123171b",
-      "tex_sha256": "d8f1e59f3f7075007257178d18dba7c4c94664e4ff271d9dfdeab51c9a7024c1"
+      "source_sha256": "645ab9a0eb47826f9f827e30d006fbac9a7318015d6b76726d1278b313e18e2f",
+      "tex_sha256": "e335ce776a117265d4e4bd97023510e3383159383fbed8119c11cbf760b08456"
     },
     {
       "source": "Comparative_Analysis_Chapter4.txt",
@@ -1854,8 +1807,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "ced7cc30706f17bca744a1204c193741cd2ed639654ff8952b2e43a6486acf34",
-      "tex_sha256": "990533c64334445fab93beeada369420c0f4219e5ebb96b418a116e71125faba"
+      "source_sha256": "1ce8340a7aea40452c5da54118cfe1aec61fb99b487a6afb6bed59c1404482fb",
+      "tex_sha256": "79eeb313b627e27d1ce1b13529478e52974dddacd270c9b0c12f1b857615a2b0"
     },
     {
       "source": "Comparative_Analysis_Chapter4.txt",
@@ -1886,8 +1839,8 @@
       "start": 9,
       "end": 25,
       "kind": "table",
-      "source_sha256": "0f12698fea2e5a4359ea6deb3b9de9710ff5f2aeaa404aceb8591c72f81f084d",
-      "tex_sha256": "2b9d345687e8df894b9d192b416bf9a1f2411f0dde61bf756f88215ef3c6f6d0"
+      "source_sha256": "aa007b47371b12e3082082aebe1ba0304b7bc52c5fe9d6c5075d4151d0f61ab7",
+      "tex_sha256": "e2e6299d62731430adf61e95d2a3bb905fffa6e8d70815dd0a43cc3cf1cf6080"
     },
     {
       "source": "Comparative_Analysis_Chapter4.txt",
@@ -1902,8 +1855,8 @@
       "start": 27,
       "end": 27,
       "kind": "paragraph",
-      "source_sha256": "ad88b860cf144a672cfca37cf2338b647905e308fbf7e938fa2fb9a416f562b2",
-      "tex_sha256": "7007f58ca626bb3008b0cee96a364d73dd57f43396de4bcf57289eb8ae0767fb"
+      "source_sha256": "ff5b54a06fc550fa34753b0f105d4e12af778271883e496432c7b3813ee29dd4",
+      "tex_sha256": "ecf4372687126752cbaba7d08ea22f1ff7167a5cd6c776fbf2e480d97a7321ff"
     },
     {
       "source": "Comparative_Analysis_Chapter4.txt",
@@ -1918,24 +1871,24 @@
       "start": 29,
       "end": 29,
       "kind": "paragraph",
-      "source_sha256": "21f80487b7891d6a29882469ac6864a1b1f0d0bca04af5a53ec450fd004f6f61",
-      "tex_sha256": "e04d381a22c6949ac65f3d7c627a712a8e2c569de1f835361835adc6d98be853"
+      "source_sha256": "cd0e39d5927f006c4e33ef35e0106ec732a1376c15bc0537f3b6216c03b13148",
+      "tex_sha256": "e290bedce72198f42a75da4a0004ad4451269ed0aea7d16f958f6a371afd3a7c"
     },
     {
       "source": "Comparative_Analysis_Chapter4.txt",
       "start": 30,
       "end": 30,
       "kind": "paragraph",
-      "source_sha256": "6430829838437174bd39252bcddc3974e1fe4d1cb8944d24d28d9ce7073f4480",
-      "tex_sha256": "fbf6991a88ded5f1a4be9ee92bf24dcfed1ee6d3a89db9a142c08cd78d085079"
+      "source_sha256": "9a34605ab01ed60ea6ad2556c13ab27ab8d8a8716c76062715702c45443b20ff",
+      "tex_sha256": "7d37f8c57a2581c0314224d083fa1eadbaeb8826447ede265075d18e7cb7d927"
     },
     {
       "source": "Comparative_Analysis_Chapter4.txt",
       "start": 31,
       "end": 31,
       "kind": "paragraph",
-      "source_sha256": "1595ebab94bb63c958d38c178f920ae09973ee85157c48307f7b598251e9e508",
-      "tex_sha256": "fea4fbd267c5a979cbb8cc34e13c758b699a1c63e08e30132cc48b9c95ac4b50"
+      "source_sha256": "9c4ba648378a6c33188cc3dafe589141ab39881192a35a87f6b35cccb49ae583",
+      "tex_sha256": "24ae19f39cf5186b801a1050d53dfcd30c42368cd1e94ccefd64b4d79db752eb"
     },
     {
       "source": "Comparative_Analysis_Chapter4.txt",
@@ -1950,8 +1903,8 @@
       "start": 33,
       "end": 33,
       "kind": "paragraph",
-      "source_sha256": "65ec281f30af093ac3bcd5f46308e7e503b7d2d6983f0ea91eeda4c788f6ec85",
-      "tex_sha256": "69b01068301bbc2de83a144a29f13f38179f37ba361ffa281436b49bfbac2619"
+      "source_sha256": "b5192d6c23d8008d26e65d766b0cbc5b664217cf76ba51d0eba061e2ec47fb27",
+      "tex_sha256": "065eb33ea3b3159a1df2225791cd6bf119e8dbdf6ed07b32e325856cfd3e94ce"
     },
     {
       "source": "Comparative_Analysis_Chapter4.txt",
@@ -1982,8 +1935,8 @@
       "start": 37,
       "end": 37,
       "kind": "paragraph",
-      "source_sha256": "406a6b4a1943c964962d08e55c9696bfffc22a5cfe600544e8f6b2863ec623b6",
-      "tex_sha256": "e3c133ea598cb8d8f39770065be4867e2b78c808d4e75cbab43f384c21afe727"
+      "source_sha256": "68d047ae40c6a07c6f92ba1352e06777aa895222e2aede05252b0e9bb0e41431",
+      "tex_sha256": "e085384964df7142c81a2a04a5391e6e983f0c321ec5142ece887536bb5b797d"
     },
     {
       "source": "Comparative_Analysis_Chapter4.txt",
@@ -1998,8 +1951,8 @@
       "start": 39,
       "end": 39,
       "kind": "image",
-      "source_sha256": "3876486acc13116ecaaf2933d06719587a295bffe7be71c56fbe2e89b8f1546a",
-      "tex_sha256": "cb50f4c6157031a7e715c3bcf0c6fc6d4bea58c789f5023ba9796fc6ffd1a8db"
+      "source_sha256": "ac0bafff35c8cc53fa75903bcd68a5ea4f951cbab615267cf47355d975b392a1",
+      "tex_sha256": "72f311723608b5ad154f0f19a0e114ab6743b9cd44e23b0ef5a560c00ba625b6"
     },
     {
       "source": "Summary_Chapter4.txt",
@@ -2022,8 +1975,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "a78b7f1c4b064cd2e1255d3833fec75932167272674bd081583ec32d74919842",
-      "tex_sha256": "fc245b33c543f6dbafb7b3497c30a5d1167723994c205fe374cee21a66b220a6"
+      "source_sha256": "2c1cbcd5b9387adfd99dc4f56eafc4bcf3afcf8597b5012a8cc9923c6462a1e8",
+      "tex_sha256": "76d6ae8c4c6f299d80a43b4fe835ffd59e0dfaf097c6733cf8d5506cf24c03d9"
     },
     {
       "source": "Summary_Chapter4.txt",
@@ -2038,8 +1991,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "88c08647e00fba4b20523ba8279a996af8a2de6985ea175aa2b9265e96c9eddc",
-      "tex_sha256": "c3dbc37acf99a1a9b400a877c5fa6b6991603ccdbd685f2c640a705301b859b5"
+      "source_sha256": "9f6aed5ea580f6208bfb9fa85b93196b981d985a3c6d5a8b17833117d442c445",
+      "tex_sha256": "e08ef13cfadfa1744e1d11edbd27c39401807cb6aad0d85d335688ee6dc89aec"
     },
     {
       "source": "Summary_Chapter4.txt",
@@ -2062,8 +2015,8 @@
       "start": 8,
       "end": 8,
       "kind": "paragraph",
-      "source_sha256": "04ee57ea138031e783afc69ee3fea2e34d2c4760379aa8e99c5a5e2e944cb31e",
-      "tex_sha256": "075b962c7345eaba0327cd6d847bf4f81214b0263a8019ed587a22a4fc488cb1"
+      "source_sha256": "703e10f42434012aa519de06253371a3fcaf85ca548b8d0160fc48a19b6c5b43",
+      "tex_sha256": "1f5550cc2643bc630fdf4e6de68c56b5a836dc3dd891a019827283ec6c88b4cc"
     },
     {
       "source": "Summary_Chapter4.txt",
@@ -2086,8 +2039,8 @@
       "start": 11,
       "end": 11,
       "kind": "paragraph",
-      "source_sha256": "ade51bc910b6427f5bd761b879469a1e58c5241b428cd504765041c86a2d14b4",
-      "tex_sha256": "a584379f577e47cbe10ecd03a5c3d418f5b3a71a2ea69bc9a22536224781d8c6"
+      "source_sha256": "6cc75f11572d95baccbcd06f4249fdc451f2ca7e5d6dbb654d9e057b48860235",
+      "tex_sha256": "464486a6dea95f75a25e0db3266e2d761e92a489cc4f71cedb1c85dda986061c"
     },
     {
       "source": "Summary_Chapter4.txt",
@@ -2110,8 +2063,8 @@
       "start": 14,
       "end": 14,
       "kind": "paragraph",
-      "source_sha256": "08606c3d09cda9b6af7c583a19d389423e7fb0fde3c0a33f298c12a47ee57179",
-      "tex_sha256": "1e00506905abebe118136de95a303757f634f7e0e9461d145441dc42c9083634"
+      "source_sha256": "5657dcc3ba3491dae7b66d73db4223e0549870d8621d1b4fb6f397307a527a7f",
+      "tex_sha256": "a1ee43d465d25932f32603dfd1fe7fbc5ff8efe1ff468d5a8c466dec311348f0"
     },
     {
       "source": "Summary_Chapter4.txt",
@@ -2126,8 +2079,8 @@
       "start": 16,
       "end": 16,
       "kind": "paragraph",
-      "source_sha256": "533a9f4b1f013af4cfd56327e973f5c2473ac7d9dd8eb0e0e1dae3782987882d",
-      "tex_sha256": "0d87c911714927c5acc6b683ef5eb5d7f1bb0c74f0d74f08ee5d2113812146bc"
+      "source_sha256": "cc436f4f0d7f8f6470c946b216e1a99d411adea5b1be1e1354308b4fec60a31b",
+      "tex_sha256": "fc36db539bc5e9992344d39d27c9704e4043d9f74e795ee047a0de88a407f666"
     },
     {
       "source": "Summary_Chapter4.txt",
@@ -2142,8 +2095,8 @@
       "start": 18,
       "end": 18,
       "kind": "paragraph",
-      "source_sha256": "6a571071f5ba816645390e1f5189c5b6f991a48d710bfcdfdb2c567a4d2b8a36",
-      "tex_sha256": "befead742528cea5cd6ed384c741b63e8535e6594215a9c8e7b9ba59aa498aef"
+      "source_sha256": "1d31e1922364371203cc0ebcf36d5ce818cc7a2aff8f743ed2f46f54d998dad4",
+      "tex_sha256": "e38d799bb34e3f7708fe9bc2405b32a9b5e083e87f5270d3ef75275cf2790089"
     },
     {
       "source": "Summary_Chapter4.txt",
@@ -2174,8 +2127,8 @@
       "start": 22,
       "end": 22,
       "kind": "paragraph",
-      "source_sha256": "30b00baaf40cf0d2926341c065cb63c71a71e6c52561697a9cf8fe99267a0bd9",
-      "tex_sha256": "b97d0ee1c4034cceaea83a6da807252c4857450d93867cb5d252f172a44d5c75"
+      "source_sha256": "598471d1bdd86a91914b1c6a7ba9d8f1a88b8d2290e8cd18ebd8fc2941ed1cde",
+      "tex_sha256": "365cd83f79eabe0b872ab174aeef5ec273ff19a5b99d7d7100fea95879b3f769"
     },
     {
       "source": "Summary_Chapter4.txt",
@@ -2190,8 +2143,8 @@
       "start": 24,
       "end": 24,
       "kind": "image",
-      "source_sha256": "16842664724071fd7e0ddf698ef25f394b8fbf35066e30029680d210ca7a5765",
-      "tex_sha256": "f9c4b523bad40927ee84871bef28409d28d09f64b417f78a35c3cd99ed1e7d3c"
+      "source_sha256": "ccf22928a62dd47c4b1559a4007dd01e59c44f14c17c1c9b6c62d87452d15842",
+      "tex_sha256": "f657ba31ee5ba6a713bb702eb53a6f6a51f347b0e892741f2e96d33833be9371"
     },
     {
       "source": "Summary_Chapter4.txt",
@@ -2331,5 +2284,5 @@
     }
   ],
   "tex_file": "chapters/chapter04.tex",
-  "tex_sha256": "31f77278bd7739f2ddf308e9a58df676ba57a2c56a8a908db670c8cfaa4c76a4"
+  "tex_sha256": "6ca6a947f0589a082d11942519a3ea42f0b0ca0d4cafd352decd36bdead3c955"
 }

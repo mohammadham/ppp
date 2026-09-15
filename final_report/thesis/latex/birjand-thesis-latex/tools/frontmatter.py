@@ -4,6 +4,7 @@ import zipfile
 from pathlib import Path
 from xml.etree import ElementTree as E
 from render import Renderer, inline
+from editorial import record
 
 
 def create(root):
@@ -13,6 +14,18 @@ def create(root):
     renderer=Renderer(root,root/'sources',0)
     fa=renderer.convert('English_Abstract.txt','\n'.join(abstract[split:]),line_offset=split)
     en=renderer.convert('English_Abstract.txt','\n'.join(abstract[:split]),latin=True)
+    (root/'frontmatter/abstract-fa.tex').write_text(r'\clearpage\phantomsection\addcontentsline{toc}{chapter}{چکیده}'+'\n'+fa)
+    (root/'frontmatter/abstract-en.tex').write_text(r'\clearpage\begin{latin}'+'\n'+en+'\n'+r'\end{latin}')
+    fa_keywords = 'واژه‌های کلیدی: امنیت تصاویر پزشکی، یادگیری عمیق U-Net، آشوب پنج‌بعدی، رمزنگاری DNA، پنهان‌نگاری آگاه به برجستگی، اینترنت اشیای پزشکی و پردازش لبه.'
+    fa += '\n' + inline(fa_keywords) + r'\par' + '\n'
+    record('English_Abstract.txt', 31, '(کلیدواژهٔ فارسی درج نشده بود)', fa_keywords,
+           'افزودن شش کلیدواژهٔ متناظر با موضوعات موجود؛ مطابق بند۵۰قالب بیرجند.')
+    old_keywords = abstract[8]
+    new_keywords = old_keywords.replace('Internet of Medical Things (IoMT), Edge Computing (NVIDIA Jetson TX2)',
+                                        'Internet of Medical Things (IoMT) and Edge Computing (NVIDIA Jetson TX2)')
+    en = en.replace(inline(old_keywords, latin=True), inline(new_keywords, latin=True))
+    record('English_Abstract.txt', 9, old_keywords, new_keywords,
+           'ادغام دو موضوع مرتبط در یک کلیدواژه؛ کاهش تعداد از۷به۶بدون حذف مفهوم، مطابق قالب دانشگاه.')
     (root/'frontmatter/abstract-fa.tex').write_text(r'\clearpage\phantomsection\addcontentsline{toc}{chapter}{چکیده}'+'\n'+fa)
     (root/'frontmatter/abstract-en.tex').write_text(r'\clearpage\begin{latin}'+'\n'+en+'\n'+r'\end{latin}')
     (root/'reports/frontmatter.json').write_text(json.dumps({'source':'English_Abstract.txt','records':renderer.records},ensure_ascii=False,indent=2))
@@ -51,4 +64,7 @@ def create(root):
 
 
 if __name__=='__main__':
-    create(Path(__file__).resolve().parent.parent)
+    root = Path(__file__).resolve().parent.parent
+    create(root)
+    from revision_report import write_revision_log
+    write_revision_log(root)

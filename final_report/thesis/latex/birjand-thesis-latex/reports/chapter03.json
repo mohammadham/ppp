@@ -41,7 +41,7 @@
     },
     {
       "type": "شکل",
-      "number": "۳-۲",
+      "number": "۳-۳",
       "caption": "فلوچارت تفصیلی مراحل چهارگانه رمزنگاری و پنهان‌نگاری در سمت فرستنده",
       "filename": "chapter3_sender_flowchart.png",
       "exists": true,
@@ -50,7 +50,7 @@
     },
     {
       "type": "رابطه",
-      "number": "۳-۰",
+      "number": "۳-۱",
       "caption": "قضیه ریاضی هم‌ارزی و بازسازی پویای کلید رمزی در سمت گیرنده",
       "filename": "eq3_0_key_reversibility.png",
       "exists": true,
@@ -59,7 +59,7 @@
     },
     {
       "type": "شکل",
-      "number": "۳-۳",
+      "number": "۳-۴",
       "caption": "فلوچارت تفصیلی مراحل سه‌گانه بازسازی، استخراج فراداده و رمزگشایی در سمت گیرنده",
       "filename": "chapter3_receiver_flowchart.png",
       "exists": true,
@@ -68,7 +68,7 @@
     },
     {
       "type": "شکل",
-      "number": "۳-۴",
+      "number": "۳-۵",
       "caption": "نمودار بلاکی فرآیند قطعه‌بندی معنایی U-Net، استخراج ویژگی‌های آماری ROI و محاسبه کلید ۲۵۶ بیتی SHA-256",
       "filename": "chapter3_unet_roi_key_extraction.png",
       "exists": true,
@@ -77,7 +77,7 @@
     },
     {
       "type": "رابطه",
-      "number": "۳-۱",
+      "number": "۳-۲",
       "caption": "فرمول‌بندی ریاضی استخراج ویژگی‌های آماری ROI، محاسبه چکیده SHA-256 و نرمال‌سازی شرایط اولیه سیستم ۵بعدی",
       "filename": "eq3_1_sha256_key_gen.png",
       "exists": true,
@@ -86,7 +86,7 @@
     },
     {
       "type": "رابطه",
-      "number": "۳-۲",
+      "number": "۳-۳",
       "caption": "دستگاه معادلات دیفرانسیل پیوسته سیستم ۵ بعدی ابرآشوبی و الگوریتم حل عددی RK4",
       "filename": "eq3_2_5d_hyperchaos_rk4.png",
       "exists": true,
@@ -95,7 +95,7 @@
     },
     {
       "type": "شکل",
-      "number": "۳-۵",
+      "number": "۳-۶",
       "caption": "پرتره فاز ۳ بعدی و نمایش جاذبه غریب سیستم ابرآشوبی ۵ بعدی در فضای حالت (x-y-z)",
       "filename": "chapter3_5d_hyperchaos_phase_portrait.png",
       "exists": true,
@@ -104,7 +104,7 @@
     },
     {
       "type": "شکل",
-      "number": "۳-۶",
+      "number": "۳-۷",
       "caption": "نمودار فرآیند دو مرحله‌ای جایگشت زیگ‌زاگی، جدول قواعد ۸گانه DNA و انتشار پویای DNA",
       "filename": "chapter3_zigzag_dna_pipeline.png",
       "exists": true,
@@ -113,7 +113,7 @@
     },
     {
       "type": "رابطه",
-      "number": "۳-۳",
+      "number": "۳-۴",
       "caption": "فرمول‌بندی ریاضی جایگشت زیگ‌زاگی، انتخاب پویای قواعد DNA و عملگر منطقی DNA XOR",
       "filename": "eq3_3_zigzag_dna.png",
       "exists": true,
@@ -122,7 +122,7 @@
     },
     {
       "type": "شکل",
-      "number": "۳-۷",
+      "number": "۳-۸",
       "caption": "نمودار فرآیند پنهان‌نگاری فراداده بیمار مبتنی بر فشرده‌سازی zlib و برجستگی بصری",
       "filename": "chapter3_saliency_stego_pipeline.png",
       "exists": true,
@@ -131,7 +131,7 @@
     },
     {
       "type": "رابطه",
-      "number": "۳-۴",
+      "number": "۳-۵",
       "caption": "فرمول‌بندی نقشه برجستگی بصری، فشرده‌سازی zlib و جای‌دهی پس‌زمینه",
       "filename": "eq3_4_saliency_stego.png",
       "exists": true,
@@ -140,7 +140,7 @@
     },
     {
       "type": "رابطه",
-      "number": "۳-۵",
+      "number": "۳-۶",
       "caption": "فرمول‌بندی ریاضی پیچیدگی محاسباتی و بودجه زمانی لایه‌ها",
       "filename": "eq3_5_complexity_math.png",
       "exists": true,
@@ -149,7 +149,7 @@
     },
     {
       "type": "شکل",
-      "number": "۳-۸",
+      "number": "۳-۹",
       "caption": "نمودار تفکیک زمان اجرای لایه‌ها و مقایسه کارایی بر روی سخت‌افزار لبه NVIDIA Jetson TX2",
       "filename": "chapter3_edge_complexity_breakdown.png",
       "exists": true,
@@ -184,153 +184,7 @@
       "line_count": 8
     }
   ],
-  "issues": [
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Architecture_Dataflow_Chapter3.txt",
-      "line": 3,
-      "controls": [
-        "U+0009"
-      ],
-      "text": "برای پوشش هم‌زمان محرمانگی تصویر تشخیصی، صیانت از فراداده‌های هویتی بیمار و مقاومت در برابر حملات سایبری بر بستر شبکه‌های ناامن اینترنت اشیای پزشکی (IoMT) و سامانه‌های پزشکی از راه دور (Telemedicine)، چارچوب پیشنهادی بر پایه یک ساختار فرستنده-گیرنده متناظر و همگام‌سازی‌شده طراحی گردیده است. در این معماری، تصویر واضح ورودی $I$ با ابعاد $W \times H$ و فراداده متنی بیمار $M_{\\mathrm{patient}}$ (شامل اطلاعات EXIF، پرونده بالینی و شناسه هویتی) در سمت فرستنده پردازش شده و تصویر پنهان‌نگاری‌شده رمزشده $I_{\\mathrm{Stego}}$ جهت ارسال بر روی شبکه تولید می‌شود [1, 2, 5]."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Architecture_Dataflow_Chapter3.txt",
-      "line": 28,
-      "controls": [
-        "U+0009"
-      ],
-      "text": "از آنجایی که فاز پنهان‌نگاری فراداده صراحتاً محدود به نواحی کم‌برجستگی پس‌زمینه بوده و ناحیه تشخیصی ROI ۱۰۰٪ دست‌نخورده باقی می‌ماند ($\\mathrm{ROI} \\cap \\mathrm{Payload} = \\emptyset$)، پیکسل‌های ناحیه ROI در تصویر استگوی دریافتی $I_{\\mathrm{Stego}}$ دقیقاً برابر با پیکسل‌های ROI در تصویر واضح اولیه $I$ می‌باشند. بنابراین، با اعمال شبکه U-Net در سمت گیرنده، ماسک ROI و ویژگی‌های آماری استخراج‌شده کاملاً متناظر با فرستنده بوده و چکیده ۲۵۶ بیتی SHA-256 و شرایط اولیه سیستم ۵ بعدی عینا و بدون کوچک‌ترین خطایی بازسازی می‌گردند ($K_{\\mathrm{Rec}} \\equiv K_{\text{Send}}$) [1, 8]."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "UNet_KeyGen_Chapter3.txt",
-      "line": 5,
-      "controls": [
-        "U+0009"
-      ],
-      "text": "در گام اول، تصویر پزشکی ورودی $I$ با ابعاد $W \times H$ به شبکه عصبی عمیق U-Net آموزش‌دیده تغذیه می‌شود. شبکه U-Net با استفاده از معماری انقباضی-انبساطی و اتصالات پرشی (Skip Connections)، ماسک دوتایی ناحیه حساس تشخیصی $M_{\\mathrm{ROI}}$ را با دقت بالا استخراج می‌نماید:"
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "UNet_KeyGen_Chapter3.txt",
-      "line": 7,
-      "controls": [
-        "U+0009"
-      ],
-      "text": "$$M_{\\mathrm{ROI}} = \\mathrm{U\text{-}Net}(I), \\quad M_{\\mathrm{ROI}}(i,j) \\in \\{0, 1\\}$$"
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Zigzag_DNA_Chapter3.txt",
-      "line": 3,
-      "controls": [
-        "U+0007"
-      ],
-      "text": "برای دستیابی به بالاترین سطح امنیت، خنثی‌سازی کامل همبستگی میان پیکسل‌های مجوار، دستیابی به آنتروپی آرمانی ($H(m) \u0007pprox 8.0$) و محقق ساختن اثر بهمنی کامل (Avalanche Effect)، فرایند رمزنگاری تصویر اصلی طی دو مرحله متوالی و مکمل جایگشت (Confusion) و انتشار (Diffusion) بر پایه معماری شانون انجام می‌پذیرد [1, 3, 4]."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Zigzag_DNA_Chapter3.txt",
-      "line": 8,
-      "controls": [
-        "U+0009",
-        "U+0007"
-      ],
-      "text": "در مرحله جایگشت، ماتریس تصویر ورودی واضح $I$ با ابعاد $W \times H$ با استفاده از الگوی پیمایش قطری زیگ‌زاگی (مطابق با استاندارد پردازش تصاویر و کوانتایش JPEG) آشفته می‌گردد. در الگوریتم‌های سنتی رمزشده، جایگشت‌های سطری یا ستونی ساده به تنهایی توانایی شکستن همبستگی دو‌بعدی پیکسل‌ها را ندارند؛ اما پیمایش زیگ‌زاگی با تغییر موقعیت مکانی پیکسل‌ها بر روی قطرهای فرعی و اصلی، ساختار هندسی تصویر را تماماً برهم زده و ضریب همبستگی پیکسل‌های مجوار ($r_{xy}$) را در سه جهت افقی، عمودی و قطری از حدود $1.0$ به نزدیک صفر ($r_{xy} \u0007pprox 0.0$) کاهش می‌دهد."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Zigzag_DNA_Chapter3.txt",
-      "line": 18,
-      "controls": [
-        "U+0008"
-      ],
-      "text": "$$\\mathrm{Rule}_i = (S_i \bmod 8) + 1$$"
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Saliency_Steganography_Chapter3.txt",
-      "line": 22,
-      "controls": [
-        "U+0007"
-      ],
-      "text": "جریان بیت‌های فشرده‌سازی شده $\\mathrm{Payload}_{\\mathrm{compressed}}$ صرفاً در ۲ بیت کم‌ارزش (LSB) پیکسل‌هایی جای‌دهی می‌شوند که شرط قرارگیری در ناحیه پس‌زمینه کم‌برجستگی را برآورده سازند ($M_{\\mathrm{ROI}}(i,j) = 0$). این جای‌دهی دقیقاً تضمین می‌کند که ناحیه حساس ROI ۱۰۰٪ دست‌نخورده باقی بماند ($PSNR_{\\mathrm{ROI}} = \\infty$) و شاخص‌های کلی تصویر پنهان‌نگاری‌شده در سطح آرمانی $PSNR > 50\\mathrm{~dB}$ و $SSIM \u0007pprox 1.0$ حفظ گردند [4, 5, 7]."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Complexity_Edge_Chapter3.txt",
-      "line": 90,
-      "controls": [
-        "U+0009",
-        "U+0009",
-        "U+0009"
-      ],
-      "text": "- **پیچیدگی زمانی لایه اول (U-Net & SHA-256):** استنتاج شبکه U-Net بر روی ماتریس $W \times H$ دارای پیچیدگی $O(W \times H)$ است. استخراج ۴ گشتاور آماری و محاسبه چکیده SHA-256 بر روی $N_{\\mathrm{ROI}}$ پیکسل انجام شده که $N_{\\mathrm{ROI}} < W \times H$ بوده و پیچیدگی $O(N_{\\mathrm{ROI}})$ را تحمیل می‌نماید."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Complexity_Edge_Chapter3.txt",
-      "line": 91,
-      "controls": [
-        "U+0009",
-        "U+0009"
-      ],
-      "text": "- **پیچیدگی زمانی لایه دوم (سیستم ۵بعدی RK4):** حل عددی سیستم ۵بعدی برای $N = W \times H$ گام دارای پیچیدگی خطی $O(W \times H)$ است."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Complexity_Edge_Chapter3.txt",
-      "line": 92,
-      "controls": [
-        "U+0009",
-        "U+0009"
-      ],
-      "text": "- **پیچیدگی زمانی لایه سوم (زیگ‌زاگی و DNA):** پیمایش ماتریسی زیگ‌زاگی و اعمال عملگرهای DNA برای $W \times H$ پیکسل دارای پیچیدگی خطی $O(W \times H)$ می‌باشد."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Complexity_Edge_Chapter3.txt",
-      "line": 93,
-      "controls": [
-        "U+0009",
-        "U+0009",
-        "U+0009"
-      ],
-      "text": "- **پیچیدگی زمانی لایه چهارم (Saliency & zlib):** محاسبه طیف پس‌ماند برجستگی با تبدیل فوریه سریع (FFT) دارای پیچیدگی $O(W \times H \\log(W \times H))$ و جای‌دهی LSB دارای پیچیدگی $O(W \times H)$ است."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Complexity_Edge_Chapter3.txt",
-      "line": 95,
-      "controls": [
-        "U+0009",
-        "U+0009",
-        "U+0009"
-      ],
-      "text": "بنابراین، پیچیدگی زمانی کل سیستم از مرتبه خطی $O(W \times H \\log(W \times H))$ بوده و پیچیدگی حافظه‌ای آن $O(W \times H)$ می‌باشد."
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Complexity_Edge_Chapter3.txt",
-      "line": 102,
-      "controls": [
-        "U+0009"
-      ],
-      "text": "نتایج ارزیابی کمّی نشان می‌دهد که زمان اجرای تجمعی سیستم برای تصاویر استاندارد $256 \times 256$ برابر $2.93$ ثانیه است که تفکیک زمانی لایه‌ها به شرح زیر می‌باشد:"
-    },
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Complexity_Edge_Chapter3.txt",
-      "line": 108,
-      "controls": [
-        "U+0009",
-        "U+0009"
-      ],
-      "text": "دست‌یابی به زمان اجرای زیر ۳ ثانیه ($2.93\text{ s} < 3.0\text{ s}$) اثبات می‌کند که چارچوب پیشنهادی الزامات نرخ تاخیر زمان‌واقعی (Real-time Latency) را در بسترهای بیمارستانی و پزشکی از راه دور کاملاً برآورده می‌سازد."
-    }
-  ],
+  "issues": [],
   "records": [
     {
       "source": "Introduction_Chapter3.txt",
@@ -361,8 +215,8 @@
       "start": 4,
       "end": 4,
       "kind": "paragraph",
-      "source_sha256": "4aad7c5b26734d64febd678ae4116f00f6d39dd9e3300a25ff7266988720fe44",
-      "tex_sha256": "769da5d720ef88dbf35e9f6bb0da8f30d66441339111493ae5da084232175c60"
+      "source_sha256": "b958911bf769b6ea88c5cedb01bdf5038b257dd0f486cc506d8ff20f60824454",
+      "tex_sha256": "c9cafda0a27ba5d300a822129c422899cb461339d9d0d3776363746c1498f7ad"
     },
     {
       "source": "Introduction_Chapter3.txt",
@@ -497,8 +351,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "90b31864e896ac55402d55d555a4c9f571774b180705c1ed2bf50a9b89353c26",
-      "tex_sha256": "05030495581033b2cc2c91cb814b267c4a7a2beb17d1f500c63c4540d4c6e649"
+      "source_sha256": "253fc66a3049d676c02d79fc9dfe2c95d5473e81e7e140b7b8a01d77304881bb",
+      "tex_sha256": "43ed9b2c899827e9d5120e8b29057e7945d3dd3ef1857ddd0236ee4a2d4f86c7"
     },
     {
       "source": "Architecture_Dataflow_Chapter3.txt",
@@ -553,8 +407,8 @@
       "start": 10,
       "end": 10,
       "kind": "paragraph",
-      "source_sha256": "18b056a7baab9e47e7240cf1c0a4d747babbb93092e9ebbde3fac07ba14ca5f0",
-      "tex_sha256": "f48c0ff46918a34c141b6da016cebb6953e0ee0960d268402c34e77f173a802a"
+      "source_sha256": "f92d2c9264ca92cac36fa9b3fadfa218ce6f2bef75f27ae8151fa56df3823098",
+      "tex_sha256": "4b6f9e7f5c8e4be31d56501be188905268e9c3106920138af02b8b6a79947fc7"
     },
     {
       "source": "Architecture_Dataflow_Chapter3.txt",
@@ -577,8 +431,8 @@
       "start": 13,
       "end": 13,
       "kind": "paragraph",
-      "source_sha256": "244c256207dc140bc50ba79e0f38b4795b67ddf24b76c7c0d2b8ef4b803d9f70",
-      "tex_sha256": "dbba0d22e9bb51d1592af132467c6b9eadc0a343f4144b5fdb2dbc6b5b1ecf3e"
+      "source_sha256": "3f237a56edfe1aa486c39349cabf1c0e1c6cc0d06ed62a67698ad225cb775362",
+      "tex_sha256": "8b4976514bb9f111153accdee81c5b79e88d086a43f3906c86b001b7993019c2"
     },
     {
       "source": "Architecture_Dataflow_Chapter3.txt",
@@ -609,8 +463,8 @@
       "start": 17,
       "end": 17,
       "kind": "paragraph",
-      "source_sha256": "880b4660b025618ff5aac78b7a704e1a4186c073654348adfcf6822bb878d9c2",
-      "tex_sha256": "4db884a67f28316b17dc4f3350247a75dbfa8c2e9d0bb1ea2bc6330f74cb3d7d"
+      "source_sha256": "5bcb6f6c40e0f62eb9d05ceab4565f69212adb77e1701d934ce520fe9671dce5",
+      "tex_sha256": "71f347f590311effe76223eb3fb81e88d1906cc5d33777be789ab0da36bda2b0"
     },
     {
       "source": "Architecture_Dataflow_Chapter3.txt",
@@ -633,8 +487,8 @@
       "start": 20,
       "end": 20,
       "kind": "paragraph",
-      "source_sha256": "983584d136f4a4cb54394331fa44c43d40bc3b4813de881ff742c691baead4a5",
-      "tex_sha256": "b282b51cec42c5603d178db03833ac34961dce0c18ddf3f0ae291f3b5e916da6"
+      "source_sha256": "82d97b1a0601a76be6a1cf1fd39aef2792482a2f5649ded799aff2979e95b7e5",
+      "tex_sha256": "9dfdb0f42de1dd5fc1a3591be048c505236182aed67a1d40b6b8c5c81729cc15"
     },
     {
       "source": "Architecture_Dataflow_Chapter3.txt",
@@ -649,8 +503,8 @@
       "start": 22,
       "end": 22,
       "kind": "image",
-      "source_sha256": "e20f9738e73f1e150fda9b1659e745f1eadeea61446a5543a3b184fd17d38257",
-      "tex_sha256": "589f5935060df18c95064d5ee1e3716d937cb997d717b491a6888d858fb2eec8"
+      "source_sha256": "0322eb7f322455fdb43a3ba287bf85e581ce7697f84d3943cd218c4bbbb9507c",
+      "tex_sha256": "9dc8a8e35088f0e3d5bf94cb05cbba61a6f47eb6cc223569ec4431654dea169f"
     },
     {
       "source": "Architecture_Dataflow_Chapter3.txt",
@@ -697,8 +551,8 @@
       "start": 28,
       "end": 28,
       "kind": "paragraph",
-      "source_sha256": "1bc45c508b5ec6ed5ab62d0a3994bd1c6b7b231ad5c01b80d74b55e17e4678b1",
-      "tex_sha256": "5f5c546843b793dfffc411ddb8d880888a54946710d9d8713378afba70f5c63e"
+      "source_sha256": "56c5338ce174fd6819cee52ac1997bdfcd5b5a88b3ea8cd0d04b750bc151ef77",
+      "tex_sha256": "e3a0f5a3d0fbe17632bcfc31ca73f7237a056cfe4fd44288eb276811e645b87c"
     },
     {
       "source": "Architecture_Dataflow_Chapter3.txt",
@@ -713,8 +567,8 @@
       "start": 30,
       "end": 30,
       "kind": "image",
-      "source_sha256": "d898b93bfa16a8b8334bf90893ee0ce5745753dc0537573bcacf7d664d35815a",
-      "tex_sha256": "12afd6bccb37842389d7f9b4d5d5d33a4ec272b08cadcaf0430aa89e36c588d5"
+      "source_sha256": "588b34d2ad272aa5d2a60c583032eba09dded799d36522718e796851f20bf0ad",
+      "tex_sha256": "6ebfb99db785ce148700da3fb832d07cc9092a3cbca810901cd09c42463c268f"
     },
     {
       "source": "Architecture_Dataflow_Chapter3.txt",
@@ -769,8 +623,8 @@
       "start": 37,
       "end": 37,
       "kind": "paragraph",
-      "source_sha256": "dd7036e87bdbadafda3777127114a9b5174873576b6f24f3bbbfc8afbc1bf16e",
-      "tex_sha256": "122bdc1678509da496782eae46e6adbf6149b640d3cbb7af3cdf38579f772b40"
+      "source_sha256": "e0837ea66042d4e213aa5c16aaebdc9d33af103309339fd5b6f76f42a8371d97",
+      "tex_sha256": "1a7cb6c9e13655727ae3dcd2be84e52edbcce36b819eb6cfaba048022087f170"
     },
     {
       "source": "Architecture_Dataflow_Chapter3.txt",
@@ -794,7 +648,7 @@
       "end": 40,
       "kind": "paragraph",
       "source_sha256": "aa76f031422e3474a14772103af215b16d787d38caef1e1fb66fa709ad89e866",
-      "tex_sha256": "58aef7eee1d6940dc2bae7cff2152eb83c17e838cb181423044aa2823e1024cc"
+      "tex_sha256": "8ddc72d94140a83fda235a3c16d10664aba4ba5a18a7df8b8ff0fa7984b195ef"
     },
     {
       "source": "Architecture_Dataflow_Chapter3.txt",
@@ -817,8 +671,8 @@
       "start": 43,
       "end": 43,
       "kind": "paragraph",
-      "source_sha256": "f55e11b374f7f13a236d444e3f1fdd650f84a3f60eb2aa4dc31cb93c06be4774",
-      "tex_sha256": "44ec34da15b737a508da7e8aa29ccf8c407858e395e2109966f52ee14c7cf53f"
+      "source_sha256": "68f7f84af2c408cb5a201dec66666632b4e7f564b430a14153e2d107930784a9",
+      "tex_sha256": "e776f9f09b9c628734dec7db2ce4f633ee03d715b342dc1c289837ab34426d9f"
     },
     {
       "source": "Architecture_Dataflow_Chapter3.txt",
@@ -833,8 +687,8 @@
       "start": 45,
       "end": 45,
       "kind": "image",
-      "source_sha256": "da2369a034b55dced92b31bfd113c989a87a5ee23ef6498f4da6612a61d45d16",
-      "tex_sha256": "dc925b0083f0f6a6f00d4f8a09c9d783c02bee5bd24eeec0a80de8a3fad12b78"
+      "source_sha256": "a7a8d9fcb3cbb5af42456792a040b06dc3a8e592214927d1e5d74e004bf66a35",
+      "tex_sha256": "bbd716eebd93ec3f88b13d20849944c75082118602ddd02b0715180fe0c00d94"
     },
     {
       "source": "UNet_KeyGen_Chapter3.txt",
@@ -857,8 +711,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "37acd65f6612430589bf47e73f2fcdaae6b22f69fe3562178be3e292ef64545f",
-      "tex_sha256": "cb2ce73448b0e17f46298021ec5c1181622f5d842cdfce8383e10e5f7cfa42b1"
+      "source_sha256": "288a8f50d3216a693c95aa4187bb63c7e8a8e73bfe247cf43ae88f56bde5721e",
+      "tex_sha256": "f29e0e6ff7355b852e41ec2b035f9bb0b4392ad5b2ad979f5aed932fd819768a"
     },
     {
       "source": "UNet_KeyGen_Chapter3.txt",
@@ -873,8 +727,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "3fc237e311b129ca67a93201a712970327ec66112dcb719b95fd3c80b79bbcbf",
-      "tex_sha256": "7ef059a4604e074593fcdd4eee6f394a106d2ecab68cfc1df0d0b28b8af46c4d"
+      "source_sha256": "e221de773dc0ad76dfd39dadd1377e091f5f0b4a57ac4056ef80523e4c7c2e20",
+      "tex_sha256": "066e2556e0c9158274137c9b921aeafbefc2282db7265010b20517c76d972942"
     },
     {
       "source": "UNet_KeyGen_Chapter3.txt",
@@ -889,8 +743,8 @@
       "start": 7,
       "end": 7,
       "kind": "paragraph",
-      "source_sha256": "0fdc3461315559fbb80e9e8dc5423b8159d5bf85c0bb9cee7be51d414b37e72c",
-      "tex_sha256": "7a2f2600965144f6bf7c67c62ab1f2ef9c6c576d26652d1b3c6ccb5a5b2d80eb"
+      "source_sha256": "1febd7bed032a4141645eb79c74816e68c8ba47fbbad60d1f5e79579062ae08c",
+      "tex_sha256": "e2b1218e4ac4f7f208171bd6b88a68f8dc8c947470926908a8505de72e49aa23"
     },
     {
       "source": "UNet_KeyGen_Chapter3.txt",
@@ -905,8 +759,8 @@
       "start": 9,
       "end": 9,
       "kind": "image",
-      "source_sha256": "ff9afb07056b8dfa82800e4c6b87cad3ca6ee5ef63b1d83abde29abbdd5623c1",
-      "tex_sha256": "3bba08903aa9a039bce14ede51bb25497a09930e35b5f0130b1fca6c17d8cf77"
+      "source_sha256": "a22dd59cd46fc0682cabf44cd76a4e9110e75a28225c5f6c33795b4ec9420899",
+      "tex_sha256": "9e185ee7d7a18c17efe6889cd7ce17d1710375b0b513d60f5910dc0c5b404c4d"
     },
     {
       "source": "UNet_KeyGen_Chapter3.txt",
@@ -1001,8 +855,8 @@
       "start": 21,
       "end": 21,
       "kind": "paragraph",
-      "source_sha256": "54cc559b6873954ac95c46817f52a2e70efe55b82961286acf44763a89e3e430",
-      "tex_sha256": "3ba1c0b4fce0a323067ae262401998835163e3993913d763d0d8cfd0c2896aa6"
+      "source_sha256": "e809d948e19e540bb97739c03ec416c1208a586aac1841ea36b7a1b00f68b5b1",
+      "tex_sha256": "e3bcb0a6c6f7f1af64b939f68d607bf779f595d686d2ec75a839250bcef49a07"
     },
     {
       "source": "UNet_KeyGen_Chapter3.txt",
@@ -1017,8 +871,8 @@
       "start": 23,
       "end": 23,
       "kind": "image",
-      "source_sha256": "4ed6ec53cce85b6d25b2ebddf0cc79c0ee45f2d7508babd2baeb5d9224d6ddbc",
-      "tex_sha256": "0221f767c811a6083595bcd534636483a47da4e960e0000f2f833461bcb1b0f2"
+      "source_sha256": "293395ea0744b93b744ecbdf12625a053b61d7f0a365000abd77830519a21e2a",
+      "tex_sha256": "c5aa3fb241165033f6bb5d473bebe6bea4f4abbbdabe6fccc5020a08b864c07a"
     },
     {
       "source": "UNet_KeyGen_Chapter3.txt",
@@ -1081,8 +935,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "743eb339c117e6ebaadc1f2b8b6eedd6e26e05c18a0523c654d124bbc9461883",
-      "tex_sha256": "6f5450d42951243cce3e95d22687327598cc2a2d53e7a0730447f653589bdee9"
+      "source_sha256": "e30ae30a051492b593bd3fb7e2cd5e2ea5869a3919ca47c092a3fc1754bd3da8",
+      "tex_sha256": "aaf1e62c73fe05465c2c6910f98947eede45873c71a66169791eabc52984d78d"
     },
     {
       "source": "Hyperchaos_5D_Chapter3.txt",
@@ -1106,7 +960,7 @@
       "end": 6,
       "kind": "paragraph",
       "source_sha256": "af53039d4272ddc1e0d55e6d239d213e6891243da443437cff65717dbea0166f",
-      "tex_sha256": "5ddd13a3946b51ae486d8fd5a239451ad1ed014856d9aa1471acdf02cb4f564e"
+      "tex_sha256": "fc0b1d55698d969f5b83dbb11ea422b794625dcc18b505fc32b815d5873287c5"
     },
     {
       "source": "Hyperchaos_5D_Chapter3.txt",
@@ -1121,8 +975,8 @@
       "start": 8,
       "end": 8,
       "kind": "image",
-      "source_sha256": "4dbd5bc8ca1b4caf8e63463920bec1e48d533c5a82c8c265b7f25efa9d7a1e07",
-      "tex_sha256": "604bb96e25a41c013d8c67c0f3bcb23e07d90534c608a51e309c7ffa41a41c07"
+      "source_sha256": "39b32397f5e5baa5fac4c50508c95dd4267eb2582e6aa7a17259ee837eb16b0e",
+      "tex_sha256": "86099666729f3215b7950c643fe10afcfbc7f892f640af6773f981ddb892bdab"
     },
     {
       "source": "Hyperchaos_5D_Chapter3.txt",
@@ -1153,8 +1007,8 @@
       "start": 12,
       "end": 12,
       "kind": "paragraph",
-      "source_sha256": "551d5d226ca387129865809a1613671363bf1da729aabfdd23c590e4c65829ac",
-      "tex_sha256": "4c5ad5207c7717e6ead270297e4fc5e62f4848c924ed0aa48ae7783750ed04b7"
+      "source_sha256": "df869aded365f28ecf8e1bfdfe4993073a92bc3377cbb6b542477480f82f0876",
+      "tex_sha256": "1992eeab7c55b8ee9d32d9257d90cebcde5fbdf1033165970762947fd16d534b"
     },
     {
       "source": "Hyperchaos_5D_Chapter3.txt",
@@ -1169,8 +1023,8 @@
       "start": 14,
       "end": 14,
       "kind": "image",
-      "source_sha256": "ba74ad83d34ffd934b94ca162436f441f3b6c3e638252584355a8f16591a943c",
-      "tex_sha256": "e2eb815b0c536ff7ac36d41a1bd4f20583673346e1b78ba62ecd51494f4d7598"
+      "source_sha256": "ceda74bbcc87d9d23f9fb05adda3fb376d5dd03875c1b3d75cb750d1e33cadab",
+      "tex_sha256": "198021b69893f627eb285240445a628bbebd498af0394019b35171e69121eea1"
     },
     {
       "source": "Hyperchaos_5D_Chapter3.txt",
@@ -1361,8 +1215,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "935fdddcd68fe534dcb48d1b99c4893bc69761d5f80151df5e8ccbf6418f5619",
-      "tex_sha256": "4ae5e986d62fca2b3920192f0676621513c0ef05a416984c916a4ac69ab831ed"
+      "source_sha256": "b60771b94515db51e0f28d8eca1cd67a8cc381335559effd377c03d6427da4c8",
+      "tex_sha256": "215f9767f1a6dd9b19828552ea348c5ae82713c41a6807f64ec8257d2e43f5d1"
     },
     {
       "source": "Zigzag_DNA_Chapter3.txt",
@@ -1377,8 +1231,8 @@
       "start": 5,
       "end": 5,
       "kind": "image",
-      "source_sha256": "f1481c027847af3b4ec38164db9fdbe53c2987bbdcb3510eaa6070817f0d93c0",
-      "tex_sha256": "976e6e3307cb3197e635938b8be8bfc559054cafbcabd0a3ae27171534ec5b37"
+      "source_sha256": "4e213e6d154acea93219d6933df2f85087aff5177e94f3d719dd59b92ba8f355",
+      "tex_sha256": "1a0bb2e1175772dc83739d0320bbaab36da6f6e081cd3f30b5e8c7f449e06fe3"
     },
     {
       "source": "Zigzag_DNA_Chapter3.txt",
@@ -1401,8 +1255,8 @@
       "start": 8,
       "end": 8,
       "kind": "paragraph",
-      "source_sha256": "7ba19210b312555bc9b3ba574b104968b823159f40c45ac38790c4d12d591bc6",
-      "tex_sha256": "55d9266de40ff2f5143af4f0ddbb96b3187cce5cac643fc01ae57575b33c3d58"
+      "source_sha256": "4b04cf0e3cf50115fbbf9db023da766ab6d3fafebdecc873e277debb8b44c709",
+      "tex_sha256": "cccdadec4e719d31a0ce9229cfddf7b088fa4e1cebf92d8ed92618e67422f1fd"
     },
     {
       "source": "Zigzag_DNA_Chapter3.txt",
@@ -1481,8 +1335,8 @@
       "start": 18,
       "end": 18,
       "kind": "paragraph",
-      "source_sha256": "894908921b8a0a636e2615e970802c888c36b6832ec982f4735bc0792dcd4f26",
-      "tex_sha256": "464dc5e0111f838362515009d64f2b247671f8f13869156002a68c005cc03a7d"
+      "source_sha256": "3e4d8bd3d8167fafcde07431974d5030c224ed771cbb51a678d501396b5543a8",
+      "tex_sha256": "e9a9299db5e5d203b7bfd4d8883cbc642c746da23b2ac869f338701567b40fba"
     },
     {
       "source": "Zigzag_DNA_Chapter3.txt",
@@ -1609,8 +1463,8 @@
       "start": 34,
       "end": 34,
       "kind": "image",
-      "source_sha256": "7610bc5624444f26b32bcac19bed2e70a38626ea8b7a4c2f53e48b2f44c10005",
-      "tex_sha256": "36d01e9e226adaecca93a3db7fe3f0d23644c66660f44ad31ad2fbc8eba33b89"
+      "source_sha256": "d1eed54151094a7cb16a0d95f29934599c36d3882ee14c43f58b72045bd2e512",
+      "tex_sha256": "b3c732e25e8a1e240bf912086ea9864a6346e95a295963d081a7e0e25e5782cc"
     },
     {
       "source": "Zigzag_DNA_Chapter3.txt",
@@ -1673,8 +1527,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "c1ce6cbbb2a410338c318c673e835327e5aed0bab3dc423bc309b38f1915d361",
-      "tex_sha256": "bd175088c60a30c1ab86a2d7291f031888d4b919d8a5ba94706e6fea6d5387cd"
+      "source_sha256": "b8021466e284c474842c149bc486d19ad64efbfdba7361dacbc03ac02cf8ae77",
+      "tex_sha256": "6d1196b0041b216b9aaf1c61d9aeac40ce41f9ecbcef04e90c129b1b8448b217"
     },
     {
       "source": "Saliency_Steganography_Chapter3.txt",
@@ -1689,8 +1543,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "ec4fccc8a562b64c07879f4ad8b23a427b00919b314b58e8257829b2e2e22e25",
-      "tex_sha256": "f08b1fbde22760fe91fe3960ba2bb346881ded3f0bddffc6ebfd4442ea68fc36"
+      "source_sha256": "3202e16e11e5459ca6b31395871d4350600b8050ed7cadadf978540a40ba10ee",
+      "tex_sha256": "0fe1bba8d4f11de7f6023d74a7d7c4b3b4e97583c013fc287fe3dd2a543f3085"
     },
     {
       "source": "Saliency_Steganography_Chapter3.txt",
@@ -1705,8 +1559,8 @@
       "start": 7,
       "end": 7,
       "kind": "image",
-      "source_sha256": "c7a1bfcc641912279ad57fc7d3610d2349ec0aa770415fd1aa619d92d9da7b90",
-      "tex_sha256": "aad04caf41522800b42d941a6d4bcd632d72d70bd78a59806fa72cb1eb1e5305"
+      "source_sha256": "ae8448e227ef3434ac3ecf444be9bfe8ee641fe19731932285657fd5d30ce1b0",
+      "tex_sha256": "fc1980f953d9dc29c434865fed4aca0f59c98bce4908cdfec30a4b5dd97c7e4c"
     },
     {
       "source": "Saliency_Steganography_Chapter3.txt",
@@ -1825,8 +1679,8 @@
       "start": 22,
       "end": 22,
       "kind": "paragraph",
-      "source_sha256": "5c87e0b6d8d348ddd5f30311f11f487682fd49eac2b4f03f4837d9ef95444a7b",
-      "tex_sha256": "a237d478a87f79b8bb09f79283300e418873f9ab888f8307087f0f1907d73217"
+      "source_sha256": "b5efe4fc88c3093bf0fa6774e8ffce810754a584c82682340375e37447a36975",
+      "tex_sha256": "4f6d17e66361142f60ee8ab41d413456256e1287082e98a3bfd23fb6a1fb4a70"
     },
     {
       "source": "Saliency_Steganography_Chapter3.txt",
@@ -1841,8 +1695,8 @@
       "start": 24,
       "end": 24,
       "kind": "paragraph",
-      "source_sha256": "0f24f346cf38eb6a092d7f5ff27f01d6fa2d7370507a8d6900981730da8c5959",
-      "tex_sha256": "723daf6b138c0623d0676b04003d4983ca3de4dab937c9981a1849e9dec7d5b2"
+      "source_sha256": "86a2ae0f9bcbe5d2c71f722f22e55c8f422f86c7d72c641bbd4082e87dba3177",
+      "tex_sha256": "f85881ade2c3cb4ce743f4b81170955175aa662c6b3850d2d3466805313e62df"
     },
     {
       "source": "Saliency_Steganography_Chapter3.txt",
@@ -1857,8 +1711,8 @@
       "start": 26,
       "end": 26,
       "kind": "image",
-      "source_sha256": "65bb40e82a36eaae7f8b6877708c07a1eed8cd23123ca6c981f6b06828cc0be4",
-      "tex_sha256": "ad423a7eba7629db11d8d873f2e97f18660c93d6d69a2ddac67db804000dc41e"
+      "source_sha256": "a79bdbb5cb0429f6854f87fc0a5c9fe63df9b0690405ff14028efd0c25664ba8",
+      "tex_sha256": "8f85efcb8485b4f8eb5d96195098b8885fbaefa1fbdbdb38b18168e94bb6250c"
     },
     {
       "source": "Saliency_Steganography_Chapter3.txt",
@@ -1921,8 +1775,8 @@
       "start": 3,
       "end": 3,
       "kind": "paragraph",
-      "source_sha256": "e14d7ba9ebd617be1c529d49b407b834e9a082d76c14166075623a9621119860",
-      "tex_sha256": "be23d75748ef0d7ba38ec6322ea02fbc45341332d114a42163ac7094f2e7e583"
+      "source_sha256": "64c99f446ec6ef44907306ec5601a5ba3a9c7601cb357265db6f95af6e50e94b",
+      "tex_sha256": "bd1f1f2b80cf54101bf4affad43e6fd95ce20a913efc703fd2cd2d9f39f8bf3d"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
@@ -1937,8 +1791,8 @@
       "start": 5,
       "end": 5,
       "kind": "heading",
-      "source_sha256": "48ff990ea6a19da3d3cff534f9e266c4020ea4d2b5bc31ec391d7e81173cad7b",
-      "tex_sha256": "d374798855f19274364b9ddf7cfcb342a6cd067cdb509a6716d372bb4f4aa57d"
+      "source_sha256": "4c6e28b876157ea47a6298da36a25f67a41b8665c588d8a3561e8e92dfeba9e7",
+      "tex_sha256": "f3c38b52d782d2dc0bf365874924406aac6ece8bc5d2f0d92bff70ea3a3d53e4"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
@@ -2057,8 +1911,8 @@
       "start": 73,
       "end": 73,
       "kind": "paragraph",
-      "source_sha256": "24fcdcd3589213190c331f2157842b24918a57681d6c74458aab14656fa925f7",
-      "tex_sha256": "12ed035ba254cab10fe92dec665c3233791f89dfc6ecda430ef993c03229b926"
+      "source_sha256": "c069f496d33411b437a8cd054acbd577951fbd124904782246af93cf7fc7a1cb",
+      "tex_sha256": "71b8cb536ef2b3f8276b58d98f2838a0f0a0affc14fdab58737ebab54d61b951"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
@@ -2113,32 +1967,32 @@
       "start": 90,
       "end": 90,
       "kind": "paragraph",
-      "source_sha256": "25f560d7494e3a3a37ef44e580c985a043d27eb67d4ef7a24b6115bcf2fe9d2d",
-      "tex_sha256": "ec03515f5356f50851fc5e391f7b7dcbb34afd5c2cf0df610afc12e817b2f18c"
+      "source_sha256": "eac0e62e275a6ee30bd1626340edcdec09d04c94a9a5bc1da7330d0756521bac",
+      "tex_sha256": "eb37ed017ab48ba47a724fccd7d4f2f13bfb5e3b2770151fadef0a03e50be9c7"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
       "start": 91,
       "end": 91,
       "kind": "paragraph",
-      "source_sha256": "e3b1fad753b23a9fefa721cf36170860444910b4e94ed1d22580ab1b6c28ee0d",
-      "tex_sha256": "d6094886ee9a25c32c8c1540063c259e6f1d853f677c0588bf1e19e3bf75f224"
+      "source_sha256": "995179ab9ea48475cc2c75511e02ccc54d6b2eecc1c4434245bfa574bcd61792",
+      "tex_sha256": "116d2f9052856730ab655d62a16803797b750fe1343576cf1c18d33697750533"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
       "start": 92,
       "end": 92,
       "kind": "paragraph",
-      "source_sha256": "aef9f12e53bc8361536f462eca6dfbefa3634dec9c1cd05be1e9065f69754765",
-      "tex_sha256": "342a1990c3a333fae286c22f3ada11d10bdca39a4f39f0fe0101bd6be3540d39"
+      "source_sha256": "55fc4d97e868c818d43d8bbddd35c076992f2ebe60b61134cf9618a3f3697df0",
+      "tex_sha256": "ab203938e9380b723a1db8a5e6862659205c41b32159100f946c9a3424de783c"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
       "start": 93,
       "end": 93,
       "kind": "paragraph",
-      "source_sha256": "fdb478b0d2745e7667802f1de5254cb3037e197577e4efdccda529a83f22c2a4",
-      "tex_sha256": "9b6dd1dec3e4306e17f747a4e5a965bae1ab5cce091bdd60dd3789fe65279a52"
+      "source_sha256": "24154200396c491d36b3bf84de5fe8472729a088467efb51b52a355a9426444f",
+      "tex_sha256": "953a31c1f5fa6294b8d7796a9cfe32020187501bf3e74e4c7abfe650f08aef34"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
@@ -2153,8 +2007,8 @@
       "start": 95,
       "end": 95,
       "kind": "paragraph",
-      "source_sha256": "2267fad6e262e7eee7eaf502e360e9f24864cfff128b91871ead7f75b9a6ec85",
-      "tex_sha256": "f77771c094434dd74804538aca341ef1f7bdd96f2874d2452f0e14557f5e0178"
+      "source_sha256": "53b64aec93a2416a8a8bc95e1fa34f125c1d556dd0168a232ae96ae80584085a",
+      "tex_sha256": "bd759d0a6d273d99e9f8e9c1bed9be0ea0f42e7055f43c929d38e315c381976c"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
@@ -2169,8 +2023,8 @@
       "start": 97,
       "end": 97,
       "kind": "image",
-      "source_sha256": "e933ccee4ac0b47eab8f67c01940b417bf179bc838688e6dbf969d54366605e7",
-      "tex_sha256": "f25bca92cbe147865b94fa0dff96a4e3914e480760faafb952ec7381f34822fc"
+      "source_sha256": "09de95fbd779071272267e7e183a8440ba7287c01f14d9a7bccaf9a75e3f9c2a",
+      "tex_sha256": "f9687c5538be5b7b8e1d4fdcb5c15f2f816494f6915413e4b0321516b0363b97"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
@@ -2193,8 +2047,8 @@
       "start": 100,
       "end": 100,
       "kind": "paragraph",
-      "source_sha256": "7ab2ad5a04d6b7ac3b583fcd6507485a44785312deecb6e82303a8b9ee26da10",
-      "tex_sha256": "4ca42136e271ab1d7aa6078be5fb6c9f0172e170fadb0cd500b975fd8bb813d0"
+      "source_sha256": "277b89a5819175de9b71a1f762ae68ddedfee7a9ea3476be2a055673a43dd851",
+      "tex_sha256": "5b34da463ec05e5b3f4dbd4792a622d8d96f281aaea33f93526f9220e7be891f"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
@@ -2209,8 +2063,8 @@
       "start": 102,
       "end": 102,
       "kind": "paragraph",
-      "source_sha256": "ffd1c478cd28a293e14422bf07499a00f8b33e3000d3fae2e51f4e7f807dcd1f",
-      "tex_sha256": "630af5c16d6942ce838767ba4665bd3fc3206016520d543f62b152a571ca8414"
+      "source_sha256": "8f1f0abb2458953f9f63b301b9ffa41da6874bb4d263de67743eb30063192e59",
+      "tex_sha256": "a48fcf6b9eece1b6475a58f8f239784cacb39b8edfa23dd439e5606717b2413e"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
@@ -2257,8 +2111,8 @@
       "start": 108,
       "end": 108,
       "kind": "paragraph",
-      "source_sha256": "9dac3343059423b5ac06db8cd1daee21bf32b9d4bad46c7dea408bb253823913",
-      "tex_sha256": "1ac99c70fe484cad2f90b7efd35e557826ac582d3d6937d548ea4a53fa260ba4"
+      "source_sha256": "ba5b779f8c1858c799efe9dc3e3fe77b4014978b0c4d52efcefd7c58ebdcf2a0",
+      "tex_sha256": "5d333694260d43e28e0abbc24d3f9c79235f5bc8b5629381d75d3ea10fb90cf8"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
@@ -2273,8 +2127,8 @@
       "start": 110,
       "end": 110,
       "kind": "image",
-      "source_sha256": "e2bd62f0bdca81c956a62499adf286cf8dc0ca6b8e934f31fd7e4180b4c76f37",
-      "tex_sha256": "cb362527e7268853f17c3aa824afaa14c1cd4f0c91a4e0ba8419a0047abcca54"
+      "source_sha256": "3fe8c61485681115b60b257c01bf31ae7eefd2dd364157629152b852e6c8e0f4",
+      "tex_sha256": "7a2f798d30b5cf3d37acf0981b6b25899e0d8958a3fd41c92c93cd1eadee2208"
     },
     {
       "source": "Complexity_Edge_Chapter3.txt",
@@ -2286,5 +2140,5 @@
     }
   ],
   "tex_file": "chapters/chapter03.tex",
-  "tex_sha256": "e506bc8306e91b84c4284171a8132ff73c1bedc69b4d90794dcc82115c192b16"
+  "tex_sha256": "7cf3f85037ea0f1bf57c578e81c359f5609094b189bd7b48fedcba1f8e1ebca1"
 }

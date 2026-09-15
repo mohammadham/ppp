@@ -113,30 +113,11 @@
       "exists": true,
       "source": "Literature_Review_Chapter2.txt",
       "line": 51
-    },
-    {
-      "type": "جدول",
-      "number": "۲-۱",
-      "caption": "ماتریس جامع مقایسه‌ای کارهای پیشین و مقایسه با ویژگی‌های چارچوب پیشنهادی",
-      "filename": "chapter2_taxonomy_table.png",
-      "exists": true,
-      "source": "Synthesis_Research_Gap_Chapter2.txt",
-      "line": 6
     }
   ],
   "tables": [],
   "code_blocks": [],
-  "issues": [
-    {
-      "type": "source-control-or-damaged-escape",
-      "source": "Literature_Review_Chapter2.txt",
-      "line": 15,
-      "controls": [
-        "U+0009"
-      ],
-      "text": "سوباترا و تانیکایسلوان چارچوبی امنیتی و هوشمند شامل شبکه عصبی عمیق U-Net جهت قطعه‌بندی ناحیه حساس تشخیصی (ROI)، سیستم ابرآشوبی ۵ بعدی پیوسته و فازهای انتشار پویای DNA ارائه کردند. ویژگی‌های آماری ROI (شامل مجموع شدت روشنایی، کجی و کشیدگی هیستوگرام) برای مقداردهی پویای شرایط اولیه سیستم ۵ بعدی استفاده می‌شوند. الگوریتم شامل جایگشت زیگ‌زاگی و انتشار پویای DNA (Dynamic DNA Flip / XOR) است. نتایج عددی گزارش‌شده نشان‌دهنده آنتروپی شانون 7.9971، NPCR بالای 99.61%، UACI حدود 33.49% و زمان اجرای ۲.۹۳ ثانیه برای تصاویر $256 \times 256$ است. نقد وارد بر این طرح، عدم وجود ماژول پنهان‌نگاری فراداده بیمار، عدم حفاظت از اطلاعات هویتی و عدم ارائه مکانیزم امن برای انتقال شرایط اولیه تولیدشده به سمت گیرنده است."
-    }
-  ],
+  "issues": [],
   "records": [
     {
       "source": "Introduction_Chapter2.txt",
@@ -175,8 +156,8 @@
       "start": 5,
       "end": 5,
       "kind": "paragraph",
-      "source_sha256": "f9092f397dea60f0c478f6868a36a34d3ba6d8018d0fdf86be774dc3c9a105ee",
-      "tex_sha256": "098565319e922f1f9c522c454d57eb0a4fdfa1773972a979193603647371766d"
+      "source_sha256": "070e9aefc1dc4f17c2ea0dfe6c94ee043f0497d320cc4cd367d4d575e1daed12",
+      "tex_sha256": "0498457dafba8fbe87c32ac775acf9028f308f393e7b49112d9f5af610ca67eb"
     },
     {
       "source": "Introduction_Chapter2.txt",
@@ -207,8 +188,8 @@
       "start": 9,
       "end": 9,
       "kind": "paragraph",
-      "source_sha256": "f96cce4de0e35c6ec28403c0e01a03689ceb0466a410d685c9ea23751374f569",
-      "tex_sha256": "1ca193c0ae9c89cfbe9bd6be5f958b0365bb02fe8f90d69693ea4c29109b6132"
+      "source_sha256": "5ed362c065af614f801f88d9b5df957df9d4087308e42aec73ab91ad7cb1676b",
+      "tex_sha256": "f8e9f83ac25d273549cb599950eaff2bd58e544bc4a3d11599fa79986e6d92ca"
     },
     {
       "source": "Introduction_Chapter2.txt",
@@ -327,8 +308,8 @@
       "start": 4,
       "end": 4,
       "kind": "paragraph",
-      "source_sha256": "bf9af59a56ec4eb44079767066116175e491c7ff977fa6bab94f1242e1641018",
-      "tex_sha256": "b625bc4d37d87b81a5a9eb6fd9cce9de7124632034695de3458805c72c505b1f"
+      "source_sha256": "c23dcd75950f12e3eed4485fcc812171a35ee612c5d0d0daeacca17dbc768e4a",
+      "tex_sha256": "8c893592ee51d59749c793e151764fb0e2e550009df46bfc568d3208f01c1ed4"
     },
     {
       "source": "Theoretical_Foundations_Chapter2.txt",
@@ -383,8 +364,8 @@
       "start": 11,
       "end": 11,
       "kind": "paragraph",
-      "source_sha256": "2cc220e6e72ca664d65299077458e6af91cfdfd775eea92abb3db5a83042f7d8",
-      "tex_sha256": "ce774dd402481e1d31de302a74f2d656625eec945360a5ca5911dcf9048b5572"
+      "source_sha256": "ffea849942c6395518e6420a90cdf4d83e054ded904f01ab11911b6410df02ad",
+      "tex_sha256": "45d10b5165088aeebcecb5cfd1650141a9dbb4fea948d4295e15cd09393c7bc9"
     },
     {
       "source": "Theoretical_Foundations_Chapter2.txt",
@@ -400,7 +381,7 @@
       "end": 13,
       "kind": "paragraph",
       "source_sha256": "79cf526fc4c41fdb49b360aee50cb44d0a5ed5c3fc2e895c4758cc5ea6c4050b",
-      "tex_sha256": "6123294a3b002df16a42abb6866fbb5377d0dcce9ffc876478ba8c102b0bbfac"
+      "tex_sha256": "6e610c7be100e8e527287f0875402223c87aabb4939981b346a8acba647237bc"
     },
     {
       "source": "Theoretical_Foundations_Chapter2.txt",
@@ -431,8 +412,8 @@
       "start": 17,
       "end": 17,
       "kind": "paragraph",
-      "source_sha256": "14764d29658d56500d07785cc2a8d9c9051cc1d678daac1d82241fa0eee93f53",
-      "tex_sha256": "1a57f5bf1b0390444726e400d747b7902c3f5ff5ddfd5e09da07abb02552956f"
+      "source_sha256": "1865dd1d1882c7883a5094599e72f7414c83b9f32ebf94b0b122b9897ef34e59",
+      "tex_sha256": "6b2ac69a627b4f1b779694c1ae1bcd6c39e8e23c72bc321117ea64cb9f80ecb0"
     },
     {
       "source": "Theoretical_Foundations_Chapter2.txt",
@@ -488,7 +469,7 @@
       "end": 24,
       "kind": "paragraph",
       "source_sha256": "296cab9856a5a7d72b0c091ae335e4e18c6e1a22cb4ddf26d5ca7a179a8e4284",
-      "tex_sha256": "6148e677c8c4b51cb376d20ceb5652c58f00cbe39ba2f68ae63b4b84af44c40d"
+      "tex_sha256": "d12db082e8593d5cef58c770e7ea85c2c713beffefe163874c2cf2d55955472b"
     },
     {
       "source": "Theoretical_Foundations_Chapter2.txt",
@@ -543,8 +524,8 @@
       "start": 31,
       "end": 31,
       "kind": "paragraph",
-      "source_sha256": "96aff60477c6095cde4c3ec643858f549dc9e7e5048622c6e5a667a4ff6a5e9f",
-      "tex_sha256": "7a5b3611cdf91c3ddfb9a888821580db78fcc1fdd45a29d77bf02144e244a397"
+      "source_sha256": "a1a9c250f1d74de70a38770a365ed07cd0aca581ce2cb87b4661faddb8158e59",
+      "tex_sha256": "8757cd50fbda97bb97283a64c31fbd9fbd2a23a8862a790e60134f6fe2f77175"
     },
     {
       "source": "Theoretical_Foundations_Chapter2.txt",
@@ -600,7 +581,7 @@
       "end": 38,
       "kind": "paragraph",
       "source_sha256": "a406d06be6a97f91586871da9c0f858974c4af3a3750c0100f196ae76f692873",
-      "tex_sha256": "f0c6cde10b80cfab298b75795143825d25c86008065c1574c09e9c553541e11a"
+      "tex_sha256": "f25404dc862c6c1d9b76fe89dce8f7f051341fa15fec78f6089605a2320e6ced"
     },
     {
       "source": "Theoretical_Foundations_Chapter2.txt",
@@ -655,8 +636,8 @@
       "start": 45,
       "end": 45,
       "kind": "paragraph",
-      "source_sha256": "0597c698d118ba99fed3791294c6334dad90fcbf464bfda2367334c95b96ae5a",
-      "tex_sha256": "9bee6ea0e9ac7c5617be4a6b719263cbdf38c0b5cf952e462305f6674d5499ec"
+      "source_sha256": "0057641b4366889fbdfb8b2e3ffd210fb68293cbb613e48cec2a26ad8d9834fb",
+      "tex_sha256": "5ebdbaa3a1954cfb6c722d1cca082fd3a120b15dd403202347095924ee0ac5f5"
     },
     {
       "source": "Theoretical_Foundations_Chapter2.txt",
@@ -671,8 +652,8 @@
       "start": 47,
       "end": 47,
       "kind": "paragraph",
-      "source_sha256": "4a0950fe03386093ca148249a67dc71fa8a07e8567fd41fbbb0a6a84db79defe",
-      "tex_sha256": "b9ed9a4e8f09fb736d981e9983f0779d569885c1f63809b0d868b650f5befb23"
+      "source_sha256": "8ef3df7263873902b1889ab9122b667f11fd42c64177070a4c6a9447e0b24a70",
+      "tex_sha256": "110f079b859fb582c05b833dda1ab0c66e370aa56582dab99fcae6b3b58673f8"
     },
     {
       "source": "Theoretical_Foundations_Chapter2.txt",
@@ -735,8 +716,8 @@
       "start": 55,
       "end": 55,
       "kind": "paragraph",
-      "source_sha256": "a42ab522113c21882b5a748746ad2994866c484ac13271e98f63af5d2c09dda4",
-      "tex_sha256": "7118c02669709a56a9f23898a03d12e325de99d418570dc1f9ffa7dd13b12747"
+      "source_sha256": "7894616dd365decbd5b84be3dd9fd72e837eca5c0772d05cae6042902a3ee899",
+      "tex_sha256": "a630670d0455f588ecd80a435c49dad55e741addc8c221d67dfab49cf6819ddb"
     },
     {
       "source": "Theoretical_Foundations_Chapter2.txt",
@@ -791,8 +772,8 @@
       "start": 62,
       "end": 62,
       "kind": "paragraph",
-      "source_sha256": "47edc5ba36e43ecf5922771e2eeb12b320855f3a132241955571d97ae9ba9450",
-      "tex_sha256": "7b1cf5250050884d160ce6d738fae8f47b8033a28e46ff071b85b13fa638b789"
+      "source_sha256": "56641561becb0f96858c4a4b0c04591860900e7afb2d4b81a3bf5cf5411612f6",
+      "tex_sha256": "8dbf10ace28846c0034b1b7abaf094d69486139d996878dccd0fbbb5b40ab1e0"
     },
     {
       "source": "Theoretical_Foundations_Chapter2.txt",
@@ -847,8 +828,8 @@
       "start": 69,
       "end": 69,
       "kind": "paragraph",
-      "source_sha256": "298fb15e6f479e45afa20e1ed6d45ae75a5d9e44beb3a8fd3a006c36e94c7f10",
-      "tex_sha256": "4a0ca0fb0314615df2b65246aaea5bcd7ea1eca6ddab0fa6c7de9bcaa4808ebf"
+      "source_sha256": "91f18002eabab0c5b7eb12087bea8d1af4a736da709abcd42dc2d035e583ddb6",
+      "tex_sha256": "8060d415e1f7f6931113f13644996f5232fa425143ccff96daf85f1eeb37e705"
     },
     {
       "source": "Theoretical_Foundations_Chapter2.txt",
@@ -975,8 +956,8 @@
       "start": 11,
       "end": 11,
       "kind": "paragraph",
-      "source_sha256": "aa2d74053c34f1d1344c57344274b6f6240de86756372f77b3edb02e97b1f7bf",
-      "tex_sha256": "963d1c253b8968ffc579b934d612f5cad97b056575226f39124d9efbf1ecde89"
+      "source_sha256": "16b536d4ec7d969b0b9f7f96f4bd4ed38b744369d2e44c4c40770461b559dea6",
+      "tex_sha256": "d47df4f20fb1a478963246089a3a1368addb6a4f0cf99309e895842a0c6b346b"
     },
     {
       "source": "Literature_Review_Chapter2.txt",
@@ -1000,15 +981,15 @@
       "end": 14,
       "kind": "paragraph",
       "source_sha256": "8a40be7f7530c65766861b0971b7a6ac2db9f9bf279d1d15e20ab0587fca0f88",
-      "tex_sha256": "82b0210a847346edadbb056b0ddb1ad4f2187056408a4975765bb403d548ab7c"
+      "tex_sha256": "ade458821f2c5e00232c04a23824980e69f05ef85e99bfe840f7978955e6dba6"
     },
     {
       "source": "Literature_Review_Chapter2.txt",
       "start": 15,
       "end": 15,
       "kind": "paragraph",
-      "source_sha256": "156b887597197269c3faa2dd20c105dd86a86610629401090fa977bf5a662485",
-      "tex_sha256": "17f4e3b62500ecd731e26ca371bd47ba291d14ed440c3b9227c77b5624bfd38f"
+      "source_sha256": "b2d5bdeb77a74046e68ef5eded6b3ec85ad6d8b91b1bd4c54befa75654ed6dc7",
+      "tex_sha256": "6e3b58cabeb7a4924b80a55b795bb02816ecd4af4a2db51388bd8cd564d5181d"
     },
     {
       "source": "Literature_Review_Chapter2.txt",
@@ -1023,8 +1004,8 @@
       "start": 17,
       "end": 17,
       "kind": "paragraph",
-      "source_sha256": "6ad8d7e6fccd1aac849ed4edcd6bcb324dac101c463ba4e2a907107f31b950ab",
-      "tex_sha256": "2d30eada7fc77321f1bad4226523bda2390553d8ad91e5051aede9bc40e8c8b9"
+      "source_sha256": "ca5db096657929481f020402d8b0c9a6f6eb5806800afabead42a540c842ddd7",
+      "tex_sha256": "5e6298543cc2e06fa4649b5e5fc8c1af3a808046ea0db3357441dcad539821bd"
     },
     {
       "source": "Literature_Review_Chapter2.txt",
@@ -1080,7 +1061,7 @@
       "end": 24,
       "kind": "paragraph",
       "source_sha256": "9856021b0d0b23c163dcf278aec86bf8f920f1848ead099bcb8185b0c932f24e",
-      "tex_sha256": "88540b8d072b11bf5ab0dfe0007a7be044be41fcdba9b679e6a2085f9057d33a"
+      "tex_sha256": "ff60e7218b912821848160f90df7b14c3d8d30bb51e5219d92bc412042651d60"
     },
     {
       "source": "Literature_Review_Chapter2.txt",
@@ -1103,8 +1084,8 @@
       "start": 27,
       "end": 27,
       "kind": "paragraph",
-      "source_sha256": "aed0a6d7aafcd0b357d0d1776bf59a1a9a7f15cebd254b42abfbd82063eb593f",
-      "tex_sha256": "5d3b884b758546aa24de0b716c17645c0f7f817f1cab026e9bc901abf24ce56d"
+      "source_sha256": "40fd3b3529e9eb3031502367213302dca89620f1e14708d1f55bf86400e01ec7",
+      "tex_sha256": "ef33f3b3597756e5925189a3dec81ea522abbf409b825e3c68364726b6dc8718"
     },
     {
       "source": "Literature_Review_Chapter2.txt",
@@ -1127,8 +1108,8 @@
       "start": 30,
       "end": 30,
       "kind": "paragraph",
-      "source_sha256": "41ef13751ecaa9e070f2d9a3a5493553bd7038c536e385badeb515be401a970d",
-      "tex_sha256": "a63ee04d120656b1ed930823a3a31e1ade7e17e90a53c139e7f5357c020e679b"
+      "source_sha256": "be3d4ccb3d69ce58de5c07c089bde31f6c9b55506ab9aa9c0a28c91a8435e580",
+      "tex_sha256": "fce0ecbe8a7b559dc4ecce58f07db924767c474edab7ac5bcd4599bd86815a52"
     },
     {
       "source": "Literature_Review_Chapter2.txt",
@@ -1183,8 +1164,8 @@
       "start": 37,
       "end": 37,
       "kind": "paragraph",
-      "source_sha256": "2ceeb0c89c3b18762591feb7ad033ac94b3b9321f3d18b7a6606363f0d24bf8f",
-      "tex_sha256": "917c252a51a10d2eb3a673a24139e3d81a5bee3efc4d93f0e54b60ca35be52a4"
+      "source_sha256": "39692c12d97d006b876a266dcbab7d6d7b135063d75188db44e6add8260af346",
+      "tex_sha256": "2c5861ea1b3d90ec5de80fa08c72c6c8c6da200e967bb87b6026f398425e1322"
     },
     {
       "source": "Literature_Review_Chapter2.txt",
@@ -1207,8 +1188,8 @@
       "start": 40,
       "end": 40,
       "kind": "paragraph",
-      "source_sha256": "543bd5866af21124a232d1ea750c4ca6b115ea013ade4b17097ff9462bff0d4a",
-      "tex_sha256": "38a3b08a4272fa6098042d9caaf880d23af08f7351235b6992ab170a5b14b89c"
+      "source_sha256": "db10c6fa82870f0f350b1576a44383e0efc4f4532e079aab124490d61f5a9afd",
+      "tex_sha256": "266f6c0e0b296eb6e2562d66d482f9830ad553cc94e0c6b8aa22f773698faae2"
     },
     {
       "source": "Literature_Review_Chapter2.txt",
@@ -1231,8 +1212,8 @@
       "start": 43,
       "end": 43,
       "kind": "paragraph",
-      "source_sha256": "a00226afbb2e1397085093686aedd4df338ff1400b9dae9e86cd1f0bb246a957",
-      "tex_sha256": "a1daad17ab7126bb3d2b12323a2486db3e3b3f202123d31c2fdbe54b280d0f88"
+      "source_sha256": "515d07dfc1f4d91d25eefce90246e9b5f9140d174bf77fd8dae51cca2a1a3681",
+      "tex_sha256": "cecd0e449973da73a36831194b17ac3bf096152a27db6a4088acc6eb743eb9c8"
     },
     {
       "source": "Literature_Review_Chapter2.txt",
@@ -1255,8 +1236,8 @@
       "start": 46,
       "end": 46,
       "kind": "paragraph",
-      "source_sha256": "7ccbfcd652bb37fbb1f303e918d19d3eccc4d0dfda4e4bb5aa139e64d6ced5aa",
-      "tex_sha256": "4c090281de34821bebf105ef3af6e5615d14fe6e1b56385e9bb44bb443e0efd3"
+      "source_sha256": "068a813e58f79feab93d9b028656da36cb499637c120d2e8c4910dcfdfbd3b31",
+      "tex_sha256": "44a61e00cae3b8cb15d19b53bcc6b736ee0e59e2ddcf6a57af02942011be56e0"
     },
     {
       "source": "Literature_Review_Chapter2.txt",
@@ -1350,9 +1331,9 @@
       "source": "Synthesis_Research_Gap_Chapter2.txt",
       "start": 6,
       "end": 6,
-      "kind": "image",
-      "source_sha256": "8fe6f04e256ff782201dad72822ceb391102a57d34f00ad08c14ec564a301c1f",
-      "tex_sha256": "6cb4c403ede7e9306a372069c47ad046d54fa78c2abc648495fcc77f52909c26"
+      "kind": "paragraph",
+      "source_sha256": "7014dd67e33e0bf3faf0b3517b7efc1876862ea0b4f60b5ccdf6c2ede41a46cf",
+      "tex_sha256": "accf979a6125a960338b5a6d05784afba7dba2c3e2662e4b674681c72a62fe1b"
     },
     {
       "source": "Synthesis_Research_Gap_Chapter2.txt",
@@ -1375,8 +1356,8 @@
       "start": 9,
       "end": 9,
       "kind": "paragraph",
-      "source_sha256": "a5a43608212e332d2354ed7888c3b92be7d93fb7daf5240beb0995d4db48c436",
-      "tex_sha256": "0eec258857a121f51365d7b6790ac48d4a31cc7b0e4965325da440ebd8480e98"
+      "source_sha256": "d363d322588b413cb6f41b8a954ad52d7a7d919bc68d7034740566b543cb599c",
+      "tex_sha256": "435eb150cc09aa718836a501fe3b7046a249b2b1e38eec05c290dc3b330ccb8d"
     },
     {
       "source": "Synthesis_Research_Gap_Chapter2.txt",
@@ -1399,8 +1380,8 @@
       "start": 12,
       "end": 12,
       "kind": "paragraph",
-      "source_sha256": "2ada9b6fed5c5bbcec658ceac4fb150748066fc4901f223a82d3d427eaf027b3",
-      "tex_sha256": "fdf81d4e6e2407ae561d958a50236459f00e73dc610240fd7820990f3431d074"
+      "source_sha256": "10d5c370817ebc9b3d57382c9ad24fbe444197ec3c5cdf5ddff0d10720fc023f",
+      "tex_sha256": "737694d3ce7f7309cff0ea5d839cf95bdc2240225fec2fb56640d683906b23f2"
     },
     {
       "source": "Synthesis_Research_Gap_Chapter2.txt",
@@ -1423,8 +1404,8 @@
       "start": 15,
       "end": 15,
       "kind": "paragraph",
-      "source_sha256": "f9d66168bcbace9eff8975c41f2e72e0ce8fed6d51d6bc9078493ad665a4fbe9",
-      "tex_sha256": "17413d8b409f2fcc16d15130d8421c044372d502fca8615e2a3fed9a3fb9f948"
+      "source_sha256": "53d787acb81653d808eb9f64387d6ee70a19ea6e54d4c5833c6a7c718769bfc4",
+      "tex_sha256": "6ead4a81fccf6adc8320a6edeff8572e979e30f62bff0103a47db2052bf7c7dd"
     },
     {
       "source": "Synthesis_Research_Gap_Chapter2.txt",
@@ -1447,8 +1428,8 @@
       "start": 18,
       "end": 18,
       "kind": "paragraph",
-      "source_sha256": "8e2a853ab2bba7e3054b1d1ca6554eecaefcf1452f48a7bec723db984b4cdc4c",
-      "tex_sha256": "fb70bc89c83777efdaabe9bb3730a1bcf2af33b5c0244edd7ad89cf8e3ea1649"
+      "source_sha256": "4c474133bf025a2f89f1af3edabec24c41b82b10bdcac6bf998058dc8f40109f",
+      "tex_sha256": "246096707d1066f72a52b7e84877dac9ec4dab09d4233d43aedbaf8b971b24b2"
     },
     {
       "source": "Synthesis_Research_Gap_Chapter2.txt",
@@ -1476,5 +1457,5 @@
     }
   ],
   "tex_file": "chapters/chapter02.tex",
-  "tex_sha256": "ad8acfb4ad3fa573acb23557151d1c5c775047f520a284c4a3920fb709f728ce"
+  "tex_sha256": "e7b7809c3beec173dac253e76a1e87d806d7eda4af8cf85826e327851a191dd1"
 }

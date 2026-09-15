@@ -1,38 +1,26 @@
-"""Merge exact source reference entries; never invent a missing reference."""
-import hashlib
+"""Frozen, identity-based IEEE reference list, verified against primary documents."""
 import json
-import re
-from render import REF, REFHEAD, DIGITS, inline
+from render import inline
 
 
 def build_references(root):
-    source = root/'sources'
-    paths = sorted(source.glob('*.txt'))
-    preferred = source/'Final_Remarks_Chapter5.txt'
-    paths = [preferred] + [p for p in paths if p != preferred]
-    unique, entries, occurrences = {}, [], []
-    for path in paths:
-        in_refs = False
-        for index,line in enumerate(path.read_text().split('\n')):
-            if REFHEAD.match(line): in_refs = True
-            match = REF.match(line) if in_refs else None
-            if not match: continue
-            original_number, body = match.groups()
-            key = re.sub(r'\s+',' ',body).strip()
-            if key not in unique:
-                unique[key] = len(entries)+1
-                entries.append({'number':unique[key],'text':body,'first_source':path.name,'line':index+1})
-            occurrences.append({'source':path.name,'line':index+1,'original_number':int(original_number.translate(DIGITS)),
-                                'global_number':unique[key], 'text_sha256':hashlib.sha256(body.encode()).hexdigest()})
-    tex = [r'\clearpage\chapter*{مراجع}\phantomsection\addcontentsline{toc}{chapter}{مراجع}',
-           r'\begin{LTR}\latinfont\fontsize{14}{18}\selectfont',r'\begin{list}{}{\setlength{\leftmargin}{10mm}\setlength{\labelwidth}{8mm}\setlength{\itemsep}{8pt}}']
+    data = json.loads((root / 'bibliography.json').read_text())
+    entries = data['entries']
+    assert [e['number'] for e in entries] == list(range(1, len(entries) + 1))
+    assert len({e['key'] for e in entries}) == len(entries)
+    lines = [r'\clearpage\chapter*{مراجع}\phantomsection\addcontentsline{toc}{chapter}{مراجع}',
+             r'\begin{LTR}\ReferenceLatinFont\fontsize{12}{14.4}\selectfont',
+             r'\begin{list}{}{\setlength{\leftmargin}{10mm}\setlength{\labelwidth}{8mm}\setlength{\itemsep}{8pt}}']
     for entry in entries:
-        tex.append(r'\item[\lr{['+str(entry['number'])+r']}] '+inline(entry['text'],latin=True))
-    tex.extend([r'\end{list}',r'\end{LTR}'])
-    (root/'references.tex').write_text('\n'.join(tex),encoding='utf-8')
-    audit={'unique_count':len(entries),'duplicate_occurrences_removed':len(occurrences)-len(entries),
-           'entries':entries,'occurrences':occurrences,
-           'numbering_conflicts':[o for o in occurrences if o['original_number']!=o['global_number']],
-           'policy':'All in-text citation characters are preserved. Original chapter-1 numbering conflicts are reported, not guessed or renumbered.'}
-    (root/'reports/references-audit.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2))
+        n = str(entry['number'])
+        title = entry['title'].replace('2^8', '$2^8$')
+        text = inline(entry['authors'] + ', "' + title + '," ', latin=True)
+        text += r'\textit{' + inline(entry['journal'], latin=True) + '}, '
+        text += inline(entry['details'] + ', doi: ' + entry['doi'] + '.', latin=True)
+        lines.append(r'\item[\lr{[' + n + r']}]\hypertarget{ref-' + n + '}{} ' + text)
+    lines += [r'\end{list}', r'\end{LTR}']
+    (root / 'references.tex').write_text('\n'.join(lines), encoding='utf-8')
+    audit = {'unique_count': len(entries), 'entries': entries, 'policy': data['policy'],
+             'chapter1_original': data['chapter1_original'], 'other_original': data['other_original']}
+    (root / 'reports/references-audit.json').write_text(json.dumps(audit, ensure_ascii=False, indent=2))
     return audit

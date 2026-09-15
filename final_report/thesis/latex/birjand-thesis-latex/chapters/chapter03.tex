@@ -1,5 +1,5 @@
 % !TeX encoding = UTF-8
-% Formatting-only conversion; see reports for source provenance.
+% Reviewed conversion; see reports/revision-log.docx and bibliography.json.
 \SourceChapter{3}{فصل سوم: روش پیشنهادی و معماری سیستم}
 % SOURCE Introduction_Chapter3.txt:1-1 [chapter-title-in-wrapper]
 
@@ -11,7 +11,7 @@
 \SourceHeading{1}{۳{-}۱. مقدمه فصل سوم}
 
 % SOURCE Introduction_Chapter3.txt:4-4 [paragraph]
-در پاسخ به نیازهای مبرم امنیت، محرمانگی و صیانت از حریم خصوصی بیمار در سامانه اینترنت اشیای پزشکی \lr{(IoMT)} و چارچوب‌های پزشکی از راه دور \lr{(Telemedicine)}، در این فصل معماری جامع سیستم امنیتی هیبریدی پیشنهادی ارائه می‌گردد. این چارچوب چهارلایه جهت پوشش متوازن، رفع سه چالش بنیادین در امنیت دادگان سلامت دیجیتال و پاسخ‌گویی روش‌شناختی به فرضیات پژوهش و شکاف‌های استخراج‌شده در ادبیات تحقیق طراحى شده است \lr{[1, 2, 5]}:\par
+در پاسخ به نیازهای مبرم امنیت، محرمانگی و صیانت از حریم خصوصی بیمار در سامانه اینترنت اشیای پزشکی \lr{(IoMT)} و چارچوب‌های پزشکی از راه دور \lr{(Telemedicine)}، در این فصل معماری جامع سیستم امنیتی هیبریدی پیشنهادی ارائه می‌گردد. این چارچوب چهارلایه جهت پوشش متوازن، رفع سه چالش بنیادین در امنیت دادگان سلامت دیجیتال و پاسخ‌گویی روش‌شناختی به فرضیات پژوهش و شکاف‌های استخراج‌شده در ادبیات تحقیق طراحى شده است \ThesisCite{1}, \ThesisCite{2}, \ThesisCite{8}:\par
 
 % SOURCE Introduction_Chapter3.txt:5-5 [spacing]
 
@@ -61,7 +61,7 @@
 
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:3-3 [paragraph]
-برای پوشش هم‌زمان محرمانگی تصویر تشخیصی، صیانت از فراداده‌های هویتی بیمار و مقاومت در برابر حملات سایبری بر بستر شبکه‌های ناامن اینترنت اشیای پزشکی \lr{(IoMT)} و سامانه‌های پزشکی از راه دور \lr{(Telemedicine)}، چارچوب پیشنهادی بر پایه یک ساختار فرستنده{-}گیرنده متناظر و همگام‌سازی‌شده طراحی گردیده است. در این معماری، تصویر واضح ورودی $I$ با ابعاد \lr{\$W \SourceControl{0009}imes H\$} و فراداده متنی بیمار $M_{\mathrm{patient}}$ (شامل اطلاعات \lr{EXIF}، پرونده بالینی و شناسه هویتی) در سمت فرستنده پردازش شده و تصویر پنهان‌نگاری‌شده رمزشده $I_{\mathrm{Stego}}$ جهت ارسال بر روی شبکه تولید می‌شود \lr{[1, 2, 5]}.\par
+برای پوشش هم‌زمان محرمانگی تصویر تشخیصی، صیانت از فراداده‌های هویتی بیمار و مقاومت در برابر حملات سایبری بر بستر شبکه‌های ناامن اینترنت اشیای پزشکی \lr{(IoMT)} و سامانه‌های پزشکی از راه دور \lr{(Telemedicine)}، چارچوب پیشنهادی بر پایه یک ساختار فرستنده{-}گیرنده متناظر و همگام‌سازی‌شده طراحی گردیده است. در این معماری، تصویر واضح ورودی $I$ با ابعاد $W \times H$ و فراداده متنی بیمار $M_{\mathrm{patient}}$ (شامل اطلاعات \lr{EXIF}، پرونده بالینی و شناسه هویتی) در سمت فرستنده پردازش شده و تصویر پنهان‌نگاری‌شده رمزشده $I_{\mathrm{Stego}}$ جهت ارسال بر روی شبکه تولید می‌شود \ThesisCite{1}, \ThesisCite{2}, \ThesisCite{8}.\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:4-4 [spacing]
 
@@ -82,7 +82,7 @@
 ۱. پیش‌پردازش و استخراج خودکار ناحیه حساس \lr{(ROI Segmentation)}:\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:10-10 [paragraph]
-تصویر پزشکی واضح ورودی $I$ ابتدا وارد شبکه عصبی عمیق \lr{U{-}Net} آموزش‌دیده می‌گردد. این شبکه با اعمال لایه‌های انقباضی و انبساطی، ماسک دوتایی ناحیه حساس تشخیصی $M_{\mathrm{ROI}}$ را با دقت بالا استخراج می‌نماید. ناحیه حساس تشخیصی شامل بافت‌های حیاتی بالینی (مانند ضایعات ریوی، تومورهای مغزی یا عروق شبکیه) است که هرگونه اعوجاج در آن‌ها منجر به خطای تشخیص پزشکی خواهد شد \lr{[1, 7]}.\par
+تصویر پزشکی واضح ورودی $I$ ابتدا وارد شبکه عصبی عمیق \lr{U{-}Net} آموزش‌دیده می‌گردد. این شبکه با اعمال لایه‌های انقباضی و انبساطی، ماسک دوتایی ناحیه حساس تشخیصی $M_{\mathrm{ROI}}$ را با دقت بالا استخراج می‌نماید. ناحیه حساس تشخیصی شامل بافت‌های حیاتی بالینی (مانند ضایعات ریوی، تومورهای مغزی یا عروق شبکیه) است که هرگونه اعوجاج در آن‌ها منجر به خطای تشخیص پزشکی خواهد شد \ThesisCite{1}, \ThesisCite{3}.\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:11-11 [spacing]
 
@@ -91,7 +91,7 @@
 ۲. استخراج ویژگی‌های آماری و کلیدسازی پویا \lr{(Dynamic Key Generation)}:\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:13-13 [paragraph]
-ویژگی‌های آماری نابرابر ناحیه حساس استخراج‌شده (شامل میانگین شدت روشنایی، واریانس، کجی و کشیدگی هیستوگرام) محاسبه شده و به عنوان ورودی به تابع هش یک‌طرفه \lr{SHA{-}256} اعمال می‌گردند. چکیده ۲۵۶ بیتی حاصله ($K_{\mathrm{Send}}$)، به عنوان کلید پویا و کاملاً وابسته به تصویر عمل می‌کند. این ۲۵۶ بیت بر اساس یک مکانیزم نگاشت خطی به ۵ عدد اعشاری با دقت مضاعف تبدیل می‌شوند که شرایط اولیه $(x_0,\allowbreak{} y_0,\allowbreak{} z_0,\allowbreak{} u_0,\allowbreak{} v_0)$ و پارامترهای کنترل سیستم ابرآشوبی ۵ بعدی را مقداردهی اولیه می‌نمایند \lr{[1, 8]}.\par
+ویژگی‌های آماری نابرابر ناحیه حساس استخراج‌شده (شامل میانگین شدت روشنایی، واریانس، کجی و کشیدگی هیستوگرام) محاسبه شده و به عنوان ورودی به تابع هش یک‌طرفه \lr{SHA{-}256} اعمال می‌گردند. چکیده ۲۵۶ بیتی حاصله ($K_{\mathrm{Send}}$)، به عنوان کلید پویا و کاملاً وابسته به تصویر عمل می‌کند. این ۲۵۶ بیت بر اساس یک مکانیزم نگاشت خطی به ۵ عدد اعشاری با دقت مضاعف تبدیل می‌شوند که شرایط اولیه $(x_0,\allowbreak{} y_0,\allowbreak{} z_0,\allowbreak{} u_0,\allowbreak{} v_0)$ و پارامترهای کنترل سیستم ابرآشوبی ۵ بعدی را مقداردهی اولیه می‌نمایند \ThesisCite{1}, \ThesisCite{4}.\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:14-14 [spacing]
 
@@ -103,7 +103,7 @@
 {-} فاز آشفته‌سازی \lr{(Confusion)}: موقعیت مکانی پیکسل‌های تصویر واضح ورودی با استفاده از ماتریس جایگشت پیمایش زیگ‌زاگی \lr{(Zig{-}zag Scrambling)} جابه‌جا گردیده و همبستگی ساختاری پیکسل‌های همجوار شکسته می‌شود.\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:17-17 [paragraph]
-{-} فاز انتشار \lr{(Diffusion)}: توالی‌های عددی شبه‌تصادفی حاصل از حل معادلات سیستم ابرآشوبی ۵ بعدی به توالی‌های \lr{DNA} نگاشت می‌شوند. سپس، دو فاز انتشار شامل چرخش پویای قواعد \lr{DNA} \lr{(Dynamic DNA Flip)} و عملگر منطقی \lr{Dynamic DNA XOR} بر روی ضرایب اعمال گردیده و تصویر رمزشده اولیه $I_{\mathrm{Enc}}$ با آنتروپی آرمانی شکل می‌گیرد \lr{[1, 3]}.\par
+{-} فاز انتشار \lr{(Diffusion)}: توالی‌های عددی شبه‌تصادفی حاصل از حل معادلات سیستم ابرآشوبی ۵ بعدی به توالی‌های \lr{DNA} نگاشت می‌شوند. سپس، دو فاز انتشار شامل چرخش پویای قواعد \lr{DNA} \lr{(Dynamic DNA Flip)} و عملگر منطقی \lr{Dynamic DNA XOR} بر روی ضرایب اعمال گردیده و تصویر رمزشده اولیه $I_{\mathrm{Enc}}$ با آنتروپی آرمانی شکل می‌گیرد \ThesisCite{1}, \ThesisCite{6}.\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:18-18 [spacing]
 
@@ -112,13 +112,13 @@
 ۴. پنهان‌نگاری آگاه به برجستگی بصری فراداده \lr{(Saliency{-}Aware Steganography)}:\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:20-20 [paragraph]
-فراداده متنی بیمار $M_{\mathrm{patient}}$ ابتدا توسط الگوریتم فشرده‌سازی بدون اتلاف \lr{zlib} فشرده شده و رشته باینری فشرده $P_{\mathrm{zlib}}$ را تشکیل می‌دهد. سپس، بر پایه نقشه برجستگی بصری \lr{(Saliency Detection)}، پیکسل‌های تصویر به دو دسته نواحی پرتوجه تشخیصی \lr{(High Saliency / ROI)} و نواحی کم‌برجستگی پس‌زمینه \lr{(Low Saliency / Background)} تقسیم می‌شوند. رشته فشرده فراداده صرفاً در بیت‌های کم‌ارزش \lr{(LSB)} پیکسل‌های پس‌زمینه جای‌دهی می‌شود تا تصویر نهایی $I_{\mathrm{Stego}}$ بدون ایجاد کوچک‌ترین اعوجاج در بافت‌های \lr{ROI} آماده ارسال گردد \lr{[4, 5]}.\par
+فراداده متنی بیمار $M_{\mathrm{patient}}$ ابتدا توسط الگوریتم فشرده‌سازی بدون اتلاف \lr{zlib} فشرده شده و رشته باینری فشرده $P_{\mathrm{zlib}}$ را تشکیل می‌دهد. سپس، بر پایه نقشه برجستگی بصری \lr{(Saliency Detection)}، پیکسل‌های تصویر به دو دسته نواحی پرتوجه تشخیصی \lr{(High Saliency / ROI)} و نواحی کم‌برجستگی پس‌زمینه \lr{(Low Saliency / Background)} تقسیم می‌شوند. رشته فشرده فراداده صرفاً در بیت‌های کم‌ارزش \lr{(LSB)} پیکسل‌های پس‌زمینه جای‌دهی می‌شود تا تصویر نهایی $I_{\mathrm{Stego}}$ بدون ایجاد کوچک‌ترین اعوجاج در بافت‌های \lr{ROI} آماده ارسال گردد \ThesisCite{8}, \ThesisCite{9}.\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:21-21 [spacing]
 
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:22-22 [image]
-\SourcePicture{chapter3_sender_flowchart.png}{شکل ۳{-}۲: فلوچارت تفصیلی مراحل چهارگانه رمزنگاری و پنهان‌نگاری در سمت فرستنده}{[شکل ۳{-}۲: فلوچارت تفصیلی مراحل چهارگانه رمزنگاری و پنهان‌نگاری در سمت فرستنده {-} \lr{chapter3\_sender\_flowchart.png}]}{0}
+\SourcePicture{chapter3_sender_flowchart.png}{شکل ۳{-}۳: فلوچارت تفصیلی مراحل چهارگانه رمزنگاری و پنهان‌نگاری در سمت فرستنده}{[شکل ۳{-}۳: فلوچارت تفصیلی مراحل چهارگانه رمزنگاری و پنهان‌نگاری در سمت فرستنده {-} \lr{chapter3\_sender\_flowchart.png}]}{0}
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:23-23 [spacing]
 
@@ -136,13 +136,13 @@
 
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:28-28 [paragraph]
-از آنجایی که فاز پنهان‌نگاری فراداده صراحتاً محدود به نواحی کم‌برجستگی پس‌زمینه بوده و ناحیه تشخیصی \lr{ROI} ۱۰۰\SourceGlyph{066A} دست‌نخورده باقی می‌ماند ($\mathrm{ROI} \cap \mathrm{Payload} = \emptyset$)، پیکسل‌های ناحیه \lr{ROI} در تصویر استگوی دریافتی $I_{\mathrm{Stego}}$ دقیقاً برابر با پیکسل‌های \lr{ROI} در تصویر واضح اولیه $I$ می‌باشند. بنابراین، با اعمال شبکه \lr{U{-}Net} در سمت گیرنده، ماسک \lr{ROI} و ویژگی‌های آماری استخراج‌شده کاملاً متناظر با فرستنده بوده و چکیده ۲۵۶ بیتی \lr{SHA{-}256} و شرایط اولیه سیستم ۵ بعدی عینا و بدون کوچک‌ترین خطایی بازسازی می‌گردند (\lr{\$K\_\{\textbackslash{}mathrm\{Rec\}\} \textbackslash{}equiv K\_\{\SourceControl{0009}ext\{Send\}\}\$}) \lr{[1, 8]}.\par
+از آنجایی که فاز پنهان‌نگاری فراداده صراحتاً محدود به نواحی کم‌برجستگی پس‌زمینه بوده و ناحیه تشخیصی \lr{ROI} ۱۰۰\SourceGlyph{066A} دست‌نخورده باقی می‌ماند ($\mathrm{ROI} \cap \mathrm{Payload} = \emptyset$)، پیکسل‌های ناحیه \lr{ROI} در تصویر استگوی دریافتی $I_{\mathrm{Stego}}$ دقیقاً برابر با پیکسل‌های \lr{ROI} در تصویر واضح اولیه $I$ می‌باشند. بنابراین، با اعمال شبکه \lr{U{-}Net} در سمت گیرنده، ماسک \lr{ROI} و ویژگی‌های آماری استخراج‌شده کاملاً متناظر با فرستنده بوده و چکیده ۲۵۶ بیتی \lr{SHA{-}256} و شرایط اولیه سیستم ۵ بعدی عینا و بدون کوچک‌ترین خطایی بازسازی می‌گردند ($K_{\mathrm{Rec}} \equiv K_{\text{Send}}$) \ThesisCite{1}, \ThesisCite{4}.\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:29-29 [spacing]
 
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:30-30 [image]
-\SourcePicture{eq3_0_key_reversibility.png}{رابطه ۳{-}۰: قضیه ریاضی هم‌ارزی و بازسازی پویای کلید رمزی در سمت گیرنده}{[رابطه ۳{-}۰: قضیه ریاضی هم‌ارزی و بازسازی پویای کلید رمزی در سمت گیرنده {-} \lr{eq3\_0\_key\_reversibility.png}]}{2}
+\SourcePicture{eq3_0_key_reversibility.png}{رابطه ۳{-}۱: قضیه ریاضی هم‌ارزی و بازسازی پویای کلید رمزی در سمت گیرنده}{[رابطه ۳{-}۱: قضیه ریاضی هم‌ارزی و بازسازی پویای کلید رمزی در سمت گیرنده {-} \lr{eq3\_0\_key\_reversibility.png}]}{2}
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:31-31 [spacing]
 
@@ -163,7 +163,7 @@
 ۱. استخراج فراداده بیمار و بازسازی \lr{zlib}:\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:37-37 [paragraph]
-بر پایه الگوریتم برجستگی بصری، پیکسل‌های پس‌زمینه شناسایی شده و بیت‌های \lr{LSB} استخراج می‌گردند. رشته باینری حاصله توسط الگوریتم \lr{zlib} واسازی \lr{(Decompress)} شده و متن پرونده بیمار $M_{\mathrm{patient}}$ با صحت ۱۰۰\SourceGlyph{066A} بازیابی می‌شود \lr{[4, 5]}.\par
+بر پایه الگوریتم برجستگی بصری، پیکسل‌های پس‌زمینه شناسایی شده و بیت‌های \lr{LSB} استخراج می‌گردند. رشته باینری حاصله توسط الگوریتم \lr{zlib} واسازی \lr{(Decompress)} شده و متن پرونده بیمار $M_{\mathrm{patient}}$ با صحت ۱۰۰\SourceGlyph{066A} بازیابی می‌شود \ThesisCite{8}, \ThesisCite{9}.\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:38-38 [spacing]
 
@@ -172,7 +172,7 @@
 ۲. استخراج \lr{ROI}، محاسبه کلید معتبر و تولید توالی‌های ۵ بعدی:\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:40-40 [paragraph]
-شبکه عصبی \lr{U{-}Net} بر روی تصویر دریافتی اعمال شده و ناحیه دست‌نخورده \lr{ROI} استخراج می‌گردد. ویژگی‌های آماری \lr{ROI} محاسبه شده و کلید ۲۵۶ بیتی \lr{SHA{-}256} تولید می‌شود. شرایط اولیه $(x_0,\allowbreak{} y_0,\allowbreak{} z_0,\allowbreak{} u_0,\allowbreak{} v_0)$ بازسازی شده و توالی‌های ۵ بعدی با حل عددی \lr{RK4} مجدداً تولید می‌گردند \lr{[1]}.\par
+شبکه عصبی \lr{U{-}Net} بر روی تصویر دریافتی اعمال شده و ناحیه دست‌نخورده \lr{ROI} استخراج می‌گردد. ویژگی‌های آماری \lr{ROI} محاسبه شده و کلید ۲۵۶ بیتی \lr{SHA{-}256} تولید می‌شود. شرایط اولیه $(x_0,\allowbreak{} y_0,\allowbreak{} z_0,\allowbreak{} u_0,\allowbreak{} v_0)$ بازسازی شده و توالی‌های ۵ بعدی با حل عددی \lr{RK4} مجدداً تولید می‌گردند \ThesisCite{1}.\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:41-41 [spacing]
 
@@ -181,13 +181,13 @@
 ۳. انتشار معکوس \lr{DNA}، جایگشت معکوس زیگ‌زاگی و بازسازی ۱۰۰\SourceGlyph{066A} تصویر واضح:\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:43-43 [paragraph]
-توالی‌های ۵ بعدی به قواعد \lr{DNA} نگاشت شده و عملگرهای معکوس \lr{Dynamic DNA XOR} و معکوس چرخش \lr{DNA} بر روی تصویر اعمال می‌شوند. در نهایت، با اجرای جایگشت معکوس زیگ‌زاگی \lr{(Inverse Zig{-}zag Scrambling)}، تصویر واضح اصلی $I$ به صورت کاملاً بدون اتلاف ($PSNR = \infty$ و $SSIM = 1.0$) بازیابی می‌گردد \lr{[1, 3]}.\par
+توالی‌های ۵ بعدی به قواعد \lr{DNA} نگاشت شده و عملگرهای معکوس \lr{Dynamic DNA XOR} و معکوس چرخش \lr{DNA} بر روی تصویر اعمال می‌شوند. در نهایت، با اجرای جایگشت معکوس زیگ‌زاگی \lr{(Inverse Zig{-}zag Scrambling)}، تصویر واضح اصلی $I$ به صورت کاملاً بدون اتلاف ($PSNR = \infty$ و $SSIM = 1.0$) بازیابی می‌گردد \ThesisCite{1}, \ThesisCite{6}.\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:44-44 [spacing]
 
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:45-45 [image]
-\SourcePicture{chapter3_receiver_flowchart.png}{شکل ۳{-}۳: فلوچارت تفصیلی مراحل سه‌گانه بازسازی، استخراج فراداده و رمزگشایی در سمت گیرنده}{[شکل ۳{-}۳: فلوچارت تفصیلی مراحل سه‌گانه بازسازی، استخراج فراداده و رمزگشایی در سمت گیرنده {-} \lr{chapter3\_receiver\_flowchart.png}]}{0}
+\SourcePicture{chapter3_receiver_flowchart.png}{شکل ۳{-}۴: فلوچارت تفصیلی مراحل سه‌گانه بازسازی، استخراج فراداده و رمزگشایی در سمت گیرنده}{[شکل ۳{-}۴: فلوچارت تفصیلی مراحل سه‌گانه بازسازی، استخراج فراداده و رمزگشایی در سمت گیرنده {-} \lr{chapter3\_receiver\_flowchart.png}]}{0}
 % SOURCE UNet_KeyGen_Chapter3.txt:1-1 [heading]
 \SourceHeading{1}{۳{-}۳. ماژول قطعه‌بندی معنایی \lr{U{-}Net}، استخراج ویژگی و تولید کلید پویای \lr{SHA{-}256}}
 
@@ -195,25 +195,25 @@
 
 
 % SOURCE UNet_KeyGen_Chapter3.txt:3-3 [paragraph]
-جهت شکستن وابستگی به کلیدهای ثابت و ارائه یک الگوریتم مقاوم در برابر حملات دیفرانسیلی، متن‌واضح برگزیده \lr{(CPA)} و متن‌واضح معلوم \lr{(KPA)}، سیستم امنیتی پیشنهادی از ویژگی‌های ساختاری و آماری خودِ تصویر ورودی برای تولید کلید رمزی پویا استفاده می‌کند. با این حال، استفاده مستقیم از تمام پیکسل‌های تصویر اصلی باعث می‌شود که سیستم در برابر کوچک‌ترین نویزهای محیطی یا تغییرات ناخواسته در پس‌زمینه نامقاوم گردد. برای حل این مشکل بنیادی، استخراج ویژگی‌ها صرفاً بر روی ناحیه حساس تشخیصی \lr{(ROI)} متمرکز گردیده است \lr{[1, 2, 7]}.\par
+جهت شکستن وابستگی به کلیدهای ثابت و ارائه یک الگوریتم مقاوم در برابر حملات دیفرانسیلی، متن‌واضح برگزیده \lr{(CPA)} و متن‌واضح معلوم \lr{(KPA)}، سیستم امنیتی پیشنهادی از ویژگی‌های ساختاری و آماری خودِ تصویر ورودی برای تولید کلید رمزی پویا استفاده می‌کند. با این حال، استفاده مستقیم از تمام پیکسل‌های تصویر اصلی باعث می‌شود که سیستم در برابر کوچک‌ترین نویزهای محیطی یا تغییرات ناخواسته در پس‌زمینه نامقاوم گردد. برای حل این مشکل بنیادی، استخراج ویژگی‌ها صرفاً بر روی ناحیه حساس تشخیصی \lr{(ROI)} متمرکز گردیده است \ThesisCite{1}, \ThesisCite{2}, \ThesisCite{3}.\par
 
 % SOURCE UNet_KeyGen_Chapter3.txt:4-4 [spacing]
 
 
 % SOURCE UNet_KeyGen_Chapter3.txt:5-5 [paragraph]
-در گام اول، تصویر پزشکی ورودی $I$ با ابعاد \lr{\$W \SourceControl{0009}imes H\$} به شبکه عصبی عمیق \lr{U{-}Net} آموزش‌دیده تغذیه می‌شود. شبکه \lr{U{-}Net} با استفاده از معماری انقباضی{-}انبساطی و اتصالات پرشی \lr{(Skip Connections)}، ماسک دوتایی ناحیه حساس تشخیصی $M_{\mathrm{ROI}}$ را با دقت بالا استخراج می‌نماید:\par
+در گام اول، تصویر پزشکی ورودی $I$ با ابعاد $W \times H$ به شبکه عصبی عمیق \lr{U{-}Net} آموزش‌دیده تغذیه می‌شود. شبکه \lr{U{-}Net} با استفاده از معماری انقباضی{-}انبساطی و اتصالات پرشی \lr{(Skip Connections)}، ماسک دوتایی ناحیه حساس تشخیصی $M_{\mathrm{ROI}}$ را با دقت بالا استخراج می‌نماید:\par
 
 % SOURCE UNet_KeyGen_Chapter3.txt:6-6 [spacing]
 
 
 % SOURCE UNet_KeyGen_Chapter3.txt:7-7 [paragraph]
-\lr{\$\$M\_\{\textbackslash{}mathrm\{ROI\}\} = \textbackslash{}mathrm\{U\SourceControl{0009}ext\{{-}\}Net\}(I), \textbackslash{}quad M\_\{\textbackslash{}mathrm\{ROI\}\}(i,j) \textbackslash{}in \textbackslash{}\{0, 1\textbackslash{}\}\$\$}\par
+\[M_{\mathrm{ROI}} = \mathrm{U\text{-}Net}(I),\allowbreak{} \quad M_{\mathrm{ROI}}(i,\allowbreak{}j) \in \{0,\allowbreak{} 1\}\]\par
 
 % SOURCE UNet_KeyGen_Chapter3.txt:8-8 [spacing]
 
 
 % SOURCE UNet_KeyGen_Chapter3.txt:9-9 [image]
-\SourcePicture{chapter3_unet_roi_key_extraction.png}{شکل ۳{-}۴: نمودار بلاکی فرآیند قطعه‌بندی معنایی \lr{U{-}Net}، استخراج ویژگی‌های آماری \lr{ROI} و محاسبه کلید ۲۵۶ بیتی \lr{SHA{-}256}}{[شکل ۳{-}۴: نمودار بلاکی فرآیند قطعه‌بندی معنایی \lr{U{-}Net}، استخراج ویژگی‌های آماری \lr{ROI} و محاسبه کلید ۲۵۶ بیتی \lr{SHA{-}256 {-} chapter3\_unet\_roi\_key\_extraction.png}]}{0}
+\SourcePicture{chapter3_unet_roi_key_extraction.png}{شکل ۳{-}۵: نمودار بلاکی فرآیند قطعه‌بندی معنایی \lr{U{-}Net}، استخراج ویژگی‌های آماری \lr{ROI} و محاسبه کلید ۲۵۶ بیتی \lr{SHA{-}256}}{[شکل ۳{-}۵: نمودار بلاکی فرآیند قطعه‌بندی معنایی \lr{U{-}Net}، استخراج ویژگی‌های آماری \lr{ROI} و محاسبه کلید ۲۵۶ بیتی \lr{SHA{-}256 {-} chapter3\_unet\_roi\_key\_extraction.png}]}{0}
 
 % SOURCE UNet_KeyGen_Chapter3.txt:10-10 [spacing]
 
@@ -249,13 +249,13 @@
 
 
 % SOURCE UNet_KeyGen_Chapter3.txt:21-21 [paragraph]
-در گام سوم، کلید باینری ۲۵۶ بیتی $K_{\mathrm{hash}}$ به ۵ بلوک ۴۸ بیتی مجزا ($K_{b1},\allowbreak{} K_{b2},\allowbreak{} K_{b3},\allowbreak{} K_{b4},\allowbreak{} K_{b5}$) تقسیم شده و از طریق روابط ریاضی مشخص، به ۵ عدد اعشاری پیوسته در بازه $(0,\allowbreak{} 1)$ نرمال‌سازی می‌شوند تا شرایط اولیه $(x_0,\allowbreak{} y_0,\allowbreak{} z_0,\allowbreak{} u_0,\allowbreak{} v_0)$ برای راه‌اندازی دستگاه معادلات دیفرانسیل ۵بعدی ابرآشوبی حاصل گردد. فرمول‌بندی کامل این فرآیند در رابطه ۳{-}۱ ارائه شده است.\par
+در گام سوم، کلید باینری ۲۵۶ بیتی $K_{\mathrm{hash}}$ به ۵ بلوک ۴۸ بیتی مجزا ($K_{b1},\allowbreak{} K_{b2},\allowbreak{} K_{b3},\allowbreak{} K_{b4},\allowbreak{} K_{b5}$) تقسیم شده و از طریق روابط ریاضی مشخص، به ۵ عدد اعشاری پیوسته در بازه $(0,\allowbreak{} 1)$ نرمال‌سازی می‌شوند تا شرایط اولیه $(x_0,\allowbreak{} y_0,\allowbreak{} z_0,\allowbreak{} u_0,\allowbreak{} v_0)$ برای راه‌اندازی دستگاه معادلات دیفرانسیل ۵بعدی ابرآشوبی حاصل گردد. فرمول‌بندی کامل این فرآیند در رابطه ۳{-}۲ ارائه شده است.\par
 
 % SOURCE UNet_KeyGen_Chapter3.txt:22-22 [spacing]
 
 
 % SOURCE UNet_KeyGen_Chapter3.txt:23-23 [image]
-\SourcePicture{eq3_1_sha256_key_gen.png}{رابطه ۳{-}۱: فرمول‌بندی ریاضی استخراج ویژگی‌های آماری \lr{ROI}، محاسبه چکیده \lr{SHA{-}256} و نرمال‌سازی شرایط اولیه سیستم ۵بعدی}{[رابطه ۳{-}۱: فرمول‌بندی ریاضی استخراج ویژگی‌های آماری \lr{ROI}، محاسبه چکیده \lr{SHA{-}256} و نرمال‌سازی شرایط اولیه سیستم ۵بعدی {-} \lr{eq3\_1\_sha256\_key\_gen.png}]}{2}
+\SourcePicture{eq3_1_sha256_key_gen.png}{رابطه ۳{-}۲: فرمول‌بندی ریاضی استخراج ویژگی‌های آماری \lr{ROI}، محاسبه چکیده \lr{SHA{-}256} و نرمال‌سازی شرایط اولیه سیستم ۵بعدی}{[رابطه ۳{-}۲: فرمول‌بندی ریاضی استخراج ویژگی‌های آماری \lr{ROI}، محاسبه چکیده \lr{SHA{-}256} و نرمال‌سازی شرایط اولیه سیستم ۵بعدی {-} \lr{eq3\_1\_sha256\_key\_gen.png}]}{2}
 
 % SOURCE UNet_KeyGen_Chapter3.txt:24-24 [spacing]
 
@@ -301,7 +301,7 @@
 
 
 % SOURCE Hyperchaos_5D_Chapter3.txt:3-3 [paragraph]
-برای تضمین آنتروپی آرمانی (\lr{H}\lr{(m)} \ensuremath{\approx} \lr{8.0})، شکستن کامل همبستگی مکانی پیکسل‌های مجاور، مقاومت در برابر حملات بازسازی فضای فاز \lr{(Phase Space Reconstruction Attack)} و ایجاد فضای کلید عظیم فراتر از \lr{2}\SourceGlyph{005E}\lr{520}، سیستم امنیتی پیشنهادی از یک سیستم غیرخطی ابرآشوبی ۵ بعدی پیوسته جدید استفاده می‌نماید \lr{[1]}. در مقایسه با نگاشت‌های آشوبی کم‌بعد سنتی (نظیر نگاشت لوجستیک ۱ بعدی یا نگاشت هنون ۲ بعدی) که به دلیل سادگی ساختار ریاضی در برابر حملات تحلیل تفاضلی و \lr{CPA} آسیب‌پذیر هستند، سیستم ۵ بعدی به دلیل دارا بودن بیش از یک توان نمای لیاپانوف مثبت \lr{(Multiple Positive Lyapunov Exponents: \ensuremath{\lambda}1, \ensuremath{\lambda}2 \SourceGlyph{003E} 0)}، پیچیدگی دینامیکی فوق‌العاده بالا و رفتار شبه‌تصادفی غیردوره‌ای، بالاترین سطح محرمانگی را برای تصاویر پزشکی فراهم می‌سازد \lr{[1, 3, 10]}.\par
+برای تضمین آنتروپی آرمانی (\lr{H}\lr{(m)} \ensuremath{\approx} \lr{8.0})، شکستن کامل همبستگی مکانی پیکسل‌های مجاور، مقاومت در برابر حملات بازسازی فضای فاز \lr{(Phase Space Reconstruction Attack)} و ایجاد فضای کلید عظیم فراتر از \lr{2}\SourceGlyph{005E}\lr{520}، سیستم امنیتی پیشنهادی از یک سیستم غیرخطی ابرآشوبی ۵ بعدی پیوسته جدید استفاده می‌نماید \ThesisCite{1}. در مقایسه با نگاشت‌های آشوبی کم‌بعد سنتی (نظیر نگاشت لوجستیک ۱ بعدی یا نگاشت هنون ۲ بعدی) که به دلیل سادگی ساختار ریاضی در برابر حملات تحلیل تفاضلی و \lr{CPA} آسیب‌پذیر هستند، سیستم ۵ بعدی به دلیل دارا بودن بیش از یک توان نمای لیاپانوف مثبت \lr{(Multiple Positive Lyapunov Exponents: \ensuremath{\lambda}1, \ensuremath{\lambda}2 \SourceGlyph{003E} 0)}، پیچیدگی دینامیکی فوق‌العاده بالا و رفتار شبه‌تصادفی غیردوره‌ای، بالاترین سطح محرمانگی را برای تصاویر پزشکی فراهم می‌سازد \ThesisCite{1}, \ThesisCite{6}, \ThesisCite{7}.\par
 
 % SOURCE Hyperchaos_5D_Chapter3.txt:4-4 [spacing]
 
@@ -310,13 +310,13 @@
 \SourceHeading{2}{۳{-}۴{-}۱. فرمول‌بندی ریاضی دستگاه معادلات دیفرانسیل ۵ بعدی}
 
 % SOURCE Hyperchaos_5D_Chapter3.txt:6-6 [paragraph]
-دستگاه معادلات دیفرانسیل حالت پیوسته سیستم ۵ بعدی ابرآشوبی شامل ۵ متغیر حالت \lr{(x, y, z, u, v)} و ۷ پارامتر کنترلی غیرخطی \lr{(a, b, c, d, k, h, w)} به صورت زیر فرمول‌بندی می‌گردد \lr{[1]}:\par
+دستگاه معادلات دیفرانسیل حالت پیوسته سیستم ۵ بعدی ابرآشوبی شامل ۵ متغیر حالت \lr{(x, y, z, u, v)} و ۷ پارامتر کنترلی غیرخطی \lr{(a, b, c, d, k, h, w)} به صورت زیر فرمول‌بندی می‌گردد \ThesisCite{1}:\par
 
 % SOURCE Hyperchaos_5D_Chapter3.txt:7-7 [spacing]
 
 
 % SOURCE Hyperchaos_5D_Chapter3.txt:8-8 [image]
-\SourcePicture{eq3_2_5d_hyperchaos_rk4.png}{رابطه ۳{-}۲: دستگاه معادلات دیفرانسیل پیوسته سیستم ۵ بعدی ابرآشوبی و الگوریتم حل عددی \lr{RK4}}{[رابطه ۳{-}۲: دستگاه معادلات دیفرانسیل پیوسته سیستم ۵ بعدی ابرآشوبی و الگوریتم حل عددی \lr{RK4 {-} eq3\_2\_5d\_hyperchaos\_rk4.png}]}{2}
+\SourcePicture{eq3_2_5d_hyperchaos_rk4.png}{رابطه ۳{-}۳: دستگاه معادلات دیفرانسیل پیوسته سیستم ۵ بعدی ابرآشوبی و الگوریتم حل عددی \lr{RK4}}{[رابطه ۳{-}۳: دستگاه معادلات دیفرانسیل پیوسته سیستم ۵ بعدی ابرآشوبی و الگوریتم حل عددی \lr{RK4 {-} eq3\_2\_5d\_hyperchaos\_rk4.png}]}{2}
 
 % SOURCE Hyperchaos_5D_Chapter3.txt:9-9 [spacing]
 
@@ -328,13 +328,13 @@
 
 
 % SOURCE Hyperchaos_5D_Chapter3.txt:12-12 [paragraph]
-برای تجسم رفتار دینامیکی، پیچیدگی فضای فاز و اثبات وجود جاذبه غریب \lr{(Strange Attractor)}، تصوير پرتره فاز ۳ بعدی حاصل از تصویر کردن متغیرهای حالت \lr{(x, y, z)} در شکل ۳{-}۵ نشان داده شده است.\par
+برای تجسم رفتار دینامیکی، پیچیدگی فضای فاز و اثبات وجود جاذبه غریب \lr{(Strange Attractor)}، تصوير پرتره فاز ۳ بعدی حاصل از تصویر کردن متغیرهای حالت \lr{(x, y, z)} در شکل ۳{-}۶ نشان داده شده است.\par
 
 % SOURCE Hyperchaos_5D_Chapter3.txt:13-13 [spacing]
 
 
 % SOURCE Hyperchaos_5D_Chapter3.txt:14-14 [image]
-\SourcePicture{chapter3_5d_hyperchaos_phase_portrait.png}{شکل ۳{-}۵: پرتره فاز ۳ بعدی و نمایش جاذبه غریب سیستم ابرآشوبی ۵ بعدی در فضای حالت \lr{(x{-}y{-}z)}}{[شکل ۳{-}۵: پرتره فاز ۳ بعدی و نمایش جاذبه غریب سیستم ابرآشوبی ۵ بعدی در فضای حالت \lr{(x{-}y{-}z)} {-} \lr{chapter3\_5d\_hyperchaos\_phase\_portrait.png}]}{0}
+\SourcePicture{chapter3_5d_hyperchaos_phase_portrait.png}{شکل ۳{-}۶: پرتره فاز ۳ بعدی و نمایش جاذبه غریب سیستم ابرآشوبی ۵ بعدی در فضای حالت \lr{(x{-}y{-}z)}}{[شکل ۳{-}۶: پرتره فاز ۳ بعدی و نمایش جاذبه غریب سیستم ابرآشوبی ۵ بعدی در فضای حالت \lr{(x{-}y{-}z)} {-} \lr{chapter3\_5d\_hyperchaos\_phase\_portrait.png}]}{0}
 
 % SOURCE Hyperchaos_5D_Chapter3.txt:15-15 [spacing]
 
@@ -430,13 +430,13 @@
 
 
 % SOURCE Zigzag_DNA_Chapter3.txt:3-3 [paragraph]
-برای دستیابی به بالاترین سطح امنیت، خنثی‌سازی کامل همبستگی میان پیکسل‌های مجوار، دستیابی به آنتروپی آرمانی (\lr{\$H(m) \SourceControl{0007}pprox 8.0\$}) و محقق ساختن اثر بهمنی کامل \lr{(Avalanche Effect)}، فرایند رمزنگاری تصویر اصلی طی دو مرحله متوالی و مکمل جایگشت \lr{(Confusion)} و انتشار \lr{(Diffusion)} بر پایه معماری شانون انجام می‌پذیرد \lr{[1, 3, 4]}.\par
+برای دستیابی به بالاترین سطح امنیت، خنثی‌سازی کامل همبستگی میان پیکسل‌های مجاور، دستیابی به آنتروپی آرمانی ($H(m) \approx 8.0$) و محقق ساختن اثر بهمنی کامل \lr{(Avalanche Effect)}، فرایند رمزنگاری تصویر اصلی طی دو مرحله متوالی و مکمل جایگشت \lr{(Confusion)} و انتشار \lr{(Diffusion)} بر پایه معماری شانون انجام می‌پذیرد \ThesisCite{1}, \ThesisCite{6}, \ThesisCite{9}.\par
 
 % SOURCE Zigzag_DNA_Chapter3.txt:4-4 [spacing]
 
 
 % SOURCE Zigzag_DNA_Chapter3.txt:5-5 [image]
-\SourcePicture{chapter3_zigzag_dna_pipeline.png}{شکل ۳{-}۶: نمودار فرآیند دو مرحله‌ای جایگشت زیگ‌زاگی، جدول قواعد ۸گانه \lr{DNA} و انتشار پویای \lr{DNA}}{[شکل ۳{-}۶: نمودار فرآیند دو مرحله‌ای جایگشت زیگ‌زاگی، جدول قواعد ۸گانه \lr{DNA} و انتشار پویای \lr{DNA {-} chapter3\_zigzag\_dna\_pipeline.png}]}{0}
+\SourcePicture{chapter3_zigzag_dna_pipeline.png}{شکل ۳{-}۷: نمودار فرآیند دو مرحله‌ای جایگشت زیگ‌زاگی، جدول قواعد ۸گانه \lr{DNA} و انتشار پویای \lr{DNA}}{[شکل ۳{-}۷: نمودار فرآیند دو مرحله‌ای جایگشت زیگ‌زاگی، جدول قواعد ۸گانه \lr{DNA} و انتشار پویای \lr{DNA {-} chapter3\_zigzag\_dna\_pipeline.png}]}{0}
 
 % SOURCE Zigzag_DNA_Chapter3.txt:6-6 [spacing]
 
@@ -445,7 +445,7 @@
 \SourceHeading{2}{۳{-}۵{-}۱. مرحله اول: جایگشت زیگ‌زاگی \lr{(Zig{-}zag Scrambling / Confusion Stage)}}
 
 % SOURCE Zigzag_DNA_Chapter3.txt:8-8 [paragraph]
-در مرحله جایگشت، ماتریس تصویر ورودی واضح $I$ با ابعاد \lr{\$W \SourceControl{0009}imes H\$} با استفاده از الگوی پیمایش قطری زیگ‌زاگی (مطابق با استاندارد پردازش تصاویر و کوانتایش \lr{JPEG}) آشفته می‌گردد. در الگوریتم‌های سنتی رمزشده، جایگشت‌های سطری یا ستونی ساده به تنهایی توانایی شکستن همبستگی دو‌بعدی پیکسل‌ها را ندارند؛ اما پیمایش زیگ‌زاگی با تغییر موقعیت مکانی پیکسل‌ها بر روی قطرهای فرعی و اصلی، ساختار هندسی تصویر را تماماً برهم زده و ضریب همبستگی پیکسل‌های مجوار ($r_{xy}$) را در سه جهت افقی، عمودی و قطری از حدود $1.0$ به نزدیک صفر (\lr{\$r\_\{xy\} \SourceControl{0007}pprox 0.0\$}) کاهش می‌دهد.\par
+در مرحله جایگشت، ماتریس تصویر ورودی واضح $I$ با ابعاد $W \times H$ با استفاده از الگوی پیمایش قطری زیگ‌زاگی (مطابق با استاندارد پردازش تصاویر و کوانتایش \lr{JPEG}) آشفته می‌گردد. در الگوریتم‌های سنتی رمزشده، جایگشت‌های سطری یا ستونی ساده به تنهایی توانایی شکستن همبستگی دو‌بعدی پیکسل‌ها را ندارند؛ اما پیمایش زیگ‌زاگی با تغییر موقعیت مکانی پیکسل‌ها بر روی قطرهای فرعی و اصلی، ساختار هندسی تصویر را تماماً برهم زده و ضریب همبستگی پیکسل‌های مجاور ($r_{xy}$) را در سه جهت افقی، عمودی و قطری از حدود $1.0$ به نزدیک صفر ($r_{xy} \approx 0.0$) کاهش می‌دهد.\par
 
 % SOURCE Zigzag_DNA_Chapter3.txt:9-9 [spacing]
 
@@ -475,7 +475,7 @@
 
 
 % SOURCE Zigzag_DNA_Chapter3.txt:18-18 [paragraph]
-\lr{\$\$\textbackslash{}mathrm\{Rule\}\_i = (S\_i \SourceControl{0008}mod 8) + 1\$\$}\par
+\[\mathrm{Rule}_i = (S_i \bmod 8) + 1\]\par
 
 % SOURCE Zigzag_DNA_Chapter3.txt:19-19 [spacing]
 
@@ -523,7 +523,7 @@
 
 
 % SOURCE Zigzag_DNA_Chapter3.txt:34-34 [image]
-\SourcePicture{eq3_3_zigzag_dna.png}{رابطه ۳{-}۳: فرمول‌بندی ریاضی جایگشت زیگ‌زاگی، انتخاب پویای قواعد \lr{DNA} و عملگر منطقی \lr{DNA XOR}}{[رابطه ۳{-}۳: فرمول‌بندی ریاضی جایگشت زیگ‌زاگی، انتخاب پویای قواعد \lr{DNA} و عملگر منطقی \lr{DNA XOR {-} eq3\_3\_zigzag\_dna.png}]}{2}
+\SourcePicture{eq3_3_zigzag_dna.png}{رابطه ۳{-}۴: فرمول‌بندی ریاضی جایگشت زیگ‌زاگی، انتخاب پویای قواعد \lr{DNA} و عملگر منطقی \lr{DNA XOR}}{[رابطه ۳{-}۴: فرمول‌بندی ریاضی جایگشت زیگ‌زاگی، انتخاب پویای قواعد \lr{DNA} و عملگر منطقی \lr{DNA XOR {-} eq3\_3\_zigzag\_dna.png}]}{2}
 
 % SOURCE Zigzag_DNA_Chapter3.txt:35-35 [spacing]
 
@@ -573,19 +573,19 @@
 
 
 % SOURCE Saliency_Steganography_Chapter3.txt:3-3 [paragraph]
-در سامانه‌های اینترنت اشیای پزشکی \lr{(IoMT)} و پزشکی از راه دور، صیانت از حریم خصوصی بیمار و حفاظت از فراداده‌های بالینی و هویتی (شامل اطلاعات \lr{EXIF}، پرونده بالینی، نام و شناسه بیمار) همانند محرمانگی خودِ تصویر تشخیصی از اهمیت حیاتی برخوردار است. با این حال، الگوریتم‌های سنتی پنهان‌نگاری (مانند \lr{LSB} ساده یا \lr{PVD}) داده‌ها را به صورت غیرتطبیقی در سراسر تصویر جای‌دهی می‌کنند که این امر منجر به ایجاد نویز دیداری، اعوجاج آناتومیک و افت کیفیت بالینی در ناحیه حساس تشخیصی \lr{(ROI)} می‌گردد \lr{[4, 5]}.\par
+در سامانه‌های اینترنت اشیای پزشکی \lr{(IoMT)} و پزشکی از راه دور، صیانت از حریم خصوصی بیمار و حفاظت از فراداده‌های بالینی و هویتی (شامل اطلاعات \lr{EXIF}، پرونده بالینی، نام و شناسه بیمار) همانند محرمانگی خودِ تصویر تشخیصی از اهمیت حیاتی برخوردار است. با این حال، الگوریتم‌های سنتی پنهان‌نگاری (مانند \lr{LSB} ساده یا \lr{PVD}) داده‌ها را به صورت غیرتطبیقی در سراسر تصویر جای‌دهی می‌کنند که این امر منجر به ایجاد نویز دیداری، اعوجاج آناتومیک و افت کیفیت بالینی در ناحیه حساس تشخیصی \lr{(ROI)} می‌گردد \ThesisCite{8}, \ThesisCite{9}.\par
 
 % SOURCE Saliency_Steganography_Chapter3.txt:4-4 [spacing]
 
 
 % SOURCE Saliency_Steganography_Chapter3.txt:5-5 [paragraph]
-برای غلبه بر این محدودیت بنیادی و نیل به هدف حفظ کامل اصالت بافت‌های تشخیصی، سیستم پیشنهادی از یک پروتکل پنهان‌نگاری تطبیقی دو مرحله‌ای مبتنی بر تحلیل برجستگی بصری \lr{(Saliency Detection)} و فشرده‌سازی بدون اتلاف \lr{zlib} استفاده می‌نماید. روند کارهای این ماژول در شکل ۳{-}۷ به تصویر کشیده شده است.\par
+برای غلبه بر این محدودیت بنیادی و نیل به هدف حفظ کامل اصالت بافت‌های تشخیصی، سیستم پیشنهادی از یک پروتکل پنهان‌نگاری تطبیقی دو مرحله‌ای مبتنی بر تحلیل برجستگی بصری \lr{(Saliency Detection)} و فشرده‌سازی بدون اتلاف \lr{zlib} استفاده می‌نماید. روند کارهای این ماژول در شکل ۳{-}۸ به تصویر کشیده شده است.\par
 
 % SOURCE Saliency_Steganography_Chapter3.txt:6-6 [spacing]
 
 
 % SOURCE Saliency_Steganography_Chapter3.txt:7-7 [image]
-\SourcePicture{chapter3_saliency_stego_pipeline.png}{شکل ۳{-}۷: نمودار فرآیند پنهان‌نگاری فراداده بیمار مبتنی بر فشرده‌سازی \lr{zlib} و برجستگی بصری}{[شکل ۳{-}۷: نمودار فرآیند پنهان‌نگاری فراداده بیمار مبتنی بر فشرده‌سازی \lr{zlib} و برجستگی بصری {-} \lr{chapter3\_saliency\_stego\_pipeline.png}]}{0}
+\SourcePicture{chapter3_saliency_stego_pipeline.png}{شکل ۳{-}۸: نمودار فرآیند پنهان‌نگاری فراداده بیمار مبتنی بر فشرده‌سازی \lr{zlib} و برجستگی بصری}{[شکل ۳{-}۸: نمودار فرآیند پنهان‌نگاری فراداده بیمار مبتنی بر فشرده‌سازی \lr{zlib} و برجستگی بصری {-} \lr{chapter3\_saliency\_stego\_pipeline.png}]}{0}
 
 % SOURCE Saliency_Steganography_Chapter3.txt:8-8 [spacing]
 
@@ -630,19 +630,19 @@
 ۳. جای‌دهی تطبیقی در بیت‌های کم‌ارزش \lr{(Adaptive 2{-}bit LSB Embedding)}:\par
 
 % SOURCE Saliency_Steganography_Chapter3.txt:22-22 [paragraph]
-جریان بیت‌های فشرده‌سازی شده $\mathrm{Payload}_{\mathrm{compressed}}$ صرفاً در ۲ بیت کم‌ارزش \lr{(LSB)} پیکسل‌هایی جای‌دهی می‌شوند که شرط قرارگیری در ناحیه پس‌زمینه کم‌برجستگی را برآورده سازند ($M_{\mathrm{ROI}}(i,\allowbreak{}j) = 0$). این جای‌دهی دقیقاً تضمین می‌کند که ناحیه حساس \lr{ROI} ۱۰۰\SourceGlyph{066A} دست‌نخورده باقی بماند ($PSNR_{\mathrm{ROI}} = \infty$) و شاخص‌های کلی تصویر پنهان‌نگاری‌شده در سطح آرمانی $PSNR > 50\mathrm{~dB}$ و \lr{\$SSIM \SourceControl{0007}pprox 1.0\$} حفظ گردند \lr{[4, 5, 7]}.\par
+جریان بیت‌های فشرده‌سازی شده $\mathrm{Payload}_{\mathrm{compressed}}$ صرفاً در ۲ بیت کم‌ارزش \lr{(LSB)} پیکسل‌هایی جای‌دهی می‌شوند که شرط قرارگیری در ناحیه پس‌زمینه کم‌برجستگی را برآورده سازند ($M_{\mathrm{ROI}}(i,\allowbreak{}j) = 0$). این جای‌دهی دقیقاً تضمین می‌کند که ناحیه حساس \lr{ROI} ۱۰۰\SourceGlyph{066A} دست‌نخورده باقی بماند ($PSNR_{\mathrm{ROI}} = \infty$) و شاخص‌های کلی تصویر پنهان‌نگاری‌شده در سطح آرمانی $PSNR > 50\mathrm{~dB}$ و $SSIM \approx 1.0$ حفظ گردند \ThesisCite{3}, \ThesisCite{8}, \ThesisCite{9}.\par
 
 % SOURCE Saliency_Steganography_Chapter3.txt:23-23 [spacing]
 
 
 % SOURCE Saliency_Steganography_Chapter3.txt:24-24 [paragraph]
-فرمول‌بندی جامع ریاضی، روابط فشرده‌سازی \lr{zlib}، استخراج طیف برجستگی و جای‌دهی \lr{LSB} در رابطه ۳{-}۴ نشان داده شده است.\par
+فرمول‌بندی جامع ریاضی، روابط فشرده‌سازی \lr{zlib}، استخراج طیف برجستگی و جای‌دهی \lr{LSB} در رابطه ۳{-}۵ نشان داده شده است.\par
 
 % SOURCE Saliency_Steganography_Chapter3.txt:25-25 [spacing]
 
 
 % SOURCE Saliency_Steganography_Chapter3.txt:26-26 [image]
-\SourcePicture{eq3_4_saliency_stego.png}{رابطه ۳{-}۴: فرمول‌بندی نقشه برجستگی بصری، فشرده‌سازی \lr{zlib} و جای‌دهی پس‌زمینه}{[رابطه ۳{-}۴: فرمول‌بندی نقشه برجستگی بصری، فشرده‌سازی \lr{zlib} و جای‌دهی پس‌زمینه {-} \lr{eq3\_4\_saliency\_stego.png}]}{2}
+\SourcePicture{eq3_4_saliency_stego.png}{رابطه ۳{-}۵: فرمول‌بندی نقشه برجستگی بصری، فشرده‌سازی \lr{zlib} و جای‌دهی پس‌زمینه}{[رابطه ۳{-}۵: فرمول‌بندی نقشه برجستگی بصری، فشرده‌سازی \lr{zlib} و جای‌دهی پس‌زمینه {-} \lr{eq3\_4\_saliency\_stego.png}]}{2}
 
 % SOURCE Saliency_Steganography_Chapter3.txt:27-27 [spacing]
 
@@ -686,13 +686,13 @@
 
 
 % SOURCE Complexity_Edge_Chapter3.txt:3-3 [paragraph]
-جهت تضمین تکرارپذیری \lr{(Reproducibility)} الگوریتم‌ها و اثبات قابلیت پیاده‌سازی عملیاتی سیستم امنیتی هیبریدی پیشنهادی در بسترهای واقعی سلامت الکترونیک، این بخش به ارائه شبه‌کدهای استاندارد چهارگانه، تحلیل ریاضی پیچیدگی محاسباتی زمانی و حافظه‌ای، و ارزیابی نرخ تاخیر \lr{(Latency)} بر روی سخت‌افزارهای لبه اینترنت اشیای پزشکی \lr{(IoMT)} اختصاص یافته است \lr{[1, 6]}.\par
+جهت تضمین تکرارپذیری \lr{(Reproducibility)} الگوریتم‌ها و اثبات قابلیت پیاده‌سازی عملیاتی سیستم امنیتی هیبریدی پیشنهادی در بسترهای واقعی سلامت الکترونیک، این بخش به ارائه شبه‌کدهای استاندارد چهارگانه، تحلیل ریاضی پیچیدگی محاسباتی زمانی و حافظه‌ای، و ارزیابی نرخ تاخیر \lr{(Latency)} بر روی سخت‌افزارهای لبه اینترنت اشیای پزشکی \lr{(IoMT)} اختصاص یافته است \ThesisCite{1}, \ThesisCite{10}.\par
 
 % SOURCE Complexity_Edge_Chapter3.txt:4-4 [spacing]
 
 
 % SOURCE Complexity_Edge_Chapter3.txt:5-5 [heading]
-\SourceHeading{2}{۳{-}۷{-}۱. شبه‌کدهای اجرایی زنجیره پردازشی فرستنده و گیرنده}
+\SourceHeading{2}{۳{-}۷{-}۱. شبه‌کدهای اجرایی زنجیره پردازشی فرستنده}
 
 % SOURCE Complexity_Edge_Chapter3.txt:6-6 [paragraph]
 برای شفاف‌سازی دقیق گام‌های محاسباتی، لوله‌های پردازشی ۴لایه سیستم در قالب ۴ شبه‌کد استاندارد دانشگاهی تدوین گردیده‌اند:\par
@@ -793,7 +793,7 @@
 
 
 % SOURCE Complexity_Edge_Chapter3.txt:73-73 [paragraph]
-۴. شبه‌کد ۳{-}۴: پنهان‌نگاری \lr{Saliency} فراداده و بازسازی گیرنده\par
+۴. شبه‌کد ۳{-}۴: پنهان‌نگاری \lr{Saliency} فراداده\par
 
 % SOURCE Complexity_Edge_Chapter3.txt:74-74 [spacing]
 
@@ -825,28 +825,28 @@
 
 
 % SOURCE Complexity_Edge_Chapter3.txt:90-90 [paragraph]
-{-} \textbf{پیچیدگی زمانی لایه اول \lr{(U{-}Net \& SHA{-}256)}:} استنتاج شبکه \lr{U{-}Net} بر روی ماتریس \lr{\$W \SourceControl{0009}imes H\$} دارای پیچیدگی \lr{\$O(W \SourceControl{0009}imes H)\$} است. استخراج ۴ گشتاور آماری و محاسبه چکیده \lr{SHA{-}256} بر روی $N_{\mathrm{ROI}}$ پیکسل انجام شده که \lr{\$N\_\{\textbackslash{}mathrm\{ROI\}\} \SourceGlyph{003C} W \SourceControl{0009}imes H\$} بوده و پیچیدگی $O(N_{\mathrm{ROI}})$ را تحمیل می‌نماید.\par
+{-} \textbf{پیچیدگی زمانی لایه اول \lr{(U{-}Net \& SHA{-}256)}:} استنتاج شبکه \lr{U{-}Net} بر روی ماتریس $W \times H$ دارای پیچیدگی $O(W \times H)$ است. استخراج ۴ گشتاور آماری و محاسبه چکیده \lr{SHA{-}256} بر روی $N_{\mathrm{ROI}}$ پیکسل انجام شده که $N_{\mathrm{ROI}} < W \times H$ بوده و پیچیدگی $O(N_{\mathrm{ROI}})$ را تحمیل می‌نماید.\par
 
 % SOURCE Complexity_Edge_Chapter3.txt:91-91 [paragraph]
-{-} \textbf{پیچیدگی زمانی لایه دوم (سیستم ۵بعدی \lr{RK4}):} حل عددی سیستم ۵بعدی برای \lr{\$N = W \SourceControl{0009}imes H\$} گام دارای پیچیدگی خطی \lr{\$O(W \SourceControl{0009}imes H)\$} است.\par
+{-} \textbf{پیچیدگی زمانی لایه دوم (سیستم ۵بعدی \lr{RK4}):} حل عددی سیستم ۵بعدی برای $N = W \times H$ گام دارای پیچیدگی خطی $O(W \times H)$ است.\par
 
 % SOURCE Complexity_Edge_Chapter3.txt:92-92 [paragraph]
-{-} \textbf{پیچیدگی زمانی لایه سوم (زیگ‌زاگی و \lr{DNA}):} پیمایش ماتریسی زیگ‌زاگی و اعمال عملگرهای \lr{DNA} برای \lr{\$W \SourceControl{0009}imes H\$} پیکسل دارای پیچیدگی خطی \lr{\$O(W \SourceControl{0009}imes H)\$} می‌باشد.\par
+{-} \textbf{پیچیدگی زمانی لایه سوم (زیگ‌زاگی و \lr{DNA}):} پیمایش ماتریسی زیگ‌زاگی و اعمال عملگرهای \lr{DNA} برای $W \times H$ پیکسل دارای پیچیدگی خطی $O(W \times H)$ می‌باشد.\par
 
 % SOURCE Complexity_Edge_Chapter3.txt:93-93 [paragraph]
-{-} \textbf{پیچیدگی زمانی لایه چهارم \lr{(Saliency \& zlib)}:} محاسبه طیف پس‌ماند برجستگی با تبدیل فوریه سریع \lr{(FFT)} دارای پیچیدگی \lr{\$O(W \SourceControl{0009}imes H \textbackslash{}log(W \SourceControl{0009}imes H))\$} و جای‌دهی \lr{LSB} دارای پیچیدگی \lr{\$O(W \SourceControl{0009}imes H)\$} است.\par
+{-} \textbf{پیچیدگی زمانی لایه چهارم \lr{(Saliency \& zlib)}:} محاسبه طیف پس‌ماند برجستگی با تبدیل فوریه سریع \lr{(FFT)} دارای پیچیدگی $O(W \times H \log(W \times H))$ و جای‌دهی \lr{LSB} دارای پیچیدگی $O(W \times H)$ است.\par
 
 % SOURCE Complexity_Edge_Chapter3.txt:94-94 [spacing]
 
 
 % SOURCE Complexity_Edge_Chapter3.txt:95-95 [paragraph]
-بنابراین، پیچیدگی زمانی کل سیستم از مرتبه خطی \lr{\$O(W \SourceControl{0009}imes H \textbackslash{}log(W \SourceControl{0009}imes H))\$} بوده و پیچیدگی حافظه‌ای آن \lr{\$O(W \SourceControl{0009}imes H)\$} می‌باشد.\par
+بنابراین، پیچیدگی زمانی کل سیستم از مرتبه شبه‌خطی $O(W \times H \log(W \times H))$ بوده و پیچیدگی حافظه‌ای آن $O(W \times H)$ می‌باشد.\par
 
 % SOURCE Complexity_Edge_Chapter3.txt:96-96 [spacing]
 
 
 % SOURCE Complexity_Edge_Chapter3.txt:97-97 [image]
-\SourcePicture{eq3_5_complexity_math.png}{رابطه ۳{-}۵: فرمول‌بندی ریاضی پیچیدگی محاسباتی و بودجه زمانی لایه‌ها}{[رابطه ۳{-}۵: فرمول‌بندی ریاضی پیچیدگی محاسباتی و بودجه زمانی لایه‌ها {-} \lr{eq3\_5\_complexity\_math.png}]}{2}
+\SourcePicture{eq3_5_complexity_math.png}{رابطه ۳{-}۶: فرمول‌بندی ریاضی پیچیدگی محاسباتی و بودجه زمانی لایه‌ها}{[رابطه ۳{-}۶: فرمول‌بندی ریاضی پیچیدگی محاسباتی و بودجه زمانی لایه‌ها {-} \lr{eq3\_5\_complexity\_math.png}]}{2}
 
 % SOURCE Complexity_Edge_Chapter3.txt:98-98 [spacing]
 
@@ -855,13 +855,13 @@
 \SourceHeading{2}{۳{-}۷{-}۳. ملاحظات پیاده‌سازی سخت‌افزاری بر روی تراشه‌های لبه \lr{IoMT} \lr{(NVIDIA Jetson TX2)}}
 
 % SOURCE Complexity_Edge_Chapter3.txt:100-100 [paragraph]
-جهت به‌کارگیری سیستم در بسترهای واقعی اینترنت اشیای پزشکی \lr{(IoMT)}، کلیه ماژول‌ها بر روی گره لبه \lr{NVIDIA Jetson TX2} (شامل پردازنده ۶ هسته‌ای \lr{ARM Cortex{-}A57}، پردازنده گرافیکی ۲۵۶ هسته‌ای با معماری \lr{Pascal} و ۴ گیگابایت حافظه \lr{LPDDR4} با توان مصرفی زیر ۱۵ وات) شبیه‌سازی و ارزیابی گردیدند \lr{[6]}.\par
+جهت به‌کارگیری سیستم در بسترهای واقعی اینترنت اشیای پزشکی \lr{(IoMT)}، کلیه ماژول‌ها بر روی گره لبه \lr{NVIDIA Jetson TX2} (شامل پردازنده ۶ هسته‌ای \lr{ARM Cortex{-}A57}، پردازنده گرافیکی ۲۵۶ هسته‌ای با معماری \lr{Pascal} و ۴ گیگابایت حافظه \lr{LPDDR4} با توان مصرفی زیر ۱۵ وات) شبیه‌سازی و ارزیابی گردیدند \ThesisCite{10}.\par
 
 % SOURCE Complexity_Edge_Chapter3.txt:101-101 [spacing]
 
 
 % SOURCE Complexity_Edge_Chapter3.txt:102-102 [paragraph]
-نتایج ارزیابی کمّی نشان می‌دهد که زمان اجرای تجمعی سیستم برای تصاویر استاندارد \lr{\$256 \SourceControl{0009}imes 256\$} برابر $2.93$ ثانیه است که تفکیک زمانی لایه‌ها به شرح زیر می‌باشد:\par
+نتایج ارزیابی کمّی نشان می‌دهد که زمان اجرای تجمعی سیستم برای تصاویر استاندارد $256 \times 256$ برابر $2.93$ ثانیه است که تفکیک زمانی لایه‌ها به شرح زیر می‌باشد:\par
 
 % SOURCE Complexity_Edge_Chapter3.txt:103-103 [paragraph]
 {-} استنتاج \lr{U{-}Net} بر روی پردازنده گرافیکی لبه: $1.18$ ثانیه.\par
@@ -879,13 +879,13 @@
 
 
 % SOURCE Complexity_Edge_Chapter3.txt:108-108 [paragraph]
-دست‌یابی به زمان اجرای زیر ۳ ثانیه (\lr{\$2.93\SourceControl{0009}ext\{ s\} \SourceGlyph{003C} 3.0\SourceControl{0009}ext\{ s\}\$}) اثبات می‌کند که چارچوب پیشنهادی الزامات نرخ تاخیر زمان‌واقعی \lr{(Real{-}time Latency)} را در بسترهای بیمارستانی و پزشکی از راه دور کاملاً برآورده می‌سازد.\par
+دست‌یابی به زمان اجرای زیر ۳ ثانیه ($2.93\text{ s} < 3.0\text{ s}$) اثبات می‌کند که چارچوب پیشنهادی الزامات نرخ تاخیر زمان‌واقعی \lr{(Real{-}time Latency)} را در بسترهای بیمارستانی و پزشکی از راه دور کاملاً برآورده می‌سازد.\par
 
 % SOURCE Complexity_Edge_Chapter3.txt:109-109 [spacing]
 
 
 % SOURCE Complexity_Edge_Chapter3.txt:110-110 [image]
-\SourcePicture{chapter3_edge_complexity_breakdown.png}{شکل ۳{-}۸: نمودار تفکیک زمان اجرای لایه‌ها و مقایسه کارایی بر روی سخت‌افزار لبه \lr{NVIDIA Jetson TX2}}{[شکل ۳{-}۸: نمودار تفکیک زمان اجرای لایه‌ها و مقایسه کارایی بر روی سخت‌افزار لبه \lr{NVIDIA Jetson TX2 {-} chapter3\_edge\_complexity\_breakdown.png}]}{0}
+\SourcePicture{chapter3_edge_complexity_breakdown.png}{شکل ۳{-}۹: نمودار تفکیک زمان اجرای لایه‌ها و مقایسه کارایی بر روی سخت‌افزار لبه \lr{NVIDIA Jetson TX2}}{[شکل ۳{-}۹: نمودار تفکیک زمان اجرای لایه‌ها و مقایسه کارایی بر روی سخت‌افزار لبه \lr{NVIDIA Jetson TX2 {-} chapter3\_edge\_complexity\_breakdown.png}]}{0}
 
 % SOURCE Complexity_Edge_Chapter3.txt:111-111 [spacing]
 

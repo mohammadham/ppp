@@ -10,6 +10,7 @@
 \usepackage{xepersian}
 \settextfont[Path=fonts/,BoldFont=BNazanin-Bold.ttf]{BNazanin.ttf}
 \setlatintextfont[Path=fonts/,Scale=0.857142857,BoldFont=TimesNewRoman-Bold.ttf,ItalicFont=TimesNewRoman-Italic.ttf,BoldItalicFont=TimesNewRoman-BoldItalic.ttf]{TimesNewRoman.ttf}
+\newfontfamily\ReferenceLatinFont[Path=fonts/,ItalicFont=TimesNewRoman-Italic.ttf]{TimesNewRoman.ttf}
 \setmonofont[Path=fonts/]{DejaVuSansMono.ttf}
 \newfontfamily\SourceGlyphFont[Path=fonts/,BoldFont=DejaVuSans-Bold.ttf]{DejaVuSans.ttf}
 \defpersianfont\Titr[Path=fonts/]{BTitr-Bold.ttf}
@@ -60,6 +61,7 @@
   \ifnum#4=2{\centering\fontsize{12}{15}\selectfont #2\par}\fi
   \end{minipage}\par\addvspace{\baselineskip}}
 \newcommand{\SourceControl}[1]{\lr{\texttt{[U+#1]}}}
+\newcommand{\ThesisCite}[1]{\lr{\hyperlink{ref-#1}{[#1]}}}
 \newtcolorbox{sourcecode}{enhanced,breakable,colback=white,colframe=black!55,boxrule=.4pt,arc=0pt,left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=12pt,after skip=12pt}
 \newcommand{\CodeLine}[2]{\noindent\hangindent=1em\hspace*{#1em}#2\par}
 \newcommand{\MissingInfo}[1]{[#1]}
