@@ -11,8 +11,13 @@ def validate(c):
     if c['system'] not in ('equation_3_2', 'appendix'):
         raise ValueError('Unknown ODE system')
     names = ['a','b','c','d','k','h','w'] if c['system'] == 'equation_3_2' else ['a','b','c','d','e']
-    if any(c['parameters'].get(n) is None for n in names):
-        raise ValueError('پارامترهای رابطه ۳-۲ در پایان‌نامه عدد ندارند؛ ابتدا همه را مستند و تعیین کنید. پروفایل پیوست روش متفاوتی است.')
+    missing = [n for n in names if c['parameters'].get(n) is None]
+    if missing:
+        if c['system'] == 'equation_3_2':
+            raise ValueError('پارامترهای تعیین‌نشدهٔ رابطهٔ ۳-۲: ' + ', '.join(missing) +
+                             ' — یا عددها را در پروفایل مستند خودتان تعیین کنید یا PROFILE را صریحاً به '
+                             'scripts/appendix_experiment.json (اعداد مستند پیوست پایان‌نامه) تغییر دهید.')
+        raise ValueError('پارامترهای تعیین‌نشدهٔ سیستم پیوست: ' + ', '.join(missing))
     if not np.isfinite([c['parameters'][n] for n in names]).all():
         raise ValueError('Nonfinite ODE parameters')
     if not np.isfinite([c['dt'], c['scale']]).all() or c['dt'] <= 0 or c['transient'] < 0 or c['scale'] <= 0:

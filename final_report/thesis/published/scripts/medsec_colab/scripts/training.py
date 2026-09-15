@@ -17,10 +17,19 @@ class SegmentationDataset(Dataset):
         a, m, _ = load_sample(self.records[index], self.size)
         return torch.from_numpy(a.astype(np.float32)/255)[None], torch.from_numpy(m.astype(np.float32))[None]
 
-def loss_function(logits, target):
+def loss_function(logits, target, pos_w=1.0, neg_w=1.0):
     probability = logits.sigmoid(); axes = (1, 2, 3)
     dice = (2*(probability*target).sum(axes)+1)/(probability.sum(axes)+target.sum(axes)+1)
-    return torch.nn.functional.binary_cross_entropy_with_logits(logits, target) + (1-dice).mean()
+    dice_loss = (1.0 - dice).mean()
+    # Vessel pixels are a tiny minority (~5% in DRIVE); an unweighted BCE is dominated
+    # by the background class and pushes every probability below threshold, which makes
+    # the hard mask empty and the Dice zero. Weight each pixel by the inverse class
+    # frequency so the foreground signal is not drowned out.
+    weight = pos_w * target + neg_w * (1.0 - target)
+    bce_per_pixel = torch.nn.functional.binary_cross_entropy_with_logits(
+        logits, target, reduction='none')
+    bce = (bce_per_pixel * weight).sum() / weight.sum()  # weight-normalised mean BCE
+    return bce + dice_loss
 
 def train(manifest, dataset, cfg, output, device='cpu', resume=False):
     t = dict(cfg['training']); seed = int(cfg['seed'])
@@ -58,28 +67,56 @@ def train(manifest, dataset, cfg, output, device='cpu', resume=False):
     write_json(output/'provenance.json', {'environment': environment(), 'config': cfg, 'manifest_sha256': manifest_hash,
                                         'data_fingerprint': data_fingerprint,
                                         'dataset': dataset, 'records': records, 'test_used_for_training': False})
+    # Learn the foreground/background balance once from the TRAINING set only (never
+    # validation/test) and derive inverse-frequency weights for the BCE term.
+    pos_pixels, neg_pixels = 0, 0
+    with torch.inference_mode():
+        for image, target in loaders['train']:
+            sum_t = int(target.sum().item())
+            pos_pixels += sum_t
+            neg_pixels += int(target.numel() - sum_t)
+    if pos_pixels <= 0:
+        pos_pixels = neg_pixels or 1
+    if neg_pixels <= 0:
+        neg_pixels = pos_pixels
+    pos_w = (pos_pixels + neg_pixels) / (2.0 * pos_pixels)
+    neg_w = (pos_pixels + neg_pixels) / (2.0 * neg_pixels)
+    print(f'class weights from training data: foreground={pos_w:.3f} background={neg_w:.3f}',
+          flush=True)
+
     for epoch in range(start, t['epochs']):
         if stale >= t['patience']: break
         epoch_result = {'epoch': epoch+1}
         for phase in ('train', 'val'):
-            net.train(phase == 'train'); losses, scores = [], []
+            net.train(phase == 'train'); losses, scores, softs = [], [], []
             for image, target in loaders[phase]:
                 image, target = image.to(device), target.to(device)
                 with torch.set_grad_enabled(phase == 'train'):
-                    logits = net(image); loss = loss_function(logits, target)
+                    logits = net(image); loss = loss_function(logits, target, pos_w=pos_w, neg_w=neg_w)
                     if not torch.isfinite(loss): raise ValueError('Nonfinite training loss')
                     if phase == 'train':
                         optimizer.zero_grad(set_to_none=True); loss.backward(); optimizer.step()
                 losses.extend([loss.item()]*len(image))
-                for pred, truth in zip(logits.detach().sigmoid().cpu().numpy(), target.cpu().numpy()):
+                prob = logits.detach().sigmoid()
+                softs.extend(((2*(prob*target).sum((1, 2, 3)) + 1) /
+                              (prob.sum((1, 2, 3)) + target.sum((1, 2, 3)) + 1)).cpu().tolist())
+                for pred, truth in zip(prob.cpu().numpy(), target.cpu().numpy()):
                     scores.append(segmentation_scores(pred >= t['threshold'], truth > .5)['dice'])
-            epoch_result[phase+'_loss'] = float(np.mean(losses)); epoch_result[phase+'_dice'] = float(np.mean(scores))
-        # Dice is discrete: while all predictions stay below threshold, a falling
-        # validation loss is meaningful progress, not a reason to keep epoch 1.
-        improved = (epoch_result['val_dice'] > best or
-                    (epoch_result['val_dice'] == best and epoch_result['val_loss'] < best_loss))
-        if improved: best_loss = epoch_result['val_loss']
-        best = max(best, epoch_result['val_dice']); stale = 0 if improved else stale+1
+            epoch_result[phase+'_loss'] = float(np.mean(losses))
+            epoch_result[phase+'_dice'] = float(np.mean(scores))
+            epoch_result[phase+'_soft_dice'] = float(np.mean(softs))
+        # Select the best checkpoint by CONTINUOUS (soft) validation Dice. Hard Dice is a
+        # step function: while every predicted probability stays below threshold it is
+        # frozen at 0 and can never beat an early lucky epoch, so early stopping trips
+        # spuriously. Soft Dice changes smoothly as probabilities improve, so real
+        # progress is captured even before the threshold is crossed.
+        soft_dice = epoch_result['val_soft_dice']
+        improved = (soft_dice > best or
+                    (abs(soft_dice - best) < 1e-9 and epoch_result['val_loss'] < best_loss))
+        if improved:
+            best_loss = epoch_result['val_loss']
+        best = max(best, soft_dice)
+        stale = 0 if improved else stale + 1
         history.append(epoch_result)
         state = {'state_dict': net.state_dict(), 'optimizer': optimizer.state_dict(), 'training': t,
                  'dataset': dataset, 'manifest_sha256': manifest_hash, 'trained_epochs': epoch+1, 'best': best,
