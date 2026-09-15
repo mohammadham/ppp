@@ -1,0 +1,66 @@
+% !TeX program = xelatex
+\documentclass[14pt,a4paper,oneside]{extreport}
+\usepackage[top=25mm,bottom=25mm,left=25mm,right=30mm,footskip=12mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,array,longtable,booktabs,pdflscape}
+\usepackage{setspace,titlesec,needspace}
+\usepackage[most]{tcolorbox}
+\usepackage{caption}
+\usepackage[unicode,hidelinks,hypertexnames=false]{hyperref}
+\usepackage{xepersian}
+\settextfont[Path=fonts/,BoldFont=BNazanin-Bold.ttf]{BNazanin.ttf}
+\setlatintextfont[Path=fonts/,Scale=0.857142857,BoldFont=TimesNewRoman-Bold.ttf,ItalicFont=TimesNewRoman-Italic.ttf,BoldItalicFont=TimesNewRoman-BoldItalic.ttf]{TimesNewRoman.ttf}
+\setmonofont[Path=fonts/]{DejaVuSansMono.ttf}
+\newfontfamily\SourceGlyphFont[Path=fonts/,BoldFont=DejaVuSans-Bold.ttf]{DejaVuSans.ttf}
+\defpersianfont\Titr[Path=fonts/]{BTitr-Bold.ttf}
+\defpersianfont\Lotus[Path=fonts/,BoldFont=BLotus-Bold.ttf]{BLotus.ttf}
+\defpersianfont\Zar[Path=fonts/,BoldFont=BZar-Bold.ttf]{BZar.ttf}
+\setstretch{1.2}
+\setlength{\parindent}{7mm}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{3em}
+\setcounter{tocdepth}{3}
+\pagestyle{plain}
+\titleformat{\section}{\bfseries\fontsize{18}{22}\selectfont}{}{0pt}{}
+\titleformat{\subsection}{\bfseries\fontsize{16}{20}\selectfont}{}{0pt}{}
+\titleformat{\subsubsection}{\bfseries\fontsize{14}{18}\selectfont}{}{0pt}{}
+\titlespacing*{\section}{0pt}{18pt}{6pt}
+\titlespacing*{\subsection}{0pt}{18pt}{6pt}
+\titlespacing*{\subsubsection}{0pt}{18pt}{6pt}
+\makeatletter
+\renewcommand*{\DigitsDotDashInterCharToks}{\if@nonlatin{\XeTeXinterchartokenstate=0\persianfont\char"200F}\fi}
+\renewcommand\normalsize{\@setfontsize\normalsize{14}{16.8}}
+\renewcommand\footnotesize{\@setfontsize\footnotesize{10}{12}}
+\makeatother
+\AtBeginDocument{\normalsize}
+\newcommand{\SourceGlyph}[1]{{\SourceGlyphFont\char"#1}}
+\let\OriginalMathText\text
+\renewcommand{\text}[1]{\OriginalMathText{\latinfont #1}}
+\renewcommand{\_}{\ifmmode\OriginalMathText{\latinfont\char95}\else\SourceGlyph{005F}\fi}
+\DeclareMathSizes{14}{14}{10}{7}
+\newcommand{\SourceChapter}[2]{%
+  \clearpage\setcounter{chapter}{#1}\setcounter{section}{0}%
+  \phantomsection\addcontentsline{toc}{chapter}{#2}%
+  \thispagestyle{plain}\vspace*{45mm}%
+  {\centering\bfseries\fontsize{24}{32}\selectfont #2\par}\clearpage}
+\newcommand{\SourceHeading}[2]{%
+  \Needspace{4\baselineskip}%
+  \ifcase#1\or\section*{#2}\phantomsection\addcontentsline{toc}{section}{#2}%
+  \or\subsection*{#2}\phantomsection\addcontentsline{toc}{subsection}{#2}%
+  \else\subsubsection*{#2}\phantomsection\addcontentsline{toc}{subsubsection}{#2}\fi}
+\newcommand{\SourceCaption}[2]{%
+  \par\begingroup\centering\fontsize{12}{15}\selectfont #2\par\endgroup
+  \phantomsection\addcontentsline{#1}{figure}{#2}}
+\newcommand{\SourcePicture}[4]{%
+  \par\addvspace{\baselineskip}\noindent
+  \begin{minipage}{\linewidth}\centering
+  \ifnum#4=1\SourceCaption{lot}{#2}\fi
+  \IfFileExists{figures/#1}{\includegraphics[width=\linewidth,height=.68\textheight,keepaspectratio]{figures/#1}}{#3}\par
+  \ifnum#4=0\SourceCaption{lof}{#2}\fi
+  \ifnum#4=2{\centering\fontsize{12}{15}\selectfont #2\par}\fi
+  \end{minipage}\par\addvspace{\baselineskip}}
+\newcommand{\SourceControl}[1]{\lr{\texttt{[U+#1]}}}
+\newtcolorbox{sourcecode}{enhanced,breakable,colback=white,colframe=black!55,boxrule=.4pt,arc=0pt,left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=12pt,after skip=12pt}
+\newcommand{\CodeLine}[2]{\noindent\hangindent=1em\hspace*{#1em}#2\par}
+\newcommand{\MissingInfo}[1]{[#1]}
+\input{metadata.tex}

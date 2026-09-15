@@ -1,0 +1,659 @@
+{
+  "unique_count": 10,
+  "duplicate_occurrences_removed": 70,
+  "entries": [
+    {
+      "number": 1,
+      "text": "S. Subathra and V. Thanikaiselvan, \"Enhanced security for medical images using a new 5D hyper chaotic map and deep learning based segmentation,\" Scientific Reports, vol. 15, no. 1, p. 4906, 2025.",
+      "first_source": "Final_Remarks_Chapter5.txt",
+      "line": 14
+    },
+    {
+      "number": 2,
+      "text": "A. A. Alarood, M. Faheem, M. A. Al-Khasawneh, A. I. A. Alzahrani, and A. A. Alshdadi, \"Secure medical image transmission using deep neural network in e-health applications,\" Healthcare Technology Letters, vol. 10, no. 4, pp. 87–98, 2023.",
+      "first_source": "Final_Remarks_Chapter5.txt",
+      "line": 15
+    },
+    {
+      "number": 3,
+      "text": "Y. Pourasad, R. Ranjbarzadeh, and A. Mardani, \"A new algorithm for digital image encryption based on chaos theory,\" Entropy, vol. 23, no. 3, p. 341, 2021.",
+      "first_source": "Final_Remarks_Chapter5.txt",
+      "line": 16
+    },
+    {
+      "number": 4,
+      "text": "M. Yildirim, \"Steganography-based voice hiding in medical images of COVID-19 patients,\" International Journal of Imaging Systems and Technology, vol. 31, no. 4, pp. 1678–1694, 2021.",
+      "first_source": "Final_Remarks_Chapter5.txt",
+      "line": 17
+    },
+    {
+      "number": 5,
+      "text": "H. Alshamrani, S. Alajmani, R. Y. Alyami, and B. Soh, \"Comprehensive comparison of image steganography techniques with security enhancement,\" International Journal of Recent Technology and Engineering (IJRTE), vol. 14, no. 2, 2025.",
+      "first_source": "Final_Remarks_Chapter5.txt",
+      "line": 18
+    },
+    {
+      "number": 6,
+      "text": "B. M. Issac, S. N. Kumar, S. Zafar, K. A. Shakil, and M. A. Wani, \"Deep learning steganography for big data security using squeeze and excitation with inception architectures,\" Scientific Reports, vol. 15, no. 1, p. 16394, 2025.",
+      "first_source": "Final_Remarks_Chapter5.txt",
+      "line": 19
+    },
+    {
+      "number": 7,
+      "text": "H. Saidi, O. Tibermacine, and A. Elhadad, \"High-capacity data hiding for medical images based on the mask-RCNN model,\" Scientific Reports, vol. 14, no. 1, p. 55639, 2024.",
+      "first_source": "Final_Remarks_Chapter5.txt",
+      "line": 20
+    },
+    {
+      "number": 8,
+      "text": "Z. S. Husamuldeen, T. M. Salman, and A. Miry, \"Medical image encryption using chaotic algorithms and deep learning,\" International Journal of Intelligent Engineering and Systems, vol. 18, no. 6, pp. 285–299, 2025.",
+      "first_source": "Final_Remarks_Chapter5.txt",
+      "line": 21
+    },
+    {
+      "number": 9,
+      "text": "M. Kumar, A. S. Chivukula, and G. Barua, \"Deep learning-based encryption scheme for medical images using DCGAN and virtual planet domain,\" Scientific Reports, vol. 15, no. 1, p. 84186, 2025.",
+      "first_source": "Final_Remarks_Chapter5.txt",
+      "line": 22
+    },
+    {
+      "number": 10,
+      "text": "M. S. L. Preethi, S. V. Lokesh, and B. G. Reddy, \"Advanced chaotic asymmetric cryptosystems for securing medical imaging data,\" IRJIET, vol. 9, no. ICCIS-2025, pp. 40–47, 2025.",
+      "first_source": "Final_Remarks_Chapter5.txt",
+      "line": 23
+    }
+  ],
+  "occurrences": [
+    {
+      "source": "Final_Remarks_Chapter5.txt",
+      "line": 14,
+      "original_number": 1,
+      "global_number": 1,
+      "text_sha256": "93bc53c00d0f60b1bcbe647788cd3a7e8e8d15275db6fc0b53243173446c8485"
+    },
+    {
+      "source": "Final_Remarks_Chapter5.txt",
+      "line": 15,
+      "original_number": 2,
+      "global_number": 2,
+      "text_sha256": "68a449d18dfff5be8da0def009325aa35f3af49305d4d8c96a6629c9a4ae8951"
+    },
+    {
+      "source": "Final_Remarks_Chapter5.txt",
+      "line": 16,
+      "original_number": 3,
+      "global_number": 3,
+      "text_sha256": "ad4742729ec4633a920dbcb565c2b6a9bdb9aec9db5ee063aac67c3011df4d94"
+    },
+    {
+      "source": "Final_Remarks_Chapter5.txt",
+      "line": 17,
+      "original_number": 4,
+      "global_number": 4,
+      "text_sha256": "dc14a69649032e5fd85c4b221d9123d579a0ce0d6a170f1d412918e3c0e58e3f"
+    },
+    {
+      "source": "Final_Remarks_Chapter5.txt",
+      "line": 18,
+      "original_number": 5,
+      "global_number": 5,
+      "text_sha256": "f67ab45ac34d1a4176e607b9dd6d052f62a6df154a3823008f42472e23819966"
+    },
+    {
+      "source": "Final_Remarks_Chapter5.txt",
+      "line": 19,
+      "original_number": 6,
+      "global_number": 6,
+      "text_sha256": "7cd7891f5ba14fbc68b9d4a937dbc1ba9913cffdcd8fa4539eadb00bfc7beeca"
+    },
+    {
+      "source": "Final_Remarks_Chapter5.txt",
+      "line": 20,
+      "original_number": 7,
+      "global_number": 7,
+      "text_sha256": "5e345fede7f37a978fb06d045bc948651f13055274f542623b9d687605fb33d5"
+    },
+    {
+      "source": "Final_Remarks_Chapter5.txt",
+      "line": 21,
+      "original_number": 8,
+      "global_number": 8,
+      "text_sha256": "0c2f5b4f8f008a39291261bb82657bab3a57dbaa8a62dd8ba8b3da6e714030ce"
+    },
+    {
+      "source": "Final_Remarks_Chapter5.txt",
+      "line": 22,
+      "original_number": 9,
+      "global_number": 9,
+      "text_sha256": "2ba676143e7d814a21f522ff2eb938aecdee25a093c0ef901940e73797c5eea9"
+    },
+    {
+      "source": "Final_Remarks_Chapter5.txt",
+      "line": 23,
+      "original_number": 10,
+      "global_number": 10,
+      "text_sha256": "0f7746e3b1002606fb056a7d458ed438aab98f539f43b9302fe6b1f3379a88b4"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 82,
+      "original_number": 1,
+      "global_number": 1,
+      "text_sha256": "93bc53c00d0f60b1bcbe647788cd3a7e8e8d15275db6fc0b53243173446c8485"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 83,
+      "original_number": 2,
+      "global_number": 2,
+      "text_sha256": "68a449d18dfff5be8da0def009325aa35f3af49305d4d8c96a6629c9a4ae8951"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 84,
+      "original_number": 3,
+      "global_number": 3,
+      "text_sha256": "ad4742729ec4633a920dbcb565c2b6a9bdb9aec9db5ee063aac67c3011df4d94"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 85,
+      "original_number": 4,
+      "global_number": 4,
+      "text_sha256": "dc14a69649032e5fd85c4b221d9123d579a0ce0d6a170f1d412918e3c0e58e3f"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 86,
+      "original_number": 5,
+      "global_number": 5,
+      "text_sha256": "f67ab45ac34d1a4176e607b9dd6d052f62a6df154a3823008f42472e23819966"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 87,
+      "original_number": 6,
+      "global_number": 10,
+      "text_sha256": "0f7746e3b1002606fb056a7d458ed438aab98f539f43b9302fe6b1f3379a88b4"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 88,
+      "original_number": 7,
+      "global_number": 7,
+      "text_sha256": "5e345fede7f37a978fb06d045bc948651f13055274f542623b9d687605fb33d5"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 89,
+      "original_number": 8,
+      "global_number": 6,
+      "text_sha256": "7cd7891f5ba14fbc68b9d4a937dbc1ba9913cffdcd8fa4539eadb00bfc7beeca"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 90,
+      "original_number": 9,
+      "global_number": 8,
+      "text_sha256": "0c2f5b4f8f008a39291261bb82657bab3a57dbaa8a62dd8ba8b3da6e714030ce"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 91,
+      "original_number": 10,
+      "global_number": 9,
+      "text_sha256": "2ba676143e7d814a21f522ff2eb938aecdee25a093c0ef901940e73797c5eea9"
+    },
+    {
+      "source": "Chapter2_Completed.txt",
+      "line": 147,
+      "original_number": 1,
+      "global_number": 1,
+      "text_sha256": "93bc53c00d0f60b1bcbe647788cd3a7e8e8d15275db6fc0b53243173446c8485"
+    },
+    {
+      "source": "Chapter2_Completed.txt",
+      "line": 148,
+      "original_number": 2,
+      "global_number": 2,
+      "text_sha256": "68a449d18dfff5be8da0def009325aa35f3af49305d4d8c96a6629c9a4ae8951"
+    },
+    {
+      "source": "Chapter2_Completed.txt",
+      "line": 149,
+      "original_number": 3,
+      "global_number": 3,
+      "text_sha256": "ad4742729ec4633a920dbcb565c2b6a9bdb9aec9db5ee063aac67c3011df4d94"
+    },
+    {
+      "source": "Chapter2_Completed.txt",
+      "line": 150,
+      "original_number": 4,
+      "global_number": 4,
+      "text_sha256": "dc14a69649032e5fd85c4b221d9123d579a0ce0d6a170f1d412918e3c0e58e3f"
+    },
+    {
+      "source": "Chapter2_Completed.txt",
+      "line": 151,
+      "original_number": 5,
+      "global_number": 5,
+      "text_sha256": "f67ab45ac34d1a4176e607b9dd6d052f62a6df154a3823008f42472e23819966"
+    },
+    {
+      "source": "Chapter2_Completed.txt",
+      "line": 152,
+      "original_number": 6,
+      "global_number": 6,
+      "text_sha256": "7cd7891f5ba14fbc68b9d4a937dbc1ba9913cffdcd8fa4539eadb00bfc7beeca"
+    },
+    {
+      "source": "Chapter2_Completed.txt",
+      "line": 153,
+      "original_number": 7,
+      "global_number": 7,
+      "text_sha256": "5e345fede7f37a978fb06d045bc948651f13055274f542623b9d687605fb33d5"
+    },
+    {
+      "source": "Chapter2_Completed.txt",
+      "line": 154,
+      "original_number": 8,
+      "global_number": 8,
+      "text_sha256": "0c2f5b4f8f008a39291261bb82657bab3a57dbaa8a62dd8ba8b3da6e714030ce"
+    },
+    {
+      "source": "Chapter2_Completed.txt",
+      "line": 155,
+      "original_number": 9,
+      "global_number": 9,
+      "text_sha256": "2ba676143e7d814a21f522ff2eb938aecdee25a093c0ef901940e73797c5eea9"
+    },
+    {
+      "source": "Chapter2_Completed.txt",
+      "line": 156,
+      "original_number": 10,
+      "global_number": 10,
+      "text_sha256": "0f7746e3b1002606fb056a7d458ed438aab98f539f43b9302fe6b1f3379a88b4"
+    },
+    {
+      "source": "Chapter3_Completed.txt",
+      "line": 103,
+      "original_number": 1,
+      "global_number": 1,
+      "text_sha256": "93bc53c00d0f60b1bcbe647788cd3a7e8e8d15275db6fc0b53243173446c8485"
+    },
+    {
+      "source": "Chapter3_Completed.txt",
+      "line": 104,
+      "original_number": 2,
+      "global_number": 2,
+      "text_sha256": "68a449d18dfff5be8da0def009325aa35f3af49305d4d8c96a6629c9a4ae8951"
+    },
+    {
+      "source": "Chapter3_Completed.txt",
+      "line": 105,
+      "original_number": 3,
+      "global_number": 3,
+      "text_sha256": "ad4742729ec4633a920dbcb565c2b6a9bdb9aec9db5ee063aac67c3011df4d94"
+    },
+    {
+      "source": "Chapter3_Completed.txt",
+      "line": 106,
+      "original_number": 4,
+      "global_number": 4,
+      "text_sha256": "dc14a69649032e5fd85c4b221d9123d579a0ce0d6a170f1d412918e3c0e58e3f"
+    },
+    {
+      "source": "Chapter3_Completed.txt",
+      "line": 107,
+      "original_number": 5,
+      "global_number": 5,
+      "text_sha256": "f67ab45ac34d1a4176e607b9dd6d052f62a6df154a3823008f42472e23819966"
+    },
+    {
+      "source": "Chapter3_Completed.txt",
+      "line": 108,
+      "original_number": 6,
+      "global_number": 6,
+      "text_sha256": "7cd7891f5ba14fbc68b9d4a937dbc1ba9913cffdcd8fa4539eadb00bfc7beeca"
+    },
+    {
+      "source": "Chapter3_Completed.txt",
+      "line": 109,
+      "original_number": 7,
+      "global_number": 7,
+      "text_sha256": "5e345fede7f37a978fb06d045bc948651f13055274f542623b9d687605fb33d5"
+    },
+    {
+      "source": "Chapter3_Completed.txt",
+      "line": 110,
+      "original_number": 8,
+      "global_number": 8,
+      "text_sha256": "0c2f5b4f8f008a39291261bb82657bab3a57dbaa8a62dd8ba8b3da6e714030ce"
+    },
+    {
+      "source": "Chapter3_Completed.txt",
+      "line": 111,
+      "original_number": 9,
+      "global_number": 9,
+      "text_sha256": "2ba676143e7d814a21f522ff2eb938aecdee25a093c0ef901940e73797c5eea9"
+    },
+    {
+      "source": "Chapter3_Completed.txt",
+      "line": 112,
+      "original_number": 10,
+      "global_number": 10,
+      "text_sha256": "0f7746e3b1002606fb056a7d458ed438aab98f539f43b9302fe6b1f3379a88b4"
+    },
+    {
+      "source": "Chapter4_Full_Completed (1).txt",
+      "line": 108,
+      "original_number": 1,
+      "global_number": 1,
+      "text_sha256": "93bc53c00d0f60b1bcbe647788cd3a7e8e8d15275db6fc0b53243173446c8485"
+    },
+    {
+      "source": "Chapter4_Full_Completed (1).txt",
+      "line": 109,
+      "original_number": 2,
+      "global_number": 2,
+      "text_sha256": "68a449d18dfff5be8da0def009325aa35f3af49305d4d8c96a6629c9a4ae8951"
+    },
+    {
+      "source": "Chapter4_Full_Completed (1).txt",
+      "line": 110,
+      "original_number": 3,
+      "global_number": 3,
+      "text_sha256": "ad4742729ec4633a920dbcb565c2b6a9bdb9aec9db5ee063aac67c3011df4d94"
+    },
+    {
+      "source": "Chapter4_Full_Completed (1).txt",
+      "line": 111,
+      "original_number": 4,
+      "global_number": 4,
+      "text_sha256": "dc14a69649032e5fd85c4b221d9123d579a0ce0d6a170f1d412918e3c0e58e3f"
+    },
+    {
+      "source": "Chapter4_Full_Completed (1).txt",
+      "line": 112,
+      "original_number": 5,
+      "global_number": 5,
+      "text_sha256": "f67ab45ac34d1a4176e607b9dd6d052f62a6df154a3823008f42472e23819966"
+    },
+    {
+      "source": "Chapter4_Full_Completed (1).txt",
+      "line": 113,
+      "original_number": 6,
+      "global_number": 6,
+      "text_sha256": "7cd7891f5ba14fbc68b9d4a937dbc1ba9913cffdcd8fa4539eadb00bfc7beeca"
+    },
+    {
+      "source": "Chapter4_Full_Completed (1).txt",
+      "line": 114,
+      "original_number": 7,
+      "global_number": 7,
+      "text_sha256": "5e345fede7f37a978fb06d045bc948651f13055274f542623b9d687605fb33d5"
+    },
+    {
+      "source": "Chapter4_Full_Completed (1).txt",
+      "line": 115,
+      "original_number": 8,
+      "global_number": 8,
+      "text_sha256": "0c2f5b4f8f008a39291261bb82657bab3a57dbaa8a62dd8ba8b3da6e714030ce"
+    },
+    {
+      "source": "Chapter4_Full_Completed (1).txt",
+      "line": 116,
+      "original_number": 9,
+      "global_number": 9,
+      "text_sha256": "2ba676143e7d814a21f522ff2eb938aecdee25a093c0ef901940e73797c5eea9"
+    },
+    {
+      "source": "Chapter4_Full_Completed (1).txt",
+      "line": 117,
+      "original_number": 10,
+      "global_number": 10,
+      "text_sha256": "0f7746e3b1002606fb056a7d458ed438aab98f539f43b9302fe6b1f3379a88b4"
+    },
+    {
+      "source": "Chapter4_Full_Completed.txt",
+      "line": 96,
+      "original_number": 1,
+      "global_number": 1,
+      "text_sha256": "93bc53c00d0f60b1bcbe647788cd3a7e8e8d15275db6fc0b53243173446c8485"
+    },
+    {
+      "source": "Chapter4_Full_Completed.txt",
+      "line": 97,
+      "original_number": 2,
+      "global_number": 2,
+      "text_sha256": "68a449d18dfff5be8da0def009325aa35f3af49305d4d8c96a6629c9a4ae8951"
+    },
+    {
+      "source": "Chapter4_Full_Completed.txt",
+      "line": 98,
+      "original_number": 3,
+      "global_number": 3,
+      "text_sha256": "ad4742729ec4633a920dbcb565c2b6a9bdb9aec9db5ee063aac67c3011df4d94"
+    },
+    {
+      "source": "Chapter4_Full_Completed.txt",
+      "line": 99,
+      "original_number": 4,
+      "global_number": 4,
+      "text_sha256": "dc14a69649032e5fd85c4b221d9123d579a0ce0d6a170f1d412918e3c0e58e3f"
+    },
+    {
+      "source": "Chapter4_Full_Completed.txt",
+      "line": 100,
+      "original_number": 5,
+      "global_number": 5,
+      "text_sha256": "f67ab45ac34d1a4176e607b9dd6d052f62a6df154a3823008f42472e23819966"
+    },
+    {
+      "source": "Chapter4_Full_Completed.txt",
+      "line": 101,
+      "original_number": 6,
+      "global_number": 6,
+      "text_sha256": "7cd7891f5ba14fbc68b9d4a937dbc1ba9913cffdcd8fa4539eadb00bfc7beeca"
+    },
+    {
+      "source": "Chapter4_Full_Completed.txt",
+      "line": 102,
+      "original_number": 7,
+      "global_number": 7,
+      "text_sha256": "5e345fede7f37a978fb06d045bc948651f13055274f542623b9d687605fb33d5"
+    },
+    {
+      "source": "Chapter4_Full_Completed.txt",
+      "line": 103,
+      "original_number": 8,
+      "global_number": 8,
+      "text_sha256": "0c2f5b4f8f008a39291261bb82657bab3a57dbaa8a62dd8ba8b3da6e714030ce"
+    },
+    {
+      "source": "Chapter4_Full_Completed.txt",
+      "line": 104,
+      "original_number": 9,
+      "global_number": 9,
+      "text_sha256": "2ba676143e7d814a21f522ff2eb938aecdee25a093c0ef901940e73797c5eea9"
+    },
+    {
+      "source": "Chapter4_Full_Completed.txt",
+      "line": 105,
+      "original_number": 10,
+      "global_number": 10,
+      "text_sha256": "0f7746e3b1002606fb056a7d458ed438aab98f539f43b9302fe6b1f3379a88b4"
+    },
+    {
+      "source": "Chapter5_Completed.txt",
+      "line": 76,
+      "original_number": 1,
+      "global_number": 1,
+      "text_sha256": "93bc53c00d0f60b1bcbe647788cd3a7e8e8d15275db6fc0b53243173446c8485"
+    },
+    {
+      "source": "Chapter5_Completed.txt",
+      "line": 77,
+      "original_number": 2,
+      "global_number": 2,
+      "text_sha256": "68a449d18dfff5be8da0def009325aa35f3af49305d4d8c96a6629c9a4ae8951"
+    },
+    {
+      "source": "Chapter5_Completed.txt",
+      "line": 78,
+      "original_number": 3,
+      "global_number": 3,
+      "text_sha256": "ad4742729ec4633a920dbcb565c2b6a9bdb9aec9db5ee063aac67c3011df4d94"
+    },
+    {
+      "source": "Chapter5_Completed.txt",
+      "line": 79,
+      "original_number": 4,
+      "global_number": 4,
+      "text_sha256": "dc14a69649032e5fd85c4b221d9123d579a0ce0d6a170f1d412918e3c0e58e3f"
+    },
+    {
+      "source": "Chapter5_Completed.txt",
+      "line": 80,
+      "original_number": 5,
+      "global_number": 5,
+      "text_sha256": "f67ab45ac34d1a4176e607b9dd6d052f62a6df154a3823008f42472e23819966"
+    },
+    {
+      "source": "Chapter5_Completed.txt",
+      "line": 81,
+      "original_number": 6,
+      "global_number": 6,
+      "text_sha256": "7cd7891f5ba14fbc68b9d4a937dbc1ba9913cffdcd8fa4539eadb00bfc7beeca"
+    },
+    {
+      "source": "Chapter5_Completed.txt",
+      "line": 82,
+      "original_number": 7,
+      "global_number": 7,
+      "text_sha256": "5e345fede7f37a978fb06d045bc948651f13055274f542623b9d687605fb33d5"
+    },
+    {
+      "source": "Chapter5_Completed.txt",
+      "line": 83,
+      "original_number": 8,
+      "global_number": 8,
+      "text_sha256": "0c2f5b4f8f008a39291261bb82657bab3a57dbaa8a62dd8ba8b3da6e714030ce"
+    },
+    {
+      "source": "Chapter5_Completed.txt",
+      "line": 84,
+      "original_number": 9,
+      "global_number": 9,
+      "text_sha256": "2ba676143e7d814a21f522ff2eb938aecdee25a093c0ef901940e73797c5eea9"
+    },
+    {
+      "source": "Chapter5_Completed.txt",
+      "line": 85,
+      "original_number": 10,
+      "global_number": 10,
+      "text_sha256": "0f7746e3b1002606fb056a7d458ed438aab98f539f43b9302fe6b1f3379a88b4"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "line": 31,
+      "original_number": 1,
+      "global_number": 1,
+      "text_sha256": "93bc53c00d0f60b1bcbe647788cd3a7e8e8d15275db6fc0b53243173446c8485"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "line": 32,
+      "original_number": 2,
+      "global_number": 2,
+      "text_sha256": "68a449d18dfff5be8da0def009325aa35f3af49305d4d8c96a6629c9a4ae8951"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "line": 33,
+      "original_number": 3,
+      "global_number": 3,
+      "text_sha256": "ad4742729ec4633a920dbcb565c2b6a9bdb9aec9db5ee063aac67c3011df4d94"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "line": 34,
+      "original_number": 4,
+      "global_number": 4,
+      "text_sha256": "dc14a69649032e5fd85c4b221d9123d579a0ce0d6a170f1d412918e3c0e58e3f"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "line": 35,
+      "original_number": 5,
+      "global_number": 5,
+      "text_sha256": "f67ab45ac34d1a4176e607b9dd6d052f62a6df154a3823008f42472e23819966"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "line": 36,
+      "original_number": 6,
+      "global_number": 6,
+      "text_sha256": "7cd7891f5ba14fbc68b9d4a937dbc1ba9913cffdcd8fa4539eadb00bfc7beeca"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "line": 37,
+      "original_number": 7,
+      "global_number": 7,
+      "text_sha256": "5e345fede7f37a978fb06d045bc948651f13055274f542623b9d687605fb33d5"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "line": 38,
+      "original_number": 8,
+      "global_number": 8,
+      "text_sha256": "0c2f5b4f8f008a39291261bb82657bab3a57dbaa8a62dd8ba8b3da6e714030ce"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "line": 39,
+      "original_number": 9,
+      "global_number": 9,
+      "text_sha256": "2ba676143e7d814a21f522ff2eb938aecdee25a093c0ef901940e73797c5eea9"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "line": 40,
+      "original_number": 10,
+      "global_number": 10,
+      "text_sha256": "0f7746e3b1002606fb056a7d458ed438aab98f539f43b9302fe6b1f3379a88b4"
+    }
+  ],
+  "numbering_conflicts": [
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 87,
+      "original_number": 6,
+      "global_number": 10,
+      "text_sha256": "0f7746e3b1002606fb056a7d458ed438aab98f539f43b9302fe6b1f3379a88b4"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 89,
+      "original_number": 8,
+      "global_number": 6,
+      "text_sha256": "7cd7891f5ba14fbc68b9d4a937dbc1ba9913cffdcd8fa4539eadb00bfc7beeca"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 90,
+      "original_number": 9,
+      "global_number": 8,
+      "text_sha256": "0c2f5b4f8f008a39291261bb82657bab3a57dbaa8a62dd8ba8b3da6e714030ce"
+    },
+    {
+      "source": "Chapter1_University_of_Birjand.txt",
+      "line": 91,
+      "original_number": 10,
+      "global_number": 9,
+      "text_sha256": "2ba676143e7d814a21f522ff2eb938aecdee25a093c0ef901940e73797c5eea9"
+    }
+  ],
+  "policy": "All in-text citation characters are preserved. Original chapter-1 numbering conflicts are reported, not guessed or renumbered."
+}

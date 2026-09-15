@@ -1,0 +1,59 @@
+\clearpage\begin{latin}
+% SOURCE English_Abstract.txt:1-1 [paragraph]
+THESIS ABSTRACT (ENGLISH)\par
+
+% SOURCE English_Abstract.txt:2-2 [spacing]
+
+
+% SOURCE English_Abstract.txt:3-3 [paragraph]
+Title: Hybrid Security Framework for Medical Image Transmission in IoMT via Deep Learning Segmentation, 5D Hyperchaos, and Saliency{-}Aware Steganography\par
+
+% SOURCE English_Abstract.txt:4-4 [spacing]
+
+
+% SOURCE English_Abstract.txt:5-5 [paragraph]
+Author: [Master's Student]\par
+
+% SOURCE English_Abstract.txt:6-6 [paragraph]
+Supervisor: [Thesis Supervisor]\par
+
+% SOURCE English_Abstract.txt:7-7 [paragraph]
+Advisor: [Thesis Advisor]\par
+
+% SOURCE English_Abstract.txt:8-8 [paragraph]
+Degree: Master of Science (M.Sc.) in Computer Engineering / Information Security\par
+
+% SOURCE English_Abstract.txt:9-9 [paragraph]
+Keywords: Medical Image Security, Deep Learning (U{-}Net), 5D Hyperchaotic Map, DNA Cryptography, Saliency{-}Aware Steganography, Internet of Medical Things (IoMT), Edge Computing (NVIDIA Jetson TX2).\par
+
+% SOURCE English_Abstract.txt:10-10 [spacing]
+
+
+% SOURCE English_Abstract.txt:11-11 [paragraph]
+Abstract:\par
+
+% SOURCE English_Abstract.txt:12-12 [paragraph]
+The rapid expansion of Telemedicine, Electronic Health (E{-}Health), and the Internet of Medical Things (IoMT) has revolutionized digital healthcare delivery, yet it has simultaneously exposed sensitive patient data and diagnostic imagery to severe cyber threats, including unauthorized interception, data tampering, and statistical cryptanalysis. Traditional image encryption techniques frequently employ static secret keys\SourceGlyph{2014}rendering cryptosystems vulnerable to Chosen{-}Plaintext (CPA) and Known{-}Plaintext Attacks (KPA)\SourceGlyph{2014}or introduce imperceptible yet clinically detrimental distortions into critical diagnostic regions. Furthermore, conventional steganographic and cryptographic algorithms impose prohibitive computational overheads that hinder real{-}time execution on resource{-}constrained edge devices.\par
+
+% SOURCE English_Abstract.txt:13-13 [spacing]
+
+
+% SOURCE English_Abstract.txt:14-14 [paragraph]
+To address this fundamental security{-}imperceptibility{-}throughput trilemma, this thesis proposes an end{-}to{-}end, four{-}layer hybrid security framework specifically tailored for digital medical imagery across diverse diagnostic modalities, including retinal fundus scans (DRIVE, RITE), brain MRI volumes (BraTS 2020), and chest X{-}ray/CT images (COVID{-}19 CXR). In the first layer, a deep U{-}Net convolutional neural network automatically segmentates the clinical Region of Interest (ROI). Statistical moments extracted from the ROI are processed via the SHA{-}256 cryptographic hash function to generate an image{-}dependent, dynamic 256{-}bit secret key ($K_{\mathrm{hash}}$), ensuring absolute resilience against CPA and KPA. In the second layer, $K_{\mathrm{hash}}$ calibrates the initial state variables of a high{-}dimensional 5D hyperchaotic system characterized by two positive Lyapunov exponents ($L_1 = 1.24,\allowbreak{} L_2 = 0.85$), expanding the key space to $2^{512}$ to neutralize brute{-}force attacks. In the third layer, a crossed Zig{-}zag permutation mechanism induces spatial confusion, followed by dynamic DNA{-}encoded algebraic diffusion, which effectively eliminates spatial pixel correlations ($r_{xy} < 0.0008$) and elevates information entropy to the near{-}ideal theoretical limit of $\bar{H}(m) = 7.9985$ bits (with Chi{-}square $\chi^2 < 293.2478$).\par
+
+% SOURCE English_Abstract.txt:15-15 [spacing]
+
+
+% SOURCE English_Abstract.txt:16-16 [paragraph]
+In the fourth layer, patient metadata is compressed by 65\% using loss{-}less zlib encoding and imperceptibly embedded into the 2{-}bit Least Significant Bits (LSB) of non{-}saliency background regions identified by a Spectral Residual Saliency detection model. This saliency{-}aware steganographic strategy guarantees 100\% preservation of clinical ROI integrity ($\mathrm{PSNR}_{\mathrm{ROI}} = \infty$, $\mathrm{MSE}_{\mathrm{ROI}} = 0$), while achieving exceptional stego quality across the entire image ($\mathrm{PSNR}_{\mathrm{Total}} = 52.41\mathrm{~dB}$, $\mathrm{SSIM} = 0.9982$, and embedding payload capacity of $1.18\mathrm{~bpp}$). Comprehensive robustness evaluations demonstrate that the cryptosystem is fault{-}tolerant, successfully recovering diagnostic ROI details ($\mathrm{PSNR} > 32.0\mathrm{~dB}$) under severe salt{-}and{-}pepper noise, Gaussian noise, and 50\% data cropping attacks. Rigorous statistical validation via all 15 NIST SP800{-}22 randomness tests confirms uniform pseudorandomness ($p\text{-value} \ge 0.0125$). Finally, hardware profiling on the low{-}power NVIDIA Jetson TX2 edge platform achieves a total pipeline execution time of 2.85 seconds, proving the real{-}time operational feasibility of the proposed framework in IoMT healthcare networks.\par
+
+% SOURCE English_Abstract.txt:17-17 [spacing]
+
+
+% SOURCE English_Abstract.txt:18-18 [spacing]
+
+
+% SOURCE English_Abstract.txt:19-19 [separator]
+\par\medskip\hrule\medskip
+
+\end{latin}

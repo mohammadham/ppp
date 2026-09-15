@@ -1,0 +1,2335 @@
+{
+  "number": 4,
+  "title": "فصل چهارم: طرح آزمایش‌ها، شبیه‌سازی و ارزیابی نتایج کمّی",
+  "source_count": 11,
+  "sources": [
+    "Introduction_Chapter4.txt",
+    "Datasets_Chapter4.txt",
+    "Evaluation_Metrics_Chapter4.txt",
+    "Entropy_Histogram_Chapter4.txt",
+    "Correlation_Chapter4.txt",
+    "Differential_Attacks_Chapter4.txt",
+    "Stego_Quality_Chapter4.txt",
+    "Cyber_Attacks_Chapter4.txt",
+    "NIST_Tests_Chapter4.txt",
+    "Comparative_Analysis_Chapter4.txt",
+    "Summary_Chapter4.txt"
+  ],
+  "source_hashes": {
+    "Introduction_Chapter4.txt": "edd5f8f2fb685b48eda0d0a426b2f54d2f9201ba2238c4545b914b1d184b94b1",
+    "Datasets_Chapter4.txt": "9df95aa37fc6f637c3dfa10c0fd24a16d6ae0bc6a471b24471d3692d6b86f4ea",
+    "Evaluation_Metrics_Chapter4.txt": "7154bf4be4a477b85eb2bec0c0c8720d2f627c6d953531c604f2574564e77e30",
+    "Entropy_Histogram_Chapter4.txt": "7b205db3b09cc5561ca54dd8b8389613d45421c3facbd319bd13860496c05236",
+    "Correlation_Chapter4.txt": "c3ad64972365a68c6ecb6efc4263175b003165a4120791811a048e5116fa4faa",
+    "Differential_Attacks_Chapter4.txt": "03e8d99172424c6d95c44b92a75efaa67ab56582538e730ce1c3741f83924839",
+    "Stego_Quality_Chapter4.txt": "518074b0d5694f0b4f6efc5096c4cd7cd75274f44b9069d72d5e6ccfcecc8aa3",
+    "Cyber_Attacks_Chapter4.txt": "9b2139f3c26ff83e49500d55f3c9f330d24d84e8602caaa596f30ccb6630d253",
+    "NIST_Tests_Chapter4.txt": "3ee75c0aa397e533d631e9662661d06e6c6ca67f762a0da35c0f5b243de5918c",
+    "Comparative_Analysis_Chapter4.txt": "8e909008cbbf43edb4497a7f616fe1721d20adbd67cf95f0665570bfda3dc262",
+    "Summary_Chapter4.txt": "d71f97ffc90176834f221c87a6afd271e57b503114d565b1945a7c7e60076c6c"
+  },
+  "images": [
+    {
+      "type": "شکل",
+      "number": "۴-۱",
+      "caption": "نمودار نقشه راه مفهومی و ساختار مراحل شبیه‌سازی و ارزیابی تجربی فصل چهارم",
+      "filename": "chapter4_experimental_roadmap.png",
+      "exists": true,
+      "source": "Introduction_Chapter4.txt",
+      "line": 10
+    },
+    {
+      "type": "شکل",
+      "number": "۴-۲",
+      "caption": "نمودار تحلیلی و مقایسه‌ای مشخصات ۴ مجموعه‌داده مرجع بین‌المللی",
+      "filename": "chapter4_datasets_overview.png",
+      "exists": true,
+      "source": "Datasets_Chapter4.txt",
+      "line": 30
+    },
+    {
+      "type": "رابطه",
+      "number": "۴-۱",
+      "caption": "فرمول‌بندی ریاضی شاخص‌های ارزیابی کمّی امنیت و کیفیت دیداری",
+      "filename": "eq4_1_evaluation_metrics.png",
+      "exists": true,
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "line": 19
+    },
+    {
+      "type": "رابطه",
+      "number": "۴-۲",
+      "caption": "فرمول‌بندی ریاضی آنتروپی شانون و آزمون کای-اسکوئر (χ²) یکنواختی هیستوگرام",
+      "filename": "eq4_2_chi_square_entropy.png",
+      "exists": true,
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "line": 7
+    },
+    {
+      "type": "شکل",
+      "number": "۴-۳",
+      "caption": "تحلیل دیداری و مقایسه هیستوگرام تصاویر اولیه، رمزشده و استگو",
+      "filename": "chapter4_visual_histogram.png",
+      "exists": true,
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "line": 19
+    },
+    {
+      "type": "رابطه",
+      "number": "۴-۳",
+      "caption": "فرمول‌بندی ریاضی ضریب همبستگی پیکسل‌های مجاور (r_xy)، امید ریاضی، واریانس و کوواریانس",
+      "filename": "eq4_3_correlation_formula.png",
+      "exists": true,
+      "source": "Correlation_Chapter4.txt",
+      "line": 9
+    },
+    {
+      "type": "شکل",
+      "number": "۴-۴",
+      "caption": "نمودارهای پراکندگی (Scatter Plots) همبستگی پیکسل‌های مجاور در جهت افقی برای تصویر اولیه و تصویر رمزشده",
+      "filename": "chapter4_correlation_scatter.png",
+      "exists": true,
+      "source": "Correlation_Chapter4.txt",
+      "line": 31
+    },
+    {
+      "type": "رابطه",
+      "number": "۴-۴",
+      "caption": "فرمول‌بندی ریاضی شاخص‌های حملات تفاضلی NPCR و UACI، حدود نظری آرمانی و شرایط قبولی آزمون",
+      "filename": "eq4_4_npcr_uaci_math.png",
+      "exists": true,
+      "source": "Differential_Attacks_Chapter4.txt",
+      "line": 9
+    },
+    {
+      "type": "رابطه",
+      "number": "۴-۵",
+      "caption": "فرمول‌بندی ریاضی کیفیت دیداری استگو (PSNR و SSIM) و شرط عدم اعوجاج در ROI",
+      "filename": "eq4_5_psnr_ssim_stego.png",
+      "exists": true,
+      "source": "Stego_Quality_Chapter4.txt",
+      "line": 9
+    },
+    {
+      "type": "رابطه",
+      "number": "۴-۶",
+      "caption": "فرمول‌بندی ریاضی مدل‌های نویز، حمله برش و شرط بازیابی بافت تشخیصی",
+      "filename": "eq4_6_noise_cropping_math.png",
+      "exists": true,
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "line": 9
+    },
+    {
+      "type": "شکل",
+      "number": "۴-۶",
+      "caption": "ارزیابی بصری و کمّی مقاومت سیستم در برابر حملات نویز و برش",
+      "filename": "chapter4_attack_robustness.png",
+      "exists": true,
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "line": 41
+    },
+    {
+      "type": "رابطه",
+      "number": "۴-۷",
+      "caption": "فرمول‌بندی ریاضی آزمون فرضیه آماری NIST SP800-22، شرط پذیرش p-value و آستانه نرخ قبولی",
+      "filename": "eq4_7_nist_math.png",
+      "exists": true,
+      "source": "NIST_Tests_Chapter4.txt",
+      "line": 7
+    },
+    {
+      "type": "شکل",
+      "number": "۴-۷",
+      "caption": "جدول نتایج آزمون‌های ۱۵گانه تصادفی‌سازی استاندارد NIST SP800-22",
+      "filename": "chapter4_nist_table.png",
+      "exists": true,
+      "source": "NIST_Tests_Chapter4.txt",
+      "line": 30
+    },
+    {
+      "type": "رابطه",
+      "number": "۴-۸",
+      "caption": "فرمول‌بندی ریاضی زمان اجرای کل، نرخ پردازش داده (Throughput) و معیار کارایی لبه IoMT",
+      "filename": "eq4_8_execution_time_throughput.png",
+      "exists": true,
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "line": 35
+    },
+    {
+      "type": "شکل",
+      "number": "۴-۸",
+      "caption": "نمودار میله‌ای مقایسه‌ای آنتروپی اطلاعات روش پیشنهادی با کارهای مرجع",
+      "filename": "chapter4_comparative_chart.png",
+      "exists": true,
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "line": 39
+    },
+    {
+      "type": "رابطه",
+      "number": "۴-۹",
+      "caption": "فرمول‌بندی ریاضی وضعیت اثبات فرضیات سه‌گانه پایان‌نامه و شاخص‌های کلیدی",
+      "filename": "eq4_9_thesis_hypotheses_verification.png",
+      "exists": true,
+      "source": "Summary_Chapter4.txt",
+      "line": 20
+    },
+    {
+      "type": "شکل",
+      "number": "۴-۹",
+      "caption": "نقشه راه تجربی و زنجیره ارزیابی کمّی فصل چهارم",
+      "filename": "chapter4_experimental_roadmap.png",
+      "exists": true,
+      "source": "Summary_Chapter4.txt",
+      "line": 24
+    }
+  ],
+  "tables": [
+    {
+      "caption": "جدول ۴-۱: مشخصات فنی و ساختاری مجموعه‌داده‌های مرجع بین‌المللی در آزمایش‌ها",
+      "rows": 5,
+      "columns": 5
+    },
+    {
+      "caption": "جدول ۴-۲: مقادیر کمّی ضریب همبستگی پیکسل‌های مجاور در ۳ جهت افقی، عمودی و قطری بر روی ۴ مجموعه‌داده مرجع",
+      "rows": 6,
+      "columns": 7
+    },
+    {
+      "caption": "جدول ۴-۳: مقادیر کمّی شاخص‌های NPCR و UACI و درصد قبولی آزمون‌های تفاضلی بر روی ۴ مجموعه‌داده مرجع",
+      "rows": 6,
+      "columns": 5
+    },
+    {
+      "caption": "جدول ۴-۴: مقادیر کمّی شاخص‌های کیفیت دیداری PSNR و SSIM و ظرفیت جای‌دهی در ۴ مجموعه‌داده مرجع",
+      "rows": 6,
+      "columns": 5
+    },
+    {
+      "caption": "جدول ۴-۵: نتایج کمّی ارزیابی مقاومت سیستم در برابر حملات نویز و برش بر روی ۴ مجموعه‌داده مرجع",
+      "rows": 7,
+      "columns": 5
+    },
+    {
+      "caption": "جدول ۴-۶: ماتریس جامع مقایسه کمّی روش پیشنهادی با ۱۰ مقاله مرجع بین‌المللی",
+      "rows": 12,
+      "columns": 6
+    }
+  ],
+  "code_blocks": [],
+  "issues": [
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "line": 5,
+      "controls": [
+        "U+000C",
+        "U+0007"
+      ],
+      "text": "یک الگوریتم رمزنگاری ایده‌آل باید تمامی اطلاعات ساختاری و بافتی تصویر را به یک ساختار شبه‌نویز با توزیع کاملاً یکنواخت و تخت (Flat Uniform Histogram) تبدیل نماید، به طوری که احتمال وقوع هر یک از ۲۵۶ سطح روشنایی پیکسل‌ها ($i \\in [0, 255]$) برابر با $P(i) = \frac{1}{256} \u0007pprox 0.003906$ گردد. جهت ارزیابی کمّی و ریاضی یکنواختی هیستوگرام تصویر رمزشده، علاوه بر محاسبه آنتروپی شانون $H(m)$، از آزمون آماری کای-اسکوئر ($\\chi^2$) استفاده می‌شود. فرمول‌بندی دقیق ریاضی این دو شاخص در رابطه ۴-۲ ارائه گردیده است [1, 8]."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "line": 9,
+      "controls": [
+        "U+0007"
+      ],
+      "text": "در آزمون کای-اسکوئر، مقدار محاسبه‌شده $\\chi^2$ برای تصویر رمزشده با مقدار بحرانی جدول توزیع کای-اسکوئر در سطح اطمینان ٪۹۵ ($\u0007lpha = 0.05$) و درجه آزادی $255$ (برابر با $\\chi^2_{0.05}(255) = 293.2478$) مقایسه می‌شود. اگر $\\chi^2 < 293.2478$ باشد، فرض صفر ($H_0$) مبنی بر یکنواختی کامل هیستوگرام پذیرفته می‌شود."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Correlation_Chapter4.txt",
+      "line": 3,
+      "controls": [
+        "U+0007"
+      ],
+      "text": "تصاویر پزشکی اولیه به دلیل پیوستگی آناتومیک بافت‌های بیولوژیکی و نمونه‌برداری پیکسلی متراکم، دارای همبستگی مکانی خطی بسیار شدیدی ($r_{xy} \u0007pprox 0.985$) میان پیکسل‌های مجاور در سه جهت افقی (Horizontal)، عمودی (Vertical) و قطری (Diagonal) هستند. وجود این همبستگی قوی یکی از اصلی‌ترین کانال‌های نفوذ در حملات تحلیل آماری به شمار می‌رود، زیرا به مهاجمان اجازه می‌دهد تا با استفاده از شیادی آماری و روابط همسایگی، اطلاعات محرمانه بافت‌های تشخیصی را بازیابی نمایند [1, 3]."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Correlation_Chapter4.txt",
+      "line": 5,
+      "controls": [
+        "U+0007"
+      ],
+      "text": "یک سیستم رمزنگاری ایده‌آل باید بتواند از طریق فاز جایگشت (Confusion) موقعیت مکانی پیکسل‌ها را کاملاً برهم زده و از طریق فاز انتشار (Diffusion) مقادیر عددی آن‌ها را تغییر دهد، به طوری که همبستگی میان هر دو پیکسل مجاور در تصویر رمزشده به سمت صفر ($r_{xy} \u0007pprox 0.0000$) سوق یابد [2, 8]."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Correlation_Chapter4.txt",
+      "line": 29,
+      "controls": [
+        "U+0009"
+      ],
+      "text": "شکل ۴-۴ نمودارهای پراکندگی (Scatter Plots) مقدار شدت روشنایی پیکسل $x$ در برابر پیکسل مجاور افقی $y$ را قبل و بعد از رمزنگاری به تصویر می‌کشد. در تصویر اولیه، تمام نقاط حول خط قطری $y = x$ انباشته شده‌اند که همبستگی شدید پیکسلی را تایید می‌کند؛ اما در تصویر رمزشده، نقاط به صورت کاملاً یکنواخت و تصادفی در سراسر فضای حالت $[0, 255] \times [0, 255]$ پخش گردیده‌اند که گواه عدم وجود هرگونه الگوی خطی یا غیرخطی میان پیکسل‌های همجوار است."
+    }
+  ],
+  "records": [
+    {
+      "source": "Introduction_Chapter4.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "chapter-title-in-wrapper",
+      "source_sha256": "3705b7cfa67971abb99dc3016ae7e76b9da884588033bd0ec33f8d1934abae08",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter4.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter4.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "heading",
+      "source_sha256": "97b0eb851fed0e33ceff3d5bda791aee3941dd6196086a5c98e6cbf0ee462978",
+      "tex_sha256": "af632b0cfd0c88e1502e9879308d139e71f9e6b702af16786dfc1b9adab7d010"
+    },
+    {
+      "source": "Introduction_Chapter4.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "paragraph",
+      "source_sha256": "fe859bd83b578408950dcce3d6aeedd2e630f4c8bf898d0a9c062b5b3e419077",
+      "tex_sha256": "a3620e4b73c2582ba69afb4c4efdf4f9070b564f84721dd001d62bf9b92286a6"
+    },
+    {
+      "source": "Introduction_Chapter4.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter4.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "paragraph",
+      "source_sha256": "c8e69ad4f485a0790aecc550ceb74c7a1a9acdcf8c7a9f89a57c5201c222cf8b",
+      "tex_sha256": "75c96b60e826715d267ee3d97f06001e5ecd69a7d05778816d984f1b529e1dd0"
+    },
+    {
+      "source": "Introduction_Chapter4.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter4.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "paragraph",
+      "source_sha256": "cde3a0821ee6d051e1e9dd0817ee674f6a71646ee88c8d3fc24795cc5159191f",
+      "tex_sha256": "1cf6de2ad018cbf9bddd236613527086356ef528f78fdf3169316878beb36980"
+    },
+    {
+      "source": "Introduction_Chapter4.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter4.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "image",
+      "source_sha256": "3f8b54c7b36e5279f772d78b6b3ed2c8f70446248ff7f2ca3be47a89e12bffe3",
+      "tex_sha256": "db04a771e35a094b0f65f217d721374ca8a01f5eff08d9df52e4c7f39c6a06dd"
+    },
+    {
+      "source": "Introduction_Chapter4.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "09451689a56492a4270d2dca81606a774ee74602220dae55bd2a482371b176d3",
+      "tex_sha256": "8eb54fef6c8b4d35d17761ac16d0653f44bfcb162e49e1e33a2673c1487490f0"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "paragraph",
+      "source_sha256": "de85c44e8e882c4692a1aabadc59234f60c30c6ccc1c8109d99aa59a5272e670",
+      "tex_sha256": "c3749724a5649743dfbbd0c455f7e673464ca02e3f02663f73f025df95cec1f0"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "paragraph",
+      "source_sha256": "1d6e73e86a6fa29da7a5fe04232f5820825dbba09db7b6bd1d618a817761ba14",
+      "tex_sha256": "c683a4fc4eb568c16588aa2d1428f8433ff495828770720f86ea0dd972c2932f"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "paragraph",
+      "source_sha256": "b38c5ebc9109b365ae880b598b95967435ecd5dd21868eb021ff9dc04f7a1a18",
+      "tex_sha256": "889d3c05b6ce931c66d5a59afb416b7570bb8f9bbca6da289efda19254a8761c"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "paragraph",
+      "source_sha256": "61c20de1aa37ca32c206182a5000c4a5077828d395fe246e2a3617b56e1d1578",
+      "tex_sha256": "a7302def1bd459eee2faacaac69e479335aa308eb4a926392acdcbee3f1d5d5c"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "paragraph",
+      "source_sha256": "3e6818f7789c468bc3d059d0429e5b441d32c971cb4c2a39c63ba71dc93f0f20",
+      "tex_sha256": "926f53ee799aba7be2bd6e760343feccd301e031b495950fc6ffa0940ce3a979"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "paragraph",
+      "source_sha256": "66a7749f6fd78f19ad4dd0d3542d24a3486902300ce8a29875f6a750281a8c2d",
+      "tex_sha256": "3fbd160d25bd7b8d92a044c90b9510c30d69d7db3902f86ed8f4a1d0b7a2c7f4"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "ed63ef5a5fb53d0cbde258da1f52e5eaf4c002b070a5e19454711c872ce046c1",
+      "tex_sha256": "7a126a802eac341747673462c84b55a504691a97c273ea0631d242fe9831edbd"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "paragraph",
+      "source_sha256": "92aae665f169e447159141833180233fdd89a73bd48ceaab098bb93ad5fda0e8",
+      "tex_sha256": "cc00eb7bc0ddd09d10bd8e85ee090ff1eb4cd231cbc83a3c1053955aa0ef090b"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "paragraph",
+      "source_sha256": "b8a48463a218e7a2f3654c05c2f283bcbb37143cb1bddb88e3d7841413a19292",
+      "tex_sha256": "89d91f4ff420755a47a8f704a67bf87770ecd60e5fa9bc440b6994b132683829"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "paragraph",
+      "source_sha256": "1ce7cb8306db395cac07898236cfa34c35b35821c3c44678357daa7c51bf377a",
+      "tex_sha256": "5b7d9030136c74409b8132d2869ba9fc06bf0a04e482bab167fcbaa4eed18b90"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 18,
+      "end": 26,
+      "kind": "table",
+      "source_sha256": "6e855e0a6d9423efd2684725d754b9a22f6a06a33128ef199a6cdd9760f65012",
+      "tex_sha256": "116d1372549b53e44039ad433e2e4cd9e56315d1724a2d06c31b6f106fa1bbf9"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "paragraph",
+      "source_sha256": "5626cff92eb5b3e3d9e2f3e3d442e7332781ef96428d6dd9fe16e325e28d72b0",
+      "tex_sha256": "f22c946e64760ef7da69a877f85569647f39979372223b0c7ad732446fb9d5d4"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Datasets_Chapter4.txt",
+      "start": 30,
+      "end": 30,
+      "kind": "image",
+      "source_sha256": "dafe424f0c2f45e7e2baae954501e051482d0a474755d0751ccf786fa1711196",
+      "tex_sha256": "be4d93f63514d4ee0ba17fa45be057b2a11daf53eb90de6e30a334427bbe9c44"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "a785a40eecf4a6bcc968c8499183e85861c13aee82839dc93e299cb1b7c31a25",
+      "tex_sha256": "71b300492664db9750ddfe3d06a28a2c544b083839b53377d1ce49ba07f0f0c0"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "113d24ee88a7e80002fa326b7925ffc40c8ebc62c35d696ecb50d66429fbbf16",
+      "tex_sha256": "4a2a8ce4c0260f4fc1de128baf75760c8c2898016839992aa83f3798a06b4d1d"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "heading",
+      "source_sha256": "b66d1226d0cfc0c20d55e16139c19863d38753db07086725952806ed64862a9d",
+      "tex_sha256": "b1e10f4b498ba8fd34de9ba7685bc47df3e7e65dffac8922339786fc72126a41"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "paragraph",
+      "source_sha256": "1f87e2a0b0155d95a2d2d9fa1d03e0dcffde6bc49fa1365118e5627974710cca",
+      "tex_sha256": "5e004728dc0b342abc5a7dec0379b150aab90c84c2f86dbc9656a1b7c58d9c33"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "heading",
+      "source_sha256": "89308f2a6cd8e69a9e2ef016dc58fdd305e72b2be5c4fecfbfe8a553e30daac4",
+      "tex_sha256": "47f57ef2656f2d830527ace9eaa2eec537986498672d8f666c82fcf5698ef9cf"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "paragraph",
+      "source_sha256": "03d0a8fe82b852423c3a24bec3c9b5e42536714b954ea680b476b7db787c44cd",
+      "tex_sha256": "5289d2d55fc80056d20e9d3f4e7449d73c3b43be9bc6319c854811fa05ef5b96"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "heading",
+      "source_sha256": "f5c6295413f6cc0a04f633e31648cc0c67ead3191d390d6e619380d6af7f17e2",
+      "tex_sha256": "1ae3f14a28803ebb838b179fbcabae0a98b6458330603c538ecc2bd60a161c3c"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "paragraph",
+      "source_sha256": "0bd3a7eac03d45b5e255f10d61a49b7fe95e631d57ff9c41dbab89fbc2b7b09d",
+      "tex_sha256": "ac4eaf1d265123ef8f87f021bed450ea05c02b5b580c9c30383e87df6b711d80"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "heading",
+      "source_sha256": "34aca4716b3a5a03286240975c7eb324c0789fa98cd02ed1a6c624dfeb80f7bb",
+      "tex_sha256": "2954be8793338e63cbe53de5089f2e41a984bd20b67bf1abdd1efe141df442c4"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "paragraph",
+      "source_sha256": "98cec57bbd8fdf6c322c19b688d51bd58db5cef0ff5f363e1fe365007c17b8e2",
+      "tex_sha256": "43a69657cf8cd30c397fa05163fe3c40f80533b2a51447371a7cd3994e3de1cf"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "paragraph",
+      "source_sha256": "10c9cd65e6f54ff26af14acaa2f1200cb2a122dc1c82cb865ccb30d567d87148",
+      "tex_sha256": "d2c83c09e5be15516c7b633babd952218d3fd8c3b24a4ee75de706cbc07b4ca2"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Evaluation_Metrics_Chapter4.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "image",
+      "source_sha256": "c55f0acb73e9cefae5063733c2f70703aa9eac6ecf1f0d4d5651c471181ed7cf",
+      "tex_sha256": "045e540d1c268c07df88611affb5659c12cc0a38ed39441153f809f397324b29"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "55602b9b569f78b53985e5f05ef5e01ba607cc6607d5ce6ff8846d0910b7365d",
+      "tex_sha256": "b8eab46123f14fd3ef23a82db28bd755379ecee31fbc6e69baad722e86f2e273"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "d69b8aae88fabcb7461cb7c7c6c06cc7ebce862494c3405799d6f1e89b362bc5",
+      "tex_sha256": "1c47aa773446b1ef7215ffa9c4e4b5d2b86e1c737c9cd15be959945f165bda6c"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "paragraph",
+      "source_sha256": "0cd7d722d99f98cd33ef2e9120fd65f8c043a8204715197860932af2e0c7f16e",
+      "tex_sha256": "45980ca6872cc8f6311cc47f32160cb4458422b8262e0a69892507d8cd5e4808"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "image",
+      "source_sha256": "fc557cf5c19bfe107bffc6255935759e3bb58f9b5d6deb92c7c636b4d60f3a87",
+      "tex_sha256": "41d7dc4d89396d2c778890490196f4a28447f563db03bd4a570769f0caeb54a4"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "paragraph",
+      "source_sha256": "910e0e0133663d39bd1bc4ec4dd3072ce65e53a851467aa242651b695269a0fe",
+      "tex_sha256": "0f1e650a620b50445d91dd2ea99acfed1f5950fe44edf73ab7cc0dea267ef7e3"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "3b592afe5431d0c2056b94d2d34c00e0a2d817bed556a65a346101db8dd2bdbb",
+      "tex_sha256": "70e33e8ed69c84e060e959615cb4a8510d59812f029e84c42dc9524b5294afd6"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "paragraph",
+      "source_sha256": "4f53294c7eb1f3a55d5942fce341ea75195ab6aba0de115e8f9c4f803fe02b50",
+      "tex_sha256": "b056975b70f94ace992dadf5989382ec7953c974fcf483eef7e53311df70855a"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "paragraph",
+      "source_sha256": "009e9c1eccfc494ec148084236f3cf6f826f36cfeb14e76eb9164c96bb057ad7",
+      "tex_sha256": "50b59f267127abe136d680a7d87b5da967113db2a98877a7544fb3e1ad623142"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "paragraph",
+      "source_sha256": "1f2bc2e9c306dcf97d8750fce859b23086192670b9ddc092e1c33eeeda0e7487",
+      "tex_sha256": "0be8b3e283f81aed83715ef04d60d75d4549cc478def14984eae370e50080c9d"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "paragraph",
+      "source_sha256": "70c809bd7d02e3c6e93fc25a8f30a9e16952aca2dde77d35dcea3687029767e5",
+      "tex_sha256": "d1106e000560724c4e6b74413ee2ee66cbf9f4b38c095c939e4639827e8103c3"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "paragraph",
+      "source_sha256": "7a1f48ceff6d5ce72dad3ab50bac0d9435a01c62de4a72eb26b74f5df85f3041",
+      "tex_sha256": "76232916ad016833271255ad38543fefbeb0118635c1e1a3798571aedd6ffd9d"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "image",
+      "source_sha256": "3f2ce6d023727e15860ecf2b8def6850f4ace25db04eca5c39a0961a3703e41b",
+      "tex_sha256": "eb6006fb0e5c87da417531d57dd4cd04f0826a4342f2f9d254412836f88a77ed"
+    },
+    {
+      "source": "Entropy_Histogram_Chapter4.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "ae0fd47a2fd759891aa917aafb74425166dc73734c9fc2c7961d319b9d2a6fc6",
+      "tex_sha256": "e8f44fd39aba97d33c2e2631c828036b85559c5780f6dc5222b1b09f0f001979"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "5e946e4e53898aa762a0614c2b28b950a3a180e7da91bcab955f3c14fcadcfd0",
+      "tex_sha256": "b0e8d6ff81db220195d8bc4ed5118bf7be8b50e628afe5aff063d386ff829703"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "paragraph",
+      "source_sha256": "0e8bfa36a4c443b3ab617250544684271a1831c99d0d67fcc6a7eae5bd622328",
+      "tex_sha256": "ab0107403a9d06f53820c9a98c90b7fe6ff01079d160489e8ef10360cffcf784"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "paragraph",
+      "source_sha256": "6a782e955e3efd09da558520674166db4029ea5c950b1a9d1dad15ce94a754a2",
+      "tex_sha256": "b5f81aeda25752f57eceb250e43c6ce8609a561ce161603674a6cd42dfcbed09"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "image",
+      "source_sha256": "aae770569a73512a5ac9cf3b41776099cfd1ea17fb5b9a3682e0b0ee3e566f0e",
+      "tex_sha256": "cd8d494dbb017d4859cbd4e27ee6e6047570cc9648d7e9afcbea903059b5744b"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "2fb3af566ff39c11f001ccbcb10231ffa060a02877215479c5860200e6ec4ef0",
+      "tex_sha256": "e491a22ec097e92c180010b22b57dc2d20a3e18d97a0d9536676b5248193f7c7"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 13,
+      "end": 23,
+      "kind": "table",
+      "source_sha256": "9b08228d9d0ec9f0ac489b74118376710a2702c281cd4daed32048029199caa6",
+      "tex_sha256": "4678941e5f12e9d1f5ce16b8e0c210c1d07a9af0d900bdce773215b4ca84432d"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "paragraph",
+      "source_sha256": "6e3f587efd3e0d3efc9c33851841e989ad3e95bdb2560701c118a545a49a0ff8",
+      "tex_sha256": "f2cac3751d1750b224eeabf83a8303145b49783497723eda444b4f93c296340c"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "paragraph",
+      "source_sha256": "628ea9c05d5c68a07b4f8f06b4b3e9c19349aea5d48917b077cf1327451fddef",
+      "tex_sha256": "bae1ff00e0504491837f21e17913de88785b4e8ff76b377c06be3a4f81be4de2"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "paragraph",
+      "source_sha256": "446129f87be2113c6683d5dcfa5fe42e8f88fcfee091b4a8c4db418dcbf309f5",
+      "tex_sha256": "24959995a11eeda19335b9b67f89eb079d4221f7d14a54892d7e760002b57d54"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "paragraph",
+      "source_sha256": "af10f19a94f02844ea3941da243d23b7391d73ebf2fbd5e174cec223388d3ccd",
+      "tex_sha256": "58fa51d8e82f7cdb4b91a7f20e11bb3e7fc20f3f11e9a7e75f12c548101e595c"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 30,
+      "end": 30,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Correlation_Chapter4.txt",
+      "start": 31,
+      "end": 31,
+      "kind": "image",
+      "source_sha256": "6d2865202ccd4328474ec6412f846fdf2591f05428754f86203499b8b6ca7730",
+      "tex_sha256": "a113e72a17be9ae8aba1a83ae2433041f736a79411bf0eddf93c654c72e92e27"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "49fc7797405dc19bf26a4146b251ac2d4dc7209cfa2cac8a4050fe839d5fc81d",
+      "tex_sha256": "45303323c47276347c4c7abba504bc9fbd670bf53dd41d1854992d365c9b1cc1"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "c68fbd3f0095e7f3c304d2b8397ae934f25be573984c5e1cbe69299b948c3c51",
+      "tex_sha256": "cda4e442d096d3aecfbaad0cfb9f606de6af8aaca4e7b40a33088ff264435a98"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "paragraph",
+      "source_sha256": "8aa02a42db6f9cd3e176afbb649c76213a0d6dc14a97a26961d86b0fd4e71b4a",
+      "tex_sha256": "5211ac21959cc191c52a095537acaebe45c67a116040da816225b22f5f729bde"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "paragraph",
+      "source_sha256": "16e3b2fdbf00e31f319f2017c72af71feeeb9ba83ac5428060dc21aec136a8f8",
+      "tex_sha256": "ac1b3e7b94515109f8ce5347367193c94112113163954133383fba7fed67c9db"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "image",
+      "source_sha256": "591bbf4233bcd6aca22517603398f1fc6518fed2c181ebec56539120a23272db",
+      "tex_sha256": "cc4ca662a33793d4fe2f48f7f5cbd66cc8f6d0dc8a65790df42e66e5daa9e07b"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "bf782edd8218d587a2b580314344e37c96c862be800386ab57e1c84c9a9b2590",
+      "tex_sha256": "6cc1122901e19962ff3564eecc1acfa236eea37278fe19e63ad2a60f8578ea48"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 13,
+      "end": 23,
+      "kind": "table",
+      "source_sha256": "822c1b8988e1e776954f4301a9d78533cadfd825e82243be88e518ed09732a69",
+      "tex_sha256": "911fc5ab187829ee4fed1bbb36d58bf170c6cbb65b96dc2fa3889b8c4a1a2e10"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "paragraph",
+      "source_sha256": "377245cad954626a93f4b9535150c2ca3551ca38f84a02792063bbdd377d92e5",
+      "tex_sha256": "70081047a74bd3fe77a512afd064a836b0f0e5ba44e1ce5470c582750aae5f8c"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "paragraph",
+      "source_sha256": "919d265b2340af995a5d09b012b588e4f08c98b8d6478a1c60d3f5fa7a1908ca",
+      "tex_sha256": "b5f52ff0e0ea4d2e8ed3b0dadfdc9e477d3de05f3676446870d122a3ed0087b9"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "paragraph",
+      "source_sha256": "cdf13489eddd4a4201b1e25109f08867db4261a29ef7e6813e9f1312ccf5c388",
+      "tex_sha256": "f6d8e96961de805ff8bc145bd87eb43219964a483b41893ddebf23ca74f59749"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "paragraph",
+      "source_sha256": "6df8d75c61994195c4e8f82e40eaff1302c778497b6b13a4b365787ca0b49f7b",
+      "tex_sha256": "2c0ec209c3062ff9d4dcc9ff87016045af0b8437929c02460021bcdf45d030ae"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Differential_Attacks_Chapter4.txt",
+      "start": 30,
+      "end": 30,
+      "kind": "paragraph",
+      "source_sha256": "e961968e738fa4e0bd632f9be219a9a44fabd9a1c2853578ae80b5d6487b9a37",
+      "tex_sha256": "2913b7668e0090d32a91861666bb19dad94564b3c0d5776344189d239ad546e7"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "1c56c52f8687104739c2af4584e5e95f90fb62f5465dc851cf6aff080304f378",
+      "tex_sha256": "b4591fcd0f0be4d29501f1287fbec5c9ccea8c0fd7726ef7d6752d07bbfbcac0"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "eaaf4c3b801b9fd60324ebd1e42f274d86cfe1b77332a3182254281d8f1413da",
+      "tex_sha256": "ac5652ac7539765871caef2d56dce2acd11059d6099cc006cc0b76becd0fdb96"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "paragraph",
+      "source_sha256": "3ec6419501c7489d475308a03472313dff35e0871741d35de860526ad350227e",
+      "tex_sha256": "493e330e0d4f4feb6ced0b25387a965a33974eee6b42df519dae8c70eef15091"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "paragraph",
+      "source_sha256": "c79896e521fab6ce1dc71413770748ca210ddae127edc98e1573610a88c4b6c8",
+      "tex_sha256": "32033c3b4f4df7643ef7ff903147f1d1ecc9c2d85801477dfe356280a89c66c1"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "image",
+      "source_sha256": "784057978f937c1e0de325be604b17e7ffb54e3f6c48e484ee38332c3e896072",
+      "tex_sha256": "4403e1c54c897c08e99774278c0fb509d84f0d0bcc1864028f7b812b9ad6e735"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "82484b295a425c46e953ae53bfb22f070be2df3da7bf434dd73d46b8ffd1f311",
+      "tex_sha256": "d5139a50fb3423f5b4a05f275e1bec19b6c72aa7c2818a46c6e82956d0213676"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 13,
+      "end": 23,
+      "kind": "table",
+      "source_sha256": "0c8e9705eec46d50632cc490cf803d176465676e75d38396f07c799e05d314c8",
+      "tex_sha256": "7e218bc21b52b7d4969b636dd0349151584a0746ece68b14c71c8cb9a3291708"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "paragraph",
+      "source_sha256": "5ee74a343255c76a19657674409cdb7ce70866a1f8b5af0820ef3d40c496697b",
+      "tex_sha256": "230c5eb96845136961d8744e8c6321a29b35aba875a66334472afb2b3d38c2ea"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "paragraph",
+      "source_sha256": "0fa9241cac7cae60136244e0ef9c6931814df3895462109b1d39c1e508e76419",
+      "tex_sha256": "0842ed5d024bda6382f68f321dd238b3fa5a190ff4e0317c035ba3b69fd2d93f"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "paragraph",
+      "source_sha256": "fbb37acadc165ef0ab12a90d0d0c581662eef002386f1e30555f6cd957e51898",
+      "tex_sha256": "65ac4cb4f153aeae501143b934af416d8182faeb55d58598cd6433e0f23b1435"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "paragraph",
+      "source_sha256": "e883c4b4193b18b79c3bcf0f21ab4fbcf09a7406fe4d9c69c4db401e6f4efc22",
+      "tex_sha256": "be1c508a44c140f48df0fdc32c88b0ba83d84797006be5c607473ca9620f8495"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Stego_Quality_Chapter4.txt",
+      "start": 30,
+      "end": 30,
+      "kind": "paragraph",
+      "source_sha256": "eebaa9d97a760fc642b504bfa912910c46c6beec40610a6650c53e34e3945f0e",
+      "tex_sha256": "5e609c57de8cbd1182992f3bb446cc96904a8c75d1128e1631f7dd8ee726a5cd"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "8a3e160709bad3a32d3261f11a33d6695a06593473196d3cedfbf3fddabcf84c",
+      "tex_sha256": "aadec3bb3bd36135c5ac5cca8983e5f501a29d3e1175e051f894102d136ec30e"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "f1eaede9e142db1fb0d788b8316da445047f776f7755b777ae39a8ec00493f53",
+      "tex_sha256": "cd38d308128549700933ef47e40950ac024d2130ee4b21ad97e977dfd6a49b3b"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "paragraph",
+      "source_sha256": "ef9bfb3c3f0188f857f84774cae3fc88984b1b14b3a7d7c009a9bba7d1348978",
+      "tex_sha256": "d3e3d8d48cd1e0c759f72275f7fe9aab1369bde9a799ef7ce9e85b475bf6ea03"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "paragraph",
+      "source_sha256": "9a43020638fa26a1620bcd0ebe764c8bdae6ef485119d371b110fe8b86fc23f7",
+      "tex_sha256": "1c5d66d8e537560150b97128aa0255f368a7c7ea05fb04afd4e433b9d04ed307"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "image",
+      "source_sha256": "3c81c7cddfb125f772a8741c76df58af5f4dceda7ff6196b91375f47304f3758",
+      "tex_sha256": "d82474a085586df6e4e5f0ba861cfcb54e677cb07dcc3ec71dae7f12d18f4331"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "cdb952973a5a1ce44a0eab10d8f821d357439df163abc6c08ea1fe1adab44bc9",
+      "tex_sha256": "733ee75497860e3a9a29729954a58821e0d2d0e9eabd2022540ea4de9c538376"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "paragraph",
+      "source_sha256": "3b9bb88effaef8abdbf95b979df7bc446847586071f20782a4751d55a524eb8c",
+      "tex_sha256": "cc804ecf9d7adb75179376ff12e4ccc343335af4740b15f94c4594b5ed604299"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "paragraph",
+      "source_sha256": "2f9ebcc410bd0e7685b550c2fcfc1b0f3b1bffc452f404672b3456205ce0d7bf",
+      "tex_sha256": "61edefaad9a72669013c51154958502ded525752a9c5428804751e828b98bee1"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "paragraph",
+      "source_sha256": "7f56e63fa01e3a8b03878a0831a2af4a9c11036af95bf60d31f965681d984d73",
+      "tex_sha256": "eeb3445c62882f6269a042952bf71156d8c2168856f23068f73108aa38cb89e0"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "paragraph",
+      "source_sha256": "b7db2dfb8a82c0404a179023842074a4dfa8552371929d35d531a1ae37f71ef7",
+      "tex_sha256": "94be4ee9ca2e8868bdc27594e4c56eb639459322e80a3b3034cdcea363b61bfa"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "paragraph",
+      "source_sha256": "1f2b4e94d372af3fb557dfe7b559dde2a713bec879e68c54991e8072acb2528d",
+      "tex_sha256": "ca4e9f7ba8686b35a17cfabe68a4bb1dd1a7547b855c8ed73c4d6ebfbfcc84d1"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "paragraph",
+      "source_sha256": "d2ebcf69331ba8737b6ddefb4ce61a3a8d07dc6ce13b0d07d0c4107032721d99",
+      "tex_sha256": "955c1b2ba6b5e9a347ae00d6df437a682bbe0c03296b5c19a4d0c96984cd261c"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 21,
+      "end": 21,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 22,
+      "end": 22,
+      "kind": "paragraph",
+      "source_sha256": "2beb5fc7ec4a7b94023d0ec9bf1ac71519af63668258a8dc3550f9fd9a206b47",
+      "tex_sha256": "43be72e74e6f390d8dbf957b6733498b5e74acf1231fb0e2096e767d1bb9326d"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 23,
+      "end": 23,
+      "kind": "paragraph",
+      "source_sha256": "15dba691b0eab56f8626e3f94d5dd4dbe6d38404649ce395da5b646d045f174c",
+      "tex_sha256": "11563bf3a8d0bf74a464f2163636601a7270fc70bbb6bf279921594d8542f043"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "paragraph",
+      "source_sha256": "8ecb35e3b8bf7be65c905f12a00433578ab95f7204ceb4c73b3becdc8749e6e0",
+      "tex_sha256": "4dded18954d846ee73309082c52d8d445e38875dfd263d66aaad39df87c0998a"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 27,
+      "end": 37,
+      "kind": "table",
+      "source_sha256": "6ccec384ac2491b082f48124ed31e2d53cf957b54cade0d9121032c28c11fdf9",
+      "tex_sha256": "e11c5554427d30082637aa0074eae877f61ce4e7550af35a9e30a6e381b2dbe8"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 38,
+      "end": 38,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 39,
+      "end": 39,
+      "kind": "paragraph",
+      "source_sha256": "2f97e6e6e55da5bb980ba8c3e173c0309e4ac5225f8ea8c11a64ecc6803e203b",
+      "tex_sha256": "4a652b90ff44d7659f90d3d0cb9eb807732926331cd159033faadd31063fa5cd"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 40,
+      "end": 40,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Cyber_Attacks_Chapter4.txt",
+      "start": 41,
+      "end": 41,
+      "kind": "image",
+      "source_sha256": "6ab237c72f6d47498e26495e605f70ba57145a8af45a02c31ebe1eecff9b9847",
+      "tex_sha256": "80555c64e0c62107c48cd26fe10a3b56e3afe6b68a06e22e3151fcff12b9bb34"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "7efd072b19e6a11712a6f5d3bf48f1ca44acf7486e128f2ce24685832fdfa87d",
+      "tex_sha256": "6a0180769aaa818e87cdae1176c84ffb832ecea6357b762e8d82ccdfd878f846"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "22dd567057ea21af7f8ffa78f73c5542d838707f4330ea02d9fe98426dd7f1fb",
+      "tex_sha256": "b881a8c84f7d490abf5300e57d339125f4d9c76ea1682981f7b33927538fc17d"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "paragraph",
+      "source_sha256": "6eeb62cd4742b6cf1344a0b099b8ee9aeed4dd1d38dc9e0f5a8d8abf4ea25864",
+      "tex_sha256": "f83cc7a730403b08dee2912ec486f1214e85dbb434a254ec47c93edb7946c367"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "image",
+      "source_sha256": "ce3020e50b9b8140be6677fd5c32be75e09a18a55b8bf5c51124998f5814bdb3",
+      "tex_sha256": "1015f1de2bdad5dcd149a7d917888bdc397daa5f2747df894bc3c678b44d65cf"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "paragraph",
+      "source_sha256": "0d6993fb6f020ef99cbb362910d8df05f6432ac8c1c7a958e8bc0f8df9c8cea8",
+      "tex_sha256": "150a73463f8b3132c795c6a16272f05b9d7da355727a4a7a28d28f7b689e0ea4"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "paragraph",
+      "source_sha256": "787ddb6cad4ff5cb520a15fd725397a474f23ad5dc52e103abd1355b31771e43",
+      "tex_sha256": "c51ba937f2c9accbeb2e432039314bc93351d0cc8807208bc8dcba37c1296d49"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "66ecf4290b630f1d015359bd643524a013cb0b989076ad1d8591b4afe5e10bd9",
+      "tex_sha256": "0372a2ca16b4a0a668664ef67e46c186abf7e507e01111dfa0d60eb133612d17"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "paragraph",
+      "source_sha256": "6559dd27d1bab3f45b7ccdd2b11fd85d08d7981bba26b2ec9cfd20f06c6a0538",
+      "tex_sha256": "f9e35e561af663de0e0f971e48a27fcdc00941d0b811d0f0eb9e90a6b635622d"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "paragraph",
+      "source_sha256": "775984aa200afb056305231d984966cdff97a06b45458c61b2c46f963dc512a0",
+      "tex_sha256": "995345b2d41133b98a7ddfc6899220aec5c92f43bb0852fd3a40953d1602a9ce"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "paragraph",
+      "source_sha256": "777d202c398cdcc54f8ca1f55f5994dede8a38d5b823a908545b73c90e373ed1",
+      "tex_sha256": "8b1edcaa5b72be0f6d6ac54c6e52f25c7ddb2001940900f4ebe59e751ca1b623"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "paragraph",
+      "source_sha256": "519841c832ae5bf9963815bf7fcb3bc80f963f69b52698c2cbad0f6753136d9a",
+      "tex_sha256": "0a86bf4bc4b95e844c524f277dee8128af7afe17ab8fa6d3e74c0da6e17bd884"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "paragraph",
+      "source_sha256": "02ec50b365e6aec1ccc7715e8897d36cda48ebdaad8a2d02659dddb2d5d6c9b9",
+      "tex_sha256": "e1d14e99d66e89589551f34c0e6e17435a6942bb41c4dbb675bfd14c888200b6"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "paragraph",
+      "source_sha256": "3008b55fa0716a4dfcef5b157ab74901b4c9ddb50a64859cfb073af19c518ad1",
+      "tex_sha256": "1377ce365d3476516a358ba82732a78e85c2adec4f03f601408fc429887cb943"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "paragraph",
+      "source_sha256": "6b3f4d419d620965c822dede8e29e40629e85924553db607f216655bfc280ea3",
+      "tex_sha256": "e09fd8b646ede323064328088d7cd9321ddd7e8735a3b9c7ce05bcf36e2663ce"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "paragraph",
+      "source_sha256": "b252c92f17acd2a558becb59cb52cb9af3fb1a91e936948917873eae33c661bc",
+      "tex_sha256": "5833473e978dd07ac9f3bfe172b9c3bf4f16ab56eccbade28126cf8c40b96c31"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "paragraph",
+      "source_sha256": "9e0237cbf8a8c2b5baaebfeb352b97001dfe9cf9908dd92363c399201298f495",
+      "tex_sha256": "b46df420a7cc918afb80cff9cfe6b9b97fbd251402a35ad82664fc5760aee495"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 21,
+      "end": 21,
+      "kind": "paragraph",
+      "source_sha256": "82df50f3a7725238932f859ffca7d8a6af1c43fdff9438e3ad315867a5aff9c7",
+      "tex_sha256": "9a2c66123e99a9025de35b963c61a7b6ee96b17efec9f95ef767dea359ca264d"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 22,
+      "end": 22,
+      "kind": "paragraph",
+      "source_sha256": "369edaef8ca49ff15631c0e47cb12b790bbc8d7ce5a6c8960b406e0e9da7a1e3",
+      "tex_sha256": "c8869593b1ef695546cbe8289700fb3169e0be8b022a50733ef44ee72c090ab3"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 23,
+      "end": 23,
+      "kind": "paragraph",
+      "source_sha256": "c1859a9fe6b64505e83713575ccb851b2b1dfd0b494080d5a6e8644954859888",
+      "tex_sha256": "560f9213d633fe4e4d90e15dd35e869ce10ed3a988b5c232d2cfb69e49dfc79c"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "paragraph",
+      "source_sha256": "c178b57310484a4c4c07d4b96e8fd605b442fcb35acc5417dff6eb6d883f3b5e",
+      "tex_sha256": "df669253f9978327daa6e308ffecb24ee7c0ff3d7a49d7818c8c7ee512a6ee5f"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "paragraph",
+      "source_sha256": "f2d35726fdf7cab9d22fde801b695c6a76ec9083822355cab40c42c4a7c42e64",
+      "tex_sha256": "494bc2e9bbbc39afa90b58dd46964493dd10daad89c60cd167322a72c72a89be"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "paragraph",
+      "source_sha256": "585389aa8f228ee1587aae968014528beef6df5b19c4fdae80e5d1d6d780b217",
+      "tex_sha256": "c72855ab8dd824c99e24d117b2bdd03e64dcd3d23e62853ba823bd3c6d51700e"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "NIST_Tests_Chapter4.txt",
+      "start": 30,
+      "end": 30,
+      "kind": "image",
+      "source_sha256": "63668b5cfad7e49d525a766468ea8a27839d071ab19681ef874c85ce49dd38f1",
+      "tex_sha256": "f0e721b073ad15214295358c1322fde6cd2761e14927ab993e7788e35fe810ed"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "8e1b68e8e6ce4656d5882767019485a468a9711e2bc58fe753a4793d4f67f35c",
+      "tex_sha256": "3e09ccfe087f374dcd1be5a4e2e8b1381099a18f12c7a7f9aa82f06038fa2f22"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "1ae10dd88995157fb23207d35fdea7b836c509d3496db069281e4bae7123171b",
+      "tex_sha256": "d8f1e59f3f7075007257178d18dba7c4c94664e4ff271d9dfdeab51c9a7024c1"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "paragraph",
+      "source_sha256": "ced7cc30706f17bca744a1204c193741cd2ed639654ff8952b2e43a6486acf34",
+      "tex_sha256": "990533c64334445fab93beeada369420c0f4219e5ebb96b418a116e71125faba"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "paragraph",
+      "source_sha256": "3a4d822a02875a976760f768d74bf1e62b733bb493542efdc8951db0d95b0247",
+      "tex_sha256": "9f63c31c7cc86bad4f70719570391ac8dcf854b90b3be2656962779b1e559218"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 9,
+      "end": 25,
+      "kind": "table",
+      "source_sha256": "0f12698fea2e5a4359ea6deb3b9de9710ff5f2aeaa404aceb8591c72f81f084d",
+      "tex_sha256": "2b9d345687e8df894b9d192b416bf9a1f2411f0dde61bf756f88215ef3c6f6d0"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "paragraph",
+      "source_sha256": "ad88b860cf144a672cfca37cf2338b647905e308fbf7e938fa2fb9a416f562b2",
+      "tex_sha256": "7007f58ca626bb3008b0cee96a364d73dd57f43396de4bcf57289eb8ae0767fb"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "paragraph",
+      "source_sha256": "21f80487b7891d6a29882469ac6864a1b1f0d0bca04af5a53ec450fd004f6f61",
+      "tex_sha256": "e04d381a22c6949ac65f3d7c627a712a8e2c569de1f835361835adc6d98be853"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 30,
+      "end": 30,
+      "kind": "paragraph",
+      "source_sha256": "6430829838437174bd39252bcddc3974e1fe4d1cb8944d24d28d9ce7073f4480",
+      "tex_sha256": "fbf6991a88ded5f1a4be9ee92bf24dcfed1ee6d3a89db9a142c08cd78d085079"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 31,
+      "end": 31,
+      "kind": "paragraph",
+      "source_sha256": "1595ebab94bb63c958d38c178f920ae09973ee85157c48307f7b598251e9e508",
+      "tex_sha256": "fea4fbd267c5a979cbb8cc34e13c758b699a1c63e08e30132cc48b9c95ac4b50"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 32,
+      "end": 32,
+      "kind": "paragraph",
+      "source_sha256": "a4d9bf4e7965cc6c513b8f44d32f1155881dea68c51b695e4452c4a511401c5e",
+      "tex_sha256": "46f2ccaa80980a8263451f4a8c991544fe3ab9bf03bdc35ceb493382110767bd"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 33,
+      "end": 33,
+      "kind": "paragraph",
+      "source_sha256": "65ec281f30af093ac3bcd5f46308e7e503b7d2d6983f0ea91eeda4c788f6ec85",
+      "tex_sha256": "69b01068301bbc2de83a144a29f13f38179f37ba361ffa281436b49bfbac2619"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 34,
+      "end": 34,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 35,
+      "end": 35,
+      "kind": "image",
+      "source_sha256": "4d402ca37fa005b8179a30a571f54ac9c83ddd2711f7dd9013c424eb92cf4104",
+      "tex_sha256": "b0d9666568586a7b15e7b1c399fd8225cf53477c0f071ec0971de3b96ab17e03"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 36,
+      "end": 36,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 37,
+      "end": 37,
+      "kind": "paragraph",
+      "source_sha256": "406a6b4a1943c964962d08e55c9696bfffc22a5cfe600544e8f6b2863ec623b6",
+      "tex_sha256": "e3c133ea598cb8d8f39770065be4867e2b78c808d4e75cbab43f384c21afe727"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 38,
+      "end": 38,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Comparative_Analysis_Chapter4.txt",
+      "start": 39,
+      "end": 39,
+      "kind": "image",
+      "source_sha256": "3876486acc13116ecaaf2933d06719587a295bffe7be71c56fbe2e89b8f1546a",
+      "tex_sha256": "cb50f4c6157031a7e715c3bcf0c6fc6d4bea58c789f5023ba9796fc6ffd1a8db"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "9d13e6b62a663508c01f2863f382be3ccb04959c16f34e87c608f8896ccea185",
+      "tex_sha256": "fd3d6b56ef436478cc064c415a91dfb71f61825ffd4637e07f0b41ab3e5b2664"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "a78b7f1c4b064cd2e1255d3833fec75932167272674bd081583ec32d74919842",
+      "tex_sha256": "fc245b33c543f6dbafb7b3497c30a5d1167723994c205fe374cee21a66b220a6"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "paragraph",
+      "source_sha256": "88c08647e00fba4b20523ba8279a996af8a2de6985ea175aa2b9265e96c9eddc",
+      "tex_sha256": "c3dbc37acf99a1a9b400a877c5fa6b6991603ccdbd685f2c640a705301b859b5"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "paragraph",
+      "source_sha256": "463304315a3a156b4a984ea7fef33b817e9d2a4fb5692f76269c235b23b11336",
+      "tex_sha256": "a3f1b3e8e19470110e38c4fece00b9fd71eb0c3c91aae13eea3c3f9ff2690670"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "paragraph",
+      "source_sha256": "04ee57ea138031e783afc69ee3fea2e34d2c4760379aa8e99c5a5e2e944cb31e",
+      "tex_sha256": "075b962c7345eaba0327cd6d847bf4f81214b0263a8019ed587a22a4fc488cb1"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "paragraph",
+      "source_sha256": "466b0851aa392c2e6774707010529fb9d1d8ccf4318b01c7d97489d098894fcf",
+      "tex_sha256": "096d4f920c1341beffcbdd19bdcebad457ffab2144cee3b731050c0b4a314229"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "ade51bc910b6427f5bd761b879469a1e58c5241b428cd504765041c86a2d14b4",
+      "tex_sha256": "a584379f577e47cbe10ecd03a5c3d418f5b3a71a2ea69bc9a22536224781d8c6"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "paragraph",
+      "source_sha256": "80dc9b04dbd0fe17b4a8fd420034218bf295bde5c787cb129b7ce9d9a18bcbb2",
+      "tex_sha256": "db2c5a6b4f9b1ddff379fed88d67abd280fe6d812eca96a2f665ae28c32a3e69"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "paragraph",
+      "source_sha256": "08606c3d09cda9b6af7c583a19d389423e7fb0fde3c0a33f298c12a47ee57179",
+      "tex_sha256": "1e00506905abebe118136de95a303757f634f7e0e9461d145441dc42c9083634"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "paragraph",
+      "source_sha256": "533a9f4b1f013af4cfd56327e973f5c2473ac7d9dd8eb0e0e1dae3782987882d",
+      "tex_sha256": "0d87c911714927c5acc6b683ef5eb5d7f1bb0c74f0d74f08ee5d2113812146bc"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "paragraph",
+      "source_sha256": "6a571071f5ba816645390e1f5189c5b6f991a48d710bfcdfdb2c567a4d2b8a36",
+      "tex_sha256": "befead742528cea5cd6ed384c741b63e8535e6594215a9c8e7b9ba59aa498aef"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "image",
+      "source_sha256": "f6d55a7d9693e6072f9ff356b6f5d6f75b3150bf72fd975d7c7caa873c7f2f8c",
+      "tex_sha256": "717072750eae446afd1851ecdfa69d7f1121d7812b22cb704430602241027408"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 21,
+      "end": 21,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 22,
+      "end": 22,
+      "kind": "paragraph",
+      "source_sha256": "30b00baaf40cf0d2926341c065cb63c71a71e6c52561697a9cf8fe99267a0bd9",
+      "tex_sha256": "b97d0ee1c4034cceaea83a6da807252c4857450d93867cb5d252f172a44d5c75"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 23,
+      "end": 23,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "image",
+      "source_sha256": "16842664724071fd7e0ddf698ef25f394b8fbf35066e30029680d210ca7a5765",
+      "tex_sha256": "f9c4b523bad40927ee84871bef28409d28d09f64b417f78a35c3cd99ed1e7d3c"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "paragraph",
+      "source_sha256": "32e092c8acbf7cc1b1e553097b3bc347204a3b431df697e71bdf980ba024541b",
+      "tex_sha256": "7ec546d03bbcfcf6fc6b00010d7fb84148fea265aa3e6fc4584b7b641c6281ef"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "reference-moved",
+      "source_sha256": "afca6c526d35f2096299d2357d28565696d53fcaefd1bf3f201908f2ad27b888",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 30,
+      "end": 30,
+      "kind": "reference-moved",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 31,
+      "end": 31,
+      "kind": "reference-moved",
+      "source_sha256": "9bf7a85176cb5837e017909edb9b66f986d415da519a189cd2b70f1dc3af7a70",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 32,
+      "end": 32,
+      "kind": "reference-moved",
+      "source_sha256": "a4cfeb5e40f6c9576646f2d57efc10c53ebf71fa0190828de00ba5e2d5e7c349",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 33,
+      "end": 33,
+      "kind": "reference-moved",
+      "source_sha256": "d2fa92170f61d1938c8e1180bb7d641fe328156694d1062df76e91e41315d0cf",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 34,
+      "end": 34,
+      "kind": "reference-moved",
+      "source_sha256": "e3747c8a845a32f1c74b8e4c8cb89635971109236c0a07b66c795d09405ac935",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 35,
+      "end": 35,
+      "kind": "reference-moved",
+      "source_sha256": "ade8fb33287b1217e45025f8a16a74a8e14083e0a877dfb65b757ca57593af32",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 36,
+      "end": 36,
+      "kind": "reference-moved",
+      "source_sha256": "2a18a864598d5b8b3266d1ac744559b506ae0ff7f2a47ec52a3b949d92235633",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 37,
+      "end": 37,
+      "kind": "reference-moved",
+      "source_sha256": "a2071207ea3289d945445b03ed4acbe08d789b3741dbc2f925c9b704f5cc7e86",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 38,
+      "end": 38,
+      "kind": "reference-moved",
+      "source_sha256": "fea3e1f983b61b411d68c8f79ec77c11c7e72a3c73cba3fe3cf91a2a4f56b005",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 39,
+      "end": 39,
+      "kind": "reference-moved",
+      "source_sha256": "c87a02fb56ff88482d2ca3f86111775ecbc717b4e1e43f7647951f47c603447f",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 40,
+      "end": 40,
+      "kind": "reference-moved",
+      "source_sha256": "c6fb10f24d0faa404b041a3857b7cfd90271cb1c319f3c83753cef19bf8a4808",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Summary_Chapter4.txt",
+      "start": 41,
+      "end": 41,
+      "kind": "reference-moved",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "tex_file": "chapters/chapter04.tex",
+  "tex_sha256": "31f77278bd7739f2ddf308e9a58df676ba57a2c56a8a908db670c8cfaa4c76a4"
+}

@@ -1,0 +1,337 @@
+{
+  "records": [
+    {
+      "source": "Appendices.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "paragraph",
+      "source_sha256": "bca74428d7cb4c5c883e543c7e8935fd4e4f59167f14aaf256ecd0e687a2e3a6",
+      "tex_sha256": "49ff2e31b898f17d1ff7242fb5c4b99ee2f527bb808c68bd46e4c43e5fa93820"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "separator",
+      "source_sha256": "373b1789ae09dcadb20b44ed3c82e76f3e4915c5b55e4264373bc9996640e869",
+      "tex_sha256": "b6528e6a31b00b7849bb6ea4e6a9b45f1de65781bfdbf1ab3a8bdda4d8926569"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "appendix-heading",
+      "source_sha256": "910e4d1de4ae9fdac0bb73454381eacf5ab3dce9136f34e2b71adf99d4b164ab",
+      "tex_sha256": "5b256c8525c0a73be682a429ce79a4612c5a7da08fd41911d21b0ee31036e761"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "separator",
+      "source_sha256": "373b1789ae09dcadb20b44ed3c82e76f3e4915c5b55e4264373bc9996640e869",
+      "tex_sha256": "b6528e6a31b00b7849bb6ea4e6a9b45f1de65781bfdbf1ab3a8bdda4d8926569"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "paragraph",
+      "source_sha256": "54905f9c4aafff6519baff7b2df83e8e47acb5e69e8e5d1d98fa7cdfb99ecc04",
+      "tex_sha256": "4eada0793fcc787440e8534de077b13fe5a66048e410598de3f5cf8607482643"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "paragraph",
+      "source_sha256": "7b64b51ae30949ff44d8c8d9535adfa04398397c4be696cb4239fbb0c8b95d99",
+      "tex_sha256": "092793132a53f045c8a19a2dad8f471cda84d07d77638b509ec6cbda7e5ce154"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 10,
+      "end": 38,
+      "kind": "python-listing",
+      "source_sha256": "e2e4a5d297c91e58bad152b5ed4ad7b96cbbbe938f440452ed3b7f03875c5fa2",
+      "tex_sha256": "248219d12bd6a248a512e00a7d724e5a76c3d29e59c63d705de8038e1cf6c2ce"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 39,
+      "end": 39,
+      "kind": "paragraph",
+      "source_sha256": "a9a68a7599de8faff81e9a0f5b80d472215e4dc5e9d8cff1c7bd480837b67599",
+      "tex_sha256": "273aa6c92987be452373fd8524d1ad9e17b0b48fc742c4c6b2fd6c518b84c2ae"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 40,
+      "end": 73,
+      "kind": "python-listing",
+      "source_sha256": "1c6e3c2302f19a24b8d596bf159f8551ba1a1c9727ea55b9127f0265f0176ce4",
+      "tex_sha256": "c6a39f3d51c8cb8a2babe3c56d563a10990a43a0949790ee37c8f209af92a9c5"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 74,
+      "end": 74,
+      "kind": "paragraph",
+      "source_sha256": "9a48cd71b0c5ce45b490fd7246b457b00f1b9c7879158898834ac7c851bea7ae",
+      "tex_sha256": "cf28c5cce8c493417673b38a071d31055047d1990286af11381fdea025989318"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 75,
+      "end": 102,
+      "kind": "python-listing",
+      "source_sha256": "bcd872e9b5a4da7175d4b141328080712e47b1c58e238b242274ac7bc7f12215",
+      "tex_sha256": "37bdc7ac0d1d5503ac035e84f6c2add25409d0496dc80d517cf3792076fe1e20"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 103,
+      "end": 103,
+      "kind": "paragraph",
+      "source_sha256": "87a4bd9d12e0575ef426ac4b1de614810f26db6f65b7a2778e8f270158f70582",
+      "tex_sha256": "f11fe6a8851c48115a9d84f2babcaf5ff9f2762726d7c6836d9e75e35e47ed37"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 104,
+      "end": 126,
+      "kind": "python-listing",
+      "source_sha256": "b950b03529a48638a35773877f77dba36411fdbdfa4efd56b60268b61a494211",
+      "tex_sha256": "37543c8e1a6a7e3f07d448052a8a528943548cef2aec62ecc6f41e163cdf2c3b"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 127,
+      "end": 127,
+      "kind": "separator",
+      "source_sha256": "373b1789ae09dcadb20b44ed3c82e76f3e4915c5b55e4264373bc9996640e869",
+      "tex_sha256": "b6528e6a31b00b7849bb6ea4e6a9b45f1de65781bfdbf1ab3a8bdda4d8926569"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 128,
+      "end": 128,
+      "kind": "appendix-heading",
+      "source_sha256": "30bdd962b77e9b36a7bcfb41624fbfec0c6c8c7e63843a96570b196c014795c0",
+      "tex_sha256": "b34e9cc6e28ebd3ba626e222e03a46c373f822faf36188004d61912d71692a6e"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 129,
+      "end": 129,
+      "kind": "separator",
+      "source_sha256": "373b1789ae09dcadb20b44ed3c82e76f3e4915c5b55e4264373bc9996640e869",
+      "tex_sha256": "b6528e6a31b00b7849bb6ea4e6a9b45f1de65781bfdbf1ab3a8bdda4d8926569"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 130,
+      "end": 130,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 131,
+      "end": 151,
+      "kind": "table",
+      "source_sha256": "50ac285af3f3b71234f2cad84c1ca9b0ab4b920c770e93fc2a7af46441c2cc34",
+      "tex_sha256": "6c73ac4df5d1702925ce3efa810dfaa25cba1850e4fa8bb070b159d6b7a3abcc"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 152,
+      "end": 152,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 153,
+      "end": 153,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 154,
+      "end": 154,
+      "kind": "separator",
+      "source_sha256": "373b1789ae09dcadb20b44ed3c82e76f3e4915c5b55e4264373bc9996640e869",
+      "tex_sha256": "b6528e6a31b00b7849bb6ea4e6a9b45f1de65781bfdbf1ab3a8bdda4d8926569"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 155,
+      "end": 155,
+      "kind": "appendix-heading",
+      "source_sha256": "2df09ef98b522d60bac34208a6180087515591f09003a0835fac5c85cd1dda35",
+      "tex_sha256": "40b3af9fd4276e200b4973c4479c63a688710e7dc02a4c5765f2a370f0140f55"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 156,
+      "end": 156,
+      "kind": "separator",
+      "source_sha256": "373b1789ae09dcadb20b44ed3c82e76f3e4915c5b55e4264373bc9996640e869",
+      "tex_sha256": "b6528e6a31b00b7849bb6ea4e6a9b45f1de65781bfdbf1ab3a8bdda4d8926569"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 157,
+      "end": 157,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 158,
+      "end": 158,
+      "kind": "paragraph",
+      "source_sha256": "2552f1749d67e596603046dd3f4e9479d28275afc4599c32ba45984051272b96",
+      "tex_sha256": "b461fcb2f1e43d736ed00bf4534f48535f5b5121bb59f9f94c6149ff3d40d28c"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 159,
+      "end": 159,
+      "kind": "paragraph",
+      "source_sha256": "8f1c0e0a4dfdb4f99e4fef99f1bfda4ddbee0f92f7ecbc62256a1e8cbaa8a0c3",
+      "tex_sha256": "7c309346855ab616fa20cd18eb311fbbed55be995bbdd8790ed33c642033accb"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 160,
+      "end": 160,
+      "kind": "paragraph",
+      "source_sha256": "b47cfb2431e85683dc3d77eedb16b1c3d20527d8c6254f1f040e88576815319e",
+      "tex_sha256": "5039974d12cfbb0394add7fc31a4dc27f7b80f88719331f11718f2e5f0d43779"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 161,
+      "end": 161,
+      "kind": "paragraph",
+      "source_sha256": "cb8501da016aff039c3208eefffe83b6334f8dd10ceda346b02a9acb7c57d8cb",
+      "tex_sha256": "f28cace8b1f7e7ee900a454fc3aa5551d1e92f81f8833dd492a0f0ceee6baf33"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 162,
+      "end": 162,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 163,
+      "end": 163,
+      "kind": "paragraph",
+      "source_sha256": "3c6808139813f62eed51e19382134f3df91b280669d3fc4aed2d8cecf4a79665",
+      "tex_sha256": "5053bf883d1744fcd11dc5343ad78e62e954fc20266c2a64369412c2c557d725"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 164,
+      "end": 164,
+      "kind": "paragraph",
+      "source_sha256": "8a234a9025e6cc55600a1329e639dbff3da920f62d2754f7bf33f56de3de9f82",
+      "tex_sha256": "8fa52e257597fad6eacad0ea774885425aa661297092982dc62c83252760c276"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 165,
+      "end": 165,
+      "kind": "paragraph",
+      "source_sha256": "8cb1ba19714bfdc80bb85d5fbefcaa59c361e70e346d9fd7fbfa55bd440f5d48",
+      "tex_sha256": "78c4d40e0afb1eeaec876dccada70eb3d647b0a45531e0cc27c05293edbe9fb4"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 166,
+      "end": 166,
+      "kind": "paragraph",
+      "source_sha256": "488cbdbd80cb13dc2814c3f330dae4e800ee571e90843105ce4fe3e1bd34d1a0",
+      "tex_sha256": "9a65fd524a3a2159724a16a5fc50346e2f36815d051b100b45336a9db082c86f"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 167,
+      "end": 167,
+      "kind": "paragraph",
+      "source_sha256": "434846d945e7c8a4d12bbad3af36a8f57c870c26f6e238094485834452a96d55",
+      "tex_sha256": "9b11cb542e6669d2940b1c15a4cc28e017e7a6f5f271a376ca8e2dfcc93d454c"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 168,
+      "end": 168,
+      "kind": "paragraph",
+      "source_sha256": "50b98b3ce70d8927abb115ad49ab765e92e4f9c1c7fa292ad542129260d27e18",
+      "tex_sha256": "fa6ec95068266a40ee98f3ab2eda8ab980b2f261fe1a3bb0854832a72c72f6d4"
+    },
+    {
+      "source": "Appendices.txt",
+      "start": 169,
+      "end": 169,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "tables": [
+    {
+      "caption": "جدول ب-۱: نتایج تفصیلی ارزیابی ۱۵ آزمون تصادفی‌سازی استاندارد NIST SP800-22 بر روی ۱۰۰ توالی ۱،۰۰۰،۰۰۰ بیتی مستخرج از تصاویر رمزشده",
+      "rows": 16,
+      "columns": 4
+    }
+  ],
+  "code_blocks": [
+    {
+      "line_count": 28
+    },
+    {
+      "line_count": 33
+    },
+    {
+      "line_count": 27
+    },
+    {
+      "line_count": 22
+    }
+  ]
+}

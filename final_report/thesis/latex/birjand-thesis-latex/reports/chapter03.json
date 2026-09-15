@@ -1,0 +1,2290 @@
+{
+  "number": 3,
+  "title": "فصل سوم: روش پیشنهادی و معماری سیستم",
+  "source_count": 7,
+  "sources": [
+    "Introduction_Chapter3.txt",
+    "Architecture_Dataflow_Chapter3.txt",
+    "UNet_KeyGen_Chapter3.txt",
+    "Hyperchaos_5D_Chapter3.txt",
+    "Zigzag_DNA_Chapter3.txt",
+    "Saliency_Steganography_Chapter3.txt",
+    "Complexity_Edge_Chapter3.txt"
+  ],
+  "source_hashes": {
+    "Introduction_Chapter3.txt": "b7a70f996a0c85aeb50e93825baca195730f9df15029b0ae59e14c76fd1e72d6",
+    "Architecture_Dataflow_Chapter3.txt": "efdcedee37dca20ec801b69b30281aa34c4f05c48398838735151ef73f9e0bb2",
+    "UNet_KeyGen_Chapter3.txt": "f9a3f0ab674ee12a8a4bebbccb12a5aebccf35f54cc2c39f6fa90fa7bd23903b",
+    "Hyperchaos_5D_Chapter3.txt": "81b39aae8bacad92b1f41886783fbe4f57783a33507572812a6f269c74db4247",
+    "Zigzag_DNA_Chapter3.txt": "714c179635c0df445e18acd6be495bf41ea10012ff7b48772a38db3cb0e2747f",
+    "Saliency_Steganography_Chapter3.txt": "51a01ba66583c59e38cdbcc68a1c806d55d078aa105f647e4c57e78235af4bc6",
+    "Complexity_Edge_Chapter3.txt": "0ca00d616bfcbff556eba25c2427c974279ea0f624d465a01397d96768277d1c"
+  },
+  "images": [
+    {
+      "type": "شکل",
+      "number": "۳-۱",
+      "caption": "نمودار معماری مفهومی یکپارچه ۴لایه سیستم امنیتی هیبریدی پیشنهادی",
+      "filename": "chapter3_system_architecture.png",
+      "exists": true,
+      "source": "Introduction_Chapter3.txt",
+      "line": 14
+    },
+    {
+      "type": "شکل",
+      "number": "۳-۲",
+      "caption": "نمودار نقشه راه مفهومی و ساختاری فصل سوم (از تبیین معماری تا پیاده‌سازی لبه)",
+      "filename": "chapter3_roadmap.png",
+      "exists": true,
+      "source": "Introduction_Chapter3.txt",
+      "line": 18
+    },
+    {
+      "type": "شکل",
+      "number": "۳-۲",
+      "caption": "فلوچارت تفصیلی مراحل چهارگانه رمزنگاری و پنهان‌نگاری در سمت فرستنده",
+      "filename": "chapter3_sender_flowchart.png",
+      "exists": true,
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "line": 22
+    },
+    {
+      "type": "رابطه",
+      "number": "۳-۰",
+      "caption": "قضیه ریاضی هم‌ارزی و بازسازی پویای کلید رمزی در سمت گیرنده",
+      "filename": "eq3_0_key_reversibility.png",
+      "exists": true,
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "line": 30
+    },
+    {
+      "type": "شکل",
+      "number": "۳-۳",
+      "caption": "فلوچارت تفصیلی مراحل سه‌گانه بازسازی، استخراج فراداده و رمزگشایی در سمت گیرنده",
+      "filename": "chapter3_receiver_flowchart.png",
+      "exists": true,
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "line": 45
+    },
+    {
+      "type": "شکل",
+      "number": "۳-۴",
+      "caption": "نمودار بلاکی فرآیند قطعه‌بندی معنایی U-Net، استخراج ویژگی‌های آماری ROI و محاسبه کلید ۲۵۶ بیتی SHA-256",
+      "filename": "chapter3_unet_roi_key_extraction.png",
+      "exists": true,
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "line": 9
+    },
+    {
+      "type": "رابطه",
+      "number": "۳-۱",
+      "caption": "فرمول‌بندی ریاضی استخراج ویژگی‌های آماری ROI، محاسبه چکیده SHA-256 و نرمال‌سازی شرایط اولیه سیستم ۵بعدی",
+      "filename": "eq3_1_sha256_key_gen.png",
+      "exists": true,
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "line": 23
+    },
+    {
+      "type": "رابطه",
+      "number": "۳-۲",
+      "caption": "دستگاه معادلات دیفرانسیل پیوسته سیستم ۵ بعدی ابرآشوبی و الگوریتم حل عددی RK4",
+      "filename": "eq3_2_5d_hyperchaos_rk4.png",
+      "exists": true,
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "line": 8
+    },
+    {
+      "type": "شکل",
+      "number": "۳-۵",
+      "caption": "پرتره فاز ۳ بعدی و نمایش جاذبه غریب سیستم ابرآشوبی ۵ بعدی در فضای حالت (x-y-z)",
+      "filename": "chapter3_5d_hyperchaos_phase_portrait.png",
+      "exists": true,
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "line": 14
+    },
+    {
+      "type": "شکل",
+      "number": "۳-۶",
+      "caption": "نمودار فرآیند دو مرحله‌ای جایگشت زیگ‌زاگی، جدول قواعد ۸گانه DNA و انتشار پویای DNA",
+      "filename": "chapter3_zigzag_dna_pipeline.png",
+      "exists": true,
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "line": 5
+    },
+    {
+      "type": "رابطه",
+      "number": "۳-۳",
+      "caption": "فرمول‌بندی ریاضی جایگشت زیگ‌زاگی، انتخاب پویای قواعد DNA و عملگر منطقی DNA XOR",
+      "filename": "eq3_3_zigzag_dna.png",
+      "exists": true,
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "line": 34
+    },
+    {
+      "type": "شکل",
+      "number": "۳-۷",
+      "caption": "نمودار فرآیند پنهان‌نگاری فراداده بیمار مبتنی بر فشرده‌سازی zlib و برجستگی بصری",
+      "filename": "chapter3_saliency_stego_pipeline.png",
+      "exists": true,
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "line": 7
+    },
+    {
+      "type": "رابطه",
+      "number": "۳-۴",
+      "caption": "فرمول‌بندی نقشه برجستگی بصری، فشرده‌سازی zlib و جای‌دهی پس‌زمینه",
+      "filename": "eq3_4_saliency_stego.png",
+      "exists": true,
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "line": 26
+    },
+    {
+      "type": "رابطه",
+      "number": "۳-۵",
+      "caption": "فرمول‌بندی ریاضی پیچیدگی محاسباتی و بودجه زمانی لایه‌ها",
+      "filename": "eq3_5_complexity_math.png",
+      "exists": true,
+      "source": "Complexity_Edge_Chapter3.txt",
+      "line": 97
+    },
+    {
+      "type": "شکل",
+      "number": "۳-۸",
+      "caption": "نمودار تفکیک زمان اجرای لایه‌ها و مقایسه کارایی بر روی سخت‌افزار لبه NVIDIA Jetson TX2",
+      "filename": "chapter3_edge_complexity_breakdown.png",
+      "exists": true,
+      "source": "Complexity_Edge_Chapter3.txt",
+      "line": 110
+    }
+  ],
+  "tables": [],
+  "code_blocks": [
+    {
+      "line_count": 20
+    },
+    {
+      "line_count": 22
+    },
+    {
+      "line_count": 24
+    },
+    {
+      "line_count": 18
+    },
+    {
+      "line_count": 20
+    },
+    {
+      "line_count": 15
+    },
+    {
+      "line_count": 12
+    },
+    {
+      "line_count": 8
+    }
+  ],
+  "issues": [
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "line": 3,
+      "controls": [
+        "U+0009"
+      ],
+      "text": "برای پوشش هم‌زمان محرمانگی تصویر تشخیصی، صیانت از فراداده‌های هویتی بیمار و مقاومت در برابر حملات سایبری بر بستر شبکه‌های ناامن اینترنت اشیای پزشکی (IoMT) و سامانه‌های پزشکی از راه دور (Telemedicine)، چارچوب پیشنهادی بر پایه یک ساختار فرستنده-گیرنده متناظر و همگام‌سازی‌شده طراحی گردیده است. در این معماری، تصویر واضح ورودی $I$ با ابعاد $W \times H$ و فراداده متنی بیمار $M_{\\mathrm{patient}}$ (شامل اطلاعات EXIF، پرونده بالینی و شناسه هویتی) در سمت فرستنده پردازش شده و تصویر پنهان‌نگاری‌شده رمزشده $I_{\\mathrm{Stego}}$ جهت ارسال بر روی شبکه تولید می‌شود [1, 2, 5]."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "line": 28,
+      "controls": [
+        "U+0009"
+      ],
+      "text": "از آنجایی که فاز پنهان‌نگاری فراداده صراحتاً محدود به نواحی کم‌برجستگی پس‌زمینه بوده و ناحیه تشخیصی ROI ۱۰۰٪ دست‌نخورده باقی می‌ماند ($\\mathrm{ROI} \\cap \\mathrm{Payload} = \\emptyset$)، پیکسل‌های ناحیه ROI در تصویر استگوی دریافتی $I_{\\mathrm{Stego}}$ دقیقاً برابر با پیکسل‌های ROI در تصویر واضح اولیه $I$ می‌باشند. بنابراین، با اعمال شبکه U-Net در سمت گیرنده، ماسک ROI و ویژگی‌های آماری استخراج‌شده کاملاً متناظر با فرستنده بوده و چکیده ۲۵۶ بیتی SHA-256 و شرایط اولیه سیستم ۵ بعدی عینا و بدون کوچک‌ترین خطایی بازسازی می‌گردند ($K_{\\mathrm{Rec}} \\equiv K_{\text{Send}}$) [1, 8]."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "line": 5,
+      "controls": [
+        "U+0009"
+      ],
+      "text": "در گام اول، تصویر پزشکی ورودی $I$ با ابعاد $W \times H$ به شبکه عصبی عمیق U-Net آموزش‌دیده تغذیه می‌شود. شبکه U-Net با استفاده از معماری انقباضی-انبساطی و اتصالات پرشی (Skip Connections)، ماسک دوتایی ناحیه حساس تشخیصی $M_{\\mathrm{ROI}}$ را با دقت بالا استخراج می‌نماید:"
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "line": 7,
+      "controls": [
+        "U+0009"
+      ],
+      "text": "$$M_{\\mathrm{ROI}} = \\mathrm{U\text{-}Net}(I), \\quad M_{\\mathrm{ROI}}(i,j) \\in \\{0, 1\\}$$"
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "line": 3,
+      "controls": [
+        "U+0007"
+      ],
+      "text": "برای دستیابی به بالاترین سطح امنیت، خنثی‌سازی کامل همبستگی میان پیکسل‌های مجوار، دستیابی به آنتروپی آرمانی ($H(m) \u0007pprox 8.0$) و محقق ساختن اثر بهمنی کامل (Avalanche Effect)، فرایند رمزنگاری تصویر اصلی طی دو مرحله متوالی و مکمل جایگشت (Confusion) و انتشار (Diffusion) بر پایه معماری شانون انجام می‌پذیرد [1, 3, 4]."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "line": 8,
+      "controls": [
+        "U+0009",
+        "U+0007"
+      ],
+      "text": "در مرحله جایگشت، ماتریس تصویر ورودی واضح $I$ با ابعاد $W \times H$ با استفاده از الگوی پیمایش قطری زیگ‌زاگی (مطابق با استاندارد پردازش تصاویر و کوانتایش JPEG) آشفته می‌گردد. در الگوریتم‌های سنتی رمزشده، جایگشت‌های سطری یا ستونی ساده به تنهایی توانایی شکستن همبستگی دو‌بعدی پیکسل‌ها را ندارند؛ اما پیمایش زیگ‌زاگی با تغییر موقعیت مکانی پیکسل‌ها بر روی قطرهای فرعی و اصلی، ساختار هندسی تصویر را تماماً برهم زده و ضریب همبستگی پیکسل‌های مجوار ($r_{xy}$) را در سه جهت افقی، عمودی و قطری از حدود $1.0$ به نزدیک صفر ($r_{xy} \u0007pprox 0.0$) کاهش می‌دهد."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "line": 18,
+      "controls": [
+        "U+0008"
+      ],
+      "text": "$$\\mathrm{Rule}_i = (S_i \bmod 8) + 1$$"
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "line": 22,
+      "controls": [
+        "U+0007"
+      ],
+      "text": "جریان بیت‌های فشرده‌سازی شده $\\mathrm{Payload}_{\\mathrm{compressed}}$ صرفاً در ۲ بیت کم‌ارزش (LSB) پیکسل‌هایی جای‌دهی می‌شوند که شرط قرارگیری در ناحیه پس‌زمینه کم‌برجستگی را برآورده سازند ($M_{\\mathrm{ROI}}(i,j) = 0$). این جای‌دهی دقیقاً تضمین می‌کند که ناحیه حساس ROI ۱۰۰٪ دست‌نخورده باقی بماند ($PSNR_{\\mathrm{ROI}} = \\infty$) و شاخص‌های کلی تصویر پنهان‌نگاری‌شده در سطح آرمانی $PSNR > 50\\mathrm{~dB}$ و $SSIM \u0007pprox 1.0$ حفظ گردند [4, 5, 7]."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Complexity_Edge_Chapter3.txt",
+      "line": 90,
+      "controls": [
+        "U+0009",
+        "U+0009",
+        "U+0009"
+      ],
+      "text": "- **پیچیدگی زمانی لایه اول (U-Net & SHA-256):** استنتاج شبکه U-Net بر روی ماتریس $W \times H$ دارای پیچیدگی $O(W \times H)$ است. استخراج ۴ گشتاور آماری و محاسبه چکیده SHA-256 بر روی $N_{\\mathrm{ROI}}$ پیکسل انجام شده که $N_{\\mathrm{ROI}} < W \times H$ بوده و پیچیدگی $O(N_{\\mathrm{ROI}})$ را تحمیل می‌نماید."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Complexity_Edge_Chapter3.txt",
+      "line": 91,
+      "controls": [
+        "U+0009",
+        "U+0009"
+      ],
+      "text": "- **پیچیدگی زمانی لایه دوم (سیستم ۵بعدی RK4):** حل عددی سیستم ۵بعدی برای $N = W \times H$ گام دارای پیچیدگی خطی $O(W \times H)$ است."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Complexity_Edge_Chapter3.txt",
+      "line": 92,
+      "controls": [
+        "U+0009",
+        "U+0009"
+      ],
+      "text": "- **پیچیدگی زمانی لایه سوم (زیگ‌زاگی و DNA):** پیمایش ماتریسی زیگ‌زاگی و اعمال عملگرهای DNA برای $W \times H$ پیکسل دارای پیچیدگی خطی $O(W \times H)$ می‌باشد."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Complexity_Edge_Chapter3.txt",
+      "line": 93,
+      "controls": [
+        "U+0009",
+        "U+0009",
+        "U+0009"
+      ],
+      "text": "- **پیچیدگی زمانی لایه چهارم (Saliency & zlib):** محاسبه طیف پس‌ماند برجستگی با تبدیل فوریه سریع (FFT) دارای پیچیدگی $O(W \times H \\log(W \times H))$ و جای‌دهی LSB دارای پیچیدگی $O(W \times H)$ است."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Complexity_Edge_Chapter3.txt",
+      "line": 95,
+      "controls": [
+        "U+0009",
+        "U+0009",
+        "U+0009"
+      ],
+      "text": "بنابراین، پیچیدگی زمانی کل سیستم از مرتبه خطی $O(W \times H \\log(W \times H))$ بوده و پیچیدگی حافظه‌ای آن $O(W \times H)$ می‌باشد."
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Complexity_Edge_Chapter3.txt",
+      "line": 102,
+      "controls": [
+        "U+0009"
+      ],
+      "text": "نتایج ارزیابی کمّی نشان می‌دهد که زمان اجرای تجمعی سیستم برای تصاویر استاندارد $256 \times 256$ برابر $2.93$ ثانیه است که تفکیک زمانی لایه‌ها به شرح زیر می‌باشد:"
+    },
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Complexity_Edge_Chapter3.txt",
+      "line": 108,
+      "controls": [
+        "U+0009",
+        "U+0009"
+      ],
+      "text": "دست‌یابی به زمان اجرای زیر ۳ ثانیه ($2.93\text{ s} < 3.0\text{ s}$) اثبات می‌کند که چارچوب پیشنهادی الزامات نرخ تاخیر زمان‌واقعی (Real-time Latency) را در بسترهای بیمارستانی و پزشکی از راه دور کاملاً برآورده می‌سازد."
+    }
+  ],
+  "records": [
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "chapter-title-in-wrapper",
+      "source_sha256": "3bd23c5e43af2cb2a8e29819f9e9f6fa7454529e31987c6b157be575cd9c54c3",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "heading",
+      "source_sha256": "f64c003914ea770b0f5616038ebce4a7e8c21f5fe324206a8f9933584493d969",
+      "tex_sha256": "725adaa3198aa7e9eef4332b18d03b4dfd1231b77ab0697ddc5bd169ad8fa2a8"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "paragraph",
+      "source_sha256": "4aad7c5b26734d64febd678ae4116f00f6d39dd9e3300a25ff7266988720fe44",
+      "tex_sha256": "769da5d720ef88dbf35e9f6bb0da8f30d66441339111493ae5da084232175c60"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "paragraph",
+      "source_sha256": "add76099634c628a7066f98596b6881548f3e31f838299c530dc58b8d23345a6",
+      "tex_sha256": "74872190d462d554383579541ed6eb615824a147c988a61a086c68fcae2d0568"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "paragraph",
+      "source_sha256": "cf49ec5388336469a8bd839c5569054fc3c594a94a1f86b01b34261994031df7",
+      "tex_sha256": "f486a7c30ec227b528271c905e0b035c5c085f0408d1d0ce204da5ad616a67a2"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "paragraph",
+      "source_sha256": "10f812a4e04e8176baa472233cca74b2509f90980e1a4405009dfa8b9d529797",
+      "tex_sha256": "8cbac3e799b0e03299829a8befc43abca0a20784a6c4cdf4210035c5d3e848db"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "paragraph",
+      "source_sha256": "d08d2d8440f0659870bba63c52a2405c6c97c3b103bace5cc63d74a3cf04bf0b",
+      "tex_sha256": "a4361138755714f6d60deddbd06b54210fdd18c5e6e1df6eccc4895701329bde"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "image",
+      "source_sha256": "f0e2a1d54344b2bab6d2094d0894b3171c43c78b22a75133117c6d01d108d8e2",
+      "tex_sha256": "fec2bd9abb7790ef19b84c6ca4da37a6002e4966b2188dda97567f81490bba6c"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "paragraph",
+      "source_sha256": "f5c8d9bcf3e4deb2c5975e682bffe8b190ae5b2b99195e875bf3b54fb0b6b27d",
+      "tex_sha256": "8df9aa6650a34f83363aee5f49bbfaba130afa5fb691618e0af0971a9688bd63"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter3.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "image",
+      "source_sha256": "f680c28f46b57d6588afe06106bf8b78fea74cec412f3e54d8a35397ebade3d7",
+      "tex_sha256": "eeebbbc9af609178f260d641e4f89b70c59f8dd9b414e2ebfe0f1258a14b544e"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "5979456cc1fb5fe7ac1f9ab08b6f9e49c11942ee86e5cf3e6a51a0eef3842846",
+      "tex_sha256": "ea882a1623267499735d03dfdf748545143522df302be911ee4ba112d01e45ff"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "90b31864e896ac55402d55d555a4c9f571774b180705c1ed2bf50a9b89353c26",
+      "tex_sha256": "05030495581033b2cc2c91cb814b267c4a7a2beb17d1f500c63c4540d4c6e649"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "heading",
+      "source_sha256": "c9c7f2a8bd51d7010115ef513379a0d2eb2e24e82643f5ee6f07002746181ed3",
+      "tex_sha256": "86225f1103b1d3db2e6f32c5382f13372e4a2fc43d32c63d0ab7ac6bf884b91d"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "paragraph",
+      "source_sha256": "8f2fa842646c35c63649a30f72fa915341cb8d7b4abec16f725cf732ce6b34c4",
+      "tex_sha256": "142f3d22e7976bf7e92626d9823a3b8533101be9e3bb5f62dd12d4636b130053"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "paragraph",
+      "source_sha256": "7fcaa31228ff60a9810bc5d26ad198ce04cf067b223b6796c2f57c121e8de89d",
+      "tex_sha256": "717cc8eb092cb969c10ab2fd0aab5bf5d6ed0ae4a363e1e6a8b6bef04824ea2b"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "paragraph",
+      "source_sha256": "18b056a7baab9e47e7240cf1c0a4d747babbb93092e9ebbde3fac07ba14ca5f0",
+      "tex_sha256": "f48c0ff46918a34c141b6da016cebb6953e0ee0960d268402c34e77f173a802a"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "paragraph",
+      "source_sha256": "637a60ff3d79907042e2e7458bf2dbff549d6e648686ce244784cacf45c304a9",
+      "tex_sha256": "03ae8740cc0f3ebd9da16d61c524ff2d31d38d15ce41a14123e605aef4f88273"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "paragraph",
+      "source_sha256": "244c256207dc140bc50ba79e0f38b4795b67ddf24b76c7c0d2b8ef4b803d9f70",
+      "tex_sha256": "dbba0d22e9bb51d1592af132467c6b9eadc0a343f4144b5fdb2dbc6b5b1ecf3e"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "paragraph",
+      "source_sha256": "6b117265786128986dd9fa8ad9bfddc068d253f57b8d03a72cccdb749700fa6c",
+      "tex_sha256": "75a7c81519c907e6b5fa9826e6c68f3ea6bc95ccf6f9aa490265e092067020a4"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "paragraph",
+      "source_sha256": "45b80fe3f7b2baee4c8754c11521ff00fa2a4b343212126a0b17f1f334349f3d",
+      "tex_sha256": "3c416a76305d4dac44b94ce0e5e6b08ce9f21addff0deaaf58fe62e9410facdb"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "paragraph",
+      "source_sha256": "880b4660b025618ff5aac78b7a704e1a4186c073654348adfcf6822bb878d9c2",
+      "tex_sha256": "4db884a67f28316b17dc4f3350247a75dbfa8c2e9d0bb1ea2bc6330f74cb3d7d"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "paragraph",
+      "source_sha256": "f9631ee667a972166823d3a44b4d31215236a92dab1c64126324e96745e2f720",
+      "tex_sha256": "41576da69bff72c7ee10ed8ecba675c71eaaefff908560f2fa3e56dadd414eb9"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "paragraph",
+      "source_sha256": "983584d136f4a4cb54394331fa44c43d40bc3b4813de881ff742c691baead4a5",
+      "tex_sha256": "b282b51cec42c5603d178db03833ac34961dce0c18ddf3f0ae291f3b5e916da6"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 21,
+      "end": 21,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 22,
+      "end": 22,
+      "kind": "image",
+      "source_sha256": "e20f9738e73f1e150fda9b1659e745f1eadeea61446a5543a3b184fd17d38257",
+      "tex_sha256": "589f5935060df18c95064d5ee1e3716d937cb997d717b491a6888d858fb2eec8"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 23,
+      "end": 23,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "heading",
+      "source_sha256": "f9ecc1258c2541dab7cc27e315edffa3adf77da00f4ee90b5bd21ba163cb0886",
+      "tex_sha256": "44e5a9bf849e4b497495fca3e8682c4fc6382a01c20c00c6b2bce66e8491eb51"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "paragraph",
+      "source_sha256": "b2d9699cd5a83e307c890e778f0765c509fe3b076fae0cd09f30c820b5d749cd",
+      "tex_sha256": "16b27a46612401b651f2dfe852b6db7a4401928ad48875cb21256709adc12aee"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "paragraph",
+      "source_sha256": "1bc45c508b5ec6ed5ab62d0a3994bd1c6b7b231ad5c01b80d74b55e17e4678b1",
+      "tex_sha256": "5f5c546843b793dfffc411ddb8d880888a54946710d9d8713378afba70f5c63e"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 30,
+      "end": 30,
+      "kind": "image",
+      "source_sha256": "d898b93bfa16a8b8334bf90893ee0ce5745753dc0537573bcacf7d664d35815a",
+      "tex_sha256": "12afd6bccb37842389d7f9b4d5d5d33a4ec272b08cadcaf0430aa89e36c588d5"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 31,
+      "end": 31,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 32,
+      "end": 32,
+      "kind": "heading",
+      "source_sha256": "60bce675cce9a2d32988c49a6d3525742b04887ccd30e09c9069c09c668d052c",
+      "tex_sha256": "ac67f02e3a83fd1bb6eedb5b44a63f5e07f1cd2b93d4627ab0f0c649adc1ca24"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 33,
+      "end": 33,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 34,
+      "end": 34,
+      "kind": "paragraph",
+      "source_sha256": "7dc48de7ab4d28cd8dd9cd49846a9889e551af69d71711584c62afd0f0875d87",
+      "tex_sha256": "9e1209eb5639a3021824052a36047ba180a99d55db9e5f170b1f70d6058104a0"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 35,
+      "end": 35,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 36,
+      "end": 36,
+      "kind": "paragraph",
+      "source_sha256": "c58cb81c91f7aaa7cc70502def92bd11d702bbf26ee0600f89cc9bfb318c21fc",
+      "tex_sha256": "ab44553de732b972093f350f4fb83da09a9c975d23d92aa937a8161320840e5a"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 37,
+      "end": 37,
+      "kind": "paragraph",
+      "source_sha256": "dd7036e87bdbadafda3777127114a9b5174873576b6f24f3bbbfc8afbc1bf16e",
+      "tex_sha256": "122bdc1678509da496782eae46e6adbf6149b640d3cbb7af3cdf38579f772b40"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 38,
+      "end": 38,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 39,
+      "end": 39,
+      "kind": "paragraph",
+      "source_sha256": "3cfdb3b97d947b8658d6521ee61a9ac41f87b5d4edc07a1f686f46d786193cd3",
+      "tex_sha256": "970d0e643ef833cb3d67cda2295c3b15aef0453563f98bf6627610507c16d580"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 40,
+      "end": 40,
+      "kind": "paragraph",
+      "source_sha256": "aa76f031422e3474a14772103af215b16d787d38caef1e1fb66fa709ad89e866",
+      "tex_sha256": "58aef7eee1d6940dc2bae7cff2152eb83c17e838cb181423044aa2823e1024cc"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 41,
+      "end": 41,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 42,
+      "end": 42,
+      "kind": "paragraph",
+      "source_sha256": "910c0ed9eac01f45b66d2462bb56b23e4e842da1f030f3e1f0600bacba3f7c56",
+      "tex_sha256": "34f5ca59f2b7d066a07cee31c210799c9ed8e44746fa5f1389487e3f43dd2bb7"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 43,
+      "end": 43,
+      "kind": "paragraph",
+      "source_sha256": "f55e11b374f7f13a236d444e3f1fdd650f84a3f60eb2aa4dc31cb93c06be4774",
+      "tex_sha256": "44ec34da15b737a508da7e8aa29ccf8c407858e395e2109966f52ee14c7cf53f"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 44,
+      "end": 44,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Architecture_Dataflow_Chapter3.txt",
+      "start": 45,
+      "end": 45,
+      "kind": "image",
+      "source_sha256": "da2369a034b55dced92b31bfd113c989a87a5ee23ef6498f4da6612a61d45d16",
+      "tex_sha256": "dc925b0083f0f6a6f00d4f8a09c9d783c02bee5bd24eeec0a80de8a3fad12b78"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "bf5c72d7029a8ca31da50b4e24dca2ce8b7dc060823a6671e7ec7474c9b868b5",
+      "tex_sha256": "7577fbe6fb0c290d767d710256bea5ff95d7ffe7bac9e08693cec47d63b95039"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "37acd65f6612430589bf47e73f2fcdaae6b22f69fe3562178be3e292ef64545f",
+      "tex_sha256": "cb2ce73448b0e17f46298021ec5c1181622f5d842cdfce8383e10e5f7cfa42b1"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "paragraph",
+      "source_sha256": "3fc237e311b129ca67a93201a712970327ec66112dcb719b95fd3c80b79bbcbf",
+      "tex_sha256": "7ef059a4604e074593fcdd4eee6f394a106d2ecab68cfc1df0d0b28b8af46c4d"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "paragraph",
+      "source_sha256": "0fdc3461315559fbb80e9e8dc5423b8159d5bf85c0bb9cee7be51d414b37e72c",
+      "tex_sha256": "7a2f2600965144f6bf7c67c62ab1f2ef9c6c576d26652d1b3c6ccb5a5b2d80eb"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "image",
+      "source_sha256": "ff9afb07056b8dfa82800e4c6b87cad3ca6ee5ef63b1d83abde29abbdd5623c1",
+      "tex_sha256": "3bba08903aa9a039bce14ede51bb25497a09930e35b5f0130b1fca6c17d8cf77"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "08181e0b0c38ba52ae7cdf0115ce46197320468e3932f81dd97f9f136da9e787",
+      "tex_sha256": "10a0721b786e6a1bcedcbacc2a756af608b9c4c56fd42d1b96bcbe0b1ce20996"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "paragraph",
+      "source_sha256": "cffacd8b3b6e42f622cf84bd860f03ffec9aec46b327d33938c71941c09ea365",
+      "tex_sha256": "d9e2910cf3e22418914ec226e039d3cf7a502d33c77e64a5381a920c9f4ee888"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "paragraph",
+      "source_sha256": "a78f5ce1b4f00fcb0bdecbbd0a80eab43f4f4b4116136fad3f247a4b5cb1831e",
+      "tex_sha256": "9bf768d17073461e3b929dab63543d82f24c35ac83a7b8ab5abbdbb0efc3e10c"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "paragraph",
+      "source_sha256": "a8d1b8b35375236eb839d576869345a7b061ed53540056fe7ed81cada9e029f8",
+      "tex_sha256": "7d6a02ff0355d8660248bb2ad1a42a133e471723707fdc2a7f0f011171f4cd19"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "paragraph",
+      "source_sha256": "6e9b3066f60b2406c92d2a9ad58d7db07266beddf6bf3f5a714f19929973781a",
+      "tex_sha256": "dac433c082129a056542df9cb95c690a19e5dee265f21c77ec36eaa8fb5fedf7"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "paragraph",
+      "source_sha256": "70e555285ab2b36cd88692d21bff612225dca0a9065ac4a4db024261c3c716a4",
+      "tex_sha256": "3917ace7dd36676c9b99aa600920d40565a2ffab3e11335950ddc96b44ac6768"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "paragraph",
+      "source_sha256": "53108c1fbebd62db349adc3eb6d7ea0467abda113ef601ce46fb5b2bd1b80f08",
+      "tex_sha256": "ca0537608ad3b9e87203f0c98602aa61da30988590693a614c8660734572b3da"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 21,
+      "end": 21,
+      "kind": "paragraph",
+      "source_sha256": "54cc559b6873954ac95c46817f52a2e70efe55b82961286acf44763a89e3e430",
+      "tex_sha256": "3ba1c0b4fce0a323067ae262401998835163e3993913d763d0d8cfd0c2896aa6"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 22,
+      "end": 22,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 23,
+      "end": 23,
+      "kind": "image",
+      "source_sha256": "4ed6ec53cce85b6d25b2ebddf0cc79c0ee45f2d7508babd2baeb5d9224d6ddbc",
+      "tex_sha256": "0221f767c811a6083595bcd534636483a47da4e960e0000f2f833461bcb1b0f2"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "paragraph",
+      "source_sha256": "079b93a2fe3438d0bedadca19e65dde1ec2c8d9930eef32923c85738dcf58431",
+      "tex_sha256": "0ec09f1e875f62542f5579af6f3b06976f8807e1b2eaaeb30709ffe892fd7a10"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 27,
+      "end": 49,
+      "kind": "pseudocode",
+      "source_sha256": "9c42d08dd8a05ccd4b23dec9d86c3f75ea70c93ac0b933b370f284994d97680c",
+      "tex_sha256": "ce976859922ba0ba42930f9567c51772493b8582d386e3437ffa590fb358b641"
+    },
+    {
+      "source": "UNet_KeyGen_Chapter3.txt",
+      "start": 50,
+      "end": 50,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "1e71c867f1068d1b0a87f349e19d1e251bcc123b18c4bb57ebf3a112bcc90499",
+      "tex_sha256": "b2438f108c34c162d40296bacb9b0c985fa320847e3de8ecc1271883801fec3c"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "743eb339c117e6ebaadc1f2b8b6eedd6e26e05c18a0523c654d124bbc9461883",
+      "tex_sha256": "6f5450d42951243cce3e95d22687327598cc2a2d53e7a0730447f653589bdee9"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "heading",
+      "source_sha256": "d0fdb6e05b2df6c3bc3cb0fb5a089149c7cf512e3f13cca36d1de5ccf0ef44a9",
+      "tex_sha256": "fc24211e5fb86e6d96ef868a7388a8a3e14474fac26b12cd13a712c5a968e613"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "paragraph",
+      "source_sha256": "af53039d4272ddc1e0d55e6d239d213e6891243da443437cff65717dbea0166f",
+      "tex_sha256": "5ddd13a3946b51ae486d8fd5a239451ad1ed014856d9aa1471acdf02cb4f564e"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "image",
+      "source_sha256": "4dbd5bc8ca1b4caf8e63463920bec1e48d533c5a82c8c265b7f25efa9d7a1e07",
+      "tex_sha256": "604bb96e25a41c013d8c67c0f3bcb23e07d90534c608a51e309c7ffa41a41c07"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "paragraph",
+      "source_sha256": "52bf1d6fb317627bcaccca951b93837ef9cf1f27ed07bf6baf81f20faa90e2e6",
+      "tex_sha256": "4075a6f8d01a98e3d49f4792daa8f12f6d91a2f49c0d4736093a8a632e0c5f00"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "paragraph",
+      "source_sha256": "551d5d226ca387129865809a1613671363bf1da729aabfdd23c590e4c65829ac",
+      "tex_sha256": "4c5ad5207c7717e6ead270297e4fc5e62f4848c924ed0aa48ae7783750ed04b7"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "image",
+      "source_sha256": "ba74ad83d34ffd934b94ca162436f441f3b6c3e638252584355a8f16591a943c",
+      "tex_sha256": "e2eb815b0c536ff7ac36d41a1bd4f20583673346e1b78ba62ecd51494f4d7598"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "heading",
+      "source_sha256": "dc43143a6746baeca2640c7853dc3eaaee5af31db7c5d562f38516866b8d20e8",
+      "tex_sha256": "ec476690c6f6f4ad849bf53dff52b741516b3328df892b7e1dbd75fbbed3a0c2"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "paragraph",
+      "source_sha256": "ebd5ee457ac5b73b075729b6a369a88030169f9d88df86cf47d84ea209af3adc",
+      "tex_sha256": "9d6d9f5eb355d322bc0887fb89abb3e59f6a55743c182b6bde287044a271ba8b"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "paragraph",
+      "source_sha256": "bf5ef99b8ab520025de7f2882ac3ec92c527803eac1ce4a2d5089cace9be371b",
+      "tex_sha256": "ad2d7429cddac6817bfbfe6bd59d347859f2de46b13ba061bd6ce2227c6d895b"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 21,
+      "end": 21,
+      "kind": "heading",
+      "source_sha256": "f45b1b0e6475c794767639f5be573cfc1db7ae8169e7e8efadba189e355b853e",
+      "tex_sha256": "f3107a9732219d390d4db1b1072a4a95c3cbb668456804f870ff80a8fd4e1b9c"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 22,
+      "end": 22,
+      "kind": "paragraph",
+      "source_sha256": "afd4c39982a488f179031e14f870afb94b2bd9a6ee8cb7ef15e5a4aaad9f6956",
+      "tex_sha256": "f4ed61014ac932c1543275fe9aa1cda8b0d396dc0e7dac8e14b8402d7e0f1524"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 23,
+      "end": 23,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "paragraph",
+      "source_sha256": "ab9f09334faf48b17bcf1ecf6019ffa96ee9632ac5ced9d9c38a782dee04392e",
+      "tex_sha256": "b678336e25e7dbcc757977669f5faf533f92a5b2e197f4e13637aca9c4adc5bf"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "paragraph",
+      "source_sha256": "2fe9780bea6ec1d3923f69485df2a48b83f34e1bff67d60384c2dcb38d32199a",
+      "tex_sha256": "db3890cba53faffa75454f1a53b2cd170e4376255b8b1a43207a15e6e7d1b206"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "paragraph",
+      "source_sha256": "0e8e2dda91aca3ac7abd7ffbc22710a469391b226af8ad13a6d22059fef01d2e",
+      "tex_sha256": "526fd83445b3fef4d53c6105c524b09c157c5ea10d3885c85fb1cf77a5db56c0"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "paragraph",
+      "source_sha256": "07cf5ed10d8aeecdc63c8f7aea228d7fe3948b9147191c90aa16eeeba0f3e631",
+      "tex_sha256": "a27e45cdbca48924892a56bfa5131fe7e01e6dbdd1ab2644b3d36c4d2a948764"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "paragraph",
+      "source_sha256": "eb3041b8962e788f92b70bc2e05c20a93c33d58db2f848228826ce42e842c407",
+      "tex_sha256": "f21aef5eb8b582aa9cf72801a43f59fa12d3dbe01fbed3e842d522004d474ea1"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 30,
+      "end": 30,
+      "kind": "paragraph",
+      "source_sha256": "5642e90b1a39ffe02a92cdb96ace83711b4f64a4c035ed24f583eb4709852c75",
+      "tex_sha256": "c09646ea5670495e4ec446db84d7939b9a11c07596c119625742f3c6f2d64d06"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 31,
+      "end": 31,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 32,
+      "end": 32,
+      "kind": "paragraph",
+      "source_sha256": "03fdc29e2f04a4945a6ddaf5ce9ead40aac1a6b57b7eb623fe08cc7f6de9ceb6",
+      "tex_sha256": "dc2fcfb1f0567e7a121c7da615da8e9349cfa6c73eeb03d5cab392f31bc11185"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 33,
+      "end": 33,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 34,
+      "end": 58,
+      "kind": "pseudocode",
+      "source_sha256": "20551e0066125b1a949419621782cf609e63cf4b8d0566f901e77a29cce62b95",
+      "tex_sha256": "f99f076e1837ba83cc35369ae5d5875c9ef5ba50166ea39715e5c30f961883bb"
+    },
+    {
+      "source": "Hyperchaos_5D_Chapter3.txt",
+      "start": 59,
+      "end": 59,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "d02588b72c91bf60e4ed70f2f79aff1a645628353da52df979eb9d650823f48d",
+      "tex_sha256": "4e9722b271295b8bfe3d113f0c304764fb4532a904d12f2e377d89b05a6be245"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "935fdddcd68fe534dcb48d1b99c4893bc69761d5f80151df5e8ccbf6418f5619",
+      "tex_sha256": "4ae5e986d62fca2b3920192f0676621513c0ef05a416984c916a4ac69ab831ed"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "image",
+      "source_sha256": "f1481c027847af3b4ec38164db9fdbe53c2987bbdcb3510eaa6070817f0d93c0",
+      "tex_sha256": "976e6e3307cb3197e635938b8be8bfc559054cafbcabd0a3ae27171534ec5b37"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "heading",
+      "source_sha256": "345be57bf98572af43925f1a2064afba67065edd79de93f03d489b3b20100728",
+      "tex_sha256": "636e2a787014119eb5b677f28c9fa2007458d8232d733a57804b63607cbfd7a3"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "paragraph",
+      "source_sha256": "7ba19210b312555bc9b3ba574b104968b823159f40c45ac38790c4d12d591bc6",
+      "tex_sha256": "55d9266de40ff2f5143af4f0ddbb96b3187cce5cac643fc01ae57575b33c3d58"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "paragraph",
+      "source_sha256": "38d6bccf6b26a9aa7943624cc6a29639ba455c443b3af10b5ea321f0e01e413a",
+      "tex_sha256": "e6e7d401a14ed424574eb73c044bc6917e655132d0a04b830ffdd5ce3c215b89"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "heading",
+      "source_sha256": "27c785107d261161503f8015b4e21a193d67751c6ab9fd3171a7a6e42eeda8b0",
+      "tex_sha256": "bc2a5746278af07377e32cc76c92f4f7066cedd2b9490d94870af082a03579dc"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "paragraph",
+      "source_sha256": "f8d7654d2a94d4c7c778104ee4538b0dd3e766cc585529f5be177f83dd40376d",
+      "tex_sha256": "1cd6eab3722ffe39a795d01361a7aaf9543d5b27bd2ce99c6e19a297261a574e"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "paragraph",
+      "source_sha256": "f23ff7bf8a29f0ef7d48aaf23ba795c0b8509b0f3588cd7ae5980a922e922246",
+      "tex_sha256": "f39a90e8bd0fb8879d951b57406f96c6c71edbcfd275e4073559e608b244740d"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "paragraph",
+      "source_sha256": "6f62a6e05a3922d3fa8e44f73e021abe8891e75170da7951ff84321fad1582d9",
+      "tex_sha256": "367a361b5356ef7a0fe75620060be13c16ab94648647459471f855ed3a7ea948"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "paragraph",
+      "source_sha256": "894908921b8a0a636e2615e970802c888c36b6832ec982f4735bc0792dcd4f26",
+      "tex_sha256": "464dc5e0111f838362515009d64f2b247671f8f13869156002a68c005cc03a7d"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "paragraph",
+      "source_sha256": "dcc41a8cfb62de0fe212c9d604217f16ee78dbf2e2056b9bb0ad9af1e6bdc033",
+      "tex_sha256": "02818619d4cc1fb34e7eccbda39256d8bf897d298d18a7c3ad4337e440775fd6"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 21,
+      "end": 21,
+      "kind": "paragraph",
+      "source_sha256": "8f18c8b90ceb4f0a0e584c08e02c695538c393878eb4f19a7128b2deffbc15a1",
+      "tex_sha256": "3b791449fea037e6084de705476dd7dc4ce46e672478b7e5c407512241760420"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 22,
+      "end": 22,
+      "kind": "paragraph",
+      "source_sha256": "c1a969de39c9551dc04b9d574f8d9fa2c168c96f8a20b62f19ea3f8da258a919",
+      "tex_sha256": "0744d3c9853c2ba337d124e79e6954e40b9f21f55aea52ddfa45c9f33e42cd84"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 23,
+      "end": 23,
+      "kind": "paragraph",
+      "source_sha256": "c3cc4f65fc8fbe1fff23cb04065780422a41c2dc1a3e076d0ae713e19e73a7f6",
+      "tex_sha256": "5e38bdd05cdef3196c9c69de83c07867f9c8d6ba56063a1a2e6064269ecd964b"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "paragraph",
+      "source_sha256": "baf47ee93285b8c3b0aa44c264fe11f03f18599111bbbac50a80fa719650288b",
+      "tex_sha256": "ac87115305c0cc0c8042b6020eff2c5652dee1457e0cb710c1ebfa1b9f69cf61"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "paragraph",
+      "source_sha256": "7a30b5c430fe77285f2061813cb8ce9e0bcbf9eab5abf1d8554fc3c7633179d8",
+      "tex_sha256": "5e8a245486c64318fba62d4d33fc741ee1a49d7798f384b6263b1ac065d56a68"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "paragraph",
+      "source_sha256": "4a865e8b953341d6a5bb776c40950e6fbfbf65d566dfda0e77314a2c728b5124",
+      "tex_sha256": "ea7825f1c8755a3de9ead0825513aeee1a90d0b0f22ddb3290df14f306568dea"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "paragraph",
+      "source_sha256": "3af43de813235ad398a0ba7bac03afe95577d933371804630265d7939180570a",
+      "tex_sha256": "ea13f38b1f627274583b6729a82abbbe58fd408ff0605e45c85442b228148186"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "paragraph",
+      "source_sha256": "212a1239188b1163e3ce01707d143a702adf3b6ca4c503f693a78ba1d96d113a",
+      "tex_sha256": "0468aa74b055195bd142a03603b825f3e2632c7f7b2f5dcc7a22de4236d24d4a"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 30,
+      "end": 30,
+      "kind": "paragraph",
+      "source_sha256": "2cacd7f0c90e888ae3f0b005ecfeabd5a43e39614613a3658683731988d2dd69",
+      "tex_sha256": "f048b317ab7ad4b5ef0a373333708a3acb7cb2393400c3cb7b650eaf35c7066b"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 31,
+      "end": 31,
+      "kind": "paragraph",
+      "source_sha256": "0646b40add758cce2e1af2e420c87b2b7fcbbda090346cfb8bf1a646c6e8c674",
+      "tex_sha256": "f717fcc0ae42da5fa3b9ac8367e7a1afb3ee11b5c5881183232d7883e4c69ef0"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 32,
+      "end": 32,
+      "kind": "paragraph",
+      "source_sha256": "2f5a4398ce4f6fb37e5b3478c1744accdeda05e2438b35cd61c854d8dd94910b",
+      "tex_sha256": "8c2e5647f2e5316fb70c71bceb0b0b655815488695586e266513c133ace1b740"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 33,
+      "end": 33,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 34,
+      "end": 34,
+      "kind": "image",
+      "source_sha256": "7610bc5624444f26b32bcac19bed2e70a38626ea8b7a4c2f53e48b2f44c10005",
+      "tex_sha256": "36d01e9e226adaecca93a3db7fe3f0d23644c66660f44ad31ad2fbc8eba33b89"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 35,
+      "end": 35,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 36,
+      "end": 36,
+      "kind": "paragraph",
+      "source_sha256": "f19933c33359336ffa738187ce2eaa589b1bddca2987b904247705ef603f0715",
+      "tex_sha256": "2b0f8d9e2afa624bee45d89a25d856456f2808948c81b371c971a99f9e871e75"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 37,
+      "end": 37,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 38,
+      "end": 64,
+      "kind": "pseudocode",
+      "source_sha256": "45ddbaf5780ce0d807f8ccaf82de68774da3471f8342ab9cf1d993bcdb04ee55",
+      "tex_sha256": "2c244fcc0a755e875f33fa0461ada98fc546ce713d861aec54b41ab817dc2dda"
+    },
+    {
+      "source": "Zigzag_DNA_Chapter3.txt",
+      "start": 65,
+      "end": 65,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "646041a9155ca3b3caebadc731bdddc7da99ca47b440ab9e1f441faea24413c6",
+      "tex_sha256": "b99543f3b4e1d781d42efa2b7ec080d2164cc3fdbfaa61d01d7a616c1e136360"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "c1ce6cbbb2a410338c318c673e835327e5aed0bab3dc423bc309b38f1915d361",
+      "tex_sha256": "bd175088c60a30c1ab86a2d7291f031888d4b919d8a5ba94706e6fea6d5387cd"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "paragraph",
+      "source_sha256": "ec4fccc8a562b64c07879f4ad8b23a427b00919b314b58e8257829b2e2e22e25",
+      "tex_sha256": "f08b1fbde22760fe91fe3960ba2bb346881ded3f0bddffc6ebfd4442ea68fc36"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "image",
+      "source_sha256": "c7a1bfcc641912279ad57fc7d3610d2349ec0aa770415fd1aa619d92d9da7b90",
+      "tex_sha256": "aad04caf41522800b42d941a6d4bcd632d72d70bd78a59806fa72cb1eb1e5305"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "paragraph",
+      "source_sha256": "9b09e58b1d1ae71c840b68d6daa59d92ebd7b68c6e730dbdafdcf006a1c818e6",
+      "tex_sha256": "c358a9a5d385703816fb5ad7f69ed9eda7ca55bcb0ff98259b939f9da1857c67"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "2c8861a52f2e561d707589342100a25bcdf1ab2228c387184abac062bdb6bf45",
+      "tex_sha256": "a41dc9586c6dbe4fabf9341443c882a81095c36d40b8850692d1a1f5a5f551fd"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "paragraph",
+      "source_sha256": "d3f128312b42b0a16b3470ae1b6a903dd16777007327cbeb0bf918aed445d318",
+      "tex_sha256": "26f6e0043581e9d692bd229f44568f36e01a4e38aba151c9e18bfdbd2cad0b27"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "paragraph",
+      "source_sha256": "ed225e89caa6fc6a4d4a457e4d93edc1d2511912163d5d059b2870becf1c8a66",
+      "tex_sha256": "e25fba8a65c44f6f82a1c0710d67dce5e436348d4e2606dd14d9ca1c4033515d"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "paragraph",
+      "source_sha256": "a80adc7f6bb09fefe39069f0746cbc27d54a9d79387930940b51b0b7d11bce12",
+      "tex_sha256": "aa7a19b0875fc6c11ff3b02df7e046db2064d86d88edde3aeef43eca713ac560"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "paragraph",
+      "source_sha256": "800782c5f088b351489e77c44dbafe0cc876ba7de2300518beb30e1affbbcaf4",
+      "tex_sha256": "0682d0574ef6fadee1ad5c04f37e0ecdc028e11908560400c3973d7ff27b0e14"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "paragraph",
+      "source_sha256": "18e63dd047ac44688ebbaf890e908ddae42f4654367570aac954076aa85fcfa8",
+      "tex_sha256": "83bbca25d52034e8507559eaddfeb1855f7c50e4283644298ca573c8c0604eab"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "paragraph",
+      "source_sha256": "512a73f947b0d3916735aae4ffdfec8ec1b354086129746e56538c53ba9d395c",
+      "tex_sha256": "feea2bdd506538e8c31f0d5233dc7c3c8ece492b0825949f452e8971f8688956"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 21,
+      "end": 21,
+      "kind": "paragraph",
+      "source_sha256": "ed4ba7f858dde8e46927a1a2806838b7a9b921aa738ad4971d129c9de002e55e",
+      "tex_sha256": "fa92167223e715e22a5061b42b7c5859b32fe830f9a58380349d7ba987cd7209"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 22,
+      "end": 22,
+      "kind": "paragraph",
+      "source_sha256": "5c87e0b6d8d348ddd5f30311f11f487682fd49eac2b4f03f4837d9ef95444a7b",
+      "tex_sha256": "a237d478a87f79b8bb09f79283300e418873f9ab888f8307087f0f1907d73217"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 23,
+      "end": 23,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "paragraph",
+      "source_sha256": "0f24f346cf38eb6a092d7f5ff27f01d6fa2d7370507a8d6900981730da8c5959",
+      "tex_sha256": "723daf6b138c0623d0676b04003d4983ca3de4dab937c9981a1849e9dec7d5b2"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "image",
+      "source_sha256": "65bb40e82a36eaae7f8b6877708c07a1eed8cd23123ca6c981f6b06828cc0be4",
+      "tex_sha256": "ad423a7eba7629db11d8d873f2e97f18660c93d6d69a2ddac67db804000dc41e"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "paragraph",
+      "source_sha256": "fd714f9028183898fbd07aed2b7e1ca6a2acf533cd1ec14ec9f761db76839a64",
+      "tex_sha256": "8fd93585d1d257c90c7252c29b1a8ce6efed56dca5048baa486d2368ae0d3b5e"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 30,
+      "end": 50,
+      "kind": "pseudocode",
+      "source_sha256": "69bfb27c492168810df3e86f7948b838b7abc058ea4bd88d77ed51d25504f63b",
+      "tex_sha256": "fc95196871f12ead7bae81da2f585dcf26fe39a1211d8202939e402161a652a9"
+    },
+    {
+      "source": "Saliency_Steganography_Chapter3.txt",
+      "start": 51,
+      "end": 51,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "793d2190aad9bfee8971ea615775aba1955c2ecf3837d45df4fba7fa1856b56b",
+      "tex_sha256": "b2cfeb129e83593bd836ad049788c367ef0a0c16b510e06c66f1876be4607e21"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "e14d7ba9ebd617be1c529d49b407b834e9a082d76c14166075623a9621119860",
+      "tex_sha256": "be23d75748ef0d7ba38ec6322ea02fbc45341332d114a42163ac7094f2e7e583"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "heading",
+      "source_sha256": "48ff990ea6a19da3d3cff534f9e266c4020ea4d2b5bc31ec391d7e81173cad7b",
+      "tex_sha256": "d374798855f19274364b9ddf7cfcb342a6cd067cdb509a6716d372bb4f4aa57d"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "paragraph",
+      "source_sha256": "2723fb4e738b03ad0ae05c6beb4ad90e0c2b793e27776d5b789031dffdc2725f",
+      "tex_sha256": "bd967d542caed9c8d250bd716bb65a9ae29e2f164c39729ee91d592f265da038"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "paragraph",
+      "source_sha256": "d7bd6f5526f803cf24c12f368d803a05905e6931091775f715c46978334d8560",
+      "tex_sha256": "d80b76d0b266a022cf8e698fd181c0a025b947634d1775cc4fe9bc1b0c36ac4d"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 10,
+      "end": 32,
+      "kind": "pseudocode",
+      "source_sha256": "a15d570e8dd19bc383ff507bc8332dcafbde8a4b5c66ec914118c90786dadbfb",
+      "tex_sha256": "bda09de6fc719d7e3baf07a75e8b9f21ada1698e9583f000f058d08876009d15"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 33,
+      "end": 33,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 34,
+      "end": 34,
+      "kind": "paragraph",
+      "source_sha256": "db5ee25f7fe20a73d6b5e5aa43db56e8f8b46fd42ebe2706a1c469da4e7a66ef",
+      "tex_sha256": "c48935cb84fb377ca26cea3f6c7751d79f8184237cb24bdff378fc756004ddb6"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 35,
+      "end": 35,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 36,
+      "end": 53,
+      "kind": "pseudocode",
+      "source_sha256": "1162821bad8f9a109b40174456d315c68d4b5904c74288196bdd50da182aef5e",
+      "tex_sha256": "1fc64be7737f2ef80ca0d48c0250332a95a71b1056a16dab3c1a7e5d4a0e8aff"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 54,
+      "end": 54,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 55,
+      "end": 55,
+      "kind": "paragraph",
+      "source_sha256": "e798321bbe2044e2b7a22d76b0b15db81b0748dabc9d017ede93d826b97776e7",
+      "tex_sha256": "3f584552bc5593f454908cddab39856f9563f6e5362b83dec03cfbb044ad7d1e"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 56,
+      "end": 56,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 57,
+      "end": 71,
+      "kind": "pseudocode",
+      "source_sha256": "dd63ff21465844e2bae493896da9a2022bf65d99bc606f5bd3e56339c7e14f90",
+      "tex_sha256": "c5baed58d0e2391a02b994e5189bd7e44e3cecd03f616391a254a338c2936eec"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 72,
+      "end": 72,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 73,
+      "end": 73,
+      "kind": "paragraph",
+      "source_sha256": "24fcdcd3589213190c331f2157842b24918a57681d6c74458aab14656fa925f7",
+      "tex_sha256": "12ed035ba254cab10fe92dec665c3233791f89dfc6ecda430ef993c03229b926"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 74,
+      "end": 74,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 75,
+      "end": 85,
+      "kind": "pseudocode",
+      "source_sha256": "b6847fbfffff33c04970701259fe7d06d3e75f72cc918f4adb09d7f57781187a",
+      "tex_sha256": "95f3ca1b78b292dc5efceb5f492b8b26813d2ef3a4417f203d3b3147ae6f0546"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 86,
+      "end": 86,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 87,
+      "end": 87,
+      "kind": "heading",
+      "source_sha256": "ac57dae7b32a4dbb18708f3c882451aee8d7eb0eb4bc7bcac8d664555f92ab19",
+      "tex_sha256": "ce7b99ba6f3784878e599f881fc0452572bc6e16be977ff8a4416de9be91d4a6"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 88,
+      "end": 88,
+      "kind": "paragraph",
+      "source_sha256": "a3bafbd029270607fc613ec84ce95dd9afc6eb54e3e0d3ea2ff5a89de9a12781",
+      "tex_sha256": "484f5e6e7b8c2bc243d1e6517f9247e9f1667c48b99e6bbddb28b9caeb7be6bd"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 89,
+      "end": 89,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 90,
+      "end": 90,
+      "kind": "paragraph",
+      "source_sha256": "25f560d7494e3a3a37ef44e580c985a043d27eb67d4ef7a24b6115bcf2fe9d2d",
+      "tex_sha256": "ec03515f5356f50851fc5e391f7b7dcbb34afd5c2cf0df610afc12e817b2f18c"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 91,
+      "end": 91,
+      "kind": "paragraph",
+      "source_sha256": "e3b1fad753b23a9fefa721cf36170860444910b4e94ed1d22580ab1b6c28ee0d",
+      "tex_sha256": "d6094886ee9a25c32c8c1540063c259e6f1d853f677c0588bf1e19e3bf75f224"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 92,
+      "end": 92,
+      "kind": "paragraph",
+      "source_sha256": "aef9f12e53bc8361536f462eca6dfbefa3634dec9c1cd05be1e9065f69754765",
+      "tex_sha256": "342a1990c3a333fae286c22f3ada11d10bdca39a4f39f0fe0101bd6be3540d39"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 93,
+      "end": 93,
+      "kind": "paragraph",
+      "source_sha256": "fdb478b0d2745e7667802f1de5254cb3037e197577e4efdccda529a83f22c2a4",
+      "tex_sha256": "9b6dd1dec3e4306e17f747a4e5a965bae1ab5cce091bdd60dd3789fe65279a52"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 94,
+      "end": 94,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 95,
+      "end": 95,
+      "kind": "paragraph",
+      "source_sha256": "2267fad6e262e7eee7eaf502e360e9f24864cfff128b91871ead7f75b9a6ec85",
+      "tex_sha256": "f77771c094434dd74804538aca341ef1f7bdd96f2874d2452f0e14557f5e0178"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 96,
+      "end": 96,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 97,
+      "end": 97,
+      "kind": "image",
+      "source_sha256": "e933ccee4ac0b47eab8f67c01940b417bf179bc838688e6dbf969d54366605e7",
+      "tex_sha256": "f25bca92cbe147865b94fa0dff96a4e3914e480760faafb952ec7381f34822fc"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 98,
+      "end": 98,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 99,
+      "end": 99,
+      "kind": "heading",
+      "source_sha256": "fd065012a098b65cfa0bc2909686373e6895b09ef38e416b19a8dfb50fa60234",
+      "tex_sha256": "0c7cda5485030b6f35c13b6c05df0f7c707c2e2dfd3263efe0050141e7658dc8"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 100,
+      "end": 100,
+      "kind": "paragraph",
+      "source_sha256": "7ab2ad5a04d6b7ac3b583fcd6507485a44785312deecb6e82303a8b9ee26da10",
+      "tex_sha256": "4ca42136e271ab1d7aa6078be5fb6c9f0172e170fadb0cd500b975fd8bb813d0"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 101,
+      "end": 101,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 102,
+      "end": 102,
+      "kind": "paragraph",
+      "source_sha256": "ffd1c478cd28a293e14422bf07499a00f8b33e3000d3fae2e51f4e7f807dcd1f",
+      "tex_sha256": "630af5c16d6942ce838767ba4665bd3fc3206016520d543f62b152a571ca8414"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 103,
+      "end": 103,
+      "kind": "paragraph",
+      "source_sha256": "62e484aa3ef3eb3643fad2c1b30de0ba60c8f940f6b6ff12a7e2e02fe3aae0d2",
+      "tex_sha256": "3d770832f9e96b146d3f134a578b7e9f3009d5d42bd238acd959362226176c67"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 104,
+      "end": 104,
+      "kind": "paragraph",
+      "source_sha256": "191d70b0d213f316315823753a5e010c05b63e44df907551d463c01c7b90aed7",
+      "tex_sha256": "76c8a5c9748c90b9ffa4f65cd9ab4599d0d874888c21bb1f051505e514f3783e"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 105,
+      "end": 105,
+      "kind": "paragraph",
+      "source_sha256": "e0f5d50f2a4dcbf31332e691c0adbe00649cd80c2383b74a9cc9874dc571f8ff",
+      "tex_sha256": "fb01948d5595f1e2a0c82da15e7fb50a738d59722b04e9cfe88f6d262471c385"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 106,
+      "end": 106,
+      "kind": "paragraph",
+      "source_sha256": "9edd477162674f0f7fb650775ec84f744dc4b15c8b8006fdedd27b4cd538cd06",
+      "tex_sha256": "05de6d5d733f66de21b10134851675fc8c0e21593123461a0a056c2e9c6edd82"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 107,
+      "end": 107,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 108,
+      "end": 108,
+      "kind": "paragraph",
+      "source_sha256": "9dac3343059423b5ac06db8cd1daee21bf32b9d4bad46c7dea408bb253823913",
+      "tex_sha256": "1ac99c70fe484cad2f90b7efd35e557826ac582d3d6937d548ea4a53fa260ba4"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 109,
+      "end": 109,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 110,
+      "end": 110,
+      "kind": "image",
+      "source_sha256": "e2bd62f0bdca81c956a62499adf286cf8dc0ca6b8e934f31fd7e4180b4c76f37",
+      "tex_sha256": "cb362527e7268853f17c3aa824afaa14c1cd4f0c91a4e0ba8419a0047abcca54"
+    },
+    {
+      "source": "Complexity_Edge_Chapter3.txt",
+      "start": 111,
+      "end": 111,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "tex_file": "chapters/chapter03.tex",
+  "tex_sha256": "e506bc8306e91b84c4284171a8132ff73c1bedc69b4d90794dcc82115c192b16"
+}

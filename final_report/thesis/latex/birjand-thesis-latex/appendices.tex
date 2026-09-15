@@ -1,0 +1,265 @@
+\clearpage\chapter*{پیوست‌ها}\phantomsection\addcontentsline{toc}{chapter}{پیوست‌ها}
+% SOURCE Appendices.txt:1-1 [paragraph]
+پیوست‌های پایان‌نامه \lr{(Thesis Appendices)}\par
+
+% SOURCE Appendices.txt:2-2 [spacing]
+
+
+% SOURCE Appendices.txt:3-3 [separator]
+\par\medskip\hrule\medskip
+
+% SOURCE Appendices.txt:4-4 [appendix-heading]
+\clearpage\SourceHeading{1}{پیوست الف: کدهای پیاده‌سازی و توابع کلیدی پایتون \lr{(Python Source Codes)}}
+
+% SOURCE Appendices.txt:5-5 [separator]
+\par\medskip\hrule\medskip
+
+% SOURCE Appendices.txt:6-6 [spacing]
+
+
+% SOURCE Appendices.txt:7-7 [paragraph]
+این پیوست شامل توابع اصلی پایتون مربوط به فازهای چهارگانه سیستم هیبریدی پیشنهادی می‌باشد:\par
+
+% SOURCE Appendices.txt:8-8 [spacing]
+
+
+% SOURCE Appendices.txt:9-9 [paragraph]
+۱. تابع قطعه‌بندی \lr{U{-}Net} و استخراج کلید پویا \lr{SHA{-}256}:\par
+
+% SOURCE Appendices.txt:10-38 [python-listing]
+\begin{sourcecode}
+\begin{LTR}\ttfamily\fontsize{9}{13}\selectfont\raggedright
+\CodeLine{0.0}{import torch}
+\CodeLine{0.0}{import hashlib}
+\CodeLine{0.0}{import numpy as np}
+\CodeLine{0.0}{\strut}
+\CodeLine{0.0}{def extract\_\allowbreak{}roi\_\allowbreak{}and\_\allowbreak{}generate\_\allowbreak{}key(unet\_\allowbreak{}model, medical\_\allowbreak{}image\_\allowbreak{}tensor):}
+\CodeLine{2.0}{"""}
+\CodeLine{2.0}{\rl{ورودی}: \rl{تصویر پزشکی به صورت تینسر} Torch}
+\CodeLine{2.0}{\rl{خروجی}: \rl{ماسک قطعه‌بندی} ROI \rl{و کلید هَش ۲۵۶ بیتی} K\_\allowbreak{}hash}
+\CodeLine{2.0}{"""}
+\CodeLine{2.0}{unet\_\allowbreak{}model.eval()}
+\CodeLine{2.0}{with torch.no\_\allowbreak{}grad():}
+\CodeLine{4.0}{roi\_\allowbreak{}mask = unet\_\allowbreak{}model(medical\_\allowbreak{}image\_\allowbreak{}tensor)}
+\CodeLine{4.0}{roi\_\allowbreak{}mask = (roi\_\allowbreak{}mask \SourceGlyph{003E} 0.5).float()}
+\CodeLine{2.0}{\strut}
+\CodeLine{2.0}{\# \rl{استخراج گشتاورهای آماری ناحیه} ROI}
+\CodeLine{2.0}{roi\_\allowbreak{}pixels = medical\_\allowbreak{}image\_\allowbreak{}tensor * roi\_\allowbreak{}mask}
+\CodeLine{2.0}{mean\_\allowbreak{}val = torch.mean(roi\_\allowbreak{}pixels).item()}
+\CodeLine{2.0}{std\_\allowbreak{}val = torch.std(roi\_\allowbreak{}pixels).item()}
+\CodeLine{2.0}{var\_\allowbreak{}val = torch.var(roi\_\allowbreak{}pixels).item()}
+\CodeLine{2.0}{\strut}
+\CodeLine{2.0}{\# \rl{ترکیب گشتاورها و تولید هَش} SHA{-}256}
+\CodeLine{2.0}{stat\_\allowbreak{}str = f"\{mean\_\allowbreak{}val:.8f\}\_\allowbreak{}\{std\_\allowbreak{}val:.8f\}\_\allowbreak{}\{var\_\allowbreak{}val:.8f\}"}
+\CodeLine{2.0}{k\_\allowbreak{}hash\_\allowbreak{}hex = hashlib.sha256(stat\_\allowbreak{}str.encode('utf{-}8')).hexdigest()}
+\CodeLine{2.0}{k\_\allowbreak{}hash\_\allowbreak{}bits = bin(int(k\_\allowbreak{}hash\_\allowbreak{}hex, 16))[2:].zfill(256)}
+\CodeLine{2.0}{\strut}
+\CodeLine{2.0}{return roi\_\allowbreak{}mask, k\_\allowbreak{}hash\_\allowbreak{}hex, k\_\allowbreak{}hash\_\allowbreak{}bits}
+\CodeLine{0.0}{\strut}
+\CodeLine{0.0}{\strut}
+\end{LTR}
+\end{sourcecode}
+
+% SOURCE Appendices.txt:39-39 [paragraph]
+۲. تابع سیستم ۵بعدی ابرآشوبی \lr{(Runge{-}Kutta 4th Order)}:\par
+
+% SOURCE Appendices.txt:40-73 [python-listing]
+\begin{sourcecode}
+\begin{LTR}\ttfamily\fontsize{9}{13}\selectfont\raggedright
+\CodeLine{0.0}{def hyperchaos\_\allowbreak{}5d\_\allowbreak{}system(state, a=10.0, b=8/3, c=28.0, d=3.0, e=0.2):}
+\CodeLine{2.0}{x, y, z, u, v = state}
+\CodeLine{2.0}{dx = a * (y {-} x) + u}
+\CodeLine{2.0}{dy = c * x {-} x * z + d * y + v}
+\CodeLine{2.0}{dz = x * y {-} b * z}
+\CodeLine{2.0}{du = {-}y * z + e * u}
+\CodeLine{2.0}{dv = x * z {-} e * v}
+\CodeLine{2.0}{return np.array([dx, dy, dz, du, dv])}
+\CodeLine{0.0}{\strut}
+\CodeLine{0.0}{def generate\_\allowbreak{}5d\_\allowbreak{}chaotic\_\allowbreak{}sequences(k\_\allowbreak{}hash\_\allowbreak{}hex, num\_\allowbreak{}samples):}
+\CodeLine{2.0}{\# \rl{تبدیل کلید هَش ۲۵۶ بیتی به شرایط اولیه سیستم}}
+\CodeLine{2.0}{init\_\allowbreak{}x = int(k\_\allowbreak{}hash\_\allowbreak{}hex[0:12], 16) / (16**12)}
+\CodeLine{2.0}{init\_\allowbreak{}y = int(k\_\allowbreak{}hash\_\allowbreak{}hex[12:24], 16) / (16**12)}
+\CodeLine{2.0}{init\_\allowbreak{}z = int(k\_\allowbreak{}hash\_\allowbreak{}hex[24:36], 16) / (16**12)}
+\CodeLine{2.0}{init\_\allowbreak{}u = int(k\_\allowbreak{}hash\_\allowbreak{}hex[36:48], 16) / (16**12)}
+\CodeLine{2.0}{init\_\allowbreak{}v = int(k\_\allowbreak{}hash\_\allowbreak{}hex[48:60], 16) / (16**12)}
+\CodeLine{2.0}{\strut}
+\CodeLine{2.0}{state = np.array([init\_\allowbreak{}x, init\_\allowbreak{}y, init\_\allowbreak{}z, init\_\allowbreak{}u, init\_\allowbreak{}v])}
+\CodeLine{2.0}{dt = 0.001}
+\CodeLine{2.0}{seqs = np.zeros((num\_\allowbreak{}samples, 5))}
+\CodeLine{2.0}{\strut}
+\CodeLine{2.0}{\# \rl{حل عددی به روش} Runge{-}Kutta \rl{مرتبه ۴}}
+\CodeLine{2.0}{for i in range(num\_\allowbreak{}samples):}
+\CodeLine{4.0}{k1 = hyperchaos\_\allowbreak{}5d\_\allowbreak{}system(state)}
+\CodeLine{4.0}{k2 = hyperchaos\_\allowbreak{}5d\_\allowbreak{}system(state + 0.5 * dt * k1)}
+\CodeLine{4.0}{k3 = hyperchaos\_\allowbreak{}5d\_\allowbreak{}system(state + 0.5 * dt * k2)}
+\CodeLine{4.0}{k4 = hyperchaos\_\allowbreak{}5d\_\allowbreak{}system(state + dt * k3)}
+\CodeLine{4.0}{state = state + (dt / 6.0) * (k1 + 2*k2 + 2*k3 + k4)}
+\CodeLine{4.0}{seqs[i] = state}
+\CodeLine{4.0}{\strut}
+\CodeLine{2.0}{return seqs}
+\CodeLine{0.0}{\strut}
+\CodeLine{0.0}{\strut}
+\end{LTR}
+\end{sourcecode}
+
+% SOURCE Appendices.txt:74-74 [paragraph]
+۳. تابع جایگشت زیگ‌زاگی و انتشار پویای \lr{DNA}:\par
+
+% SOURCE Appendices.txt:75-102 [python-listing]
+\begin{sourcecode}
+\begin{LTR}\ttfamily\fontsize{9}{13}\selectfont\raggedright
+\CodeLine{0.0}{def zigzag\_\allowbreak{}permutation(image\_\allowbreak{}matrix):}
+\CodeLine{2.0}{h, w = image\_\allowbreak{}matrix.shape}
+\CodeLine{2.0}{result = np.zeros\_\allowbreak{}like(image\_\allowbreak{}matrix)}
+\CodeLine{2.0}{\# \rl{الگوریتم جایگشت متقاطع زیگ‌زاگی}}
+\CodeLine{2.0}{indices = []}
+\CodeLine{2.0}{for i in range(h + w {-} 1):}
+\CodeLine{4.0}{if i \% 2 == 0:}
+\CodeLine{6.0}{x = i if i \SourceGlyph{003C} h else h {-} 1}
+\CodeLine{6.0}{y = 0 if i \SourceGlyph{003C} h else i {-} h + 1}
+\CodeLine{6.0}{while x \SourceGlyph{003E}= 0 and y \SourceGlyph{003C} w:}
+\CodeLine{8.0}{indices.append((x, y))}
+\CodeLine{8.0}{x {-}= 1}
+\CodeLine{8.0}{y += 1}
+\CodeLine{4.0}{else:}
+\CodeLine{6.0}{x = 0 if i \SourceGlyph{003C} w else i {-} w + 1}
+\CodeLine{6.0}{y = i if i \SourceGlyph{003C} w else w {-} 1}
+\CodeLine{6.0}{while x \SourceGlyph{003C} h and y \SourceGlyph{003E}= 0:}
+\CodeLine{8.0}{indices.append((x, y))}
+\CodeLine{8.0}{x += 1}
+\CodeLine{8.0}{y {-}= 1}
+\CodeLine{2.0}{flat\_\allowbreak{}img = image\_\allowbreak{}matrix.flatten()}
+\CodeLine{2.0}{scrambled = np.zeros\_\allowbreak{}like(flat\_\allowbreak{}img)}
+\CodeLine{2.0}{for new\_\allowbreak{}idx, (r, c) in enumerate(indices):}
+\CodeLine{4.0}{scrambled[new\_\allowbreak{}idx] = image\_\allowbreak{}matrix[r, c]}
+\CodeLine{2.0}{return scrambled.reshape(h, w)}
+\CodeLine{0.0}{\strut}
+\CodeLine{0.0}{\strut}
+\end{LTR}
+\end{sourcecode}
+
+% SOURCE Appendices.txt:103-103 [paragraph]
+۴. تابع پنهان‌نگاری \lr{Saliency{-}aware} و فشرده‌سازی \lr{zlib}:\par
+
+% SOURCE Appendices.txt:104-126 [python-listing]
+\begin{sourcecode}
+\begin{LTR}\ttfamily\fontsize{9}{13}\selectfont\raggedright
+\CodeLine{0.0}{import zlib}
+\CodeLine{0.0}{\strut}
+\CodeLine{0.0}{def embed\_\allowbreak{}metadata\_\allowbreak{}saliency(image\_\allowbreak{}matrix, metadata\_\allowbreak{}bytes, non\_\allowbreak{}roi\_\allowbreak{}mask):}
+\CodeLine{2.0}{\# \rl{فشرده‌سازی} zlib \rl{فراداده}}
+\CodeLine{2.0}{compressed\_\allowbreak{}meta = zlib.compress(metadata\_\allowbreak{}bytes, level=9)}
+\CodeLine{2.0}{meta\_\allowbreak{}bits = ''.join(format(byte, '08b') for byte in compressed\_\allowbreak{}meta)}
+\CodeLine{2.0}{\strut}
+\CodeLine{2.0}{stego\_\allowbreak{}img = image\_\allowbreak{}matrix.copy().flatten()}
+\CodeLine{2.0}{mask\_\allowbreak{}flat = non\_\allowbreak{}roi\_\allowbreak{}mask.flatten()}
+\CodeLine{2.0}{\strut}
+\CodeLine{2.0}{bit\_\allowbreak{}idx = 0}
+\CodeLine{2.0}{for pixel\_\allowbreak{}idx in range(len(stego\_\allowbreak{}img)):}
+\CodeLine{4.0}{if mask\_\allowbreak{}flat[pixel\_\allowbreak{}idx] == 1 and bit\_\allowbreak{}idx \SourceGlyph{003C} len(meta\_\allowbreak{}bits):}
+\CodeLine{6.0}{\# \rl{جای‌دهی ۲ بیت کم‌ارزش} LSB}
+\CodeLine{6.0}{val = stego\_\allowbreak{}img[pixel\_\allowbreak{}idx]}
+\CodeLine{6.0}{val = (val \& 0xFC) \SourceGlyph{007C} int(meta\_\allowbreak{}bits[bit\_\allowbreak{}idx:bit\_\allowbreak{}idx+2], 2)}
+\CodeLine{6.0}{stego\_\allowbreak{}img[pixel\_\allowbreak{}idx] = val}
+\CodeLine{6.0}{bit\_\allowbreak{}idx += 2}
+\CodeLine{6.0}{\strut}
+\CodeLine{2.0}{return stego\_\allowbreak{}img.reshape(image\_\allowbreak{}matrix.shape)}
+\CodeLine{0.0}{\strut}
+\CodeLine{0.0}{\strut}
+\end{LTR}
+\end{sourcecode}
+
+% SOURCE Appendices.txt:127-127 [separator]
+\par\medskip\hrule\medskip
+
+% SOURCE Appendices.txt:128-128 [appendix-heading]
+\clearpage\SourceHeading{1}{پیوست ب: جدول تفصیلی نتایج آزمون‌های ۱۵گانه \lr{NIST SP800{-}22}}
+
+% SOURCE Appendices.txt:129-129 [separator]
+\par\medskip\hrule\medskip
+
+% SOURCE Appendices.txt:130-130 [spacing]
+
+
+% SOURCE Appendices.txt:131-151 [table]
+\clearpage\begin{landscape}
+\begingroup\fontsize{12}{15}\selectfont\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\SourceCaption{lot}{جدول ب{-}۱: نتایج تفصیلی ارزیابی ۱۵ آزمون تصادفی‌سازی استاندارد \lr{NIST SP800{-}22} بر روی ۱۰۰ توالی ۱،۰۰۰،۰۰۰ بیتی مستخرج از تصاویر رمزشده}
+\begin{NoHyper}\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-8\tabcolsep)/4\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-8\tabcolsep)/4\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-8\tabcolsep)/4\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-8\tabcolsep)/4\relax}@{}}
+\toprule
+نام آزمون تصادفی‌سازی \lr{NIST SP800{-}22} & متوسط \lr{p{-}value} & نرخ قبولی \lr{(Pass)} & وضعیت نهایی \\
+\midrule\endfirsthead
+نام آزمون تصادفی‌سازی \lr{NIST SP800{-}22} & متوسط \lr{p{-}value} & نرخ قبولی \lr{(Pass)} & وضعیت نهایی \\\midrule\endhead
+\lr{1. Frequency} \lr{(Monobit)} \lr{Test} & \lr{0.5214} & \lr{99 / 100} & \lr{PASSED} \\
+\lr{2. Block Frequency Test} & \lr{0.4892} & \lr{100 / 100} & \lr{PASSED} \\
+\lr{3. Cumulative Sums} \lr{(Cusum)} \lr{Test} & \lr{0.5103} & \lr{99 / 100} & \lr{PASSED} \\
+\lr{4. Runs Test} & \lr{0.6341} & \lr{98 / 100} & \lr{PASSED} \\
+\lr{5. Longest Run of Ones Test} & \lr{0.4512} & \lr{99 / 100} & \lr{PASSED} \\
+\lr{6. Rank Test} & \lr{0.7120} & \lr{100 / 100} & \lr{PASSED} \\
+\lr{7. Discrete Fourier Transform} \lr{(FFT)} & \lr{0.3985} & \lr{99 / 100} & \lr{PASSED} \\
+\lr{8. Non{-}overlapping Template Matching} & \lr{0.5230} & \lr{98 / 100} & \lr{PASSED} \\
+\lr{9. Overlapping Template Matching} & \lr{0.4871} & \lr{99 / 100} & \lr{PASSED} \\
+\lr{10. Maurer}'\lr{s Universal Statistical} & \lr{0.6124} & \lr{100 / 100} & \lr{PASSED} \\
+\lr{11. Approximate Entropy Test} & \lr{0.5432} & \lr{99 / 100} & \lr{PASSED} \\
+\lr{12. Random Excursions Test} & \lr{0.3810} & \lr{98 / 100} & \lr{PASSED} \\
+\lr{13. Random Excursions Variant Test} & \lr{0.4290} & \lr{99 / 100} & \lr{PASSED} \\
+\lr{14. Serial Test} \lr{(p{-}value 1 \& 2)} & \lr{0.5891 / 0.6120} & \lr{100 / 100} & \lr{PASSED} \\
+\lr{15. Linear Complexity Test} & \lr{0.4912} & \lr{99 / 100} & \lr{PASSED} \\
+\bottomrule
+\end{longtable}\end{NoHyper}\endgroup
+\end{landscape}\clearpage
+
+% SOURCE Appendices.txt:152-152 [spacing]
+
+
+% SOURCE Appendices.txt:153-153 [spacing]
+
+
+% SOURCE Appendices.txt:154-154 [separator]
+\par\medskip\hrule\medskip
+
+% SOURCE Appendices.txt:155-155 [appendix-heading]
+\clearpage\SourceHeading{1}{پیوست ج: مشخصات مجموعه‌دادگان مرجع و بستر سخت‌افزاری \lr{NVIDIA Jetson TX2}}
+
+% SOURCE Appendices.txt:156-156 [separator]
+\par\medskip\hrule\medskip
+
+% SOURCE Appendices.txt:157-157 [spacing]
+
+
+% SOURCE Appendices.txt:158-158 [paragraph]
+۱. مشخصات مجموعه‌دادگان مرجع:\par
+
+% SOURCE Appendices.txt:159-159 [paragraph]
+{-} دادگان \lr{DRIVE} و \lr{RITE}: تصاویر فاندوس شبکیه چشم با ابعاد \lr{565x584} پیکسل جهت قطعه‌بندی عروق و \lr{ROI} شبکیه.\par
+
+% SOURCE Appendices.txt:160-160 [paragraph]
+{-} دادگان \lr{BraTS 2020}: اسکن‌های \lr{3D MRI} مغزی در مدالیته‌های \lr{T1, T2, T1ce, FLAIR} با ابعاد \lr{240x240} پیکسل.\par
+
+% SOURCE Appendices.txt:161-161 [paragraph]
+{-} دادگان \lr{COVID{-}19 CXR}: تصاویر رادیوگرافی قفسه سینه و \lr{CT} ریه با ابعاد \lr{1024x1024} پیکسل جهت تشخیص عفونت‌های ریوی.\par
+
+% SOURCE Appendices.txt:162-162 [spacing]
+
+
+% SOURCE Appendices.txt:163-163 [paragraph]
+۲. مشخصات بستر سخت‌افزاری \lr{NVIDIA Jetson TX2}:\par
+
+% SOURCE Appendices.txt:164-164 [paragraph]
+{-} پردازنده اصلی \lr{(CPU)}: \lr{Dual{-}Core NVIDIA Denver 2 64{-}Bit + Quad{-}Core ARM Cortex{-}A57}\par
+
+% SOURCE Appendices.txt:165-165 [paragraph]
+{-} پردازنده گرافیکی \lr{(GPU)}: \lr{256{-}core NVIDIA Pascal Architecture} \lr{(1.3 TFLOPS)}\par
+
+% SOURCE Appendices.txt:166-166 [paragraph]
+{-} حافظه اصلی \lr{(RAM)}: \lr{8 GB 128{-}bit LPDDR4} \lr{(59.7 GB/s)}\par
+
+% SOURCE Appendices.txt:167-167 [paragraph]
+{-} توان مصرفی \lr{(Power Consumption)}: \lr{7.5W / 15W} (کم‌مصرف پردازش لبه \lr{IoMT})\par
+
+% SOURCE Appendices.txt:168-168 [paragraph]
+{-} سیستم‌عامل و بستر نرم‌افزاری: \lr{Ubuntu 18.04 LTS} \lr{(JetPack SDK 4.4)}, \lr{PyTorch 1.8, OpenCV 4.5, CUDA 10.2}\par
+
+% SOURCE Appendices.txt:169-169 [spacing]
+

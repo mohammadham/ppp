@@ -1,0 +1,1480 @@
+{
+  "number": 2,
+  "title": "فصل دوم: مبانی نظری و پیشینه پژوهش",
+  "source_count": 4,
+  "sources": [
+    "Introduction_Chapter2.txt",
+    "Theoretical_Foundations_Chapter2.txt",
+    "Literature_Review_Chapter2.txt",
+    "Synthesis_Research_Gap_Chapter2.txt"
+  ],
+  "source_hashes": {
+    "Introduction_Chapter2.txt": "f1225bac269c664d5152127320367c964ce4ed626636007828ccea041b10bf74",
+    "Theoretical_Foundations_Chapter2.txt": "6216df16946b95ba3901182972339deda0767a541ab1790541e35555dace6236",
+    "Literature_Review_Chapter2.txt": "64b38158b3def1b492dd8fda3aff1be22cb9671390360cc7d19ce563ce3bfc82",
+    "Synthesis_Research_Gap_Chapter2.txt": "30fb16c7e6b29549758adf0504f7f60c7662737989948c52e2bdb3d6d4e1a84d"
+  },
+  "images": [
+    {
+      "type": "شکل",
+      "number": "۲-۱",
+      "caption": "نمودار معماری مفهومی کلان سیستم امنیتی هیبریدی پیشنهادی",
+      "filename": "chapter2_system_architecture.png",
+      "exists": true,
+      "source": "Introduction_Chapter2.txt",
+      "line": 7
+    },
+    {
+      "type": "شکل",
+      "number": "۲-۲",
+      "caption": "نمودار نقشه راه مفهومی و ساختاری فصل دوم (از مبانی نظری تا استخراج شکاف‌های پژوهشی)",
+      "filename": "chapter2_roadmap.png",
+      "exists": true,
+      "source": "Introduction_Chapter2.txt",
+      "line": 19
+    },
+    {
+      "type": "رابطه",
+      "number": "۲-۱",
+      "caption": "معادله دیفرانسیل گسسته نگاشت لوجستیک ۱ بعدی",
+      "filename": "eq2_1_logistic_map.png",
+      "exists": true,
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "line": 19
+    },
+    {
+      "type": "رابطه",
+      "number": "۲-۲",
+      "caption": "دستگاه معادلات دیفرانسیل غیرخطی سیستم ابرآشوبی ۵ بعدی سوباترا",
+      "filename": "eq2_2_5d_hyperchaos.png",
+      "exists": true,
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "line": 26
+    },
+    {
+      "type": "رابطه",
+      "number": "۲-۳",
+      "caption": "فرمول‌بندی لایه‌های کانولوشن، ادغام Skip Connection و تابع زیان ترکیبی U-Net",
+      "filename": "eq2_3_unet_math.png",
+      "exists": true,
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "line": 40
+    },
+    {
+      "type": "شکل",
+      "number": "۲-۳",
+      "caption": "نمودار معماری مفهومی زنجیره پردازشی امنیت هیبریدی تصویر پزشکی",
+      "filename": "chapter2_system_architecture.png",
+      "exists": true,
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "line": 49
+    },
+    {
+      "type": "رابطه",
+      "number": "۲-۴",
+      "caption": "فرمول‌های آنتروپی اطلاعات شانون و ضریب همبستگی پیکسل‌های مجاور",
+      "filename": "eq2_4_entropy_correlation.png",
+      "exists": true,
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "line": 57
+    },
+    {
+      "type": "رابطه",
+      "number": "۲-۵",
+      "caption": "فرمول‌های معیارهای حساسیت حملات تفاضلی (NPCR و UACI)",
+      "filename": "eq2_5_npcr_uaci.png",
+      "exists": true,
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "line": 64
+    },
+    {
+      "type": "رابطه",
+      "number": "۲-۶",
+      "caption": "فرمول‌های شاخص کیفیت دیداری (PSNR) و شباهت ساختاری (SSIM)",
+      "filename": "eq2_6_psnr_ssim.png",
+      "exists": true,
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "line": 71
+    },
+    {
+      "type": "شکل",
+      "number": "۲-۴",
+      "caption": "نمودار درخت دسته‌بندی پیشینه پژوهش بر اساس سه محور اصلی تکنولوژیک",
+      "filename": "chapter2_literature_classification.png",
+      "exists": true,
+      "source": "Literature_Review_Chapter2.txt",
+      "line": 5
+    },
+    {
+      "type": "جدول",
+      "number": "۲-۱",
+      "caption": "ماتریس جامع مقایسه‌ای کمّی و ارزیابی نقادانه پیشینه پژوهش",
+      "filename": "chapter2_taxonomy_table.png",
+      "exists": true,
+      "source": "Literature_Review_Chapter2.txt",
+      "line": 51
+    },
+    {
+      "type": "جدول",
+      "number": "۲-۱",
+      "caption": "ماتریس جامع مقایسه‌ای کارهای پیشین و مقایسه با ویژگی‌های چارچوب پیشنهادی",
+      "filename": "chapter2_taxonomy_table.png",
+      "exists": true,
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "line": 6
+    }
+  ],
+  "tables": [],
+  "code_blocks": [],
+  "issues": [
+    {
+      "type": "source-control-or-damaged-escape",
+      "source": "Literature_Review_Chapter2.txt",
+      "line": 15,
+      "controls": [
+        "U+0009"
+      ],
+      "text": "سوباترا و تانیکایسلوان چارچوبی امنیتی و هوشمند شامل شبکه عصبی عمیق U-Net جهت قطعه‌بندی ناحیه حساس تشخیصی (ROI)، سیستم ابرآشوبی ۵ بعدی پیوسته و فازهای انتشار پویای DNA ارائه کردند. ویژگی‌های آماری ROI (شامل مجموع شدت روشنایی، کجی و کشیدگی هیستوگرام) برای مقداردهی پویای شرایط اولیه سیستم ۵ بعدی استفاده می‌شوند. الگوریتم شامل جایگشت زیگ‌زاگی و انتشار پویای DNA (Dynamic DNA Flip / XOR) است. نتایج عددی گزارش‌شده نشان‌دهنده آنتروپی شانون 7.9971، NPCR بالای 99.61%، UACI حدود 33.49% و زمان اجرای ۲.۹۳ ثانیه برای تصاویر $256 \times 256$ است. نقد وارد بر این طرح، عدم وجود ماژول پنهان‌نگاری فراداده بیمار، عدم حفاظت از اطلاعات هویتی و عدم ارائه مکانیزم امن برای انتقال شرایط اولیه تولیدشده به سمت گیرنده است."
+    }
+  ],
+  "records": [
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "chapter-title-in-wrapper",
+      "source_sha256": "fd36c7a971b78e7032b8fb9c4fd71c7b458125399c5dd483085ca054749a51cd",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "heading",
+      "source_sha256": "1e237505b6b1cafb5a8667fcd185997fb8603331e942f5b03ffcc1e640b61db6",
+      "tex_sha256": "d134ca9575bf4d736da061af2c5743f51317568cda045d33b765365a684cd42f"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "paragraph",
+      "source_sha256": "f9092f397dea60f0c478f6868a36a34d3ba6d8018d0fdf86be774dc3c9a105ee",
+      "tex_sha256": "098565319e922f1f9c522c454d57eb0a4fdfa1773972a979193603647371766d"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "image",
+      "source_sha256": "8e51e0fb9fda74af71e3bd81ed801383c3e3a6dcb413712b8ff6cbf9d8ace6f5",
+      "tex_sha256": "0c3ef654e0c522c9844222ad75fcbfa227357a6131d7a33490267d582fda5c9e"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "paragraph",
+      "source_sha256": "f96cce4de0e35c6ec28403c0e01a03689ceb0466a410d685c9ea23751374f569",
+      "tex_sha256": "1ca193c0ae9c89cfbe9bd6be5f958b0365bb02fe8f90d69693ea4c29109b6132"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "dedeef46a21aa7369502fd33fe0d6e48e04192834c0b6bb4b4475e91208d5e73",
+      "tex_sha256": "f987e39bec54c17f5790fbcbb76dbdb37220315b239aae2d36b96cce0dfe7877"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "paragraph",
+      "source_sha256": "ccb23a093e0eac9e4c031d6adc609aec4e2151bb0f30ebbdbbcd02288bee8f66",
+      "tex_sha256": "0ca409ea4fcb4ee6cec227700324a8ddbab103263257457781c9b8b3cd4d4868"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "paragraph",
+      "source_sha256": "2797b2e4a68f28994172c8e1162dad2cebaea7a0ca7a50e9b7a2f6c2822feae3",
+      "tex_sha256": "ade7eb87d849320504a212e3b0fe81dc3263129413d2326ea2e53aa1f6cc806b"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "paragraph",
+      "source_sha256": "0fcfb07531b685b98c397eb381b2f3cba4be7ebade5fbc1a8bfc5fe53d60445b",
+      "tex_sha256": "c2eae06a64bd13e07504180b46f1ce2e16ff31cdaeefcc7bbeede6efa9307210"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "paragraph",
+      "source_sha256": "3cbb4d0a88f2116108dd4dd5eea6dcf76612692729d9b69b8fc21c524c9c92f4",
+      "tex_sha256": "7ba12ee2160098af1d2d18b7ee448afb36f7f948a4416eb4b529224bd203b01a"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "image",
+      "source_sha256": "cef46af963c1603c48e1fe3e915edb205441001a7e62a414f3e2e7f36a3a453a",
+      "tex_sha256": "c96027196cb0c607e7407f0977c4a0c3067736616b4641528b687202b6e2897a"
+    },
+    {
+      "source": "Introduction_Chapter2.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "d2822ee7abeb8a96b6f97258fc840b4b4fddfc8f6bcf6d51190f37d3ffe9d4e2",
+      "tex_sha256": "bda1cf5673741610321f4a2361320d77997dc34212283024788d9a463b3a77d6"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "heading",
+      "source_sha256": "c4eca3191003396ebcd5f436c5ee8871db7f37c19eceee9f4f73fb5a18f6f82c",
+      "tex_sha256": "9bd58f5ddb29a12f74f70a32cb5eed2b40128a9c8faf3bdd5b31e028e24a24ac"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "paragraph",
+      "source_sha256": "bf9af59a56ec4eb44079767066116175e491c7ff977fa6bab94f1242e1641018",
+      "tex_sha256": "b625bc4d37d87b81a5a9eb6fd9cce9de7124632034695de3458805c72c505b1f"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "paragraph",
+      "source_sha256": "4cc7b42a1277c205458c22402807c6fd8123022568fb4a59c2367ee9fac4e7af",
+      "tex_sha256": "9f08f57e6a8373fd636446167a7facce402c03c6dbf6286a77999206880d925c"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "paragraph",
+      "source_sha256": "cd60e20a342f545ded1cc2e6c279492ddd69dcd943a8a253dbd1098898dfc10d",
+      "tex_sha256": "0a86f9bf74c8f1377433a34f3b93920fc2d4ad0943990e2fab40dc47eb8ceefc"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "paragraph",
+      "source_sha256": "b451a2f6c71041f495bea89e7f7474ec433276737f5ac2eb1139fdf246ec17bf",
+      "tex_sha256": "999803b9c37cba6b327feeb41252f65975a963cbe03d2ddf4125a6f53f25f5f5"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "heading",
+      "source_sha256": "e076d052941d089f309d864f70358d70b7ce84568fa621b86f53cfaafb95fbd7",
+      "tex_sha256": "fdefa6981e662c3969d3ff2d627f92a9c921f893189d137f6b0e715e6d2f0da9"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "2cc220e6e72ca664d65299077458e6af91cfdfd775eea92abb3db5a83042f7d8",
+      "tex_sha256": "ce774dd402481e1d31de302a74f2d656625eec945360a5ca5911dcf9048b5572"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "paragraph",
+      "source_sha256": "79cf526fc4c41fdb49b360aee50cb44d0a5ed5c3fc2e895c4758cc5ea6c4050b",
+      "tex_sha256": "6123294a3b002df16a42abb6866fbb5377d0dcce9ffc876478ba8c102b0bbfac"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "heading",
+      "source_sha256": "6fb96f91e770092cfbe4e70e74cab1a0de3c2fd4658d17460a0960aac6f8bb25",
+      "tex_sha256": "32cf23116a9e588b944da18ee9ef7ab6122cf94816d78078a792a9e26423711a"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "paragraph",
+      "source_sha256": "198577b77ab2513fad6f82677c21313a6cd5ffbf190602ab360cd5a021457f2d",
+      "tex_sha256": "8c3e94cb42351bed534cb29f39e2b8290fa156c008df6c4cb8782d1f22fab5f6"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "paragraph",
+      "source_sha256": "14764d29658d56500d07785cc2a8d9c9051cc1d678daac1d82241fa0eee93f53",
+      "tex_sha256": "1a57f5bf1b0390444726e400d747b7902c3f5ff5ddfd5e09da07abb02552956f"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "image",
+      "source_sha256": "cdc542b31718e54e7e8f200bfa5a7fd3db2bc1ff289a82fd7a347ebf37d633e7",
+      "tex_sha256": "072c1525a3caf91b00dbd4066dfdb6e97842b42f58dd7ef980ea98c813d7f1dd"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 21,
+      "end": 21,
+      "kind": "paragraph",
+      "source_sha256": "75157758220598b6f063e4eb22d49bc5bf1cbcb1d2204b866c65701736a48017",
+      "tex_sha256": "6fef7aa99c530f0fdc34282f0ce196a9a739826e82ecb538b30a1ade98071849"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 22,
+      "end": 22,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 23,
+      "end": 23,
+      "kind": "paragraph",
+      "source_sha256": "72ef800fb87c3436a41e4bb3b553f3019b1d2782f7aec12220a8cdd89eb63bd3",
+      "tex_sha256": "b8d13fb3f3c4b6fd208453649a2260fc66ad43eab65b8230daae8102e6468fbf"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "paragraph",
+      "source_sha256": "296cab9856a5a7d72b0c091ae335e4e18c6e1a22cb4ddf26d5ca7a179a8e4284",
+      "tex_sha256": "6148e677c8c4b51cb376d20ceb5652c58f00cbe39ba2f68ae63b4b84af44c40d"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "image",
+      "source_sha256": "2408021e5758b05c1654bd4770a1394baea7d76a54df5cbd7a23dd9944fda098",
+      "tex_sha256": "3126fd7b12fe05f16e3b9df7d2ea21714e721957e713e8737fb6a08204db9e05"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "paragraph",
+      "source_sha256": "c0fbbce09b621d08d9c84134b210b3c212396b41e9a70512f385f14d21c86a83",
+      "tex_sha256": "5b9652679854b8f639486ea62426c52b4439c7ea200336aa8256653b621ca647"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 30,
+      "end": 30,
+      "kind": "heading",
+      "source_sha256": "b276aa4212f2b521c9b58c0c87f90b3c52c463e60016b10ede1cf0b4c6f11803",
+      "tex_sha256": "f6f8fd6b2a308f05ffbf804193adf9e2f2cd92a1dba6d6a12b65b18bbe858ee5"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 31,
+      "end": 31,
+      "kind": "paragraph",
+      "source_sha256": "96aff60477c6095cde4c3ec643858f549dc9e7e5048622c6e5a667a4ff6a5e9f",
+      "tex_sha256": "7a5b3611cdf91c3ddfb9a888821580db78fcc1fdd45a29d77bf02144e244a397"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 32,
+      "end": 32,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 33,
+      "end": 33,
+      "kind": "heading",
+      "source_sha256": "33bcdf22373c555222841a488c6c2963fceb5bc094d546ede1538ef2c49ec88a",
+      "tex_sha256": "77e41a8cffebd840067d32fe61ee6df72b2c0b3eaeda3f1f7d2597544a7f0a24"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 34,
+      "end": 34,
+      "kind": "paragraph",
+      "source_sha256": "7902b3e48bf1f0d836c6f27318cf7c5f4709248c071db2e96e60055b43fe65e0",
+      "tex_sha256": "aa1ebd30259a3af7ff7c532f3cb0b9fefee5a82597bb7852752c9039e4fba194"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 35,
+      "end": 35,
+      "kind": "paragraph",
+      "source_sha256": "c23d8f627db59e0c8ea67ebc92e13706ab7d160a72fffc812006b80574a17efa",
+      "tex_sha256": "3be97a51a9d14b35ea80c0cb8f7624ab6847febca69d45b88e2dca9d7529c0c8"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 36,
+      "end": 36,
+      "kind": "paragraph",
+      "source_sha256": "55b197e672bf05e560cd40baa703beefea77e34620075b3fcb96bdc4e9aa937c",
+      "tex_sha256": "ec400fdeb151e0e9f4d3bb9c40d78555e54876fdc0911d1b86acd33a29a79848"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 37,
+      "end": 37,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 38,
+      "end": 38,
+      "kind": "paragraph",
+      "source_sha256": "a406d06be6a97f91586871da9c0f858974c4af3a3750c0100f196ae76f692873",
+      "tex_sha256": "f0c6cde10b80cfab298b75795143825d25c86008065c1574c09e9c553541e11a"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 39,
+      "end": 39,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 40,
+      "end": 40,
+      "kind": "image",
+      "source_sha256": "19202556c2274824ca98887bd7374324045223baa125644339cbeafd8f59c765",
+      "tex_sha256": "4b2e3005f8c84fc37915400b49244a522579dfe2957898dde6ab07e708b10e64"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 41,
+      "end": 41,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 42,
+      "end": 42,
+      "kind": "paragraph",
+      "source_sha256": "337c78d6f7dcdc3aec19050586c9f383b9d92e207df4ece3fff4d17109aff76c",
+      "tex_sha256": "7f3d7c9c3fea9d22b3c81584c64fe2cdab96094aea50aac43100e975246be44a"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 43,
+      "end": 43,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 44,
+      "end": 44,
+      "kind": "heading",
+      "source_sha256": "d938cd0ef01cf5308363ebbf5d6e034f84ddf22743efa668ac9650cdd3560885",
+      "tex_sha256": "9bb71f996504a25aebf19e475e0bdb90f08c5a748a60d9280c0bb1c7c4566c83"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 45,
+      "end": 45,
+      "kind": "paragraph",
+      "source_sha256": "0597c698d118ba99fed3791294c6334dad90fcbf464bfda2367334c95b96ae5a",
+      "tex_sha256": "9bee6ea0e9ac7c5617be4a6b719263cbdf38c0b5cf952e462305f6674d5499ec"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 46,
+      "end": 46,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 47,
+      "end": 47,
+      "kind": "paragraph",
+      "source_sha256": "4a0950fe03386093ca148249a67dc71fa8a07e8567fd41fbbb0a6a84db79defe",
+      "tex_sha256": "b9ed9a4e8f09fb736d981e9983f0779d569885c1f63809b0d868b650f5befb23"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 48,
+      "end": 48,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 49,
+      "end": 49,
+      "kind": "image",
+      "source_sha256": "3e11908d2c14c87818c211cffc5f44b887fd83e93dcc21bb05c2bf4f09cd4a07",
+      "tex_sha256": "ac043fe3a8f6efaf5af3f8450c7a10e406f88fcbcd5c7d79323c3ac1b633b78f"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 50,
+      "end": 50,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 51,
+      "end": 51,
+      "kind": "heading",
+      "source_sha256": "a8e17cd183ba11c22db253581ccccb400157c5e7ae358f340a9d5b471c19952e",
+      "tex_sha256": "a76d6aff9b563e4c20d18aaa1b3528395a23578fe561263b3a96a8836ce6d8d5"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 52,
+      "end": 52,
+      "kind": "paragraph",
+      "source_sha256": "2e3b68743520e3e4ec2650e846fce4e562f01fb91b4809d1c5c9b89a0bc02d1b",
+      "tex_sha256": "6bc7a3040496ba47822df89f2a7e2510a8fb4f87a72f6735b7a4935ee4bbda43"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 53,
+      "end": 53,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 54,
+      "end": 54,
+      "kind": "paragraph",
+      "source_sha256": "11d4e107ff05a94ac6c0034c09c2e164ba47c8bb8bb1973cf03d5917d8a91d11",
+      "tex_sha256": "e929a869827bb1a610929bbdcfaebf5becbc082f9d3d53b340662ab06eae5ab3"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 55,
+      "end": 55,
+      "kind": "paragraph",
+      "source_sha256": "a42ab522113c21882b5a748746ad2994866c484ac13271e98f63af5d2c09dda4",
+      "tex_sha256": "7118c02669709a56a9f23898a03d12e325de99d418570dc1f9ffa7dd13b12747"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 56,
+      "end": 56,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 57,
+      "end": 57,
+      "kind": "image",
+      "source_sha256": "52e9cb7ad3f1334db6c1316e0052138d106c36d299d909830f3d3de9e7bd6f1a",
+      "tex_sha256": "70a007c9485f0d1af9e13f37c88d15b0371b8d7edbf8cda547aeb28ed62633c4"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 58,
+      "end": 58,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 59,
+      "end": 59,
+      "kind": "paragraph",
+      "source_sha256": "13f9ab521a83a3c35df476be400575163cca7e2b0ed6caf1d0c36281fc4b5742",
+      "tex_sha256": "94921b51ae1a91c0a8c7999fc3acb457d424d2700ac3a94f72219993789acd45"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 60,
+      "end": 60,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 61,
+      "end": 61,
+      "kind": "paragraph",
+      "source_sha256": "5fd7cb52544b38beb6aebd12558575b7e74dc28cd2fa4cf24b350159faf8cca9",
+      "tex_sha256": "a5bfe8d7fb334972c8105be8dbd5e6f0d5f294a0729ee40faf7892d799b59c48"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 62,
+      "end": 62,
+      "kind": "paragraph",
+      "source_sha256": "47edc5ba36e43ecf5922771e2eeb12b320855f3a132241955571d97ae9ba9450",
+      "tex_sha256": "7b1cf5250050884d160ce6d738fae8f47b8033a28e46ff071b85b13fa638b789"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 63,
+      "end": 63,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 64,
+      "end": 64,
+      "kind": "image",
+      "source_sha256": "b689c41470a24929039e62a2088764980e1bbd09bc0988afec1f0026676c4f2e",
+      "tex_sha256": "2ec92f2ffd58b20287df9e8425bf324b02a94a555f2c6e9e9548360d8e22abf5"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 65,
+      "end": 65,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 66,
+      "end": 66,
+      "kind": "paragraph",
+      "source_sha256": "0f9bc1fe9d178f0df82afc418203a3f1f92ac928df8f094e6351a4dd60a287f9",
+      "tex_sha256": "c664e9f1797b534a85ce578005617d109717a714d4d9d5757f9098f716fb0776"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 67,
+      "end": 67,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 68,
+      "end": 68,
+      "kind": "paragraph",
+      "source_sha256": "0beb4559e6f598678415151e100be9a1da710609bd9854b2fde4bf78df64b884",
+      "tex_sha256": "4ac584aa40f99893e4df2efd4a97fa5197eb6e8801df883028f8d17bfa12f1a3"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 69,
+      "end": 69,
+      "kind": "paragraph",
+      "source_sha256": "298fb15e6f479e45afa20e1ed6d45ae75a5d9e44beb3a8fd3a006c36e94c7f10",
+      "tex_sha256": "4a0ca0fb0314615df2b65246aaea5bcd7ea1eca6ddab0fa6c7de9bcaa4808ebf"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 70,
+      "end": 70,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 71,
+      "end": 71,
+      "kind": "image",
+      "source_sha256": "1cdcc4e02654439c5dad3682fb7a02e6734d42d9b3274ee89fa7fd84afa2c01f",
+      "tex_sha256": "1b85aeeee9bbb9fb467f8f75d7d7c842f4311ca6daff6b78bd8f14805b7f583f"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 72,
+      "end": 72,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 73,
+      "end": 73,
+      "kind": "paragraph",
+      "source_sha256": "04ab93255f8f58e54e2ff9aaed2c5f6e3381689e9a64e9fdf028577a2a3e4ce3",
+      "tex_sha256": "955095cc5c9c1775ee12e4e49693e3451bf9aaa475383575f96c535e6ae7e0f7"
+    },
+    {
+      "source": "Theoretical_Foundations_Chapter2.txt",
+      "start": 74,
+      "end": 74,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "32c7aa32adad3b5661ff397f5dc78e2fc7efd5852dcd7656f8d29f6ed70ead50",
+      "tex_sha256": "fa327704f4c734fb72fcc43a1672145dbb33afc6f8ffe1b70f9484aa1e0240e7"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "paragraph",
+      "source_sha256": "3394040389f42baf9e96404e8276e275bea92fd0185d2669f9f29173c54f26d9",
+      "tex_sha256": "a978c50b815e838bc74308d44ae1e5a648a13ce7941cbcd7585745c30f80c868"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "image",
+      "source_sha256": "ac869335684d8372671368f34b18508dc17fb1d28140c944566a990beff330d9",
+      "tex_sha256": "0dfbb14eab89c5e72310b6f5463f80eab4af6623e049575dd44ef558027f0420"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "heading",
+      "source_sha256": "bbfaa7844843670cc81b44b2ed46cb792a702a0ad08e245b37ef84d574554288",
+      "tex_sha256": "54a92821319099cdcb6b6780bf891973dbaba4d19658ea92e1b944f0e348923f"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "paragraph",
+      "source_sha256": "4abac0ce1e7ce966032bb88a72b4515846247dc71883e3440a05514d93a82ad3",
+      "tex_sha256": "f9da62d4cb7af4980d20574b404eefbfe8c04d4a270abbd82f97a9047f0c371b"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "aa2d74053c34f1d1344c57344274b6f6240de86756372f77b3edb02e97b1f7bf",
+      "tex_sha256": "963d1c253b8968ffc579b934d612f5cad97b056575226f39124d9efbf1ecde89"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "paragraph",
+      "source_sha256": "8096fabb66c7658b43dcc5f57e996d6e2df4c1b714005d82ec3d98536f30bb01",
+      "tex_sha256": "90732c6e980cefd2727a35397d0f544e19a13a34d3ac75ba0b3bad63c3b37fb3"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "paragraph",
+      "source_sha256": "8a40be7f7530c65766861b0971b7a6ac2db9f9bf279d1d15e20ab0587fca0f88",
+      "tex_sha256": "82b0210a847346edadbb056b0ddb1ad4f2187056408a4975765bb403d548ab7c"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "paragraph",
+      "source_sha256": "156b887597197269c3faa2dd20c105dd86a86610629401090fa977bf5a662485",
+      "tex_sha256": "17f4e3b62500ecd731e26ca371bd47ba291d14ed440c3b9227c77b5624bfd38f"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "paragraph",
+      "source_sha256": "6ad8d7e6fccd1aac849ed4edcd6bcb324dac101c463ba4e2a907107f31b950ab",
+      "tex_sha256": "2d30eada7fc77321f1bad4226523bda2390553d8ad91e5051aede9bc40e8c8b9"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "paragraph",
+      "source_sha256": "8601ed020a6326596a57f0861672a855cb8afdd6ab57c01b4ab404793c2606ba",
+      "tex_sha256": "8d23a1679fd3da8d0f7b2f360d60bf2b6ad4c5700cc185dbe064cefffb91485e"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "heading",
+      "source_sha256": "918d2972aaf4d893b89d41ac52c664651c8fbe35ca544113578c8e9f2e3f08e9",
+      "tex_sha256": "fc09e33cf006a6f973776706f67f009f786d246dffa35f2d271c891b7b6aaad8"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 21,
+      "end": 21,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 22,
+      "end": 22,
+      "kind": "paragraph",
+      "source_sha256": "ec9086162c284554270459d2679e110dd327aaafc39a90ea1c863866575fb3d1",
+      "tex_sha256": "d539e3ff87dedc99c538b64769c37fb6c4ea6daf517ad1112caa659ed250f0ed"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 23,
+      "end": 23,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 24,
+      "end": 24,
+      "kind": "paragraph",
+      "source_sha256": "9856021b0d0b23c163dcf278aec86bf8f920f1848ead099bcb8185b0c932f24e",
+      "tex_sha256": "88540b8d072b11bf5ab0dfe0007a7be044be41fcdba9b679e6a2085f9057d33a"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 25,
+      "end": 25,
+      "kind": "paragraph",
+      "source_sha256": "69eb7c63cf163672ef9749503fa56dd9c08de5ed368b4c64eddef73a16001956",
+      "tex_sha256": "c334de13497d617d0cba602e1b9c7c411b8a01d8a8980e9cb798d3b9768f5c48"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 26,
+      "end": 26,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 27,
+      "end": 27,
+      "kind": "paragraph",
+      "source_sha256": "aed0a6d7aafcd0b357d0d1776bf59a1a9a7f15cebd254b42abfbd82063eb593f",
+      "tex_sha256": "5d3b884b758546aa24de0b716c17645c0f7f817f1cab026e9bc901abf24ce56d"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 28,
+      "end": 28,
+      "kind": "paragraph",
+      "source_sha256": "e7267d9ad1164f17aac1f6dfe17c8fdbe775e98ff82c54ff18cfeedb3df889ac",
+      "tex_sha256": "ea383e6bb2780e2c9ba9ab07d79e1bdf727b686d6cb61d7895934ece238d2b7d"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 29,
+      "end": 29,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 30,
+      "end": 30,
+      "kind": "paragraph",
+      "source_sha256": "41ef13751ecaa9e070f2d9a3a5493553bd7038c536e385badeb515be401a970d",
+      "tex_sha256": "a63ee04d120656b1ed930823a3a31e1ade7e17e90a53c139e7f5357c020e679b"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 31,
+      "end": 31,
+      "kind": "paragraph",
+      "source_sha256": "e54e10356c54ca252c02dbb550cd1571100c255c22e25524157a5425040e54af",
+      "tex_sha256": "eae644296445362dbac5ef2c36af28192b125b148c27bdf7069b6a8a401b218c"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 32,
+      "end": 32,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 33,
+      "end": 33,
+      "kind": "heading",
+      "source_sha256": "a87c83af4fdbe43a8390858c08cba29ed044df722fcd5b55c62ce77b32ed2000",
+      "tex_sha256": "1a98e7b089b540a6ddb15a046366b3af69071327a654a0c4a39353457136fdaa"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 34,
+      "end": 34,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 35,
+      "end": 35,
+      "kind": "paragraph",
+      "source_sha256": "d9a378e94d96ce40bae857c9fd0103e3f6d5583fbc57fa73aece79187971a49e",
+      "tex_sha256": "6332095e5fbd7cf7f51eb16f99ade63069b505a83e9bc2f55e877648ab52324a"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 36,
+      "end": 36,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 37,
+      "end": 37,
+      "kind": "paragraph",
+      "source_sha256": "2ceeb0c89c3b18762591feb7ad033ac94b3b9321f3d18b7a6606363f0d24bf8f",
+      "tex_sha256": "917c252a51a10d2eb3a673a24139e3d81a5bee3efc4d93f0e54b60ca35be52a4"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 38,
+      "end": 38,
+      "kind": "paragraph",
+      "source_sha256": "67e82dae57b99239d833d8f71b8d7ed98d4dba6417555766a8d56511b6ccc035",
+      "tex_sha256": "99192bc6e1422d41fd6857889c005deb065a1435b3d47bd14eca4e37e1f435e4"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 39,
+      "end": 39,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 40,
+      "end": 40,
+      "kind": "paragraph",
+      "source_sha256": "543bd5866af21124a232d1ea750c4ca6b115ea013ade4b17097ff9462bff0d4a",
+      "tex_sha256": "38a3b08a4272fa6098042d9caaf880d23af08f7351235b6992ab170a5b14b89c"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 41,
+      "end": 41,
+      "kind": "paragraph",
+      "source_sha256": "036a4322cf47c01b9cc0861735c4a9bb15f60f18d4eb571607d7eade45ecb5e8",
+      "tex_sha256": "481075294d853d07a3f7d5219fd961e284904b644dcb523ee95cab0a2425d8b6"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 42,
+      "end": 42,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 43,
+      "end": 43,
+      "kind": "paragraph",
+      "source_sha256": "a00226afbb2e1397085093686aedd4df338ff1400b9dae9e86cd1f0bb246a957",
+      "tex_sha256": "a1daad17ab7126bb3d2b12323a2486db3e3b3f202123d31c2fdbe54b280d0f88"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 44,
+      "end": 44,
+      "kind": "paragraph",
+      "source_sha256": "52f2c337792cd4ab6565775c78d0f876b4c0e5c6ae74abf763067b9987beb634",
+      "tex_sha256": "7d0d07128c4cfd8866fa6113e719aa0f6c052df1a5a5a8fe004340d05b516612"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 45,
+      "end": 45,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 46,
+      "end": 46,
+      "kind": "paragraph",
+      "source_sha256": "7ccbfcd652bb37fbb1f303e918d19d3eccc4d0dfda4e4bb5aa139e64d6ced5aa",
+      "tex_sha256": "4c090281de34821bebf105ef3af6e5615d14fe6e1b56385e9bb44bb443e0efd3"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 47,
+      "end": 47,
+      "kind": "paragraph",
+      "source_sha256": "68020fb3b7f677fc258c7999b9819102289deab8459f7faff9f997d7bd37c08f",
+      "tex_sha256": "4db79e1a30e2e8d524127ec5b1a6840e83c669ee47abe6b1062856ea07ceb2ad"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 48,
+      "end": 48,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 49,
+      "end": 49,
+      "kind": "paragraph",
+      "source_sha256": "87f2598f42e215b4ade8f5bcf8893f9b68e5098f48aa13b9257545762c8d4fb8",
+      "tex_sha256": "1f5661c9cde111948a7e2bffdf66eaf52c3c2726dc140e00357783c8a8269053"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 50,
+      "end": 50,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 51,
+      "end": 51,
+      "kind": "image",
+      "source_sha256": "3c2bd2f9583d28f6b7026957a424ef98fea88b5d945e31c697e0d2e6ca0f6ccf",
+      "tex_sha256": "bad682dd86a2e09867bc4ebaca8fe4a57a99c92a9caadb473e80ba4d091eac5f"
+    },
+    {
+      "source": "Literature_Review_Chapter2.txt",
+      "start": 52,
+      "end": 52,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 1,
+      "end": 1,
+      "kind": "heading",
+      "source_sha256": "fc85937aec85341fbef75670ddd3a954f451880be2c26d3887469ea44ad11784",
+      "tex_sha256": "60bc470a79fccb5eaa25595b1a4bca0fb1aec7f8336dc7805d6252aa33a60c84"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 2,
+      "end": 2,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 3,
+      "end": 3,
+      "kind": "heading",
+      "source_sha256": "63e9d44959d422cb87897f0eeb0092f24f3a228d7d548dd5960c17bcbfd9a5c0",
+      "tex_sha256": "b89def8e13aa0ca26212faaf5af016f3b48280e4ab4b0e538a2d066dfbf5d93c"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 4,
+      "end": 4,
+      "kind": "paragraph",
+      "source_sha256": "2e72ebce8300ea8238669dbfed61bafdb8e0fa191ae6d11202ff19af9fa5465e",
+      "tex_sha256": "896214f930082168b5136f26f0b3ea5512812a806da5d2c1fc48850e1ff7ae67"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 5,
+      "end": 5,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 6,
+      "end": 6,
+      "kind": "image",
+      "source_sha256": "8fe6f04e256ff782201dad72822ceb391102a57d34f00ad08c14ec564a301c1f",
+      "tex_sha256": "6cb4c403ede7e9306a372069c47ad046d54fa78c2abc648495fcc77f52909c26"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 7,
+      "end": 7,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 8,
+      "end": 8,
+      "kind": "heading",
+      "source_sha256": "c21d1397bdd7a77bc364dbd69f7a9108ed7580e7bcff7941ee1988ca645a6a80",
+      "tex_sha256": "bf14a1c26114f5b168821454fdb70a833eae368b7b8a6805a34071a79facf275"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 9,
+      "end": 9,
+      "kind": "paragraph",
+      "source_sha256": "a5a43608212e332d2354ed7888c3b92be7d93fb7daf5240beb0995d4db48c436",
+      "tex_sha256": "0eec258857a121f51365d7b6790ac48d4a31cc7b0e4965325da440ebd8480e98"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 10,
+      "end": 10,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 11,
+      "end": 11,
+      "kind": "paragraph",
+      "source_sha256": "24cea7b16555a58ddb13f1516b79e904cd2f9cd2e7891fb9f37605acb4d37a2e",
+      "tex_sha256": "0925262e9dd074a192d71cd0cc60974af720b00a014ddebc5245dcfb0ebbaa41"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 12,
+      "end": 12,
+      "kind": "paragraph",
+      "source_sha256": "2ada9b6fed5c5bbcec658ceac4fb150748066fc4901f223a82d3d427eaf027b3",
+      "tex_sha256": "fdf81d4e6e2407ae561d958a50236459f00e73dc610240fd7820990f3431d074"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 13,
+      "end": 13,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 14,
+      "end": 14,
+      "kind": "paragraph",
+      "source_sha256": "68ed780b5e167c07e28acfdf63fabe93ed5718fdebfb1f61f2add090e807e8cf",
+      "tex_sha256": "20dc0f35aa32511457d532d31c9bb355502a84114ca9b40dd9db40c521f9bfcf"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 15,
+      "end": 15,
+      "kind": "paragraph",
+      "source_sha256": "f9d66168bcbace9eff8975c41f2e72e0ce8fed6d51d6bc9078493ad665a4fbe9",
+      "tex_sha256": "17413d8b409f2fcc16d15130d8421c044372d502fca8615e2a3fed9a3fb9f948"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 16,
+      "end": 16,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 17,
+      "end": 17,
+      "kind": "paragraph",
+      "source_sha256": "4d54cb25a0e14013d21b9455d5220755d73e38ae33d51538725b556f032d0661",
+      "tex_sha256": "724ccaf8719d9e68f5cf4c877563f40203069233ba5ac60857767e69b60bc94c"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 18,
+      "end": 18,
+      "kind": "paragraph",
+      "source_sha256": "8e2a853ab2bba7e3054b1d1ca6554eecaefcf1452f48a7bec723db984b4cdc4c",
+      "tex_sha256": "fb70bc89c83777efdaabe9bb3730a1bcf2af33b5c0244edd7ad89cf8e3ea1649"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 19,
+      "end": 19,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 20,
+      "end": 20,
+      "kind": "paragraph",
+      "source_sha256": "f712abb8152edc47b1df4c9b4564e4f3094284df84967adad59fc661ef8d8e26",
+      "tex_sha256": "66bd0246db7eae04e68b41b7c852f603617b68fe773f0839eb53fb2b3b1333e4"
+    },
+    {
+      "source": "Synthesis_Research_Gap_Chapter2.txt",
+      "start": 21,
+      "end": 21,
+      "kind": "spacing",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tex_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "tex_file": "chapters/chapter02.tex",
+  "tex_sha256": "ad8acfb4ad3fa573acb23557151d1c5c775047f520a284c4a3920fb709f728ce"
+}

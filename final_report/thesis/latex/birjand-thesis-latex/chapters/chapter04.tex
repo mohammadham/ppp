@@ -1,0 +1,868 @@
+% !TeX encoding = UTF-8
+% Formatting-only conversion; see reports for source provenance.
+\SourceChapter{4}{فصل چهارم: طرح آزمایش‌ها، شبیه‌سازی و ارزیابی نتایج کمّی}
+% SOURCE Introduction_Chapter4.txt:1-1 [chapter-title-in-wrapper]
+
+
+% SOURCE Introduction_Chapter4.txt:2-2 [spacing]
+
+
+% SOURCE Introduction_Chapter4.txt:3-3 [heading]
+\SourceHeading{1}{۴{-}۱. مقدمه فصل چهارم و شرایط شبیه‌سازی}
+
+% SOURCE Introduction_Chapter4.txt:4-4 [paragraph]
+در این فصل، عملکرد کمّی، مقاومت سایبری، و کیفیت دیداری چارچوب امنیتی هیبریدی پیشنهادی به صورت تجربی بر روی مجموعه‌داده‌های مرجع بین‌المللی ارزیابی می‌گردد. هدف اصلی از اجرای این آزمایش‌ها، اثبات عملیاتی تحقق فرضیات سه‌گانه فصل اول (شامل: ۱. خنثی‌سازی حملات \lr{CPA/KPA} با کلید پویا، ۲. نیل به آنتروپی آرمانی \lr{H}\lr{(m)} \ensuremath{\approx} \lr{8.00} و همبستگی صفر، و ۳. صیانت از فراداده بیمار با حفظ \lr{PSNR \SourceGlyph{003E} 50 dB} در ناحیه \lr{ROI}) و پاسخگویی تجربی به شکاف‌های پژوهشی استخراج‌شده در فصل دوم می‌باشد \lr{[1, 2, 5]}.\par
+
+% SOURCE Introduction_Chapter4.txt:5-5 [spacing]
+
+
+% SOURCE Introduction_Chapter4.txt:6-6 [paragraph]
+تمامی آزمایش‌ها و شبیه‌سازی‌های این پژوهش در محیط پایتون \lr{(Python 3.12)} با استفاده از کتابخانه‌های \lr{PyTorch 2.2}، \lr{OpenCV 4.9}، \lr{SciPy} و \lr{NumPy} بر روی سیستم سخت‌افزاری مجهز به پردازنده \lr{Intel Core i9{-}13900K}، ۳۲ گیگابایت حافظه \lr{RAM} و پردازنده گرافیکی \lr{NVIDIA RTX 4090} اجرا شده‌اند. همچنین برای سنجش کارایی زمان‌واقعی در محیط اینترنت اشیای پزشکی \lr{(IoMT)}، کدهای بهینه‌سازی‌شده بر روی تراشه لبه \lr{NVIDIA Jetson TX2} (شامل پردازنده ۶ هسته‌ای \lr{ARM Cortex{-}A57}، پردازنده گرافیکی ۲۵۶ هسته‌ای \lr{Pascal} و ۴ گیگابایت حافظه \lr{LPDDR4}) تست گردیده‌اند \lr{[6]}.\par
+
+% SOURCE Introduction_Chapter4.txt:7-7 [spacing]
+
+
+% SOURCE Introduction_Chapter4.txt:8-8 [paragraph]
+جهت تضمین تکرارپذیری شبیه‌سازی‌ها \lr{(Reproducibility)}، شتاب‌دهی سخت‌افزاری بر پایه بستر \lr{CUDA 12.1} و کتابخانه \lr{cuDNN 8.9} تنظیم گردیده است. ساختار فصل چهارم به گونه‌ای سازمان‌دهی شده است که ابتدا در بخش ۴{-}۲ مشخصات دادگان مرجع و در بخش ۴{-}۳ فرمول‌بندی معیارهای ارزیابی ارائه می‌شود؛ سپس در بخش‌های ۴{-}۴ تا ۴{-}۷ ارزیابی‌های آماری، همبستگی، \lr{NPCR/UACI} و \lr{PSNR/SSIM} تحلیل می‌گردند. در بخش ۴{-}۸ مقاومت در برابر حملات نویز و برش، در بخش ۴{-}۹ آزمون‌های ۱۵گانه تصادفی‌سازی استاندارد \lr{NIST SP800{-}22} و در بخش ۴{-}۱۰ تحلیل مقایسه‌ای جامع با ۱۰ مقاله مرجع بین‌المللی و کارایی زمان‌واقعی لبه تبیین می‌شود. نمودار نقشه راه مفهومی و ساختار مراحل شبیه‌سازی فصل چهارم در شکل ۴{-}۱ نشان داده شده است.\par
+
+% SOURCE Introduction_Chapter4.txt:9-9 [spacing]
+
+
+% SOURCE Introduction_Chapter4.txt:10-10 [image]
+\SourcePicture{chapter4_experimental_roadmap.png}{شکل ۴{-}۱: نمودار نقشه راه مفهومی و ساختار مراحل شبیه‌سازی و ارزیابی تجربی فصل چهارم}{[شکل ۴{-}۱: نمودار نقشه راه مفهومی و ساختار مراحل شبیه‌سازی و ارزیابی تجربی فصل چهارم {-} \lr{chapter4\_experimental\_roadmap.png}]}{0}
+
+% SOURCE Introduction_Chapter4.txt:11-11 [spacing]
+
+% SOURCE Datasets_Chapter4.txt:1-1 [heading]
+\SourceHeading{1}{۴{-}۲. معرفی مجموعه‌داده‌های مرجع بین‌المللی \lr{(Datasets)}}
+
+% SOURCE Datasets_Chapter4.txt:2-2 [paragraph]
+جهت ارزیابی جامع، ارتقای اعتبار روش‌شناختی و اثبات تعمیم‌پذیری \lr{(Generalizability)} سیستم امنیتی هیبریدی پیشنهادی بر روی انواع مدالیته‌های تصویربرداری پزشکی، چهار مجموعه‌داده استاندارد و مرجع بین‌المللی با ساختارهای بافتی، ابعاد و تباین‌های متفاوت مورد استفاده قرار گرفته‌اند \lr{[1, 4, 8]}:\par
+
+% SOURCE Datasets_Chapter4.txt:3-3 [spacing]
+
+
+% SOURCE Datasets_Chapter4.txt:4-4 [paragraph]
+۱. مجموعه‌داده \lr{DRIVE} \lr{(Digital Retinal Images for Vessel Extraction)}:\par
+
+% SOURCE Datasets_Chapter4.txt:5-5 [paragraph]
+این مجموعه‌داده شامل ۴۰ تصویر رنگی فاندوس شبکیه چشم با ابعاد \lr{565 \ensuremath{\times} 584} پیکسل و فرمت \lr{TIFF} است که به طور برابر به ۲۰ تصویر آموزش و ۲۰ تصویر تست تقسیم شده‌اند. هدف اصلی از به‌کارگیری این دادگان، ارزیابی شبکه \lr{U{-}Net} در استخراج عروق ظریف شبکیه به عنوان ناحیه حساس تشخیصی \lr{(ROI)} و سنجش پویایی کلید رمزی \lr{SHA{-}256} بر اساس گشتاورهای آماری این ساختارهای پیچیده است \lr{[1]}.\par
+
+% SOURCE Datasets_Chapter4.txt:6-6 [spacing]
+
+
+% SOURCE Datasets_Chapter4.txt:7-7 [paragraph]
+۲. مجموعه‌داده \lr{RITE} \lr{(Retinal Images series for Testing Extraction)}:\par
+
+% SOURCE Datasets_Chapter4.txt:8-8 [paragraph]
+این مجموعه‌داده شامل ۴۰ تصویر فاندوس شبکیه با ابعاد \lr{565 \ensuremath{\times} 584} پیکسل همراه با ماسک‌های قطعه‌بندی شریانی{-}وریدی \lr{(A/V Segmentation)} است. این دادگان جهت سنجش پایداری الگوریتم پیشنهادی در تفکیک دقیق رگ‌های خونی از بافت‌های غیرحساس و ارزیابی فاز انتشار \lr{DNA} بر روی تصاویر با تباین بالای عروقی به‌کار گرفته شده است \lr{[1]}.\par
+
+% SOURCE Datasets_Chapter4.txt:9-9 [spacing]
+
+
+% SOURCE Datasets_Chapter4.txt:10-10 [paragraph]
+۳. مجموعه‌داده \lr{BraTS 2020} \lr{(Brain Tumor Segmentation Challenge)}:\par
+
+% SOURCE Datasets_Chapter4.txt:11-11 [paragraph]
+این مجموعه‌داده شامل ۳۶۹ تصویر ۳ بعدی و برش‌های ۲ بعدی \lr{MRI} مغزی در مدالیته‌های متنوع (شامل \lr{T1, T1Gd, T2, FLAIR}) با ابعاد \lr{240 \ensuremath{\times} 240} پیکسل است. استفاده از این مجموعه‌داده برای اثبات توانایی سیستم در قطعه‌بندی تومورهای مغزی با مرزهای نامشخص و ارزیابی عدم افت کیفیت دیداری در ناحیه حساس تشخیصی (با هدف عددی \lr{PSNR \SourceGlyph{003E} 50 dB} و \lr{SSIM} \ensuremath{\approx} \lr{1.0}) صورت پذیرفته است \lr{[8]}.\par
+
+% SOURCE Datasets_Chapter4.txt:12-12 [spacing]
+
+
+% SOURCE Datasets_Chapter4.txt:13-13 [paragraph]
+۴. مجموعه‌داده \lr{COVID{-}19 CXR} \lr{(Radiography \& CT Scan Dataset)}:\par
+
+% SOURCE Datasets_Chapter4.txt:14-14 [paragraph]
+این مجموعه‌داده شامل ۱۲۰۰ تصویر رادیوگرافی قفسه سینه \lr{(X{-}Ray)} و سی‌تی اسکن ریه بیماران مبتلا به کووید{-}۱۹ با ابعاد \lr{512 \ensuremath{\times} 512} پیکسل است. این مجموعه‌داده به دلیل دارا بودن نواحی وسیع پس‌زمینه کم‌برجستگی، بستری ایده‌آل برای ارزیابی ماژول پنهان‌نگاری \lr{Saliency{-}aware} و جای‌دهی ۲ بیتی \lr{LSB} فراداده فشرده‌شده \lr{zlib} بیمار بدون آسیب به ضایعات ریوی فراهم می‌سازد \lr{[4]}.\par
+
+% SOURCE Datasets_Chapter4.txt:15-15 [spacing]
+
+
+% SOURCE Datasets_Chapter4.txt:16-16 [paragraph]
+جدول ۴{-}۱ مشخصات فنی، ابعادی و اهداف ارزیابی تخصصی هر یک از ۴ مجموعه‌داده مرجع را به تفکیک ارائه می‌دهد.\par
+
+% SOURCE Datasets_Chapter4.txt:17-17 [spacing]
+
+
+% SOURCE Datasets_Chapter4.txt:18-26 [table]
+\clearpage\begin{landscape}
+\begingroup\fontsize{12}{15}\selectfont\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\SourceCaption{lot}{جدول ۴{-}۱: مشخصات فنی و ساختاری مجموعه‌داده‌های مرجع بین‌المللی در آزمایش‌ها}
+\begin{NoHyper}\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}@{}}
+\toprule
+نام مجموعه‌داده & مدالیته تصویربرداری & ابعاد تصاویر & تعداد نمونه‌ها & هدف ارزیابی تخصصی \\
+\midrule\endfirsthead
+نام مجموعه‌داده & مدالیته تصویربرداری & ابعاد تصاویر & تعداد نمونه‌ها & هدف ارزیابی تخصصی \\\midrule\endhead
+\lr{DRIVE} & فاندوس رنگی شبکیه چشم & \lr{565 \ensuremath{\times} 584} & \lr{40} & ارزیابی عروق ظریف و کلیدسازی \lr{ROI} \\
+\lr{RITE} & فاندوس شبکیه \lr{(AV mask)} & \lr{565 \ensuremath{\times} 584} & \lr{40} & سنجش قطعه‌بندی عمیق و پنهان‌نگاری \\
+\lr{BraTS 2020} & \lr{Brain MRI} \lr{(T1/T2/FLAIR)} & \lr{240 \ensuremath{\times} 240} & \lr{369} & قطعه‌بندی تومور و حفظ \lr{PSNR} در \lr{ROI} \\
+\lr{COVID{-}19 CXR} & \lr{CT \& X{-}Ray} ریه & \lr{512 \ensuremath{\times} 512} & \lr{1200} & پنهان‌نگاری فراداده متنی در پس‌زمینه \\
+\bottomrule
+\end{longtable}\end{NoHyper}\endgroup
+\end{landscape}\clearpage
+
+% SOURCE Datasets_Chapter4.txt:27-27 [spacing]
+
+
+% SOURCE Datasets_Chapter4.txt:28-28 [paragraph]
+نمودار تحلیلی و توزیع فراوانی نمونه‌ها، ابعاد و اهداف تشخیصی دادگان چهارگانه در شکل ۴{-}۲ به تصویر کشیده شده است.\par
+
+% SOURCE Datasets_Chapter4.txt:29-29 [spacing]
+
+
+% SOURCE Datasets_Chapter4.txt:30-30 [image]
+\SourcePicture{chapter4_datasets_overview.png}{شکل ۴{-}۲: نمودار تحلیلی و مقایسه‌ای مشخصات ۴ مجموعه‌داده مرجع بین‌المللی}{[شکل ۴{-}۲: نمودار تحلیلی و مقایسه‌ای مشخصات ۴ مجموعه‌داده مرجع بین‌المللی {-} \lr{chapter4\_datasets\_overview.png}]}{0}
+% SOURCE Evaluation_Metrics_Chapter4.txt:1-1 [heading]
+\SourceHeading{1}{۴{-}۳. معیارهای ارزیابی کمّی امنیت و کیفیت دیداری}
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:2-2 [spacing]
+
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:3-3 [paragraph]
+جهت سنجش کمّی، ارزیابی دقت عملکردی و اثبات مقاومت سایبری سیستم امنیتی هیبریدی پیشنهادی، از ۶ شاخص استاندارد بین‌المللی متداول در ارزیابی رمزنگاری و پنهان‌نگاری تصاویر پزشکی استفاده شده است. این معیارهای کمّی به چهار دسته اصلی تقسیم می‌شوند \lr{[1, 3, 4, 8]}:\par
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:4-4 [spacing]
+
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:5-5 [heading]
+\SourceHeading{2}{۴{-}۳{-}۱. آنتروپی اطلاعات شانون \lr{(Shannon Information Entropy)}:}
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:6-6 [paragraph]
+آنتروپی اطلاعات شاخصی جهت سنجش میزان تصادفی بودن و نااطمینانی در توزیع شدت روشنایی پیکسل‌های تصویر است. برای یک تصویر رمزشده ۸ بیتی با ۲۵۶ سطح خاکستری، مقدار نظری آرمانی آنتروپی برابر با \lr{H\_Ideal = 8.00 bits} می‌باشد. نزدیک بودن آنتروپی تصویر رمزشده به این حد نظری اثبات می‌کند که توزیع احتمالی تمام مقادیر پیکسل‌ها کاملاً یکنواخت بوده و هیچ‌گونه الگوی آماری یا فرکانسی قابل سوءاستفاده برای مهاجمان وجود ندارد \lr{[1, 3]}.\par
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:7-7 [spacing]
+
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:8-8 [heading]
+\SourceHeading{2}{۴{-}۳{-}۲. ضریب همبستگی پیکسل‌های مجاور \lr{(Adjacent Pixel Correlation Coefficient)}:}
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:9-9 [paragraph]
+تصاویر پزشکی اولیه به دلیل ماهیت ساختاری بافت‌های بیولوژیکی دارای همبستگی مکانی بسیار شدیدی \lr{(r\_xy \ensuremath{\approx} 1.00)} میان پیکسل‌های مجاور در ۳ جهت افقی، عمودی و قطری هستند. یک الگوریتم رمزنگاری کارآمد باید با اجرای فازهای جایگشت \lr{(Confusion)} و انتشار \lr{(Diffusion)}، این همبستگی را شکست داده و به مقدار آرمانی \lr{r\_xy,Ideal} \ensuremath{\approx} \lr{0.00} برساند تا حملات تحلیل آماری و بازسازی تصویر کاملاً خنثی گردند \lr{[1, 8]}.\par
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:10-10 [spacing]
+
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:11-11 [heading]
+\SourceHeading{2}{۴{-}۳{-}۳. شاخص‌های ارزیابی حملات تفاضلی (\lr{NPCR} و \lr{UACI}):}
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:12-12 [paragraph]
+برای ارزیابی حساسیت الگوریتم رمزنگاری به تغییرات جزئی در تصویر ورودی (یک پیکسلی) و خنثی‌سازی حملات متن‌واضح برگزیده \lr{(CPA)} و متن‌واضح معلوم \lr{(KPA)}، از دو شاخص نرخ تغییر تعداد پیکسل‌ها \lr{(NPCR)} و شدت تغییرات متوسط \lr{(UACI)} استفاده می‌شود. مقادیر آرمانی تئوریک این دو شاخص برای تصاویر پزشکی به ترتیب برابر با \lr{NPCR\_Ideal \SourceGlyph{003E} 99.6094\%} و \lr{UACI\_Ideal} \ensuremath{\approx} \lr{33.4635\%} می‌باشد \lr{[1, 9]}.\par
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:13-13 [spacing]
+
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:14-14 [heading]
+\SourceHeading{2}{۴{-}۳{-}۴. شاخص‌های سنجش کیفیت دیداری و شفافیت استگو (\lr{PSNR} و \lr{SSIM}):}
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:15-15 [paragraph]
+جهت ارزیابی عدم افت کیفیت دیداری تصویر پزشکی پس از پنهان‌نگاری فراداده بیمار، از دو شاخص نسبت سیگنال به نویز اوج \lr{(PSNR)} بر حسب دسی‌بل \lr{(dB)} و شاخص شباهت ساختاری \lr{(SSIM)} استفاده می‌گردد. در کاربردهای پزشکی، دست‌یابی به \lr{PSNR \SourceGlyph{003E} 50 dB} و \lr{SSIM} \ensuremath{\approx} \lr{1.00} ضامن حفظ کامل اصالت و عدم ایجاد اعوجاج در بافت‌های تشخیصی بیمار است \lr{[4, 5, 7]}.\par
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:16-16 [spacing]
+
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:17-17 [paragraph]
+فرمول‌بندی دقیق ریاضی و روابط محاسباتی ۶ شاخص فوق در رابطه ۴{-}۱ ارائه گردیده است.\par
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:18-18 [spacing]
+
+
+% SOURCE Evaluation_Metrics_Chapter4.txt:19-19 [image]
+\SourcePicture{eq4_1_evaluation_metrics.png}{رابطه ۴{-}۱: فرمول‌بندی ریاضی شاخص‌های ارزیابی کمّی امنیت و کیفیت دیداری}{[رابطه ۴{-}۱: فرمول‌بندی ریاضی شاخص‌های ارزیابی کمّی امنیت و کیفیت دیداری {-} \lr{eq4\_1\_evaluation\_metrics.png}]}{2}
+% SOURCE Entropy_Histogram_Chapter4.txt:1-1 [heading]
+\SourceHeading{1}{۴{-}۴. ارزیابی کیفیت رمزنگاری و تحلیل هیستوگرام \lr{(Entropy \& Histogram Analysis)}}
+
+% SOURCE Entropy_Histogram_Chapter4.txt:2-2 [spacing]
+
+
+% SOURCE Entropy_Histogram_Chapter4.txt:3-3 [paragraph]
+تحلیل آماری و ارزیابی کیفیت رمزنگاری یکی از ارکان بنیادی در اعتبارسنجی الگوریتم‌های امنیتی تصویر به شمار می‌رود. هیستوگرام یک تصویر دیجیتال نشان‌دهنده توزیع فراوانی مقادیر شدت روشنایی پیکسل‌ها در فضای حالت است. در یک تصویر پزشکی اولیه \lr{(Plain Image)}، هیستوگرام معمولاً توزیعی کاملاً غیریکنواخت با قله‌های برجسته در نواحی بافت‌های آناتومیک و پس‌زمینه دارد. چنین ناتوازنی آماری، کانال فوق‌العاده آسیبی‌پذیری را برای حملات تحلیل فرکانسی و آمارگیری ایجاد می‌نماید \lr{[1, 3]}.\par
+
+% SOURCE Entropy_Histogram_Chapter4.txt:4-4 [spacing]
+
+
+% SOURCE Entropy_Histogram_Chapter4.txt:5-5 [paragraph]
+یک الگوریتم رمزنگاری ایده‌آل باید تمامی اطلاعات ساختاری و بافتی تصویر را به یک ساختار شبه‌نویز با توزیع کاملاً یکنواخت و تخت \lr{(Flat Uniform Histogram)} تبدیل نماید، به طوری که احتمال وقوع هر یک از ۲۵۶ سطح روشنایی پیکسل‌ها ($i \in [0,\allowbreak{} 255]$) برابر با \lr{\$P(i) = \SourceControl{000C}rac\{1\}\{256\} \SourceControl{0007}pprox 0.003906\$} گردد. جهت ارزیابی کمّی و ریاضی یکنواختی هیستوگرام تصویر رمزشده، علاوه بر محاسبه آنتروپی شانون $H(m)$، از آزمون آماری کای{-}اسکوئر ($\chi^2$) استفاده می‌شود. فرمول‌بندی دقیق ریاضی این دو شاخص در رابطه ۴{-}۲ ارائه گردیده است \lr{[1, 8]}.\par
+
+% SOURCE Entropy_Histogram_Chapter4.txt:6-6 [spacing]
+
+
+% SOURCE Entropy_Histogram_Chapter4.txt:7-7 [image]
+\SourcePicture{eq4_2_chi_square_entropy.png}{رابطه ۴{-}۲: فرمول‌بندی ریاضی آنتروپی شانون و آزمون کای{-}اسکوئر \lr{(\SourceGlyph{03C7}\SourceGlyph{00B2})} یکنواختی هیستوگرام}{[رابطه ۴{-}۲: فرمول‌بندی ریاضی آنتروپی شانون و آزمون کای{-}اسکوئر \lr{(\SourceGlyph{03C7}\SourceGlyph{00B2})} یکنواختی هیستوگرام {-} \lr{eq4\_2\_chi\_square\_entropy.png}]}{2}
+
+% SOURCE Entropy_Histogram_Chapter4.txt:8-8 [spacing]
+
+
+% SOURCE Entropy_Histogram_Chapter4.txt:9-9 [paragraph]
+در آزمون کای{-}اسکوئر، مقدار محاسبه‌شده $\chi^2$ برای تصویر رمزشده با مقدار بحرانی جدول توزیع کای{-}اسکوئر در سطح اطمینان \SourceGlyph{066A}۹۵ (\lr{\$\SourceControl{0007}lpha = 0.05\$}) و درجه آزادی $255$ (برابر با $\chi^2_{0.05}(255) = 293.2478$) مقایسه می‌شود. اگر $\chi^2 < 293.2478$ باشد، فرض صفر ($H_0$) مبنی بر یکنواختی کامل هیستوگرام پذیرفته می‌شود.\par
+
+% SOURCE Entropy_Histogram_Chapter4.txt:10-10 [spacing]
+
+
+% SOURCE Entropy_Histogram_Chapter4.txt:11-11 [paragraph]
+آزمایش‌های تجربی بر روی ۴ مجموعه‌داده مرجع بین‌المللی نشان می‌دهد که ترکیب جایگشت زیگ‌زاگی و انتشار پویای \lr{DNA} مبتنی بر سیستم ۵بعدی ابرآشوبی، هیستوگرام تصویر رمزشده را کاملاً تخت نموده است. نتایج عددی آنتروپی و آزمون کای{-}اسکوئر به شرح زیر است:\par
+
+% SOURCE Entropy_Histogram_Chapter4.txt:12-12 [paragraph]
+۱. \textbf{مجموعه‌داده \lr{DRIVE}:} آنتروپی تصویر اولیه از ۵.۲۱۳۴ بیت به \textbf{۷.۹۹۸۶ بیت} در تصویر رمزشده افزایش یافته و مقدار $\chi^2 = 248.32 < 293.2478$ حاصل شده است \lr{[1]}.\par
+
+% SOURCE Entropy_Histogram_Chapter4.txt:13-13 [paragraph]
+۲. \textbf{مجموعه‌داده \lr{RITE}:} آنتروپی تصویر اولیه از ۵.۱۸۹۲ بیت به \textbf{۷.۹۹۸۴ بیت} افزایش یافته و مقدار $\chi^2 = 251.15 < 293.2478$ ثبت گردیده است \lr{[1]}.\par
+
+% SOURCE Entropy_Histogram_Chapter4.txt:14-14 [paragraph]
+۳. \textbf{مجموعه‌داده \lr{BraTS 2020}:} آنتروپی تصویر \lr{MRI} اولیه از ۳.۸۴۲۱ بیت به \textbf{۷.۹۹۸۸ بیت} در تصویر رمزشده ارتقا یافته و مقدار $\chi^2 = 239.84 < 293.2478$ به دست آمده است \lr{[8]}.\par
+
+% SOURCE Entropy_Histogram_Chapter4.txt:15-15 [paragraph]
+۴. \textbf{مجموعه‌داده \lr{COVID{-}19 CXR}:} آنتروپی تصویر اولیه از ۶.۱۲۴۵ بیت به \textbf{۷.۹۹۸۲ بیت} افزایش یافته و مقدار $\chi^2 = 256.40 < 293.2478$ ثبت گردیده است \lr{[4]}.\par
+
+% SOURCE Entropy_Histogram_Chapter4.txt:16-16 [spacing]
+
+
+% SOURCE Entropy_Histogram_Chapter4.txt:17-17 [paragraph]
+متوسط آنتروپی شانون تصاویر رمزشده در کل شبیه‌سازی‌ها برابر با \textbf{۷.۹۹۸۵ \ensuremath{\pm} ۰.۰۰۰۳ بیت} می‌باشد که بسیار نزدیک به حد نظری آرمانی (۸.۰۰ بیت) است. شکل ۴{-}۳ تحلیل دیداری و مقایسه هیستوگرام تصاویر اولیه، رمزشده \lr{(Cipher Image)} و استگو \lr{(Steganogram Image)} را به تصویر می‌کشد. همان‌طور که ملاحظه می‌شود، هیستوگرام تصویر رمزشده کاملاً یکنواخت بوده و هیستوگرام تصویر استگو عینا منطبق بر تصویر اولیه باقی مانده است که حفظ ۱۰۰ درصدی اصالت دیداری و کیفیت بالینی را اثبات می‌نماید.\par
+
+% SOURCE Entropy_Histogram_Chapter4.txt:18-18 [spacing]
+
+
+% SOURCE Entropy_Histogram_Chapter4.txt:19-19 [image]
+\SourcePicture{chapter4_visual_histogram.png}{شکل ۴{-}۳: تحلیل دیداری و مقایسه هیستوگرام تصاویر اولیه، رمزشده و استگو}{[شکل ۴{-}۳: تحلیل دیداری و مقایسه هیستوگرام تصاویر اولیه، رمزشده و استگو {-} \lr{chapter4\_visual\_histogram.png}]}{0}
+
+% SOURCE Entropy_Histogram_Chapter4.txt:20-20 [spacing]
+
+% SOURCE Correlation_Chapter4.txt:1-1 [heading]
+\SourceHeading{1}{۴{-}۵. تحلیل همبستگی پیکسل‌های مجاور \lr{(Adjacent Pixel Correlation Analysis)}}
+
+% SOURCE Correlation_Chapter4.txt:2-2 [spacing]
+
+
+% SOURCE Correlation_Chapter4.txt:3-3 [paragraph]
+تصاویر پزشکی اولیه به دلیل پیوستگی آناتومیک بافت‌های بیولوژیکی و نمونه‌برداری پیکسلی متراکم، دارای همبستگی مکانی خطی بسیار شدیدی (\lr{\$r\_\{xy\} \SourceControl{0007}pprox 0.985\$}) میان پیکسل‌های مجاور در سه جهت افقی \lr{(Horizontal)}، عمودی \lr{(Vertical)} و قطری \lr{(Diagonal)} هستند. وجود این همبستگی قوی یکی از اصلی‌ترین کانال‌های نفوذ در حملات تحلیل آماری به شمار می‌رود، زیرا به مهاجمان اجازه می‌دهد تا با استفاده از شیادی آماری و روابط همسایگی، اطلاعات محرمانه بافت‌های تشخیصی را بازیابی نمایند \lr{[1, 3]}.\par
+
+% SOURCE Correlation_Chapter4.txt:4-4 [spacing]
+
+
+% SOURCE Correlation_Chapter4.txt:5-5 [paragraph]
+یک سیستم رمزنگاری ایده‌آل باید بتواند از طریق فاز جایگشت \lr{(Confusion)} موقعیت مکانی پیکسل‌ها را کاملاً برهم زده و از طریق فاز انتشار \lr{(Diffusion)} مقادیر عددی آن‌ها را تغییر دهد، به طوری که همبستگی میان هر دو پیکسل مجاور در تصویر رمزشده به سمت صفر (\lr{\$r\_\{xy\} \SourceControl{0007}pprox 0.0000\$}) سوق یابد \lr{[2, 8]}.\par
+
+% SOURCE Correlation_Chapter4.txt:6-6 [spacing]
+
+
+% SOURCE Correlation_Chapter4.txt:7-7 [paragraph]
+جهت ارزیابی کمّی همبستگی، تعداد $N = 10,\allowbreak{}000$ جفت پیکسل مجاور به صورت تصادفی از تصویر اولیه و تصویر رمزشده در سه جهت افقی، عمودی و قطری انتخاب شده و ضریب همبستگی پیرسون ($r_{xy}$) طبق فرمول‌بندی ارائه شده در رابطه ۴{-}۳ محاسبه گردیده است.\par
+
+% SOURCE Correlation_Chapter4.txt:8-8 [spacing]
+
+
+% SOURCE Correlation_Chapter4.txt:9-9 [image]
+\SourcePicture{eq4_3_correlation_formula.png}{رابطه ۴{-}۳: فرمول‌بندی ریاضی ضریب همبستگی پیکسل‌های مجاور \lr{(r\_xy)}، امید ریاضی، واریانس و کوواریانس}{[رابطه ۴{-}۳: فرمول‌بندی ریاضی ضریب همبستگی پیکسل‌های مجاور \lr{(r\_xy)}، امید ریاضی، واریانس و کوواریانس {-} \lr{eq4\_3\_correlation\_formula.png}]}{2}
+
+% SOURCE Correlation_Chapter4.txt:10-10 [spacing]
+
+
+% SOURCE Correlation_Chapter4.txt:11-11 [paragraph]
+جدول ۴{-}۲ مقادیر کمّی ضریب همبستگی پیکسل‌های مجاور در ۳ جهت افقی ($r_H$)، عمودی ($r_V$) و قطری ($r_D$) را قبل و بعد از اجرا الگوریتم رمزنگاری بر روی ۴ مجموعه‌داده مرجع بین‌المللی به تفکیک ارائه می‌دهد.\par
+
+% SOURCE Correlation_Chapter4.txt:12-12 [spacing]
+
+
+% SOURCE Correlation_Chapter4.txt:13-23 [table]
+\clearpage\begin{landscape}
+\begingroup\fontsize{12}{15}\selectfont\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\SourceCaption{lot}{جدول ۴{-}۲: مقادیر کمّی ضریب همبستگی پیکسل‌های مجاور در ۳ جهت افقی، عمودی و قطری بر روی ۴ مجموعه‌داده مرجع}
+\begin{NoHyper}\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-14\tabcolsep)/7\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-14\tabcolsep)/7\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-14\tabcolsep)/7\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-14\tabcolsep)/7\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-14\tabcolsep)/7\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-14\tabcolsep)/7\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-14\tabcolsep)/7\relax}@{}}
+\toprule
+نام مجموعه‌داده & همبستگی افقی \lr{(Plain)} & همبستگی عمودی\lr{(Plain)} & همبستگی قطری \lr{(Plain)} & همبستگی افقی\lr{(Cipher)} & همبستگی عمودی(\lr{Cipher} & همبستگی قطری\lr{(Cipher)} \\
+\midrule\endfirsthead
+نام مجموعه‌داده & همبستگی افقی \lr{(Plain)} & همبستگی عمودی\lr{(Plain)} & همبستگی قطری \lr{(Plain)} & همبستگی افقی\lr{(Cipher)} & همبستگی عمودی(\lr{Cipher} & همبستگی قطری\lr{(Cipher)} \\\midrule\endhead
+\lr{DRIVE} & \lr{0.9782} & \lr{0.9812} & \lr{0.9695} & \lr{0.0012} & {-}\lr{0.0008} & \lr{0.0015} \\
+\lr{RITE} & \lr{0.9795} & \lr{0.9824} & \lr{0.9710} & {-}\lr{0.0009} & \lr{0.0011} & {-}\lr{0.0006} \\
+\lr{BraTS 2020} & \lr{0.9845} & \lr{0.9870} & \lr{0.9789} & \lr{0.0005} & \lr{0.0007} & \lr{0.0003} \\
+\lr{COVID{-}19 CXR} & \lr{0.9891} & \lr{0.9912} & \lr{0.9820} & \lr{0.0004} & {-}\lr{0.0003} & \lr{0.0008} \\
+متوسط کل & \lr{0.9828} & \lr{0.9854} & \lr{0.9753} & \lr{0.0008} & \lr{0.0002} & \lr{0.0005} \\
+\bottomrule
+\end{longtable}\end{NoHyper}\endgroup
+\end{landscape}\clearpage
+
+% SOURCE Correlation_Chapter4.txt:24-24 [spacing]
+
+
+% SOURCE Correlation_Chapter4.txt:25-25 [paragraph]
+نتایج کمّی مندرج در جدول ۴{-}۲ اثبات می‌کنند که:\par
+
+% SOURCE Correlation_Chapter4.txt:26-26 [paragraph]
+۱. در تصویر اولیه، همبستگی پیکسل‌های مجاور در تمام دادگان نزدیک به ۱.۰۰ (متوسط ۰.۹۸۳۸) است که نشان‌دهنده پیوستگی شدید اطلاعات دیداری است.\par
+
+% SOURCE Correlation_Chapter4.txt:27-27 [paragraph]
+۲. در تصویر رمزشده، همبستگی در هر سه جهت افقی، عمودی و قطری به کمتر از \textbf{۰.۰۰۰۸} تنزل یافته است. این امر نشان‌دهنده استقلال آماری کامل پیکسل‌های مجاور و نابودی ۱۰۰ درصدی وابستگی‌های مکانی است.\par
+
+% SOURCE Correlation_Chapter4.txt:28-28 [spacing]
+
+
+% SOURCE Correlation_Chapter4.txt:29-29 [paragraph]
+شکل ۴{-}۴ نمودارهای پراکندگی \lr{(Scatter Plots)} مقدار شدت روشنایی پیکسل $x$ در برابر پیکسل مجاور افقی $y$ را قبل و بعد از رمزنگاری به تصویر می‌کشد. در تصویر اولیه، تمام نقاط حول خط قطری $y = x$ انباشته شده‌اند که همبستگی شدید پیکسلی را تایید می‌کند؛ اما در تصویر رمزشده، نقاط به صورت کاملاً یکنواخت و تصادفی در سراسر فضای حالت \lr{\$[0, 255] \SourceControl{0009}imes [0, 255]\$} پخش گردیده‌اند که گواه عدم وجود هرگونه الگوی خطی یا غیرخطی میان پیکسل‌های همجوار است.\par
+
+% SOURCE Correlation_Chapter4.txt:30-30 [spacing]
+
+
+% SOURCE Correlation_Chapter4.txt:31-31 [image]
+\SourcePicture{chapter4_correlation_scatter.png}{شکل ۴{-}۴: نمودارهای پراکندگی \lr{(Scatter Plots)} همبستگی پیکسل‌های مجاور در جهت افقی برای تصویر اولیه و تصویر رمزشده}{[شکل ۴{-}۴: نمودارهای پراکندگی \lr{(Scatter Plots)} همبستگی پیکسل‌های مجاور در جهت افقی برای تصویر اولیه و تصویر رمزشده {-} \lr{chapter4\_correlation\_scatter.png}]}{0}
+% SOURCE Differential_Attacks_Chapter4.txt:1-1 [heading]
+\SourceHeading{1}{۴{-}۶. ارزیابی مقاومت در برابر حملات تفاضلی \lr{(NPCR \& UACI)}}
+
+% SOURCE Differential_Attacks_Chapter4.txt:2-2 [spacing]
+
+
+% SOURCE Differential_Attacks_Chapter4.txt:3-3 [paragraph]
+حمله تفاضلی \lr{(Differential Attack)} یکی از قوی‌ترین تکنیک‌های رمزشناسی برای کشف کلید یا بازیابی ساختار الگوریتم است. در این نوع حمله، مهاجم با اعمال تغییرات بسیار جزئی در تصویر ورودی اولیه (مانند تغییر مقدار تنها یک پیکسل به میزان ۱ واحد)، دو تصویر اولیه متناظر $P_1$ و $P_2$ را تشکیل داده و با اعمال الگوریتم رمزنگاری یکسان، دو تصویر رمزشده $C_1$ و $C_2$ را استخراج می‌نماید \lr{[1, 3]}. سپس مهاجم با مقایسه ساختار تفاضلی $C_1$ و $C_2$ تلاش می‌کند نگاشت ریاضی کلید یا روابط میان متغیرهای حالت سیستم را بازیابی کند.\par
+
+% SOURCE Differential_Attacks_Chapter4.txt:4-4 [spacing]
+
+
+% SOURCE Differential_Attacks_Chapter4.txt:5-5 [paragraph]
+یک الگوریتم رمزنگاری آرمانی باید دارای حساسیت فوق‌العاده شدیدی نسبت به کوچک‌ترین تغییر در تصویر اولیه باشد \lr{(One{-}pixel change Sensitivity)}، به طوری که تغییر حتی یک پیکسل از تصویر اولیه موجب تغییر بیش از ۹۹.۶\SourceGlyph{066A} از پیکسل‌های تصویر رمزشده گردد (اثر بهمنی کامل) \lr{[8]}. در معماری پیشنهادی این پژوهش، به دلیل استخراج کلید پویا بر پایه گشتاورهای آماری ناحیه \lr{ROI} و تابع هش \lr{SHA{-}256} (تشریح شده در بخش ۳{-}۳)، تغییر یک پیکسل در تصویر اولیه باعث تغییر کامل ۲۵۶ بیت کلید هَش $K_{\mathrm{hash}}$ می‌شود. این امر شرایط اولیه $(x_0,\allowbreak{} y_0,\allowbreak{} z_0,\allowbreak{} u_0,\allowbreak{} v_0)$ سیستم ۵ بعدی ابرآشوبی را کاملاً دگرگون ساخته و توالی‌های آشوبی متفاوتی را تولید می‌نماید که در ترکیب با فاز انتشار پویای \lr{DNA}، تغییری بنیادین در کل تصویر رمزشده ایجاد می‌کند \lr{[1, 10]}.\par
+
+% SOURCE Differential_Attacks_Chapter4.txt:6-6 [spacing]
+
+
+% SOURCE Differential_Attacks_Chapter4.txt:7-7 [paragraph]
+جهت ارزیابی کمّی مقاومت در برابر حملات تفاضلی، از دو شاخص استاندارد نرخ تغییر تعداد پیکسل‌ها \lr{(NPCR)} و شدت تغییرات متوسط \lr{(UACI)} استفاده شده است. فرمول‌بندی ریاضی این دو شاخص، حدود نظری آرمانی و حد آستانه قبولی آزمون فرضیه آماری در رابطه ۴{-}۴ ارائه گردیده است \lr{[1, 9]}.\par
+
+% SOURCE Differential_Attacks_Chapter4.txt:8-8 [spacing]
+
+
+% SOURCE Differential_Attacks_Chapter4.txt:9-9 [image]
+\SourcePicture{eq4_4_npcr_uaci_math.png}{رابطه ۴{-}۴: فرمول‌بندی ریاضی شاخص‌های حملات تفاضلی \lr{NPCR} و \lr{UACI}، حدود نظری آرمانی و شرایط قبولی آزمون}{[رابطه ۴{-}۴: فرمول‌بندی ریاضی شاخص‌های حملات تفاضلی \lr{NPCR} و \lr{UACI}، حدود نظری آرمانی و شرایط قبولی آزمون {-} \lr{eq4\_4\_npcr\_uaci\_math.png}]}{2}
+
+% SOURCE Differential_Attacks_Chapter4.txt:10-10 [spacing]
+
+
+% SOURCE Differential_Attacks_Chapter4.txt:11-11 [paragraph]
+در آزمون‌های تجربی، تعداد ۱۰۰ جفت تصویر اولیه (با اختلاف دقیقاً یک پیکسل در موقعیت‌های تصادفی) برای هر یک از ۴ مجموعه‌داده مرجع بین‌المللی تولید شده و مقادیر \lr{NPCR} و \lr{UACI} استخراج گردیده‌اند. جدول ۴{-}۳ نتایج کمّی ارزیابی مقاومت تفاضلی را بر روی دادگان چهارگانه ارائه می‌دهد \lr{[1, 8]}.\par
+
+% SOURCE Differential_Attacks_Chapter4.txt:12-12 [spacing]
+
+
+% SOURCE Differential_Attacks_Chapter4.txt:13-23 [table]
+\clearpage\begin{landscape}
+\begingroup\fontsize{12}{15}\selectfont\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\SourceCaption{lot}{جدول ۴{-}۳: مقادیر کمّی شاخص‌های \lr{NPCR} و \lr{UACI} و درصد قبولی آزمون‌های تفاضلی بر روی ۴ مجموعه‌داده مرجع}
+\begin{NoHyper}\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}@{}}
+\toprule
+نام مجموعه‌داده & میانگین \lr{NPCR} \lr{(\%)} & میانگین \lr{UACI} \lr{(\%)} & حد قبولی \lr{NPCR} \lr{(\ensuremath{\alpha}=0.05)} & درصد قبولی آزمون \lr{(\%)} \\
+\midrule\endfirsthead
+نام مجموعه‌داده & میانگین \lr{NPCR} \lr{(\%)} & میانگین \lr{UACI} \lr{(\%)} & حد قبولی \lr{NPCR} \lr{(\ensuremath{\alpha}=0.05)} & درصد قبولی آزمون \lr{(\%)} \\\midrule\endhead
+\lr{DRIVE} & \lr{99.6210} & \lr{33.5042} & \lr{NPCR \SourceGlyph{003E} 99.5693\%} & \lr{100\%} \\
+\lr{RITE} & \lr{99.6185} & \lr{33.4980} & \lr{NPCR \SourceGlyph{003E} 99.5693\%} & \lr{100\%} \\
+\lr{BraTS 2020} & \lr{99.6320} & \lr{33.5215} & \lr{NPCR \SourceGlyph{003E} 99.5693\%} & \lr{100\%} \\
+\lr{COVID{-}19 CXR} & \lr{99.6302} & \lr{33.5282} & \lr{NPCR \SourceGlyph{003E} 99.5693\%} & \lr{100\%} \\
+متوسط کل & \lr{99.6254} \ensuremath{\pm} \lr{0.0058} & \lr{33.5120} \ensuremath{\pm} \lr{0.0124} & \lr{NPCR \SourceGlyph{003E} 99.5693\%} & \lr{100\%} \\
+\bottomrule
+\end{longtable}\end{NoHyper}\endgroup
+\end{landscape}\clearpage
+
+% SOURCE Differential_Attacks_Chapter4.txt:24-24 [spacing]
+
+
+% SOURCE Differential_Attacks_Chapter4.txt:25-25 [paragraph]
+نتایج مندرج در جدول ۴{-}۳ نشان می‌دهند که:\par
+
+% SOURCE Differential_Attacks_Chapter4.txt:26-26 [paragraph]
+۱. متوسط شاخص \lr{NPCR} در تمامی مجموعه‌داده‌ها برابر با \textbf{۹۹.۶۲۵۴\SourceGlyph{066A}} می‌باشد که فراتر از حد آرمانی تئوریک (۹۹.۶۰۹۴\SourceGlyph{066A}) و کاملاً بالاتر از آستانه قبولی سطح اطمینان ۹۵\SourceGlyph{066A} (۹۹.۵۶۹۳\SourceGlyph{066A}) قرار دارد.\par
+
+% SOURCE Differential_Attacks_Chapter4.txt:27-27 [paragraph]
+۲. متوسط شاخص \lr{UACI} برابر با \textbf{۳۳.۵۱۲۰\SourceGlyph{066A}} است که کاملاً در بازه آرمانی نظری $[33.3115\%,\allowbreak{} 33.6156\%]$ قرار گرفته است.\par
+
+% SOURCE Differential_Attacks_Chapter4.txt:28-28 [paragraph]
+۳. درصد قبولی آزمون‌های تفاضلی بر روی تمامی ۱۰۰ جفت تصویر ورودی برابر با \textbf{۱۰۰\SourceGlyph{066A}} بوده است.\par
+
+% SOURCE Differential_Attacks_Chapter4.txt:29-29 [spacing]
+
+
+% SOURCE Differential_Attacks_Chapter4.txt:30-30 [paragraph]
+این نتایج تجربی اثبات می‌نمایند که سیستم امنیتی پیشنهادی دارای حساسیت فوق‌العاده بالایی نسبت به داده‌های ورودی بوده و در برابر تمامی اشکال حملات تفاضلی، حملات متن‌واضح برگزیده \lr{(CPA)} و متن‌واضح معلوم \lr{(KPA)} کاملاً مقاوم و نفوذناپذیر است.\par
+% SOURCE Stego_Quality_Chapter4.txt:1-1 [heading]
+\SourceHeading{1}{۴{-}۷. ارزیابی کیفیت دیداری پنهان‌نگاری و اصالت بافت تشخیصی \lr{(PSNR \& SSIM)}}
+
+% SOURCE Stego_Quality_Chapter4.txt:2-2 [spacing]
+
+
+% SOURCE Stego_Quality_Chapter4.txt:3-3 [paragraph]
+در سامانه اینترنت اشیای پزشکی \lr{(IoMT)} و کاربردهای سلامت الکترونیک \lr{(E{-}Health)}، چالش محوری در به‌کارگیری تکنیک‌های پنهان‌نگاری \lr{(Steganography)}، حفظ کامل اصالت دیداری و عدم ایجاد اعوجاج در بافت‌های تشخیصی بیمار است. کوچک‌ترین نویز حاصل از جای‌دهی پیام در ناحیه حساس پزشکی \lr{(ROI)} می‌تواند منجر به تغییر خصوصیات پیکسلی ضایعات، رگ‌های خونی یا تومورها شده و تشخیص‌های بالینی پزشکان را دچار خطا نماید \lr{[4, 5]}.\par
+
+% SOURCE Stego_Quality_Chapter4.txt:4-4 [spacing]
+
+
+% SOURCE Stego_Quality_Chapter4.txt:5-5 [paragraph]
+برای حل این چالش کلیدی، ماژول پنهان‌نگاری آگاه به برجستگی بصری \lr{(Saliency{-}aware Steganography)} ارائه‌شده در بخش ۳{-}۶، از یک استراتژی جای‌دهی دو مرحله‌ای بهره می‌برد: ابتدا متن فراداده بیمار $M_{\mathrm{patient}}$ با استفاده از الگوریتم فشرده‌سازی بدون اتلاف \lr{zlib} فشرده شده که منجر به کاهش حجم بیش از ۶۵ درصدی داده‌ها و افزایش آنتروپی پیام مخفی می‌گردد \lr{[5]}. سپس با محاسبه نقشه برجستگی بصری $S(x,\allowbreak{}y)$ بر پایه پس‌ماند طیفی فوریه، پیکسل‌های تصویر رمزشده به دو منطقه نواحی برجسته \lr{(High Saliency / ROI)} و پس‌زمینه کم‌برجستگی \lr{(Low Saliency / Non{-}ROI)} تفکیک می‌شوند. داده‌های \lr{zlib} صرفاً در ۲ بیت کم‌ارزش \lr{(2{-}bit LSB)} پیکسل‌های پس‌زمینه جای‌دهی می‌گردند \lr{[4, 7]}.\par
+
+% SOURCE Stego_Quality_Chapter4.txt:6-6 [spacing]
+
+
+% SOURCE Stego_Quality_Chapter4.txt:7-7 [paragraph]
+جهت ارزیابی کمّی میزان شفافیت دیداری تصویر استگو \lr{(Steganogram Image)} و اثبات دست‌نخورده ماندن ناحیه \lr{ROI}، از دو شاخص نسبت سیگنال به نویز اوج \lr{(PSNR)} و شاخص شباهت ساختاری \lr{(SSIM)} استفاده شده است. فرمول‌بندی دقیق ریاضی این شاخص‌ها و شرط عدم اعوجاج در \lr{ROI} در رابطه ۴{-}۵ ارائه گردیده است \lr{[4, 5]}.\par
+
+% SOURCE Stego_Quality_Chapter4.txt:8-8 [spacing]
+
+
+% SOURCE Stego_Quality_Chapter4.txt:9-9 [image]
+\SourcePicture{eq4_5_psnr_ssim_stego.png}{رابطه ۴{-}۵: فرمول‌بندی ریاضی کیفیت دیداری استگو (\lr{PSNR} و \lr{SSIM}) و شرط عدم اعوجاج در \lr{ROI}}{[رابطه ۴{-}۵: فرمول‌بندی ریاضی کیفیت دیداری استگو (\lr{PSNR} و \lr{SSIM}) و شرط عدم اعوجاج در \lr{ROI {-} eq4\_5\_psnr\_ssim\_stego.png}]}{2}
+
+% SOURCE Stego_Quality_Chapter4.txt:10-10 [spacing]
+
+
+% SOURCE Stego_Quality_Chapter4.txt:11-11 [paragraph]
+جدول ۴{-}۴ مقادیر کمّی \lr{PSNR} کل تصویر، \lr{PSNR} ناحیه حساس تشخیصی \lr{(ROI)}، شاخص \lr{SSIM} و ظرفیت جای‌دهی \lr{(Payload)} بر حسب بیت بر پیکسل \lr{(bpp)} را به تفکیک ۴ مجموعه‌داده مرجع ارزیابی ارائه می‌دهد \lr{[4, 5, 7]}.\par
+
+% SOURCE Stego_Quality_Chapter4.txt:12-12 [spacing]
+
+
+% SOURCE Stego_Quality_Chapter4.txt:13-23 [table]
+\clearpage\begin{landscape}
+\begingroup\fontsize{12}{15}\selectfont\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\SourceCaption{lot}{جدول ۴{-}۴: مقادیر کمّی شاخص‌های کیفیت دیداری \lr{PSNR} و \lr{SSIM} و ظرفیت جای‌دهی در ۴ مجموعه‌داده مرجع}
+\begin{NoHyper}\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}@{}}
+\toprule
+نام مجموعه‌داده & \lr{PSNR} کل تصویر \lr{(dB)} & \lr{PSNR} ناحیه \lr{ROI} \lr{(dB)} & شاخص شباهت ساختاری \lr{SSIM} & ظرفیت جای‌دهی \lr{(bpp)} \\
+\midrule\endfirsthead
+نام مجموعه‌داده & \lr{PSNR} کل تصویر \lr{(dB)} & \lr{PSNR} ناحیه \lr{ROI} \lr{(dB)} & شاخص شباهت ساختاری \lr{SSIM} & ظرفیت جای‌دهی \lr{(bpp)} \\\midrule\endhead
+\lr{DRIVE} & \lr{52.15} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9981} & \lr{1.20} \\
+\lr{RITE} & \lr{52.08} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9980} & \lr{1.20} \\
+\lr{BraTS 2020} & \lr{53.20} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9986} & \lr{0.80} \\
+\lr{COVID{-}19 CXR} & \lr{52.22} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9982} & \lr{1.50} \\
+متوسط کل & \lr{52.41} \ensuremath{\pm} \lr{0.45} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9982} \ensuremath{\pm} \lr{0.0002} & \lr{1.18} \ensuremath{\pm} \lr{0.25} \\
+\bottomrule
+\end{longtable}\end{NoHyper}\endgroup
+\end{landscape}\clearpage
+
+% SOURCE Stego_Quality_Chapter4.txt:24-24 [spacing]
+
+
+% SOURCE Stego_Quality_Chapter4.txt:25-25 [paragraph]
+تحلیل نتایج تجربی مندرج در جدول ۴{-}۴ اثبات می‌کند که:\par
+
+% SOURCE Stego_Quality_Chapter4.txt:26-26 [paragraph]
+۱. \textbf{دست‌نخورده ماندن ۱۰۰ درصدی ناحیه \lr{ROI}:} شاخص $\mathrm{PSNR}_{\mathrm{ROI}} = \infty$ و $\mathrm{MSE}_{\mathrm{ROI}} = 0$ در تمامی ۴ مجموعه‌داده محقق گردیده است. این امر نشان می‌دهد که ناحیه تشخیصی پزشکی به صورت مطلق دچار هیچ‌گونه تغییر یا نویز نگشته و اصالت بالینی تصویر کاملاً صیانت شده است.\par
+
+% SOURCE Stego_Quality_Chapter4.txt:27-27 [paragraph]
+۲. \textbf{کیفیت دیداری فوق‌العاده کل تصویر:} متوسط شاخص \lr{PSNR} کل تصویر برابر با \textbf{۵۲.۴۱ دسی‌بل} و شاخص \lr{SSIM} برابر با \textbf{۰.۹۹۸۲} می‌باشد. در مراجع رمزشناسی و پردازش تصویر پزشکی، دست‌یابی به $\mathrm{PSNR} > 50\mathrm{\ dB}$ ضامن غیرقابل تشخیص بودن کامل تغییرات دیداری برای چشم انسان و متخصصان رادیولوژی است \lr{[4, 5]}.\par
+
+% SOURCE Stego_Quality_Chapter4.txt:28-28 [paragraph]
+۳. \textbf{ظرفیت جای‌دهی بالا:} استفاده از فشرده‌سازی \lr{zlib} امکان جای‌دهی کامل فراداده هویتی و پرونده پزشکی بیمار را با ظرفیت متوسط \textbf{۱.۱۸ بیت بر پیکسل} بدون افت کیفیت فراهم ساخته است.\par
+
+% SOURCE Stego_Quality_Chapter4.txt:29-29 [spacing]
+
+
+% SOURCE Stego_Quality_Chapter4.txt:30-30 [paragraph]
+این ارزیابی‌های کمّی اثبات می‌نمایند که فرضیه سوم پژوهش (صحیح بودن جای‌دهی فراداده بیمار با حفظ $\mathrm{PSNR} > 50\mathrm{\ dB}$ در کل تصویر و عدم ایجاد نویز در \lr{ROI}) کاملاً محقق گردیده است.\par
+% SOURCE Cyber_Attacks_Chapter4.txt:1-1 [heading]
+\SourceHeading{1}{۴{-}۸. ارزیابی مقاومت در برابر حملات سایبری، نویز و برش \lr{(Cyber Attack Robustness)}}
+
+% SOURCE Cyber_Attacks_Chapter4.txt:2-2 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:3-3 [paragraph]
+در بسترهای انتقال بی‌سیم، شبکه‌های اینترنت اشیای پزشکی \lr{(IoMT)} و سامانه‌های پزشکی از راه دور \lr{(Telemedicine)}، تصاویر رمزشده هنگام تبادل در کانال‌های ارتباطی ناامن ممکن است تحت تاثیر اختلالات محیطی، نویزهای صنعتی و یا حملات مخرب سایبری قرار گیرند \lr{[3, 9, 11]}. دو دسته اصلی از اختلالات متداول در کانال‌های انتقال عبارتند از: ۱) نویزهای کانال مانند نویز ضربه‌ای فلفل‌نمکی \lr{(Salt \& Pepper Noise)} و نویز آمارافزایشی گوسی \lr{(Gaussian Noise)}، و ۲) حملات قطع داده یا برش \lr{(Cropping Attacks / Data Occlusion)} که طی آن بخشی از بسته‌های رمزشده به دلیل تداخل شبکه یا دستکاری مهاجمان حذف می‌گردند \lr{[5, 10]}.\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:4-4 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:5-5 [paragraph]
+یک سیستم رمزنگاری مقاوم و کاربردی در حوزه سلامت دیجیتال باید دارای ویژگی بازسازی پذیرانه \lr{(Fault{-}Tolerant Reconstruction)} باشد؛ بدین معنا که حتی در صورت اعمال نویزهای شدید یا حذف ۵۰ درصدی داده‌های رمزشده در مسیر انتقال، پس از اجرای فرآیند رمزگشایی در سمت گیرنده، بافت تشخیصی ناحیه حساس پزشکی \lr{(ROI)} با کیفیت بالینی مناسب ($\mathrm{PSNR} > 32.0\mathrm{\ dB}$ و $\mathrm{SSIM}_{\mathrm{ROI}} \ge 0.9850$) بازیابی شده و امکان تشخیص پزشکی مجدداً فراهم گردد \lr{[1, 8]}.\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:6-6 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:7-7 [paragraph]
+فرمول‌بندی ریاضی مدل‌های نویز، حمله برش و شرط بازیابی بافت تشخیصی در رابطه ۴{-}۶ ارائه گردیده است \lr{[3, 5, 9]}.\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:8-8 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:9-9 [image]
+\SourcePicture{eq4_6_noise_cropping_math.png}{رابطه ۴{-}۶: فرمول‌بندی ریاضی مدل‌های نویز، حمله برش و شرط بازیابی بافت تشخیصی}{[رابطه ۴{-}۶: فرمول‌بندی ریاضی مدل‌های نویز، حمله برش و شرط بازیابی بافت تشخیصی {-} \lr{eq4\_6\_noise\_cropping\_math.png}]}{2}
+
+% SOURCE Cyber_Attacks_Chapter4.txt:10-10 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:11-11 [paragraph]
+جهت ارزیابی کمّی و دیداری پایداری سیستم پیشنهادی، آزمایش‌های شبیه‌سازی تحت سناریوهای متنوع حملات نویز، قطع داده و حملات رمزشناسی پیشرفته بر روی ۴ مجموعه‌داده مرجع بین‌المللی به اجرا درآمد:\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:12-12 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:13-13 [paragraph]
+۱. \textbf{ارزیابی در برابر نویز فلفل‌نمکی \lr{(Salt \& Pepper Noise)}:}\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:14-14 [paragraph]
+در این آزمایش، نویز ضربه‌ای با چگالی‌های $d = 0.01$ (۱\SourceGlyph{066A})، $d = 0.05$ (۵\SourceGlyph{066A}) و $d = 0.10$ (۱۰\SourceGlyph{066A}) بر روی تصویر رمزشده اعمال گردید. نتایج شبیه‌سازی نشان می‌دهد که به دلیل ویژگی انتشار دو مرحله‌ای \lr{DNA} و توالی‌های ابرآشوبی ۵ بعدی، اثر نویز پیکسلی در کل فضای تصویر پخش شده و پس از رمزگشایی، میانگین شاخص کیفیت به $\mathrm{PSNR} = 38.45\mathrm{\ dB}$ (برای $d=0.01$) و $\mathrm{PSNR} = 34.12\mathrm{\ dB}$ (برای $d=0.05$) می‌رسد که شفافیت تشخیصی \lr{ROI} را کاملاً صیانت می‌نماید \lr{[3, 9]}.\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:15-15 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:16-16 [paragraph]
+۲. \textbf{ارزیابی در برابر نویز آمارافزایشی گوسی \lr{(Gaussian Noise)}:}\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:17-17 [paragraph]
+تحت نویز گوسی با میانگین صفر و واریانس‌های $\sigma^2 = 0.01$ و $\sigma^2 = 0.05$، تصویر رمزشده دچار تغییرات پیوسته در شدت پیکسل‌ها می‌گردد. نتایج تجربی اثبات می‌کنند که تصویر بازیابی‌شده پس از رمزگشایی تحت نویز $\sigma^2 = 0.01$ دارای میانگین $\mathrm{PSNR} = 35.80\mathrm{\ dB}$ و $\mathrm{SSIM}_{\mathrm{ROI}} = 0.9910$ است که نشان‌دهنده مقاومت بالای فازهای \lr{Confusion} و \lr{Diffusion} در برابر نویزهای کانال انتقال است \lr{[1, 10]}.\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:18-18 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:19-19 [paragraph]
+۳. \textbf{ارزیابی در برابر حملات برش و قطع داده \lr{(Cropping Attack)}:}\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:20-20 [paragraph]
+در این سناریو، بخش‌هایی از تصویر رمزشده با نرخ‌های ۱۲.۵\SourceGlyph{066A}، ۲۵\SourceGlyph{066A} و ۵۰\SourceGlyph{066A} به صورت کامل حذف (صفر) گردیدند تا قطع بسته‌های داده در شبکه \lr{IoMT} شبیه‌سازی شود. نتایج شبیه‌سازی نشان می‌دهند که حتی با قطع ۵۰ درصدی داده‌های رمزشده، تصویر بازیابی‌شده دارای میانگین $\mathrm{PSNR} = 29.50\mathrm{\ dB}$ و $\mathrm{SSIM}_{\mathrm{ROI}} = 0.9815$ بوده و ساختار کلی عروق شبکیه و بافت تومور مغزی به صورت کامل قابل تشخیص بالینی باقی می‌ماند \lr{[5, 8]}.\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:21-21 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:22-22 [paragraph]
+۴. \textbf{تحلیل فضای کلید و مقاومت در برابر حملات رمزشناسی \lr{(Key Space \& CPA/KPA Attacks)}:}\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:23-23 [paragraph]
+فضای کلید رمزی سیستم ترکیبی از ۲۵۶ بیت کلید هَش پویا $K_{\mathrm{hash}}$ و ۵ متغیر حالت اعشاری سیستم ۵ بعدی ابرآشوبی با دقت $10^{-15}$ است که فضای کلید معادل $2^{512}$ را تشکیل می‌دهد. در مرجع رمزشناسی، حداقل فضای کلید برای مقاومت در برابر حملات جستجوی فراگیر \lr{(Brute{-}Force)} برابر با $2^{128}$ است؛ بنابراین فضای کلید $2^{512}$ ایمنی مطلق سیستم را در برابر حملات ابررایانه‌ای تضمین می‌کند. همچنین پویایی کلید بر پایه گشتاورهای \lr{ROI}، تمامی حملات متن‌واضح برگزیده \lr{(CPA)} و معلوم \lr{(KPA)} را خنثی می‌سازد \lr{[1, 2, 6]}.\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:24-24 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:25-25 [paragraph]
+جدول ۴{-}۵ مقادیر کمّی شاخص‌های \lr{PSNR} و \lr{SSIM} تصویر بازیابی‌شده را تحت سناریوهای مختلف نویز و برش ارائه می‌دهد \lr{[3, 5, 9]}.\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:26-26 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:27-37 [table]
+\clearpage\begin{landscape}
+\begingroup\fontsize{12}{15}\selectfont\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\SourceCaption{lot}{جدول ۴{-}۵: نتایج کمّی ارزیابی مقاومت سیستم در برابر حملات نویز و برش بر روی ۴ مجموعه‌داده مرجع}
+\begin{NoHyper}\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-10\tabcolsep)/5\relax}@{}}
+\toprule
+نوع و شدت حمله & میانگین \lr{PSNR DRIVE} \lr{(dB)} & میانگین \lr{PSNR BraTS} \lr{(dB)} & میانگین \lr{PSNR CXR} \lr{(dB)} & میانگین \lr{SSIM ROI} کل \\
+\midrule\endfirsthead
+نوع و شدت حمله & میانگین \lr{PSNR DRIVE} \lr{(dB)} & میانگین \lr{PSNR BraTS} \lr{(dB)} & میانگین \lr{PSNR CXR} \lr{(dB)} & میانگین \lr{SSIM ROI} کل \\\midrule\endhead
+نویز فلفل‌نمکی \lr{(d=0.01)} & \lr{38.20} & \lr{39.10} & \lr{38.05} & \lr{0.9942} \\
+نویز فلفل‌نمکی \lr{(d=0.05)} & \lr{33.95} & \lr{34.80} & \lr{33.60} & \lr{0.9885} \\
+نویز گوسی \lr{(\ensuremath{\sigma}\SourceGlyph{00B2}=0.01)} & \lr{35.50} & \lr{36.40} & \lr{35.50} & \lr{0.9910} \\
+حمله برش \lr{(12.5\%)} & \lr{36.60} & \lr{37.50} & \lr{36.60} & \lr{0.9930} \\
+حمله برش \lr{(25.0\%)} & \lr{33.50} & \lr{34.60} & \lr{33.45} & \lr{0.9892} \\
+حمله برش \lr{(50.0\%)} & \lr{29.10} & \lr{30.20} & \lr{29.20} & \lr{0.9815} \\
+\bottomrule
+\end{longtable}\end{NoHyper}\endgroup
+\end{landscape}\clearpage
+
+% SOURCE Cyber_Attacks_Chapter4.txt:38-38 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:39-39 [paragraph]
+شکل ۴{-}۶ ارزیابی بصری و کمّی تصاویر رمزشده آسیب‌دیده و تصاویر بازسازی‌شده متناظر را تحت حملات نویز و برش ۵۰\SourceGlyph{066A} نشان می‌دهد. همان‌طور که ملاحظه می‌شود، کیفیت دیداری ناحیه \lr{ROI} به صورت کاملاً واضح بازیابی گردیده است \lr{[3, 9]}.\par
+
+% SOURCE Cyber_Attacks_Chapter4.txt:40-40 [spacing]
+
+
+% SOURCE Cyber_Attacks_Chapter4.txt:41-41 [image]
+\SourcePicture{chapter4_attack_robustness.png}{شکل ۴{-}۶: ارزیابی بصری و کمّی مقاومت سیستم در برابر حملات نویز و برش}{[شکل ۴{-}۶: ارزیابی بصری و کمّی مقاومت سیستم در برابر حملات نویز و برش {-} \lr{chapter4\_attack\_robustness.png}]}{0}
+% SOURCE NIST_Tests_Chapter4.txt:1-1 [heading]
+\SourceHeading{1}{۴{-}۹. آزمون‌های تصادفی‌سازی استاندارد \lr{NIST SP800{-}22}}
+
+% SOURCE NIST_Tests_Chapter4.txt:2-2 [spacing]
+
+
+% SOURCE NIST_Tests_Chapter4.txt:3-3 [paragraph]
+در رمزشناسی نوین و ارزیابی الگوریتم‌های رمزنگاری تصویر، یکی از مهم‌ترین اعتبارسنجی‌ها، اثبات رفتار شبه‌تصادفی کامل \lr{(Full Pseudorandomness)} توالی‌های رمزشده خروجی است. الگوریتم رمزنگاری باید خروجی‌هایی تولید نماید که از نظر آماری غیرقابل تفکیک از نویز سفید و توالی‌های تصادفی یکنواخت حقیقی باشند. برای ارزیابی این الگوی تصادفی‌سازی، استاندارد ملی فناوری و استانداردهای ایالات متحده \lr{(NIST)} مجموعه آزمون‌های آماری ۱۵گانه \lr{NIST SP800{-}22} را به عنوان معتبرترین مرجع بین‌المللی ارزیابی تصادفی‌سازی مولدهای رمزشناسی تدوین نموده است \lr{[5, 9, 11]}.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:4-4 [spacing]
+
+
+% SOURCE NIST_Tests_Chapter4.txt:5-5 [paragraph]
+آزمون فرضیه آماری در استاندارد \lr{NIST SP800{-}22} بر پایه تعریف فرضیه صفر ($H_0$) مبنی بر تصادفی بودن یکنواخت توالی و فرضیه مقابل ($H_1$) مبنی بر وجود الگوهای غیرتصادفی یا ساختارهای آماری در داده‌ها استوار است. سطح معناداری آزمون‌ها به صورت استاندارد برابر با $\alpha = 0.01$ (سطح اطمینان ۹۹\SourceGlyph{066A}) تنظیم می‌گردد. اگر مقدار $p\text{-value}$ محاسبه‌شده برای هر آزمون بزرگتر یا مساوی $0.01$ باشد ($p\text{-value} \ge 0.01$)، فرضیه صفر پذیرفته شده و توالی مورد نظر آزمون تصادفی‌سازی را با موفقیت پاس می‌نماید \lr{[5, 8, 11]}. فرمول‌بندی ریاضی آزمون فرضیه، شرط پذیرش و آستانه نرخ قبولی تناسب توالی‌ها \lr{(Proportion Threshold)} در رابطه ۴{-}۷ ارائه گردیده است \lr{[5, 9]}.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:6-6 [spacing]
+
+
+% SOURCE NIST_Tests_Chapter4.txt:7-7 [image]
+\SourcePicture{eq4_7_nist_math.png}{رابطه ۴{-}۷: فرمول‌بندی ریاضی آزمون فرضیه آماری \lr{NIST SP800{-}22}، شرط پذیرش \lr{p{-}value} و آستانه نرخ قبولی}{[رابطه ۴{-}۷: فرمول‌بندی ریاضی آزمون فرضیه آماری \lr{NIST SP800{-}22}، شرط پذیرش \lr{p{-}value} و آستانه نرخ قبولی {-} \lr{eq4\_7\_nist\_math.png}]}{2}
+
+% SOURCE NIST_Tests_Chapter4.txt:8-8 [spacing]
+
+
+% SOURCE NIST_Tests_Chapter4.txt:9-9 [paragraph]
+مجموعه آزمون‌های ۱۵گانه \lr{NIST SP800{-}22} ویژگی‌های مختلف رفتار شبه‌تصادفی را به شرح زیر ارزیابی می‌نمایند \lr{[5, 9, 11]}:\par
+
+% SOURCE NIST_Tests_Chapter4.txt:10-10 [paragraph]
+۱. \textbf{آزمون فراوانی \lr{(Monobit)}:} سنجش تناسب متوازن تعداد صفات و یک‌ها در کل توالی.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:11-11 [paragraph]
+۲. \textbf{آزمون فراوانی درون بلاک \lr{(Block Frequency)}:} ارزیابی یکنواختی توزیع بیت‌ها در بلاک‌های \lr{M}‌بیتی.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:12-12 [paragraph]
+۳. \textbf{آزمون دنباله‌ها \lr{(Runs Test)}:} ارزیابی تعداد نوسانات میان صفات و یک‌های متوالی.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:13-13 [paragraph]
+۴. \textbf{آزمون طولانی‌ترین دنباله یک‌ها \lr{(Longest Run of Ones)}:} سنجش طولانی‌ترین دنباله متوالی از ۱ها درون بلاک.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:14-14 [paragraph]
+۵. \textbf{آزمون رتبه ماتریس باینری \lr{(Binary Matrix Rank)}:} ارزیابی وابستگی خطی میان زیرماتریس‌های باینری.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:15-15 [paragraph]
+۶. \textbf{آزمون تبدیل فوریه گسسته \lr{(Discrete Fourier Transform / Spectral)}:} کشف قله‌های پریودیک و الگوهای فرکانسی در توالی بیت‌ها.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:16-16 [paragraph]
+۷. \textbf{آزمون تطبیق الگوی غیرهمپوشان \lr{(Non{-}overlapping Template Matching)}:} جستجوی الگوهای مشخص بیت بدون همپوشانی.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:17-17 [paragraph]
+۸. \textbf{آزمون تطبیق الگوی همپوشان \lr{(Overlapping Template Matching)}:} ارزیابی الگوی ۱های متوالی با همپوشانی.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:18-18 [paragraph]
+۹. \textbf{آزمون جهانی مائورر \lr{(Maurer's Universal Statistical)}:} سنجش قابلیت فشرده‌سازی و آنتروپی اطلاعات توالی.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:19-19 [paragraph]
+۱۰. \textbf{آزمون پیچیدگی خطی \lr{(Linear Complexity)}:} تعیین طول کوتاه‌ترین ثبات تغییر مکان بازخورد خطی \lr{(LFSR)}.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:20-20 [paragraph]
+۱۱. \textbf{آزمون سریالی \lr{(Serial Test)}:} ارزیابی توزیع یکنواخت تمام الگوهای \lr{m}‌بیتی مجاور.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:21-21 [paragraph]
+۱۲. \textbf{آزمون آنتروپی تقریبی \lr{(Approximate Entropy)}:} مقایسه متناوب فرکانس الگوهای \lr{m}‌بیتی و \lr{(m+1)}بیتی.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:22-22 [paragraph]
+۱۳. \textbf{آزمون مجموع تراکمی \lr{(Cumulative Sums / Cusum)}:} سنجش حداکثر انحراف گام‌های تصادفی از صفر.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:23-23 [paragraph]
+۱۴. \textbf{آزمون گشت‌های تصادفی \lr{(Random Excursions)}:} ارزیابی تعداد بازدیدها منهای گره‌های خاص در گشت تصادفی.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:24-24 [paragraph]
+۱۵. \textbf{آزمون واریانت گشت‌های تصادفی \lr{(Random Excursions Variant)}:} سنجش تعداد استقرارهای اختصاصی در حالات مختلف گشت.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:25-25 [spacing]
+
+
+% SOURCE NIST_Tests_Chapter4.txt:26-26 [paragraph]
+در شبیه‌سازی‌های این پژوهش، تعداد $S = 100$ توالی بیت مستقل هر یک به طول $10^6$ بیت (یک میلیون بیت) از تصاویر رمزشده خروجی الگوریتم در ۴ مجموعه‌داده مرجع \lr{(DRIVE, RITE, BraTS 2020, COVID{-}19 CXR)} استخراج شده و تحت آزمون‌های ۱۵گانه قرار گرفتند. نتایج کمّی شبیه‌سازی نشان می‌دهند که مقادیر $p\text{-value}$ تمام ۱۵ آزمون در بازه $[0.0125,\allowbreak{} 0.9850]$ قرار گرفته که به صورت کامل فراتر از آستانه $0.01$ می‌باشد. همچنین نرخ قبولی \lr{(Pass Rate / Proportion)} توالی‌ها در تمام آزمون‌ها بین ۹۸\SourceGlyph{066A} تا ۱۰۰\SourceGlyph{066A} ثبت گردیده است که فراتر از آستانه $96.0\%$ استاندارد \lr{NIST} قرار دارد \lr{[5, 8, 11]}.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:27-27 [spacing]
+
+
+% SOURCE NIST_Tests_Chapter4.txt:28-28 [paragraph]
+جدول و نمودار نتایج آزمون‌های ۱۵گانه تصادفی‌سازی استاندارد \lr{NIST SP800{-}22} در شکل ۴{-}۷ نشان داده شده است.\par
+
+% SOURCE NIST_Tests_Chapter4.txt:29-29 [spacing]
+
+
+% SOURCE NIST_Tests_Chapter4.txt:30-30 [image]
+\SourcePicture{chapter4_nist_table.png}{شکل ۴{-}۷: جدول نتایج آزمون‌های ۱۵گانه تصادفی‌سازی استاندارد \lr{NIST SP800{-}22}}{[شکل ۴{-}۷: جدول نتایج آزمون‌های ۱۵گانه تصادفی‌سازی استاندارد \lr{NIST SP800{-}22 {-} chapter4\_nist\_table.png}]}{0}
+% SOURCE Comparative_Analysis_Chapter4.txt:1-1 [heading]
+\SourceHeading{1}{۴{-}۱۰. تحلیل مقایسه‌ای با ۱۰ مقاله مرجع و سنجش کارایی زمان‌واقعی \lr{(Comparative Analysis \& Real{-}Time Performance)}}
+
+% SOURCE Comparative_Analysis_Chapter4.txt:2-2 [spacing]
+
+
+% SOURCE Comparative_Analysis_Chapter4.txt:3-3 [paragraph]
+ارزیابی انتقادی و تحلیل مقایسه‌ای عملکرد چارچوب‌های امنیتی پیشنهادی در برابر آخرین دستاوردهای علمی \lr{(State{-}of{-}the{-}Art)}، شرط لازم جهت اثبات نوآوری، برتری عملیاتی و اعتبار روش‌شناختی پایان‌نامه در جلسات دفاع دانشگاهی به شمار می‌رود. بسیاری از روش‌های رمزشناسی موجود در ادبیات تحقیق، یا صرفاً بر روی الگوریتم‌های رمزنگاری متمرکز بوده و از جای‌دهی فراداده بیمار \lr{(Steganography)} غافل شده‌اند، یا در صورت ارائه سیستم پنهان‌نگاری، موجب افت کیفیت دیداری بافت‌های تشخیصی و کاهش آنتروپی اطلاعات گردیده‌اند \lr{[1, 4, 5, 7]}. همچنین، بالا بودن پیچیدگی محاسباتی در برخی مدل‌های یادگیری عمیق، امکان پیاده‌سازی زمان‌واقعی آن‌ها را بر روی سخت‌افزارهای لبه محدود ساخته است \lr{[6, 9]}.\par
+
+% SOURCE Comparative_Analysis_Chapter4.txt:4-4 [spacing]
+
+
+% SOURCE Comparative_Analysis_Chapter4.txt:5-5 [paragraph]
+در این پژوهش، جهت اعتبارسنجی جامع، عملکرد سیستم هیبریدی پیشنهادی (شامل ترکیب قطعه‌بندی \lr{U{-}Net}، کلید پویا \lr{SHA{-}256}، سیستم ۵بعدی ابرآشوبی، انتشار پویای \lr{DNA}، و پنهان‌نگاری \lr{Saliency{-}aware}) در ۵ بعد اصلی با ۱۰ مقاله مرجع برجسته بین‌المللی منتشرشده در مجلات معتبر (بین سال‌های ۲۰۲۱ تا ۲۰۲۵) مورد مقایسه قرار گرفته است \lr{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}.\par
+
+% SOURCE Comparative_Analysis_Chapter4.txt:6-6 [spacing]
+
+
+% SOURCE Comparative_Analysis_Chapter4.txt:7-7 [paragraph]
+جدول ۴{-}۶ ماتریس جامع مقایسه کمّی چارچوب پیشنهادی با ۱۰ مقاله مرجع بین‌المللی را بر حسب مدالیته داده‌ها، آنتروپی اطلاعات، شاخص‌های تفاضلی (\lr{NPCR} و \lr{UACI})، کیفیت دیداری (\lr{PSNR} و \lr{SSIM}) و زمان اجرای کل نشان می‌دهد.\par
+
+% SOURCE Comparative_Analysis_Chapter4.txt:8-8 [spacing]
+
+
+% SOURCE Comparative_Analysis_Chapter4.txt:9-25 [table]
+\clearpage\begin{landscape}
+\begingroup\fontsize{12}{15}\selectfont\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\SourceCaption{lot}{جدول ۴{-}۶: ماتریس جامع مقایسه کمّی روش پیشنهادی با ۱۰ مقاله مرجع بین‌المللی}
+\begin{NoHyper}\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-12\tabcolsep)/6\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-12\tabcolsep)/6\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-12\tabcolsep)/6\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-12\tabcolsep)/6\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-12\tabcolsep)/6\relax}>{\raggedleft\arraybackslash}p{\dimexpr(\linewidth-12\tabcolsep)/6\relax}@{}}
+\toprule
+پژوهش مرجع & مدالیته داده‌ها & آنتروپی \lr{(Entropy)} & \lr{NPCR} \lr{(\%)} / \lr{UACI} \lr{(\%)} & \lr{PSNR} \lr{(dB)} / \lr{SSIM} & زمان اجرای کل (ثانیه) \\
+\midrule\endfirsthead
+پژوهش مرجع & مدالیته داده‌ها & آنتروپی \lr{(Entropy)} & \lr{NPCR} \lr{(\%)} / \lr{UACI} \lr{(\%)} & \lr{PSNR} \lr{(dB)} / \lr{SSIM} & زمان اجرای کل (ثانیه) \\\midrule\endhead
+\lr{Pourasad et al}. \lr{(2021)} \lr{[3]} & عمومی \lr{(Lena, Peppers)} & \lr{7.9950} & \lr{99.62\% / 33.12\%} & \SourceGlyph{003E} \lr{38 dB} / {-}{-} & \lr{1.85 s} \\
+\lr{Subathra et al}. \lr{(2025)} \lr{[1]} & \lr{DRIVE, RITE, Brain MRI} & \lr{7.9971} & \lr{99.61\% / 33.49\%} & {-}{-} / {-}{-} & \lr{2.93 s} \\
+\lr{Alarood et al}. \lr{(2023)} \lr{[2]} & عمومی و \lr{E{-}Health} & \SourceGlyph{007E} \lr{8.000} & \lr{99.61\% / 33.42\%} & {-}{-} / {-}{-} & \lr{4.12 s} \\
+\lr{Alshamrani et al}. \lr{(2025)} \lr{[5]} & تصاویر عمومی & {-}{-} & {-}{-} / {-}{-} & \SourceGlyph{003E} \lr{45 dB / 0.998} & \lr{0.85 s} \\
+\lr{Y\SourceGlyph{0131}ld\SourceGlyph{0131}r\SourceGlyph{0131}m} \lr{(2021)} \lr{[4]} & \lr{CT Scan} \lr{(COVID{-}19)} & \lr{7.9993} & \lr{99.80\% / 33.56\%} & {-}{-} / \lr{0.8337} \lr{(SSIM)} & \lr{3.50 s} \\
+\lr{Issac et al}. \lr{(2025)} \lr{[6]} & \lr{Brain MRI, Eye OCT} & {-}{-} & {-}{-} / {-}{-} & \lr{39.02 dB / 0.9757} & \lr{5.20 s} \\
+\lr{Saidi et al}. \lr{(2024)} \lr{[7]} & \lr{CHAOS Dataset} \lr{(CT/MRI)} & {-}{-} & {-}{-} / {-}{-} & \SourceGlyph{003E} \lr{48 dB / 0.992} & \lr{6.80 s} \\
+\lr{Husamuldeen et al}. \lr{(2025)} \lr{[8]} & \lr{MRI, CT, Fundus} & \lr{7.9988} & \lr{99.62\% / 36.30\%} & {-}{-} / {-}{-} & \lr{2.10 s} \\
+\lr{Kumar et al}. \lr{(2025)} \lr{[9]} & \lr{Breast, Brain MRI} & \lr{7.9993} & \lr{99.60\% / 33.37\%} & {-}{-} / {-}{-} & \lr{12.40 s} \\
+\lr{Preethi et al}. \lr{(2025)} \lr{[10]} & \lr{MRI and CT Scans} & \SourceGlyph{003E} \lr{7.990} & \lr{99.60\% / 33.40\%} & {-}{-} / {-}{-} & \lr{3.10 s} \\
+\textbf{چارچوب پیشنهادی این پایان‌نامه} & \lr{DRIVE, BraTS, COVID X{-}Ray} & \textbf{\lr{7.9985}} & \textbf{\lr{99.62\% / 33.51\%}} & \textbf{\lr{52.41 dB / 0.9982}} & \textbf{\lr{2.85 s} (روی \lr{NVIDIA Jetson TX2})} \\
+\bottomrule
+\end{longtable}\end{NoHyper}\endgroup
+\end{landscape}\clearpage
+
+% SOURCE Comparative_Analysis_Chapter4.txt:26-26 [spacing]
+
+
+% SOURCE Comparative_Analysis_Chapter4.txt:27-27 [paragraph]
+تحلیل تفصیلی بنچمارک مقایسه‌ای و دستاوردهای روش پیشنهادی در مقایسه با کارهای مرجع نشان می‌دهد که \lr{[1, 2, 4, 7, 9]}:\par
+
+% SOURCE Comparative_Analysis_Chapter4.txt:28-28 [spacing]
+
+
+% SOURCE Comparative_Analysis_Chapter4.txt:29-29 [paragraph]
+۱. \textbf{برتری در آنتروپی اطلاعات و تصادفی‌سازی:} روش پیشنهادی با دست‌یابی به آنتروپی متوسط \textbf{۷.۹۹۸۵ بیت}، خروجی‌های رمزشده‌ای کاملاً یکنواخت‌تر نسبت به الگوریتم‌های کلاسیک (مانند \lr{Pourasad 7.9950} و \lr{Subathra 7.9971}) ارائه می‌دهد \lr{[1, 3]}.\par
+
+% SOURCE Comparative_Analysis_Chapter4.txt:30-30 [paragraph]
+۲. \textbf{تعادل آرمانی در شاخص‌های تفاضلی (\lr{NPCR} و \lr{UACI}):} شاخص \lr{UACI} در برخی پژوهش‌ها (نظیر \lr{Husamuldeen 36.30\%}) دچار انحراف شدید از حد تئوریک \lr{(33.46\%)} گردیده است؛ در حالی که روش پیشنهادی با \textbf{\lr{NPCR=99.62\%}} و \textbf{\lr{UACI=33.51\%}} دقیقاً منطبق بر بازه آرمانی تئوریک قرار گرفته است \lr{[1, 8, 9]}.\par
+
+% SOURCE Comparative_Analysis_Chapter4.txt:31-31 [paragraph]
+۳. \textbf{دست‌یابی به بالاترین شفافیت دیداری \lr{(PSNR=52.41 dB)}:} در پژوهش‌های پنهان‌نگاری پیشین (مانند \lr{Issac 39.02 dB} و \lr{Saidi 48.00 dB})، جای‌دهی داده‌ها موجب افت محسوس \lr{PSNR} شده است؛ اما معماری پیشنهادی با جداسازی آگاه به برجستگی بصری \lr{(Saliency{-}aware)} و عدم دستخوردگی ۱۰۰\SourceGlyph{066A} ناحیه \lr{ROI}، به شاخص بی‌نظیر \textbf{۵۲.۴۱ دسی‌بل} و \textbf{\lr{SSIM=0.9982}} دست یافته است \lr{[4, 5, 6, 7]}.\par
+
+% SOURCE Comparative_Analysis_Chapter4.txt:32-32 [paragraph]
+۴. \textbf{ارزیابی کارایی زمان‌واقعی بر روی سخت‌افزار لبه \lr{(NVIDIA Jetson TX2)}:}\par
+
+% SOURCE Comparative_Analysis_Chapter4.txt:33-33 [paragraph]
+جهت سنجش عملیاتی در شبکه اینترنت اشیای پزشکی \lr{(IoMT)}، کدهای بهینه‌سازی‌شده بر روی پلتفرم پردازش لبه کم‌مصرف \lr{NVIDIA Jetson TX2} اجرا گردیدند. زمان اجرای کل برای یک تصویر پزشکی استاندارد به \textbf{۲.۸۵ ثانیه} رسید. تفکیک زمان اجرای اجزای مختلف سیستم شامل: ۱) قطعه‌بندی \lr{U{-}Net} و استخراج کلید هَش (۰.۸۲ ثانیه)، ۲) تولید توالی ۵بعدی ابرآشوبی (۰.۴۵ ثانیه)، ۳) جایگشت زیگ‌زاگی و انتشار \lr{DNA} (۰.۹۸ ثانیه)، و ۴) فشرده‌سازی \lr{zlib} و پنهان‌نگاری \lr{Saliency} (۰.۶۰ ثانیه) می‌باشد. فرمول‌بندی نرخ پردازش داده \lr{(Throughput)} و معیار کارایی لبه در رابطه ۴{-}۸ ارائه گردیده است \lr{[1, 6, 11]}.\par
+
+% SOURCE Comparative_Analysis_Chapter4.txt:34-34 [spacing]
+
+
+% SOURCE Comparative_Analysis_Chapter4.txt:35-35 [image]
+\SourcePicture{eq4_8_execution_time_throughput.png}{رابطه ۴{-}۸: فرمول‌بندی ریاضی زمان اجرای کل، نرخ پردازش داده \lr{(Throughput)} و معیار کارایی لبه \lr{IoMT}}{[رابطه ۴{-}۸: فرمول‌بندی ریاضی زمان اجرای کل، نرخ پردازش داده \lr{(Throughput)} و معیار کارایی لبه \lr{IoMT {-} eq4\_8\_execution\_time\_throughput.png}]}{2}
+
+% SOURCE Comparative_Analysis_Chapter4.txt:36-36 [spacing]
+
+
+% SOURCE Comparative_Analysis_Chapter4.txt:37-37 [paragraph]
+نمودار میله‌ای مقایسه‌ای آنتروپی اطلاعات و \lr{PSNR} روش پیشنهادی با مقالات مرجع ادبیات تحقیق در شکل ۴{-}۸ ارائه شده است.\par
+
+% SOURCE Comparative_Analysis_Chapter4.txt:38-38 [spacing]
+
+
+% SOURCE Comparative_Analysis_Chapter4.txt:39-39 [image]
+\SourcePicture{chapter4_comparative_chart.png}{شکل ۴{-}۸: نمودار میله‌ای مقایسه‌ای آنتروپی اطلاعات روش پیشنهادی با کارهای مرجع}{[شکل ۴{-}۸: نمودار میله‌ای مقایسه‌ای آنتروپی اطلاعات روش پیشنهادی با کارهای مرجع {-} \lr{chapter4\_comparative\_chart.png}]}{0}
+% SOURCE Summary_Chapter4.txt:1-1 [heading]
+\SourceHeading{1}{۴{-}۱۱. جمع‌بندی فصل چهارم \lr{(Chapter Summary \& Hypotheses Verification)}}
+
+% SOURCE Summary_Chapter4.txt:2-2 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:3-3 [paragraph]
+در این فصل، ارزیابی کمّی، پیاده‌سازی تجربی و اعتبارسنجی جامع سیستم امنیتی هیبریدی پیشنهادی بر روی ۴ مجموعه‌داده مرجع و بین‌المللی با مدالیته‌های متنوع تصویربرداری پزشکی (شامل تصاویر فاندوس شبکیه چشم \lr{DRIVE} و \lr{RITE}، تصاویر \lr{MRI} مغزی \lr{BraTS 2020}، و تصاویر رادیوگرافی قفسه سینه و سی‌تی اسکن ریه \lr{COVID{-}19 CXR}) به انجام رسید \lr{[1, 4, 8]}. تمامی پیاده‌سازی‌ها در محیط پایتون و بستر سخت‌افزاری کم‌مصرف پردازش لبه \lr{NVIDIA Jetson TX2} صورت پذیرفت تا قابلیت استقرار زمان‌واقعی سیستم در سامانه اینترنت اشیای پزشکی \lr{(IoMT)} و سلامت الکترونیک سنجیده شود \lr{[6, 11]}.\par
+
+% SOURCE Summary_Chapter4.txt:4-4 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:5-5 [paragraph]
+نتایج تجربی حاصل از شبیه‌سازی‌ها اثبات کردند که معماری چندلایه‌ای طراحی‌شده\SourceGlyph{2014}مبتنی بر تلفیق قطعه‌بندی عمیق \lr{U{-}Net}، استخراج کلید کل تصویر \lr{SHA{-}256}، نگاشت ۵بعدی ابرآشوبی، جایگشت زیگ‌زاگی و انتشار پویای \lr{DNA}، و پنهان‌نگاری آگاه به برجستگی بصری \lr{(Saliency{-}aware)} همراه با فشرده‌سازی \lr{zlib}\SourceGlyph{2014}به تمامی اهداف کمّی تعیین‌شده در طرح پژوهش دست یافته و هر سه فرضیه اصلی پایان‌نامه را به صورت قطعی اثبات نموده است \lr{[1, 2, 3, 4, 5, 7, 9]}:\par
+
+% SOURCE Summary_Chapter4.txt:6-6 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:7-7 [paragraph]
+۱. \textbf{تایید فرضیه اول (پویایی کلید و مقاومت تفاضلی):}\par
+
+% SOURCE Summary_Chapter4.txt:8-8 [paragraph]
+استخراج ویژگی‌های آماری ناحیه حساس تشخیصی \lr{(ROI)} و تولید کلید هَش ۲۵۶ بیتی $K_{\mathrm{hash}}$ موجب گردید تا سیستم نسبت به تغییر تنها یک پیکسل در تصویر ورودی حساسیت شدیدی \lr{(One{-}pixel change Sensitivity)} نشان دهد. دست‌یابی به شاخص‌های تفاضلی \textbf{$\mathrm{NPCR} = 99.6254\%$} (فراتر از آستانه قبولی $99.5693\%$) و \textbf{$\mathrm{UACI} = 33.5120\%$} و نرخ قبولی ۱۰۰ درصدی آزمون‌های تفاضلی، مقاومت مطلق سیستم در برابر حملات متن‌واضح برگزیده \lr{(CPA)} و معلوم \lr{(KPA)} را اثبات نمود \lr{[1, 8]}.\par
+
+% SOURCE Summary_Chapter4.txt:9-9 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:10-10 [paragraph]
+۲. \textbf{تایید فرضیه دوم (تصادفی‌سازی آرمانی، آنتروپی و آزمون‌های \lr{NIST}):}\par
+
+% SOURCE Summary_Chapter4.txt:11-11 [paragraph]
+ترکیب جایگشت مکانی زیگ‌زاگی و انتشار پویای \lr{DNA} مبتنی بر سیستم ۵بعدی ابرآشوبی، همبستگی مکانی پیکسل‌های مجاور را از $\OriginalMathText{\SourceGlyphFont ۰.۹۸۳۸}$ در تصویر اولیه به کمتر از \textbf{$\OriginalMathText{\SourceGlyphFont ۰.۰۰۰۸}$} در جهت‌های افقی، عمودی و قطری تنزل داد و هیستوگرام تصویر رمزشده را کاملاً تخت نمود ($\chi^2 < 293.2478$). دست‌یابی به متوسط آنتروپی شانون \textbf{$\bar{H}(m) = 7.9985 \approx 8.00$} و قبولی کامل در تمامی \textbf{۱۵ آزمون تصادفی‌سازی استاندارد \lr{NIST SP800{-}22}} با $p\text{-value} \ge 0.01$، رفتار شبه‌تصادفی غیرقابل پیش‌بینی خروجی‌ها را به اثبات رساند \lr{[3, 5, 9, 11]}.\par
+
+% SOURCE Summary_Chapter4.txt:12-12 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:13-13 [paragraph]
+۳. \textbf{تایید فرضیه سوم (حفظ کامل کیفیت دیداری بافت تشخیصی و پنهان‌نگاری):}\par
+
+% SOURCE Summary_Chapter4.txt:14-14 [paragraph]
+ماژول پنهان‌نگاری \lr{Saliency{-}aware} با جای‌دهی ۲ بیتی \lr{LSB} فراداده فشرده‌شده \lr{zlib} صرفاً در پس‌زمینه کم‌برجستگی، موجب صیانت ۱۰۰ درصدی از ناحیه \lr{ROI} گردید (\textbf{$\mathrm{PSNR}_{\mathrm{ROI}} = \infty$} و $\mathrm{MSE}_{\mathrm{ROI}} = 0$). همچنین، دست‌یابی به متوسط \textbf{$\mathrm{PSNR}_{\mathrm{Total}} = 52.41\mathrm{\ dB}$} (فراتر از حد آستانه $50\mathrm{\ dB}$)، شاخص شباهت ساختاری \textbf{$\mathrm{SSIM} = 0.9982$} و ظرفیت جای‌دهی \textbf{$1.18\mathrm{\ bpp}$}، شفافیت دیداری فوق‌العاده و اصالت بالینی تصویر استگو را تضمین نمود \lr{[4, 5, 7]}.\par
+
+% SOURCE Summary_Chapter4.txt:15-15 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:16-16 [paragraph]
+همچنین، ارزیابی‌های پایداری در برابر حملات کانال نشان داد که سیستم دارای ویژگی بازسازی‌پذیرانه خطاپذیر \lr{(Fault{-}Tolerant)} بوده و پس از رمزگشایی تحت نویزهای فلفل‌نمکی، گوسی و قطع ۵۰ درصدی داده‌ها \lr{(Cropping Attack)}، کیفیت دیداری بافت تشخیصی را با $\mathrm{PSNR} > 32.0\mathrm{\ dB}$ بازیابی می‌نماید \lr{[3, 9]}. زمان اجرای کل سیستم نیز بر روی پلتفرم \lr{NVIDIA Jetson TX2} برابر با \textbf{۲.۸۵ ثانیه} ثبت گردید که کارایی زمان‌واقعی آن را در شبکه \lr{IoMT} اثبات می‌کند \lr{[1, 6, 11]}.\par
+
+% SOURCE Summary_Chapter4.txt:17-17 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:18-18 [paragraph]
+فرمول‌بندی ریاضی وضعیت اثبات فرضیات سه‌گانه پایان‌نامه و شاخص‌های کلیدی در رابطه ۴{-}۹ ارائه گردیده است \lr{[1, 3, 5, 8]}.\par
+
+% SOURCE Summary_Chapter4.txt:19-19 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:20-20 [image]
+\SourcePicture{eq4_9_thesis_hypotheses_verification.png}{رابطه ۴{-}۹: فرمول‌بندی ریاضی وضعیت اثبات فرضیات سه‌گانه پایان‌نامه و شاخص‌های کلیدی}{[رابطه ۴{-}۹: فرمول‌بندی ریاضی وضعیت اثبات فرضیات سه‌گانه پایان‌نامه و شاخص‌های کلیدی {-} \lr{eq4\_9\_thesis\_hypotheses\_verification.png}]}{2}
+
+% SOURCE Summary_Chapter4.txt:21-21 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:22-22 [paragraph]
+نقشه راه تجربی، زنجیره ارزیابی کمّی و روند گام‌به‌گام اعتبارسنجی فصل چهارم در شکل ۴{-}۹ به تصویر کشیده شده است \lr{[1, 4, 8]}.\par
+
+% SOURCE Summary_Chapter4.txt:23-23 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:24-24 [image]
+\SourcePicture{chapter4_experimental_roadmap.png}{شکل ۴{-}۹: نقشه راه تجربی و زنجیره ارزیابی کمّی فصل چهارم}{[شکل ۴{-}۹: نقشه راه تجربی و زنجیره ارزیابی کمّی فصل چهارم {-} \lr{chapter4\_experimental\_roadmap.png}]}{0}
+
+% SOURCE Summary_Chapter4.txt:25-25 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:26-26 [paragraph]
+دستاوردهای تجربی و بنچمارک کمّی حاصل از این فصل، بستر لازم را برای جمع‌بندی نهایی پایان‌نامه، تحلیل نهایی خطاورزی و ارائه پیشنهادات پژوهشی آتی در فصل پنجم فراهم می‌سازد.\par
+
+% SOURCE Summary_Chapter4.txt:27-27 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:28-28 [spacing]
+
+
+% SOURCE Summary_Chapter4.txt:29-29 [reference-moved]
+
+
+% SOURCE Summary_Chapter4.txt:30-30 [reference-moved]
+
+
+% SOURCE Summary_Chapter4.txt:31-31 [reference-moved]
+
+
+% SOURCE Summary_Chapter4.txt:32-32 [reference-moved]
+
+
+% SOURCE Summary_Chapter4.txt:33-33 [reference-moved]
+
+
+% SOURCE Summary_Chapter4.txt:34-34 [reference-moved]
+
+
+% SOURCE Summary_Chapter4.txt:35-35 [reference-moved]
+
+
+% SOURCE Summary_Chapter4.txt:36-36 [reference-moved]
+
+
+% SOURCE Summary_Chapter4.txt:37-37 [reference-moved]
+
+
+% SOURCE Summary_Chapter4.txt:38-38 [reference-moved]
+
+
+% SOURCE Summary_Chapter4.txt:39-39 [reference-moved]
+
+
+% SOURCE Summary_Chapter4.txt:40-40 [reference-moved]
+
+
+% SOURCE Summary_Chapter4.txt:41-41 [reference-moved]
+

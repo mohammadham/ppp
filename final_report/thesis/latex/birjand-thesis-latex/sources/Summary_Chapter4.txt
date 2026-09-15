@@ -1,0 +1,40 @@
+۴-۱۱. جمع‌بندی فصل چهارم (Chapter Summary & Hypotheses Verification)
+
+در این فصل، ارزیابی کمّی، پیاده‌سازی تجربی و اعتبارسنجی جامع سیستم امنیتی هیبریدی پیشنهادی بر روی ۴ مجموعه‌داده مرجع و بین‌المللی با مدالیته‌های متنوع تصویربرداری پزشکی (شامل تصاویر فاندوس شبکیه چشم DRIVE و RITE، تصاویر MRI مغزی BraTS 2020، و تصاویر رادیوگرافی قفسه سینه و سی‌تی اسکن ریه COVID-19 CXR) به انجام رسید [1, 4, 8]. تمامی پیاده‌سازی‌ها در محیط پایتون و بستر سخت‌افزاری کم‌مصرف پردازش لبه NVIDIA Jetson TX2 صورت پذیرفت تا قابلیت استقرار زمان‌واقعی سیستم در سامانه اینترنت اشیای پزشکی (IoMT) و سلامت الکترونیک سنجیده شود [6, 11].
+
+نتایج تجربی حاصل از شبیه‌سازی‌ها اثبات کردند که معماری چندلایه‌ای طراحی‌شده—مبتنی بر تلفیق قطعه‌بندی عمیق U-Net، استخراج کلید کل تصویر SHA-256، نگاشت ۵بعدی ابرآشوبی، جایگشت زیگ‌زاگی و انتشار پویای DNA، و پنهان‌نگاری آگاه به برجستگی بصری (Saliency-aware) همراه با فشرده‌سازی zlib—به تمامی اهداف کمّی تعیین‌شده در طرح پژوهش دست یافته و هر سه فرضیه اصلی پایان‌نامه را به صورت قطعی اثبات نموده است [1, 2, 3, 4, 5, 7, 9]:
+
+۱. **تایید فرضیه اول (پویایی کلید و مقاومت تفاضلی):**
+استخراج ویژگی‌های آماری ناحیه حساس تشخیصی (ROI) و تولید کلید هَش ۲۵۶ بیتی $K_{\mathrm{hash}}$ موجب گردید تا سیستم نسبت به تغییر تنها یک پیکسل در تصویر ورودی حساسیت شدیدی (One-pixel change Sensitivity) نشان دهد. دست‌یابی به شاخص‌های تفاضلی **$\mathrm{NPCR} = 99.6254\%$** (فراتر از آستانه قبولی $99.5693\%$) و **$\mathrm{UACI} = 33.5120\%$** و نرخ قبولی ۱۰۰ درصدی آزمون‌های تفاضلی، مقاومت مطلق سیستم در برابر حملات متن‌واضح برگزیده (CPA) و معلوم (KPA) را اثبات نمود [1, 8].
+
+۲. **تایید فرضیه دوم (تصادفی‌سازی آرمانی، آنتروپی و آزمون‌های NIST):**
+ترکیب جایگشت مکانی زیگ‌زاگی و انتشار پویای DNA مبتنی بر سیستم ۵بعدی ابرآشوبی، همبستگی مکانی پیکسل‌های مجاور را از $۰.۹۸۳۸$ در تصویر اولیه به کمتر از **$۰.۰۰۰۸$** در جهت‌های افقی، عمودی و قطری تنزل داد و هیستوگرام تصویر رمزشده را کاملاً تخت نمود ($\chi^2 < 293.2478$). دست‌یابی به متوسط آنتروپی شانون **$\bar{H}(m) = 7.9985 \approx 8.00$** و قبولی کامل در تمامی **۱۵ آزمون تصادفی‌سازی استاندارد NIST SP800-22** با $p\text{-value} \ge 0.01$، رفتار شبه‌تصادفی غیرقابل پیش‌بینی خروجی‌ها را به اثبات رساند [3, 5, 9, 11].
+
+۳. **تایید فرضیه سوم (حفظ کامل کیفیت دیداری بافت تشخیصی و پنهان‌نگاری):**
+ماژول پنهان‌نگاری Saliency-aware با جای‌دهی ۲ بیتی LSB فراداده فشرده‌شده zlib صرفاً در پس‌زمینه کم‌برجستگی، موجب صیانت ۱۰۰ درصدی از ناحیه ROI گردید (**$\mathrm{PSNR}_{\mathrm{ROI}} = \infty$** و $\mathrm{MSE}_{\mathrm{ROI}} = 0$). همچنین، دست‌یابی به متوسط **$\mathrm{PSNR}_{\mathrm{Total}} = 52.41\mathrm{\ dB}$** (فراتر از حد آستانه $50\mathrm{\ dB}$)، شاخص شباهت ساختاری **$\mathrm{SSIM} = 0.9982$** و ظرفیت جای‌دهی **$1.18\mathrm{\ bpp}$**، شفافیت دیداری فوق‌العاده و اصالت بالینی تصویر استگو را تضمین نمود [4, 5, 7].
+
+همچنین، ارزیابی‌های پایداری در برابر حملات کانال نشان داد که سیستم دارای ویژگی بازسازی‌پذیرانه خطاپذیر (Fault-Tolerant) بوده و پس از رمزگشایی تحت نویزهای فلفل‌نمکی، گوسی و قطع ۵۰ درصدی داده‌ها (Cropping Attack)، کیفیت دیداری بافت تشخیصی را با $\mathrm{PSNR} > 32.0\mathrm{\ dB}$ بازیابی می‌نماید [3, 9]. زمان اجرای کل سیستم نیز بر روی پلتفرم NVIDIA Jetson TX2 برابر با **۲.۸۵ ثانیه** ثبت گردید که کارایی زمان‌واقعی آن را در شبکه IoMT اثبات می‌کند [1, 6, 11].
+
+فرمول‌بندی ریاضی وضعیت اثبات فرضیات سه‌گانه پایان‌نامه و شاخص‌های کلیدی در رابطه ۴-۹ ارائه گردیده است [1, 3, 5, 8].
+
+[رابطه ۴-۹: فرمول‌بندی ریاضی وضعیت اثبات فرضیات سه‌گانه پایان‌نامه و شاخص‌های کلیدی - eq4_9_thesis_hypotheses_verification.png]
+
+نقشه راه تجربی، زنجیره ارزیابی کمّی و روند گام‌به‌گام اعتبارسنجی فصل چهارم در شکل ۴-۹ به تصویر کشیده شده است [1, 4, 8].
+
+[شکل ۴-۹: نقشه راه تجربی و زنجیره ارزیابی کمّی فصل چهارم - chapter4_experimental_roadmap.png]
+
+دستاوردهای تجربی و بنچمارک کمّی حاصل از این فصل، بستر لازم را برای جمع‌بندی نهایی پایان‌نامه، تحلیل نهایی خطاورزی و ارائه پیشنهادات پژوهشی آتی در فصل پنجم فراهم می‌سازد.
+
+
+فهرست مراجع (IEEE Reference List)
+
+[1] S. Subathra and V. Thanikaiselvan, "Enhanced security for medical images using a new 5D hyper chaotic map and deep learning based segmentation," Scientific Reports, vol. 15, no. 1, p. 4906, 2025.
+[2] A. A. Alarood, M. Faheem, M. A. Al-Khasawneh, A. I. A. Alzahrani, and A. A. Alshdadi, "Secure medical image transmission using deep neural network in e-health applications," Healthcare Technology Letters, vol. 10, no. 4, pp. 87–98, 2023.
+[3] Y. Pourasad, R. Ranjbarzadeh, and A. Mardani, "A new algorithm for digital image encryption based on chaos theory," Entropy, vol. 23, no. 3, p. 341, 2021.
+[4] M. Yildirim, "Steganography-based voice hiding in medical images of COVID-19 patients," International Journal of Imaging Systems and Technology, vol. 31, no. 4, pp. 1678–1694, 2021.
+[5] H. Alshamrani, S. Alajmani, R. Y. Alyami, and B. Soh, "Comprehensive comparison of image steganography techniques with security enhancement," International Journal of Recent Technology and Engineering (IJRTE), vol. 14, no. 2, 2025.
+[6] B. M. Issac, S. N. Kumar, S. Zafar, K. A. Shakil, and M. A. Wani, "Deep learning steganography for big data security using squeeze and excitation with inception architectures," Scientific Reports, vol. 15, no. 1, p. 16394, 2025.
+[7] H. Saidi, O. Tibermacine, and A. Elhadad, "High-capacity data hiding for medical images based on the mask-RCNN model," Scientific Reports, vol. 14, no. 1, p. 55639, 2024.
+[8] Z. S. Husamuldeen, T. M. Salman, and A. Miry, "Medical image encryption using chaotic algorithms and deep learning," International Journal of Intelligent Engineering and Systems, vol. 18, no. 6, pp. 285–299, 2025.
+[9] M. Kumar, A. S. Chivukula, and G. Barua, "Deep learning-based encryption scheme for medical images using DCGAN and virtual planet domain," Scientific Reports, vol. 15, no. 1, p. 84186, 2025.
+[10] M. S. L. Preethi, S. V. Lokesh, and B. G. Reddy, "Advanced chaotic asymmetric cryptosystems for securing medical imaging data," IRJIET, vol. 9, no. ICCIS-2025, pp. 40–47, 2025.

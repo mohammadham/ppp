@@ -1,0 +1,43 @@
+{
+  "status": "complete",
+  "updated_at": "2026-09-15T14:44:52.668862+00:00",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "فصل اول: کلیات پژوهش",
+      "source_count": 9,
+      "tex_file": "chapters/chapter01.tex"
+    },
+    {
+      "number": 2,
+      "title": "فصل دوم: مبانی نظری و پیشینه پژوهش",
+      "source_count": 4,
+      "tex_file": "chapters/chapter02.tex"
+    },
+    {
+      "number": 3,
+      "title": "فصل سوم: روش پیشنهادی و معماری سیستم",
+      "source_count": 7,
+      "tex_file": "chapters/chapter03.tex"
+    },
+    {
+      "number": 4,
+      "title": "فصل چهارم: طرح آزمایش‌ها، شبیه‌سازی و ارزیابی نتایج کمّی",
+      "source_count": 11,
+      "tex_file": "chapters/chapter04.tex"
+    },
+    {
+      "number": 5,
+      "title": "فصل پنجم: نتیجه‌گیری، جمع‌بندی و پیشنهادها",
+      "source_count": 8,
+      "tex_file": "chapters/chapter05.tex"
+    }
+  ],
+  "totals": {
+    "sections": 39,
+    "image_placements": 52,
+    "missing_images": 0,
+    "tables": 7,
+    "code_blocks": 8
+  }
+}
