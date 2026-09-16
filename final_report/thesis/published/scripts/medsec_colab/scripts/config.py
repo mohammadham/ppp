@@ -14,7 +14,7 @@ def validate(c):
     missing = [n for n in names if c['parameters'].get(n) is None]
     if missing:
         if c['system'] == 'equation_3_2':
-            raise ValueError('پارامترهای تعیین‌نشدهٔ رابطهٔ ۳-۲: ' + ', '.join(missing) +
+            raise ValueError('پارامترهای رابطه ۳-۲ تعیین‌نشده‌اند: ' + ', '.join(missing) +
                              ' — یا عددها را در پروفایل مستند خودتان تعیین کنید یا PROFILE را صریحاً به '
                              'scripts/appendix_experiment.json (اعداد مستند پیوست پایان‌نامه) تغییر دهید.')
         raise ValueError('پارامترهای تعیین‌نشدهٔ سیستم پیوست: ' + ', '.join(missing))
