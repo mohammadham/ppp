@@ -147,4 +147,5 @@ def stream(digest, n, cfg=None, transient=1000, dt=0.0005, scale=1e14, raw=False
 def rhs(s, p, variant):
     return rhs_5d(s, p, variant)
 
+rhs = rhs_5d
 step = step_rk4
