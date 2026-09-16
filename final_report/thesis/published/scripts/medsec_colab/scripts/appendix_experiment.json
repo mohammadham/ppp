@@ -2,16 +2,16 @@
   "profile": "subathra_2025_5d_hyperchaos",
   "system": "subathra_2025",
   "parameters": {
-    "a": 40.0,     # gamma
-    "b": 8.0,      # beta
-    "c": 1.0,      # partial
-    "d": -0.5,     # epsilon
-    "e": -0.5      # vartheta
+    "a": 40.0,
+    "b": 8.0,
+    "c": 1.0,
+    "d": -0.5,
+    "e": -0.5
   },
   "parameter_source": "Subathra & Thanikaiselvan (2025, Nature Scientific Reports); 5D hyperchaotic system with gamma=40, beta=8, partial=1, epsilon=-0.5, vartheta=-0.5; rho=25.5, kappa=0.05 (see experiments.py for full parameter set)",
   "dt": 0.0005,
   "transient": 1000,
-  "scale": 1e14,
+  "scale": 100000000000000.0,
   "hash_mapping": "appendix_fraction",
   "dna_variant": "pseudocode_3_3",
   "saliency_quantile": 0.6,
