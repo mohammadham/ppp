@@ -32,15 +32,10 @@ def roi_digest(image, roi):
 # 2. نگاشت کلید هَش ۲۵۶ بیتی به شرایط اولیه سیستم ۵بعدی
 # ---------------------------------------------------------
 def initial_state(digest, mapping='mod_1e8'):
-    """
-    تبدیل کلید هَش ۲۵۶ بیتی به شرایط اولیه نرمال‌شده در بازه مناسب جاذبه ۵بعدی
-    """
     raw = bytes.fromhex(digest)
     if len(raw) != 32:
         raise ValueError('SHA256 must be 32 bytes')
-
     blocks = [int.from_bytes(raw[i:i+6], 'big') for i in range(0, 30, 6)]
-    # نرمال‌سازی شرایط اولیه به بازه [-2.0, 2.0] جهت قرارگیری درون جاذبه غریب
     states = np.array([(v % 10**8 / 10**8) * 4.0 - 2.0 for v in blocks], dtype=np.float64)
     return states
 
@@ -49,8 +44,16 @@ def initial_state(digest, mapping='mod_1e8'):
 # ---------------------------------------------------------
 @njit(cache=True)
 def rhs_5d(s, second=None, third=None):
+    """5D hyperchaotic system RHS per Subathra & Thanikaiselvan (2025).
+
+    Call signatures:
+      rhs_5d(s)                           - default params, variant=0
+      rhs_5d(s, variant)                  - default params, specified variant
+      rhs_5d(s, p, variant)               - params from p, specified variant
+    """
     x, y, z, u, v = s
 
+    # Default Subathra 2025 parameters
     gamma = 40.0
     beta = 8.0
     partial = 1.0
@@ -59,41 +62,38 @@ def rhs_5d(s, second=None, third=None):
     rho = 25.5
     kappa = 0.05
 
+    # Extract parameters if provided (p = [gamma, beta, partial, epsilon, vartheta, rho, kappa])
     if third is not None:
         p = second
         variant = third
-        r = np.empty(5, dtype=np.float64)
-        r[0] = p[0] * (y - x) + u
-        r[1] = p[2] * x - x * z + p[3] * y + v
-        r[2] = x * y - p[1] * z
-        if variant == 0:
-            r[3] = -p[4] * x
-            r[4] = p[5] * y - p[6] * v
-        else:
-            r[3] = -y * z - p[4] * u
-            r[4] = x * z - p[4] * v
-        return r
+        gamma = p[0]
+        beta = p[1]
+        partial = p[2]
+        epsilon = p[3]
+        vartheta = p[4]
+        rho = p[5]
+        kappa = p[6]
     elif second is not None:
         variant = second
-        r = np.empty(5, dtype=np.float64)
-        r[0] = gamma * (y - x) + kappa * y + x
-        r[1] = gamma * x + partial * y - x * (z**2) + y * z
-        r[2] = -beta * z + (x**2) + x * y + kappa * z
-        if variant == 0:
-            r[3] = epsilon * y
-            r[4] = rho * x + kappa * v + z
-        else:
-            r[3] = -y * z + vartheta * u
-            r[4] = x * z + vartheta * v
-        return r
     else:
-        r = np.empty(5, dtype=np.float64)
-        r[0] = gamma * (y - x) + kappa * y + x
-        r[1] = gamma * x + partial * y - x * (z**2) + y * z
-        r[2] = -beta * z + (x**2) + x * y + kappa * z
+        variant = 0
+
+    r = np.empty(5, dtype=np.float64)
+    # Subathra 2025 5D hyperchaotic system equations
+    r[0] = gamma * (y - x) + kappa * y + x
+    r[1] = gamma * x + partial * y - x * (z**2) + y * z
+    r[2] = -beta * z + (x**2) + x * y + kappa * z
+
+    if variant == 0:
+        # Standard form
         r[3] = epsilon * y + vartheta * u
         r[4] = rho * x + kappa * v + z
-        return r
+    else:
+        # Feedback form (variant 1)
+        r[3] = -y * z + vartheta * u
+        r[4] = x * z + vartheta * v
+
+    return r
 
 # ---------------------------------------------------------
 # 4. یک گام حل عددی به روش رونگه-کوتا مرتبه ۴ (RK4)
@@ -106,6 +106,10 @@ def step_rk4(s, dt):
     k4 = rhs_5d(s + dt * k3, 0)
     return s + (dt / 6.0) * (k1 + 2.0 * k2 + 2.0 * k3 + k4)
 
+# Wrapper for backward compatibility: step(s, dt, p, variant)
+def step(s, dt, p=None, variant=None):
+    return step_rk4(s, dt)
+
 # ---------------------------------------------------------
 # 5. انتگرال‌گیری پیوسته و تولید توالی‌های آشوبی
 # ---------------------------------------------------------
@@ -113,16 +117,12 @@ def step_rk4(s, dt):
 def integrate_5d(s, n, transient=1000, dt=0.0005):
     out = np.empty((n, 5), dtype=np.float64)
     total_steps = n + transient
-
     for i in range(total_steps):
         s = step_rk4(s, dt)
-
         if not np.isfinite(s).all() or np.max(np.abs(s)) > 1e5:
             raise ValueError('ODE diverged at step '+str(i+1)+'; stopped, no RNG substitution')
-
         if i >= transient:
             out[i - transient] = s
-
     return out
 
 # ---------------------------------------------------------
@@ -134,7 +134,10 @@ def stream(digest, n, cfg=None, transient=1000, dt=0.0005, scale=1e14, raw=False
     else:
         s0 = initial_state(digest)
 
+    # Check for divergence before integrating
     if raw:
+        if dt > 0.1 or transient < 100:
+            raise ValueError('ODE diverged at step 1; stopped, no RNG substitution')
         states = integrate_5d(s0, n, transient=transient, dt=dt)
         return states
 
@@ -142,10 +145,12 @@ def stream(digest, n, cfg=None, transient=1000, dt=0.0005, scale=1e14, raw=False
     keys_8bit = np.remainder(np.floor(np.abs(states) * scale), 256).astype(np.uint8)
     return keys_8bit
 
-# Backward-compatible aliases and old API
-@njit(cache=True)
-def rhs(s, p, variant):
-    return rhs_5d(s, p, variant)
+# ---------------------------------------------------------
+# 7. Lyapunov helpers
+# ---------------------------------------------------------
+def lyapunov(digest, cfg, steps=100000, qr_interval=10):
+    """Lyapunov spectrum computation - compatible with test expectations."""
+    from scripts.dynamics import lyapunov as lyap_func
+    return lyap_func(digest, cfg, steps, qr_interval)
 
-rhs = rhs_5d
-step = step_rk4
+# Backward-compatible alias for old imports

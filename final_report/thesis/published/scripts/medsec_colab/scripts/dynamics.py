@@ -1,7 +1,7 @@
 """Finite-time Lyapunov spectrum: coupled variational RK4 with QR reorthogonalization."""
 import numpy as np
 from numba import njit
-from .chaos import rhs, step, initial_state
+from .chaos import rhs_5d, step, initial_state
 from .config import ode_parameters
 from .artifacts import environment, write_json
 
@@ -23,10 +23,10 @@ def jacobian(s, p, variant):
 @njit(cache=True)
 def variational_steps(s, q, count, dt, p, variant):
     for _ in range(count):
-        a = rhs(s, p, variant); A = jacobian(s, p, variant) @ q
-        b = rhs(s+dt*a/2, p, variant); B = jacobian(s+dt*a/2, p, variant) @ (q+dt*A/2)
-        c = rhs(s+dt*b/2, p, variant); C = jacobian(s+dt*b/2, p, variant) @ (q+dt*B/2)
-        d = rhs(s+dt*c, p, variant); D = jacobian(s+dt*c, p, variant) @ (q+dt*C)
+        a = rhs_5d(s, p, variant); A = jacobian(s, p, variant) @ q
+        b = rhs_5d(s+dt*a/2, p, variant); B = jacobian(s+dt*a/2, p, variant) @ (q+dt*A/2)
+        c = rhs_5d(s+dt*b/2, p, variant); C = jacobian(s+dt*b/2, p, variant) @ (q+dt*B/2)
+        d = rhs_5d(s+dt*c, p, variant); D = jacobian(s+dt*c, p, variant) @ (q+dt*C)
         s = s+dt*(a+2*b+2*c+d)/6; q = q+dt*(A+2*B+2*C+D)/6
         if not np.isfinite(s).all() or not np.isfinite(q).all() or np.max(np.abs(s)) > 1e12:
             raise ValueError('Variational system diverged; no Lyapunov conclusion')

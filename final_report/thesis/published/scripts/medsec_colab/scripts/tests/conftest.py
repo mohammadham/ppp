@@ -40,8 +40,8 @@ def _tiny_sample(seed: int, size: int = 32):
 def stable_cfg():
     return {
         "profile": "software_test_only_stable",
-        "system": "equation_3_2",
-        "parameters": {"a": 1.0, "b": 1.0, "c": 0.0, "d": -1.0, "k": 0.0, "h": 0.0, "w": 1.0},
+        "system": "subathra_2025",
+        "parameters": {"a": 40.0, "b": 8.0, "c": 1.0, "d": -0.5, "e": -0.5, "k": 0.05, "h": 25.5},
         "parameter_source": "SOFTWARE TEST ONLY stable fixture",
         "dt": 0.001,
         "transient": 10,
