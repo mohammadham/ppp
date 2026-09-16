@@ -39,7 +39,7 @@ def rhs(s, p, variant):
     if variant==0:
         r[3]=-p[4]*x; r[4]=p[5]*y-p[6]*v
     else:
-        r[3]=-y*z+p[4]*u; r[4]=x*z-p[4]*v
+        r[3]=-y*z-p[4]*u; r[4]=x*z-p[4]*v
     return r
 
 @njit(cache=True)

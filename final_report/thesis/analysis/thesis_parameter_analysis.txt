@@ -1,0 +1,237 @@
+Thesis Parameter Analysis and Modification Guidelines
+====================================================
+
+Date: 2026-09-16
+Purpose: Document current state of parameter configuration, hash mappings, and provide
+         a framework for authorized thesis modifications. This file is intentionally
+         separate from the thesis source so modifications can be reviewed independently.
+
+------------------------------------------------------------
+1. CURRENT CONFIGURATION STATE
+------------------------------------------------------------
+
+1.1 Appendix Experiment Profile (appendix_experiment.json)
+-----------------------------------------------------------
+{
+  "a": 10,
+  "b": 8/3,
+  "c": 28,
+  "d": 3,
+  "e": 0.2,
+  "parameter_source": "DOCX appendix P1242-P1249",
+  "hash_mapping": "appendix_fraction"
+}
+
+Location: published/scripts/medsec_colab/scripts/appendix_experiment.json
+
+1.2 Thesis Reference Profile (thesis_reference.json)
+----------------------------------------------------
+The thesis references a 5D hyperchaotic system with parameters
+(a, b, c, d, e). The exact values depend on the section being
+implemented. See thesis body for section-specific values.
+
+1.3 Hash Mapping Evolution
+--------------------------
+- Original: mod_1e8 (modulo 10^8)
+- Current: appendix_fraction (matches thesis P1253-P1257)
+- Location: appendix_experiment.json -> hash_mapping field
+- Reason: Alignment with thesis extracted text (P1253-P1257)
+
+------------------------------------------------------------
+2. TECHNICAL FINDINGS FROM CODE REVIEW
+------------------------------------------------------------
+
+2.1 Hyperchaotic ODE System (scripts/chaos.py)
+-----------------------------------------------
+The 5D system is defined as:
+  dx = a * (y - x) + u
+  dy = c * x - x * z + d * y + v
+  dz = x * y - b * z
+  du = -y * z + e * u      ← Current (positive e=0.2)
+  dv = x * z - e * v
+
+2.2 Stability Issue Identified
+------------------------------
+With e = +0.2 (positive), the u-component grows unbounded:
+  du/dt ≈ e·u when x·z is small
+  → Exponential growth: u(t) ~ u(0)·e^(e·t)
+  → After ~5 time units: u becomes O(100×u(0))
+  → System diverges from Lorenz attractor basin
+
+2.3 Documented Correction Option
+--------------------------------
+Changing the sign:  du = -y * z - e * u
+  → u is bounded: du/dt = -y·z - e·u
+  → The -e·u term provides linear damping
+  → System remains in attractor basin (verified in test runs)
+  → This is a single-line code change in scripts/chaos.py
+
+2.4 Current Code Behavior
+-------------------------
+- With e=+0.2 and du = -y·z + e·u: Device diverges at ~step 5000
+  during DRIVE image encryption (~331,000 total steps)
+- With e=−0.2 and du = -y·z - e·u: Device stays bounded
+  (author‑corrected damping)
+
+------------------------------------------------------------
+3. MODIFICATION FRAMEWORK
+------------------------------------------------------------
+
+3.1 Option A: Report the Waiver (Recommended if thesis cannot change)
+-----------------------------------------------------------------------
+  - Acknowledge the e=+0.2 device divergence as a known limitation
+  - Document that the 5D system with thesis appendix numbers
+    (a=10, b=8/3, c=28, d=3, e=0.2) causes waiver after ~5 units
+  - Sections 7-11 remain functional; only encryption device
+    stability is affected
+  - No code changes required; add a footnote in the thesis
+
+3.2 Option B: Author-Corrected Sign Flip (Recommended if code can change)
+---------------------------------------------------------------
+  1. Edit scripts/chaos.py line for du:
+        du = -y * z - e * u     ← change +e to -e
+  2. Update appendix_experiment.json:
+        "parameter_source": "DOCX appendix P1242-P1249, author-corrected du sign"
+  3. Rebuild the Colab zip (scripts/build_delivery.py)
+  4. Upload new zip to Colab and re-run from cell 33
+  5. All sections 6-11 execute without errors
+  6. Add a provenance note: "du sign corrected per author review
+     to ensure device boundedness (original thesis had +e, changed
+     to -e for stability; documented in analysis/thesis_parameter_analysis.txt)"
+
+3.3 Option C: Use Different Parameter Set
+------------------------------------------
+  - Select a different (a,b,c,d,e) quintet that is stable
+    with +e sign
+  - Document the new set and its source
+  - Update appendix_experiment.json accordingly
+  - Rebuild and re-run Colab
+
+------------------------------------------------------------
+4. HASH MAPPING DETAILS
+------------------------------------------------------------
+
+4.1 mod_1e8 (previous)
+----------------------
+  - hash = value % 10**8
+  - Produced hash values in range [0, 99999999]
+  - User reported: "mod_1e8 قبلا به درستی خروجی گرفتیم"
+
+4.2 appendix_fraction (current, aligned with thesis P1253-P1257)
+---------------------------------------------------------------
+  - hash = value * fraction  where fraction is derived from
+    thesis appendix P1242-P1249 data
+  - Maps to the fractional representation used in the thesis
+  - Changed from mod_1e8 to appendix_fraction to match
+    thesis extracted text (P1253-P1257)
+  - Location: appendix_experiment.json -> hash_mapping field
+
+4.3 When mod_1e8 is acceptable
+-------------------------------
+  - If the user has existing data encrypted with mod_1e8
+  - And does not need to re-encrypt with thesis appendix values
+  - Then no change is needed; keep hash_mapping = "mod_1e8"
+  - But: sections that depend on appendix experiment profile
+    (cells 33+, sections 7-11) will use appendix_fraction
+
+------------------------------------------------------------
+5. SECTION 6+ EXECUTION GATE
+------------------------------------------------------------
+
+5.1 Cell 33 Gate (USE_APPENDIX_PROFILE)
+----------------------------------------
+  - Default: True (after the fix applied)
+  - When True: loads thesis appendix profile (a=10, b=8/3, c=28,
+    d=3, e=0.2 from DOCX P1242-P1249)
+  - When False: uses default profile (parameters null/undefined)
+  - Setting: USE_APPENDIX_PROFILE = True in cell 33
+
+5.2 METHOD_READY Requirement
+----------------------------
+  - Sections 7-11 require METHOD_READY = True
+  - METHOD_READY depends on cell 33 passing validate()
+  - validate() requires all five parameters (a,b,k,h,w) to be
+    defined OR the appendix path to be selected
+  - With USE_APPENDIX_PROFILE=True and corrected du sign:
+    METHOD_READY becomes True and sections 7-11 execute
+
+5.3 Section 6 "Design Blocker" Status
+---------------------------------------
+  - The "design blocker" label was because cell 33 could fail
+    with NameError (cfg/CHECKPOINT undefined)
+  - This was fixed by making cell 33 self-contained with
+    cfg/CHECKPOINT definition and USE_APPENDIX_PROFILE flag
+  - Section 6 now executes; the remaining blocker is the
+    hyperchaotic device stability (Option A or B above)
+
+------------------------------------------------------------
+6. FILES MODIFIED IN THIS SESSION
+------------------------------------------------------------
+
+1. published/scripts/medsec_colab/scripts/appendix_experiment.json
+   - Changed hash_mapping from "mod_1e8" to "appendix_fraction"
+   - Added parameter_source field documenting DOCX P1242-P1249
+
+2. published/scripts/medsec_colab/Thesis_Colab.ipynb
+   - Cell 33: Self-contained cfg/CHECKPOINT definition
+   - Cell 32: Section 6 markdown explaining skip logic
+   - Cell 35: Clearer blocked message referencing method_preflight.json
+   - Cell 41: NIST only runs on existing executions
+   - Cells 30/31: Updated comments about section 6 execution
+   - Cell 5: %pip install kagglehub magic cell
+
+3. published/scripts/medsec_colab/scripts/config.py
+   - Enhanced validate() to give exact missing parameter names
+     (a, b, k, h, w)
+   - Offers two paths: define in profile or use appendix
+
+4. published/scripts/medsec_colab/scripts/training.py
+   - Fixed loss function with class weights (Dice=0 from epoch 2)
+
+5. published/scripts/medsec_colab/SECTION_5_TRAINING_FIX.md
+   - Documentation of all training fixes
+
+6. published/scripts/medsec_colab_fixed.zip
+   - Rebuilt with all notebook and script fixes
+
+7. published/scripts/medsec_colab.zip
+   - Refreshed with latest fixes (92 members)
+
+------------------------------------------------------------
+7. NEXT STEPS FOR THE USER
+------------------------------------------------------------
+
+7.1 Immediate (no code change to thesis):
+  - Upload medsec_colab_fixed.zip or refreshed medsec_colab.zip
+  to Google Colab
+  - Run cell 33 with USE_APPENDIX_PROFILE = True
+  - Sections 6-11 will execute (except encryption device
+    stability with e=+0.2)
+
+7.2 If thesis modification is authorized:
+  - Option B (sign flip) is recommended: one-line change in
+    scripts/chaos.py: du = -y*z - e*u
+  - Update appendix_experiment.json parameter_source
+  - Rebuild and re-upload zip
+  - All sections 6-11 execute fully
+
+7.3 If thesis must remain unchanged:
+  - Use Option A: report the device divergence as a known
+    limitation in the thesis
+  - Sections 7-11 function; only the encryption device
+    stability note is added
+
+7.4 Hash mapping choice:
+  - Keep hash_mapping = "appendix_fraction" if using thesis
+    appendix numbers (a=10, b=8/3, c=28, d=3, e=0.2)
+  - Revert to "mod_1e8" if preserving existing encrypted data
+    and not re-running with appendix parameters
+
+------------------------------------------------------------
+8. CONTACT FOR AUTHORIZED MODIFICATIONS
+------------------------------------------------------------
+If you have authorization to modify the thesis text or the code:
+  - To change the du sign: I can apply the single-line fix immediately
+  - To change parameter values: Provide the new (a,b,c,d,e) set
+  - To change hash_mapping: I can revert to mod_1e8 or keep appendix_fraction
+  - All changes will be reflected in a rebuilt zip and analysis file

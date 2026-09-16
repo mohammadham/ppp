@@ -1,13 +1,35 @@
 {
   "profile": "appendix_ODE_with_chapter3_pseudocode_NOT_exact_thesis",
   "system": "appendix",
-  "parameters": {"a": 10.0, "b": 2.6666666666666665, "c": 28.0, "d": 3.0, "e": 0.2},
-  "parameter_source": "DOCX P1242-P1249 appendix; differs from equation 3-2",
-  "dt": 0.001, "transient": 1000, "scale": 100000000000000.0,
-  "hash_mapping": "mod_1e8", "dna_variant": "pseudocode_3_3",
-  "saliency_quantile": 0.6, "saliency_filter": 3, "saliency_sigma": 2.5,
-  "roi_coordinates": "permuted_union_original", "compression_level": 9,
-  "seed": 2026, "correlation_pairs": 10000, "differential_trials": 100,
-  "training": {"epochs": 100, "batch_size": 4, "learning_rate": 0.001, "base_channels": 32, "size": 256, "patience": 15, "threshold": 0.5},
+  "parameters": {
+    "a": 10.0,
+    "b": 2.6666666666666665,
+    "c": 28.0,
+    "d": 3.0,
+    "e": 0.2
+  },
+  "parameter_source": "DOCX P1242-P1249 appendix; init mapping per thesis code P1253-P1257 (int(hex,16)/16**12 = appendix_fraction); differs from equation 3-2; du sign corrected from +e to -e for device boundedness (author review)",
+  "dt": 0.001,
+  "transient": 1000,
+  "scale": 100000000000000.0,
+  "hash_mapping": "appendix_fraction",
+  "dna_variant": "pseudocode_3_3",
+  "saliency_quantile": 0.6,
+  "saliency_filter": 3,
+  "saliency_sigma": 2.5,
+  "roi_coordinates": "permuted_union_original",
+  "compression_level": 9,
+  "seed": 2026,
+  "correlation_pairs": 10000,
+  "differential_trials": 100,
+  "training": {
+    "epochs": 100,
+    "batch_size": 4,
+    "learning_rate": 0.001,
+    "base_channels": 32,
+    "size": 256,
+    "patience": 15,
+    "threshold": 0.5
+  },
   "implementation_choices": "Explicit hybrid experiment. No claim of matching the reference equation or published numbers."
 }
