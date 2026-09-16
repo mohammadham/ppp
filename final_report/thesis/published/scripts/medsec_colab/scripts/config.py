@@ -8,16 +8,28 @@ def load_config(path):
     return cfg
 
 def validate(c):
-    if c['system'] not in ('equation_3_2', 'appendix'):
+    if c['system'] not in ('equation_3_2', 'appendix', 'subathra_2025'):
         raise ValueError('Unknown ODE system')
-    names = ['a','b','c','d','k','h','w'] if c['system'] == 'equation_3_2' else ['a','b','c','d','e']
-    missing = [n for n in names if c['parameters'].get(n) is None]
-    if missing:
-        if c['system'] == 'equation_3_2':
+    if c['system'] == 'equation_3_2':
+        names = ['a','b','c','d','k','h','w']
+        missing = [n for n in names if c['parameters'].get(n) is None]
+        if missing:
             raise ValueError('پارامترهای رابطه ۳-۲ تعیین‌نشده‌اند: ' + ', '.join(missing) +
                              ' — یا عددها را در پروفایل مستند خودتان تعیین کنید یا PROFILE را صریحاً به '
                              'scripts/appendix_experiment.json (اعداد مستند پیوست پایان‌نامه) تغییر دهید.')
-        raise ValueError('پارامترهای تعیین‌نشدهٔ سیستم پیوست: ' + ', '.join(missing))
+    elif c['system'] == 'appendix':
+        names = ['a','b','c','d','e']
+        missing = [n for n in names if c['parameters'].get(n) is None]
+        if missing:
+            raise ValueError('پارامترهای تعیین‌نشدهٔ سیستم پیوست: ' + ', '.join(missing))
+    elif c['system'] == 'subathra_2025':
+        # سیستم ۵بعدی ابرآشوبی سوباترا & Thanikaiselvan (Nature Sci Rep, 2025)
+        # پارامترهای تعریف‌شده: gamma, beta, partial, epsilon, vartheta, rho, kappa
+        # در config armazenished as a,b,c,d,e برای سازگاری عقب، اما از validate شده
+        names = ['a','b','c','d','e']
+        missing = [n for n in names if c['parameters'].get(n) is None]
+        if missing:
+            raise ValueError('پارامترهای سیستم سوباترا ۲۰۲۵ تعیین‌نشده‌اند: ' + ', '.join(missing))
     if not np.isfinite([c['parameters'][n] for n in names]).all():
         raise ValueError('Nonfinite ODE parameters')
     if not np.isfinite([c['dt'], c['scale']]).all() or c['dt'] <= 0 or c['transient'] < 0 or c['scale'] <= 0:
