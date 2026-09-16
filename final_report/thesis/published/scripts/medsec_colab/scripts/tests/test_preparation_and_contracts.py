@@ -8,6 +8,7 @@ from scripts.prepare import prepare
 from scripts.stego import CapacityError
 from scripts.transport import send
 
+
 def test_zero_capacity_is_typed_failure_without_relaxing_roi(stable_cfg):
     image = np.arange(1024, dtype=np.uint8).reshape(32, 32)
     roi = np.ones_like(image, bool)
@@ -19,6 +20,7 @@ def test_zero_capacity_is_typed_failure_without_relaxing_roi(stable_cfg):
     assert error.value.details['embedded_bits'] == 0
     assert error.value.details['roi_protection_relaxed'] is False
     np.testing.assert_array_equal(original, image)
+
 
 @pytest.mark.parametrize('dataset,mask_folder,extension', [('DRIVE','1st_manual','.gif'), ('RITE','av','.png')])
 def test_native_retinal_import_shared_group_and_mask(dataset, mask_folder, extension, tmp_path):
@@ -39,6 +41,7 @@ def test_native_retinal_import_shared_group_and_mask(dataset, mask_folder, exten
     image, mask, _ = load_sample(rows[0])
     assert image.shape == mask.shape == (24,32)
     assert mask.sum() == 80
+
 
 def test_missing_files_and_cross_dataset_group_leakage(tmp_path):
     rows = [dict(id='01',dataset=ds,patient_id='01',group_id='retina:01',split=split,

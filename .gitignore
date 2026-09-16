@@ -1,0 +1,3 @@
+# Ignore .mimosa and .remember folders in all directories
+.mimosa/
+.remember/

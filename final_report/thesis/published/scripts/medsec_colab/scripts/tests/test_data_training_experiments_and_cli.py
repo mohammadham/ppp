@@ -206,7 +206,11 @@ def test_cli_train_evaluate_run_send_receive_paths_feasible(trained_bundle):
     run_out = bundle["root"] / "run_cli"
 
     py = sys.executable
-    subprocess.run([py, "-m", "scripts", "keygen", "--output", str(key)], check=True, cwd=scripts_root)
+    subprocess.run(
+        [py, "-m", "scripts", "keygen", "--output", str(key)],
+        check=True,
+        cwd=scripts_root,
+    )
     subprocess.run(
         [
             py,
@@ -284,9 +288,10 @@ def test_cli_train_evaluate_run_send_receive_paths_feasible(trained_bundle):
         check=True,
         cwd=scripts_root,
     )
-    assert (recv_out / "recovered.png").is_file()
+    from scripts.artifacts import sha256_file
     assert sha256_file(recv_out / "metadata.bin") == sha256_file(bundle["payload"])
     from PIL import Image
+    from scripts.data import load_manifest
     records = load_manifest(bundle['manifest'])
     image, _, _ = load_sample(next(r for r in records if r['id'] == '03'))
     np.testing.assert_array_equal(np.array(Image.open(recv_out/'recovered.png')), image)

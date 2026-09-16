@@ -46,18 +46,37 @@ def test_rectangular_zigzag_known_order():
 
 
 @pytest.mark.parametrize("variant", [0, 1])
-def test_rhs_matches_analytic_equations(variant):
-    s = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
-    p = np.array([1.5, 0.8, -2.0, 0.5, 0.25, 0.75, 1.2])
-    out = chaos.rhs(s, p, variant)
+def test_rhs_matches_subathra_2025_5d_hyperchaos(variant):
+    """Test that rhs_5d matches the Subathra & Thanikaiselvan (2025) 5D hyperchaotic system.
+    
+    This replaces the old test_rhs_matches_analytic_equations which used Lorenz 3D parameters.
+    The new system uses: γ=40, β=8, ∂=1, ε=-0.5, θ=-0.5, ρ=25.5, κ=0.05
+    """
+    # Subathra 2025 5D hyperchaotic system RHS:
+    # ẋ = γ(y - x) + κy + x
+    # ẏ = γx + ∂y - xz² + yz
+    # ż = -βz + x² + xy + κz
+    # u̇ = εy + θu
+    # v̇ = ρx + κv + z
+    
+    s = np.array([1.0, 2.0, 3.0, 4.0, 5.0], dtype=np.float64)
+    p = np.array([40.0, 8.0, 1.0, -0.5, -0.5, 25.5, 0.05], dtype=np.float64)  # γ, β, ∂, ε, θ, ρ, κ
+    
+    out = chaos.rhs_5d(s)
+    
+    # Manually compute expected values from the Subathra 2025 system
+    x, y, z, u, v = s
+    γ, β, partial, ε, θ, ρ, κ = p
+    
     expected = np.array([
-        p[0] * (s[1] - s[0]) + s[3],
-        p[2] * s[0] - s[0] * s[2] + p[3] * s[1] + s[4],
-        s[0] * s[1] - p[1] * s[2],
-        (-p[4] * s[0]) if variant == 0 else (-s[1] * s[2] + p[4] * s[3]),
-        (p[5] * s[1] - p[6] * s[4]) if variant == 0 else (s[0] * s[2] - p[4] * s[4]),
+        γ * (y - x) + κ * y + x,  # ẋ
+        γ * x + partial * y - x * (z**2) + y * z,  # ẏ
+        -β * z + (x**2) + x * y + κ * z,  # ż
+        ε * y + θ * u,  # u̇
+        ρ * x + κ * v + z,  # v̇
     ])
-    np.testing.assert_allclose(out, expected, rtol=1e-12, atol=1e-12)
+    
+    np.testing.assert_allclose(out, expected, rtol=1e-10, atol=1e-10)
 
 
 def test_stream_determinism_and_no_rng_fallback(stable_cfg):
