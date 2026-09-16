@@ -75,7 +75,7 @@ def rhs_5d(s, second=None, third=None):
             r[4] = x * z - p[3] * v
         return r
     elif second is not None:
-        # پشتیبانی از فرمت فراخوانی با variant به عنوان آرگومان دوم در تست‌ها
+        # فراخوانی دو آرگومان: rhs_5d(s, variant)
         variant = second
         r = np.empty(5, dtype=np.float64)
         r[0] = gamma * (y - x) + kappa * y + x
@@ -85,7 +85,7 @@ def rhs_5d(s, second=None, third=None):
             r[3] = epsilon * y + vartheta * u
             r[4] = rho * x + kappa * v + z
         else:
-            r[3] = -y * z + epsilon * u
+            r[3] = -y * z - epsilon * u
             r[4] = x * z - epsilon * v
         return r
     else:
