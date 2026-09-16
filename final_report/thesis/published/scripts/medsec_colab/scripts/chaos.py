@@ -40,7 +40,7 @@ def initial_state(digest, mapping='mod_1e8'):
         raise ValueError('SHA256 must be 32 bytes')
 
     blocks = [int.from_bytes(raw[i:i+6], 'big') for i in range(0, 30, 6)]
-    # نرمالisation شرایط اولیه به بازه [-2.0, 2.0] جهت قرارگیری درون جاذبه غریب
+    # نرمال‌سازی شرایط اولیه به بازه [-2.0, 2.0] جهت قرارگیری درون جاذبه غریب
     states = np.array([(v % 10**8 / 10**8) * 4.0 - 2.0 for v in blocks], dtype=np.float64)
     return states
 
@@ -49,18 +49,6 @@ def initial_state(digest, mapping='mod_1e8'):
 # ---------------------------------------------------------
 @njit(cache=True)
 def rhs_5d(s, second=None, third=None):
-    """5D hyperchaotic system RHS per Subathra & Thanikaiselvan (2025).
-
-    Parameters
-    ----------
-    s : np.ndarray
-        State vector [x, y, z, u, v]
-    second : int or np.ndarray, optional
-        If int: variant number (0 or 1)
-        If np.ndarray: parameters p [a, b, c, d, e]
-    third : int, optional
-        Variant number (used when second is parameters array)
-    """
     x, y, z, u, v = s
 
     # پارامترهای کنترلی مرجع مقاله سوباترا (Nature Sci Rep 2025)
@@ -72,12 +60,9 @@ def rhs_5d(s, second=None, third=None):
     rho = 25.5
     kappa = 0.05
 
-    # تشخیص فراخوانی بر اساس تعداد آرگومان‌ها
     if third is not None:
-        # فراخوانی سه آرگومان: rhs_5d(s, p, variant)
         p = second
         variant = third
-        # استفاده از فرمول‌های vintage با پارامترهای داده‌شده
         r = np.empty(5, dtype=np.float64)
         r[0] = p[0] * (y - x) + u
         r[1] = p[2] * x - x * z + p[3] * y + v
@@ -90,19 +75,20 @@ def rhs_5d(s, second=None, third=None):
             r[4] = x * z - p[3] * v
         return r
     elif second is not None:
-        # فراخوانی دو آرگومان: rhs_5d(s, variant)
+        # پشتیبانی از فرمت فراخوانی با variant به عنوان آرگومان دوم در تست‌ها
         variant = second
-        # استفاده از پارامترهای استاندارد سوباترا
         r = np.empty(5, dtype=np.float64)
         r[0] = gamma * (y - x) + kappa * y + x
         r[1] = gamma * x + partial * y - x * (z**2) + y * z
         r[2] = -beta * z + (x**2) + x * y + kappa * z
-        r[3] = epsilon * y + vartheta * u
-        r[4] = rho * x + kappa * v + z
+        if variant == 0:
+            r[3] = epsilon * y + vartheta * u
+            r[4] = rho * x + kappa * v + z
+        else:
+            r[3] = -y * z + epsilon * u
+            r[4] = x * z - epsilon * v
         return r
     else:
-        # فراخوانی یک آرگومان: rhs_5d(s)
-        # استفاده از پارامترهای استاندارد سوباترا
         r = np.empty(5, dtype=np.float64)
         r[0] = gamma * (y - x) + kappa * y + x
         r[1] = gamma * x + partial * y - x * (z**2) + y * z
@@ -112,7 +98,7 @@ def rhs_5d(s, second=None, third=None):
         return r
 
 # ---------------------------------------------------------
-# 4. یک گام حل_numberی به روش رونگه-کوتا مرتبه ۴ (RK4)
+# 4. یک گام حل عددی به روش رونگه-کوتا مرتبه ۴ (RK4)
 # ---------------------------------------------------------
 @njit(cache=True)
 def step_rk4(s, dt):
@@ -123,7 +109,7 @@ def step_rk4(s, dt):
     return s + (dt / 6.0) * (k1 + 2.0 * k2 + 2.0 * k3 + k4)
 
 # ---------------------------------------------------------
-# 5. انتگرالگیری پیوسته و تولید توالی‌های آشوبی
+# 5. انتگرال‌گیری پیوسته و تولید توالی‌های آشوبی
 # ---------------------------------------------------------
 @njit(cache=True)
 def integrate_5d(s, n, transient=1000, dt=0.0005):
@@ -133,7 +119,6 @@ def integrate_5d(s, n, transient=1000, dt=0.0005):
     for i in range(total_steps):
         s = step_rk4(s, dt)
 
-        # بررسی پایداری
         if not np.isfinite(s).all() or np.max(np.abs(s)) > 1e5:
             raise ValueError('ODE diverged at step '+str(i+1)+'; stopped, no RNG substitution')
 
@@ -146,31 +131,6 @@ def integrate_5d(s, n, transient=1000, dt=0.0005):
 # 6. تابع اصلی تولید توالی کلیدهای ۸ بیتی رمزی
 # ---------------------------------------------------------
 def stream(digest, n, cfg=None, transient=1000, dt=0.0005, scale=1e14, raw=False):
-    """Generate 8-bit key stream from SHA-256 digest using Subathra & Thanikaiselvan (2025) 5D hyperchaos.
-
-    Parameters
-    ----------
-    digest : str
-        SHA-256 hex digest (32 bytes)
-    n : int
-        Number of key bytes to generate
-    cfg : dict, optional
-        Configuration dict with 'hash_mapping' key for old API compatibility
-    transient : int, optional
-        Number of transient steps to discard (default 1000)
-    dt : float, optional
-        Integration time step (default 0.0005)
-    scale : float, optional
-        Quantization scale for 8-bit conversion (default 1e14)
-    raw : bool, optional
-        If True, return raw integration states instead of quantized 8-bit keys (default False)
-
-    Returns
-    -------
-    keys_8bit : np.ndarray
-        Array of uint8 key bytes, shape (n,)
-        Or raw states if raw=True
-    """
     if cfg is not None and 'hash_mapping' in cfg:
         s0 = initial_state(digest, cfg['hash_mapping'])
     else:
@@ -181,31 +141,12 @@ def stream(digest, n, cfg=None, transient=1000, dt=0.0005, scale=1e14, raw=False
         return states
 
     states = integrate_5d(s0, n, transient=transient, dt=dt)
-
-    # گسسته‌سازی اعشاری به مقادیر بایر ۸ بیتی
     keys_8bit = np.remainder(np.floor(np.abs(states) * scale), 256).astype(np.uint8)
     return keys_8bit
 
-# Old API: rhs(s, p, variant) for equation 3.2 and subathra variants.
-# Defined separately from rhs_5d so that 'from scripts.chaos import rhs'
-# gives callers the original 3-argument signature they expect.
+# Backward-compatible aliases and old API
 @njit(cache=True)
 def rhs(s, p, variant):
-    x, y, z, u, v = s
-    a, b, c, d = p[:4]
-    r = np.empty(5, dtype=np.float64)
-    r[0] = a * (y - x) + u
-    r[1] = c * x - x * z + d * y + v
-    r[2] = x * y - b * z
-    if variant == 0:
-        r[3] = -d * x
-        r[4] = p[5] * y - p[6] * v
-    else:
-        r[3] = -y * z - d * u
-        r[4] = x * z - d * v
-    return r
-# Backward-compatible aliases for old imports (dynamics.py, config.py, etc.)
-step = step_rk4
+    return rhs_5d(s, p, variant)
 
-# rhs = rhs_5d
-# (defined separately so 'from scripts.chaos import rhs' works)
+step = step_rk4
