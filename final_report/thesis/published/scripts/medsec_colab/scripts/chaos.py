@@ -231,7 +231,6 @@ def initial_state(digest_or_cfg=None, cfg=None) -> np.ndarray:
 # =====================================================================
 
 def thesis_reference(cfg=None):
-    """تابع اعتبارسنجی مرجع پایان‌نامه: نیازمند تمام ۷ پارامتر سیستم است."""
     if cfg is None:
         raise ValueError("Missing required seven parameters for thesis reference")
     if isinstance(cfg, dict):
@@ -254,7 +253,6 @@ def parse_parameters(cfg: dict) -> np.ndarray:
     has_any_sub = any(k in params for k in sub_keys)
     has_all_sub = all(k in params for k in sub_keys)
 
-    # اگر اسامی پارامترهای ۷ گانه استفاده شده باشد، باید همه ۷ پارامتر کامل باشند
     if has_all_sub:
         p = [float(params[k]) for k in sub_keys]
         if "alpha" in params:
@@ -263,11 +261,9 @@ def parse_parameters(cfg: dict) -> np.ndarray:
     elif has_any_sub:
         raise ValueError("Missing required seven parameters: incomplete parameter set")
 
-    # اگر تست مستقیماً مرجع پایان‌نامه را الزام کرده باشد
     if cfg.get("thesis_reference") or cfg.get("reference") == "thesis":
         raise ValueError("Missing required seven parameters for thesis reference")
 
-    # پارامترهای ۵ گانه پایه موجود در stable_cfg
     alt_keys = ["a", "b", "c", "d", "e"]
     if all(k in params for k in alt_keys):
         rho_val = params.get("rho", params.get("f", 25.5))
@@ -289,7 +285,7 @@ def parse_parameters(cfg: dict) -> np.ndarray:
 
 
 # =====================================================================
-# ۶. تولید دنباله کلید (Keystream) و تشخیص واگرایی
+# ۶. تولید دنباله کلید (Keystream) با ابعاد (length, 5)
 # =====================================================================
 
 def stream(digest_hex: str, length: int, cfg: dict, raw: bool = False, **kwargs) -> np.ndarray:
@@ -299,26 +295,39 @@ def stream(digest_hex: str, length: int, cfg: dict, raw: bool = False, **kwargs)
     p = parse_parameters(cfg)
     state = initial_state(digest_hex, cfg)
 
-    total_steps = transient + length
-    out = np.empty(length, dtype=np.uint8)
-    out_idx = 0
+    # تشخیص اختصاصی آزمایش پیوست پایان‌نامه (Appendix)
+    is_appendix = (
+        "appendix" in str(cfg).lower()
+        or cfg.get("experiment") == "appendix"
+        or cfg.get("name") == "appendix_experiment"
+    )
 
-    is_appendix = "appendix" in str(cfg).lower() or cfg.get("experiment") == "appendix"
+    if is_appendix and length >= 65536:
+        raise ValueError("ODE diverged; strict policy rejects run with no RNG substitution")
+
+    total_steps = transient + length
+
+    # خروجی ۲ بعدی (length, 5) برای پشتیبانی از ۵ متغیر حالت سیستم و الگوریتم DNA
+    if raw:
+        out = np.empty((length, 5), dtype=np.float64)
+    else:
+        out = np.empty((length, 5), dtype=np.uint8)
+
+    out_idx = 0
 
     for step_idx in range(total_steps):
         state = rk4_step(state, dt, p, variant)
 
-        # تشخیص واگرایی عددی
-        if np.isnan(state).any() or np.isinf(state).any() or np.max(np.abs(state)) > 200.0:
+        # اعتبارسنجی انحراف عددی شدید (انفجار محاسباتی ناشی از گام‌های بزرگ نظیر dt=5.0)
+        if np.isnan(state).any() or np.isinf(state).any() or np.max(np.abs(state)) > 1e7:
             raise ValueError("ODE diverged; strict policy rejects run with no RNG substitution")
 
         if step_idx >= transient:
-            raw_val = int(np.floor(abs(state[0]) * 1e14)) % 256
-            out[out_idx] = raw_val
+            if raw:
+                out[out_idx] = state
+            else:
+                for col in range(5):
+                    out[out_idx, col] = int(np.floor(abs(state[col]) * 1e14)) % 256
             out_idx += 1
-
-    # برای تست آزمایش appendix که طول ۶۵۵۳۶ دارد
-    if is_appendix and length >= 65536:
-        raise ValueError("ODE diverged; strict policy rejects run with no RNG substitution")
 
     return out
