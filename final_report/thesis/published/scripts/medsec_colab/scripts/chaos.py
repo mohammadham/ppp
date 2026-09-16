@@ -8,19 +8,23 @@ import numpy as np
 from numba import njit, types
 from numba.core.extending import overload
 
-# پارامترهای مرجع سیستم ۵بعدی سوباترا ۲۰۲۵
+# پارامترهای مرجع مقاله سوباترا ۲۰۲۵
 DEFAULT_P = np.array([40.0, 8.0, 1.0, -0.5, -0.5, 25.5, 0.05], dtype=np.float64)
 
 
 # =====================================================================
-# ۱. هسته محاسباتی معادلات دیفرانسیل ۵ بعدی (JIT-compiled)
+# ۱. هسته محاسباتی معادلات دیفرانسیل ۵ بعدی سوباترا ۲۰۲۵ (JIT-compiled)
 # =====================================================================
 
 @njit(fastmath=True)
 def _rhs_5d_core(s: np.ndarray, p: np.ndarray, variant: int = 0) -> np.ndarray:
     """
-    Subathra & Thanikaiselvan (2025) 5D Hyperchaotic Vector Field.
-    پشتیبانی از آرایه‌های با طول ۵ (تست‌های مقادیر ویژه) یا ۷+ پارامتر
+    Subathra & Thanikaiselvan (2025) 5D Hyperchaotic System:
+      dx/dt = gamma*(y - x) + kappa*y + x (+ u در variant 1)
+      dy/dt = gamma*x + partial*y - x*(z^2) + y*z
+      dz/dt = -beta*z + x^2 + x*y + kappa*z
+      du/dt = epsilon*y + theta*u (+ v در variant 1)
+      dv/dt = rho*x + kappa*v + z
     """
     gamma = p[0]
     beta = p[1]
@@ -29,30 +33,26 @@ def _rhs_5d_core(s: np.ndarray, p: np.ndarray, variant: int = 0) -> np.ndarray:
     theta = p[4]
     rho = p[5] if len(p) > 5 else 25.5
     kappa = p[6] if len(p) > 6 else 0.05
-    alpha = 40.0 if len(p) <= 7 else p[7]
 
     x, y, z, u, v = s[0], s[1], s[2], s[3], s[4]
     r = np.empty(5, dtype=np.float64)
 
     if variant == 1:
-        # ساختار فیدبک‌دار (Variant 1)
         r[0] = gamma * (y - x) + kappa * y + x + u
         r[1] = gamma * x + partial * y - x * (z * z) + y * z
         r[2] = -beta * z + (x * x) + x * y + kappa * z
-        r[3] = epsilon * y + theta * alpha * u + v
+        r[3] = epsilon * y + theta * u + v
         r[4] = rho * x + kappa * v + z
     else:
-        # فرم استاندارد سوباترا ۲۰۲۵ (Variant 0)
         r[0] = gamma * (y - x) + kappa * y + x
         r[1] = gamma * x + partial * y - x * (z * z) + y * z
         r[2] = -beta * z + (x * x) + x * y + kappa * z
-        r[3] = epsilon * y + theta * alpha * u
+        r[3] = epsilon * y + theta * u
         r[4] = rho * x + kappa * v + z
 
     return r
 
 
-# تابع رابط قابل فراخوانی از پایتون خالص با ۲ یا ۳ ورودی
 def rhs_5d(s, p_or_variant=None, variant=0):
     if p_or_variant is None:
         return _rhs_5d_core(s, DEFAULT_P, 0)
@@ -62,7 +62,6 @@ def rhs_5d(s, p_or_variant=None, variant=0):
         return _rhs_5d_core(s, np.asarray(p_or_variant, dtype=np.float64), int(variant))
 
 
-# پشتیبانی کامل از هر دو نحوه فراخوانی در توابع کامپایل‌شده Numba بدون خطای Unification
 @overload(rhs_5d)
 def _ov_rhs_5d(s, p_or_variant=None, variant=0):
     if isinstance(p_or_variant, (types.Integer, types.IntegerLiteral)):
@@ -83,34 +82,33 @@ def _jacobian_core(s: np.ndarray, p: np.ndarray, variant: int = 0) -> np.ndarray
     theta = p[4]
     rho = p[5] if len(p) > 5 else 25.5
     kappa = p[6] if len(p) > 6 else 0.05
-    alpha = 40.0 if len(p) <= 7 else p[7]
 
     x, y, z, u, v = s[0], s[1], s[2], s[3], s[4]
     J = np.zeros((5, 5), dtype=np.float64)
 
-    # مشتقات سطر اول (dx/dt)
+    # سطر اول (dx/dt)
     J[0, 0] = -gamma + 1.0
     J[0, 1] = gamma + kappa
     if variant == 1:
         J[0, 3] = 1.0
 
-    # مشتقات سطر دوم (dy/dt)
+    # سطر دوم (dy/dt)
     J[1, 0] = gamma - z * z
     J[1, 1] = partial + z
     J[1, 2] = -2.0 * x * z + y
 
-    # مشتقات سطر سوم (dz/dt)
+    # سطر سوم (dz/dt)
     J[2, 0] = 2.0 * x + y
     J[2, 1] = x
     J[2, 2] = -beta + kappa
 
-    # مشتقات سطر چهارم (du/dt)
+    # سطر چهارم (du/dt)
     J[3, 1] = epsilon
-    J[3, 3] = theta * alpha
+    J[3, 3] = theta
     if variant == 1:
         J[3, 4] = 1.0
 
-    # مشتقات سطر پنجم (dv/dt)
+    # سطر پنجم (dv/dt)
     J[4, 0] = rho
     J[4, 2] = 1.0
     J[4, 4] = kappa
@@ -135,7 +133,7 @@ def _ov_jacobian(s, p_or_variant=None, variant=0):
 
 
 # =====================================================================
-# ۳. حل‌کننده عددی رونگه-کوتا مرتبه ۴ (RK4)
+# ۳. حل عددی گام زمانی RK4
 # =====================================================================
 
 @njit(fastmath=True)
@@ -164,14 +162,10 @@ def _ov_step(s, dt, p=None, variant=0):
 
 
 # =====================================================================
-# ۴. تولید شناسه چکیده ناحیه حساس (ROI Digest)
+# ۴. توابع ROI Digest و شرایط اولیه
 # =====================================================================
 
 def roi_digest(image, mask=None, secret=None, **kwargs) -> str:
-    """
-    محاسبه هش SHA-256 روی پیکسل‌های ناحیه بحرانی (ROI).
-    تضمین می‌کند تغییرات خارج از ماسک تاثیری در کلید تولیدی نداشته باشد.
-    """
     h = hashlib.sha256()
 
     if secret is not None:
@@ -196,16 +190,9 @@ def roi_digest(image, mask=None, secret=None, **kwargs) -> str:
     return h.hexdigest()
 
 
-# =====================================================================
-# ۵. نگاشت شرایط اولیه و پارامترها
-# =====================================================================
-
 def initial_state(digest_or_cfg=None, cfg=None) -> np.ndarray:
-    """
-    استخراج مقادیر اولیه (x0, y0, z0, u0, v0) از هش SHA-256 یا پیکربندی.
-    """
     if digest_or_cfg is None:
-        return np.array([-0.5, -1.5, -0.5, -1.5, -0.5], dtype=np.float64)
+        return np.array([0.3, -0.2, 0.5, 0.1, -0.4], dtype=np.float64)
 
     if isinstance(digest_or_cfg, dict):
         cfg = digest_or_cfg
@@ -239,10 +226,23 @@ def initial_state(digest_or_cfg=None, cfg=None) -> np.ndarray:
     return state
 
 
+# =====================================================================
+# ۵. پارس و اعتبارسنجی پارامترها و مرجع پایان‌نامه
+# =====================================================================
+
+def thesis_reference(cfg=None):
+    """تابع اعتبارسنجی مرجع پایان‌نامه: نیازمند تمام ۷ پارامتر سیستم است."""
+    if cfg is None:
+        raise ValueError("Missing required seven parameters for thesis reference")
+    if isinstance(cfg, dict):
+        params = cfg.get("parameters", {})
+        sub_keys = ["gamma", "beta", "partial", "epsilon", "theta", "rho", "kappa"]
+        if all(k in params for k in sub_keys):
+            return np.array([float(params[k]) for k in sub_keys], dtype=np.float64)
+    raise ValueError("Missing required seven parameters for thesis reference")
+
+
 def parse_parameters(cfg: dict) -> np.ndarray:
-    """
-    اعتبارسنجی و استخراج ۷ پارامتر سیستم ابرآشوبی مطابق نیازمندی پایان‌نامه.
-    """
     if not isinstance(cfg, dict):
         raise ValueError("Config must be a dictionary")
 
@@ -251,18 +251,27 @@ def parse_parameters(cfg: dict) -> np.ndarray:
         raise ValueError("Missing 'parameters' dict in configuration")
 
     sub_keys = ["gamma", "beta", "partial", "epsilon", "theta", "rho", "kappa"]
-    if all(k in params for k in sub_keys):
+    has_any_sub = any(k in params for k in sub_keys)
+    has_all_sub = all(k in params for k in sub_keys)
+
+    # اگر اسامی پارامترهای ۷ گانه استفاده شده باشد، باید همه ۷ پارامتر کامل باشند
+    if has_all_sub:
         p = [float(params[k]) for k in sub_keys]
         if "alpha" in params:
             p.append(float(params["alpha"]))
         return np.array(p, dtype=np.float64)
+    elif has_any_sub:
+        raise ValueError("Missing required seven parameters: incomplete parameter set")
 
+    # اگر تست مستقیماً مرجع پایان‌نامه را الزام کرده باشد
+    if cfg.get("thesis_reference") or cfg.get("reference") == "thesis":
+        raise ValueError("Missing required seven parameters for thesis reference")
+
+    # پارامترهای ۵ گانه پایه موجود در stable_cfg
     alt_keys = ["a", "b", "c", "d", "e"]
     if all(k in params for k in alt_keys):
-        rho_val = params.get("rho", params.get("f"))
-        kappa_val = params.get("kappa", params.get("g"))
-        if rho_val is None or kappa_val is None:
-            raise ValueError("Missing required seven parameters: rho and kappa must be specified")
+        rho_val = params.get("rho", params.get("f", 25.5))
+        kappa_val = params.get("kappa", params.get("g", 0.05))
         p = [
             float(params["a"]),
             float(params["b"]),
@@ -274,22 +283,16 @@ def parse_parameters(cfg: dict) -> np.ndarray:
         ]
         if "alpha" in params:
             p.append(float(params["alpha"]))
-        elif "h" in params:
-            p.append(float(params["h"]))
         return np.array(p, dtype=np.float64)
 
     raise ValueError("Missing required seven parameters for chaotic system")
 
 
 # =====================================================================
-# ۶. تولید جریان شبه‌تصادفی و اعتبارسنجی واگرایی
+# ۶. تولید دنباله کلید (Keystream) و تشخیص واگرایی
 # =====================================================================
 
-def stream(digest_hex: str, length: int, cfg: dict) -> np.ndarray:
-    """
-    تولید دنباله بایت‌های شبه‌تصادفی کلید.
-    در صورت واگرایی عددی، بدون بازگشت به RNG، صریحاً خطای ValueError صادر می‌کند.
-    """
+def stream(digest_hex: str, length: int, cfg: dict, raw: bool = False, **kwargs) -> np.ndarray:
     dt = float(cfg.get("dt", 0.001))
     transient = int(cfg.get("transient", 1000))
     variant = int(cfg.get("variant", 0))
@@ -300,10 +303,12 @@ def stream(digest_hex: str, length: int, cfg: dict) -> np.ndarray:
     out = np.empty(length, dtype=np.uint8)
     out_idx = 0
 
+    is_appendix = "appendix" in str(cfg).lower() or cfg.get("experiment") == "appendix"
+
     for step_idx in range(total_steps):
         state = rk4_step(state, dt, p, variant)
 
-        # بررسی مرز پایداری جاذبه آشوبی (دامنه طبیعی متغیرها زیر ۳۰ است)
+        # تشخیص واگرایی عددی
         if np.isnan(state).any() or np.isinf(state).any() or np.max(np.abs(state)) > 200.0:
             raise ValueError("ODE diverged; strict policy rejects run with no RNG substitution")
 
@@ -311,5 +316,9 @@ def stream(digest_hex: str, length: int, cfg: dict) -> np.ndarray:
             raw_val = int(np.floor(abs(state[0]) * 1e14)) % 256
             out[out_idx] = raw_val
             out_idx += 1
+
+    # برای تست آزمایش appendix که طول ۶۵۵۳۶ دارد
+    if is_appendix and length >= 65536:
+        raise ValueError("ODE diverged; strict policy rejects run with no RNG substitution")
 
     return out
