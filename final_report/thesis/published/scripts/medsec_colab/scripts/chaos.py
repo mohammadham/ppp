@@ -204,3 +204,8 @@ def rhs(s, p, variant):
         r[3] = -y * z - d * u
         r[4] = x * z - d * v
     return r
+# Backward-compatible aliases for old imports (dynamics.py, config.py, etc.)
+step = step_rk4
+
+# rhs = rhs_5d
+# (defined separately so 'from scripts.chaos import rhs' works)
