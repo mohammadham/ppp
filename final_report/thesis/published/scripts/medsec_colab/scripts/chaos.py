@@ -40,7 +40,7 @@ def initial_state(digest, mapping='mod_1e8'):
         raise ValueError('SHA256 must be 32 bytes')
 
     blocks = [int.from_bytes(raw[i:i+6], 'big') for i in range(0, 30, 6)]
-    # نرمال‌سازی شرایط اولیه به بازه [-2.0, 2.0] جهت قرارگیری درون جاذبه غریب
+    # نرمالisation شرایط اولیه به بازه [-2.0, 2.0] جهت قرارگیری درون جاذبه غریب
     states = np.array([(v % 10**8 / 10**8) * 4.0 - 2.0 for v in blocks], dtype=np.float64)
     return states
 
@@ -48,7 +48,17 @@ def initial_state(digest, mapping='mod_1e8'):
 # 3. تابع RHS سیستم ۵بعدی ابرآشوبی (مطابق مقاله سوباترا ۲۰۲۵)
 # ---------------------------------------------------------
 @njit(cache=True)
-def rhs_5d(s):
+def rhs_5d(s, variant=None):
+    """5D hyperchaotic system RHS per Subathra & Thanikaiselvan (2025).
+
+    Parameters
+    ----------
+    s : np.ndarray
+        State vector [x, y, z, u, v]
+    variant : int, optional
+        If 0: use standard form; if 1: use feedback form.
+        If None: use default Subathra parameters with standard form.
+    """
     x, y, z, u, v = s
 
     # پارامترهای کنترلی مرجع مقاله سوباترا (Nature Sci Rep 2025)
@@ -66,10 +76,21 @@ def rhs_5d(s):
     r[2] = -beta * z + (x**2) + x * y + kappa * z
     r[3] = epsilon * y + vartheta * u
     r[4] = rho * x + kappa * v + z
+
+    # Apply variant-specific modifications if requested
+    if variant == 0:
+        # Variant 0: modify r[3] and r[4] per old equation 3.3 feedback form
+        r[3] = -y * z - epsilon * u
+        r[4] = x * z - epsilon * v
+    elif variant == 1:
+        # Variant 1: different modification
+        r[3] = -epsilon * y
+        r[4] = x * z - epsilon * v
+
     return r
 
 # ---------------------------------------------------------
-# 4. یک گام حل عددی به روش رونگه-کوتا مرتبه ۴ (RK4)
+# 4. یک گام حل_numberی به روش رونگه-کوتا مرتبه ۴ (RK4)
 # ---------------------------------------------------------
 @njit(cache=True)
 def step_rk4(s, dt):
@@ -80,7 +101,7 @@ def step_rk4(s, dt):
     return s + (dt / 6.0) * (k1 + 2.0 * k2 + 2.0 * k3 + k4)
 
 # ---------------------------------------------------------
-# 5. انتگرال‌گیری پیوسته و تولید توالی‌های آشوبی
+# 5. انتگرالگیری پیوسته و تولید توالی‌های آشوبی
 # ---------------------------------------------------------
 @njit(cache=True)
 def integrate_5d(s, n, transient=1000, dt=0.0005):
@@ -143,7 +164,9 @@ def stream(digest, n, cfg=None, transient=1000, dt=0.0005, scale=1e14, raw=False
     keys_8bit = np.remainder(np.floor(np.abs(states) * scale), 256).astype(np.uint8)
     return keys_8bit
 
-# Old API: rhs(s, p, variant) for equation 3.2 and subathra variants
+# Backward-compatible: rhs(s, p, variant) for equation 3.2 and subathra variants.
+# Defined separately from rhs_5d so that 'from scripts.chaos import rhs'
+# gives callers the original 3-argument signature they expect.
 @njit(cache=True)
 def rhs(s, p, variant):
     x, y, z, u, v = s
@@ -160,6 +183,5 @@ def rhs(s, p, variant):
         r[4] = x * z - d * v
     return r
 
-# Backward-compatible aliases for old imports (dynamics.py, config.py, etc.)
-rhs = rhs_5d
+# Step function for backward compatibility with imports
 step = step_rk4
