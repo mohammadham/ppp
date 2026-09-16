@@ -51,7 +51,6 @@ def initial_state(digest, mapping='mod_1e8'):
 def rhs_5d(s, second=None, third=None):
     x, y, z, u, v = s
 
-    # پارامترهای کنترلی مرجع مقاله سوباترا (Nature Sci Rep 2025)
     gamma = 40.0
     beta = 8.0
     partial = 1.0
@@ -68,25 +67,24 @@ def rhs_5d(s, second=None, third=None):
         r[1] = p[2] * x - x * z + p[3] * y + v
         r[2] = x * y - p[1] * z
         if variant == 0:
-            r[3] = -p[3] * x
+            r[3] = -p[4] * x
             r[4] = p[5] * y - p[6] * v
         else:
-            r[3] = -y * z - p[3] * u
-            r[4] = x * z - p[3] * v
+            r[3] = -y * z - p[4] * u
+            r[4] = x * z - p[4] * v
         return r
     elif second is not None:
-        # فراخوانی دو آرگومان: rhs_5d(s, variant)
         variant = second
         r = np.empty(5, dtype=np.float64)
         r[0] = gamma * (y - x) + kappa * y + x
         r[1] = gamma * x + partial * y - x * (z**2) + y * z
         r[2] = -beta * z + (x**2) + x * y + kappa * z
         if variant == 0:
-            r[3] = epsilon * y + vartheta * u
+            r[3] = epsilon * y
             r[4] = rho * x + kappa * v + z
         else:
-            r[3] = -y * z - epsilon * u
-            r[4] = x * z - epsilon * v
+            r[3] = -y * z + vartheta * u
+            r[4] = x * z + vartheta * v
         return r
     else:
         r = np.empty(5, dtype=np.float64)
