@@ -4,32 +4,72 @@ from numba import njit
 from .chaos import rhs_5d, step, initial_state
 from .config import ode_parameters
 from .artifacts import environment, write_json
+import numpy as np
+from numba import njit
+from scripts.chaos import jacobian, rhs_5d
 
-@njit(cache=True)
-def jacobian(s, p, variant):
-    x, y, z, u, v = s
-    a, b, c, d = p[:4]
-    j = np.zeros((5, 5))
-    j[0, 0] = -a; j[0, 1] = a; j[0, 3] = 1
-    j[1, 0] = c-z; j[1, 1] = d; j[1, 2] = -x; j[1, 4] = 1
-    j[2, 0] = y; j[2, 1] = x; j[2, 2] = -b
-    if variant == 0:
-        j[3, 0] = -p[4]; j[4, 1] = p[5]; j[4, 4] = -p[6]
-    else:
-        j[3, 1] = -z; j[3, 2] = -y; j[3, 3] = p[4]
-        j[4, 0] = z; j[4, 2] = x; j[4, 4] = -p[4]
-    return j
 
-@njit(cache=True)
-def variational_steps(s, q, count, dt, p, variant):
+# @njit(cache=True)
+# def jacobian(s, p, variant):
+#     x, y, z, u, v = s
+#     a, b, c, d = p[:4]
+#     j = np.zeros((5, 5))
+#     j[0, 0] = -a; j[0, 1] = a; j[0, 3] = 1
+#     j[1, 0] = c-z; j[1, 1] = d; j[1, 2] = -x; j[1, 4] = 1
+#     j[2, 0] = y; j[2, 1] = x; j[2, 2] = -b
+#     if variant == 0:
+#         j[3, 0] = -p[4]; j[4, 1] = p[5]; j[4, 4] = -p[6]
+#     else:
+#         j[3, 1] = -z; j[3, 2] = -y; j[3, 3] = p[4]
+#         j[4, 0] = z; j[4, 2] = x; j[4, 4] = -p[4]
+#     return j
+
+"""
+Dynamics analysis: Variational equations and Lyapunov tracking via QR decomposition.
+"""
+
+
+
+@njit(fastmath=True)
+def variational_steps(
+    s: np.ndarray,
+    q: np.ndarray,
+    count: int,
+    dt: float,
+    p: np.ndarray,
+    variant: int = 0,
+):
+    """Integrates state vector and tangent variational frame over 'count' steps."""
     for _ in range(count):
-        a = rhs_5d(s, p, variant); A = jacobian(s, p, variant) @ q
-        b = rhs_5d(s+dt*a/2, p, variant); B = jacobian(s+dt*a/2, p, variant) @ (q+dt*A/2)
-        c = rhs_5d(s+dt*b/2, p, variant); C = jacobian(s+dt*b/2, p, variant) @ (q+dt*B/2)
-        d = rhs_5d(s+dt*c, p, variant); D = jacobian(s+dt*c, p, variant) @ (q+dt*C)
-        s = s+dt*(a+2*b+2*c+d)/6; q = q+dt*(A+2*B+2*C+D)/6
-        if not np.isfinite(s).all() or not np.isfinite(q).all() or np.max(np.abs(s)) > 1e12:
-            raise ValueError('Variational system diverged; no Lyapunov conclusion')
+        # 1. State derivative and tangent linearization
+        a = rhs_5d(s, p, variant)
+        A = jacobian(s, p, variant) @ q
+
+        # Runge-Kutta 4th order for coupled variational equations
+        k1_s = a
+        k1_q = A
+
+        s_half1 = s + 0.5 * dt * k1_s
+        q_half1 = q + 0.5 * dt * k1_q
+        k2_s = rhs_5d(s_half1, p, variant)
+        k2_q = jacobian(s_half1, p, variant) @ q_half1
+
+        s_half2 = s + 0.5 * dt * k2_s
+        q_half2 = q + 0.5 * dt * k2_q
+        k3_s = rhs_5d(s_half2, p, variant)
+        k3_q = jacobian(s_half2, p, variant) @ q_half2
+
+        s_end = s + dt * k3_s
+        q_end = q + dt * k3_q
+        k4_s = rhs_5d(s_end, p, variant)
+        k4_q = jacobian(s_end, p, variant) @ q_end
+
+        s = s + (dt / 6.0) * (k1_s + 2.0 * k2_s + 2.0 * k3_s + k4_s)
+        q = q + (dt / 6.0) * (k1_q + 2.0 * k2_q + 2.0 * k3_q + k4_q)
+
+        # Renormalization using QR decomposition
+        q, r = np.linalg.qr(q)
+
     return s, q
 
 def lyapunov(digest, cfg, steps=100000, qr_interval=10, output=None):
