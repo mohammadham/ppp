@@ -27,7 +27,8 @@
     "batch_size": 4,
     "learning_rate": 0.001,
     "base_channels": 32,
-    "size": 256,
+    
+    "size": 128,
     "patience": 15,
     "threshold": 0.5
   },
