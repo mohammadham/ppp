@@ -2,8 +2,14 @@
 import json
 from pathlib import Path
 import numpy as np
+import torch
 from PIL import Image
 from .artifacts import sha256_file
+from .normalization import load_sample_normalized, extract_patient_stem
+
+# Global feature flag: when True, MIXED notebook uses unified normalization.
+# Default False preserves original DRIVE-only behavior exactly.
+USE_MIXED = False
 
 DATASETS = ('DRIVE', 'RITE', 'BraTS2020', 'COVID19_CXR')
 REQUIRED = ('id', 'dataset', 'patient_id', 'group_id', 'split', 'image', 'mask', 'source', 'mask_definition')
@@ -80,3 +86,60 @@ def load_sample(record, size=None):
         a = np.array(Image.fromarray(a).resize((size, size), Image.Resampling.BILINEAR))
         m = np.array(Image.fromarray(m).resize((size, size), Image.Resampling.NEAREST))
     return a, m.astype(bool), {**prep, 'processed_shape': list(a.shape), 'resize': 'bilinear image / nearest mask' if size else None}
+
+
+class MIXEDDataset(Dataset):
+    """Unified dataset loader for mixed DRIVE/CHASE_DB1/STARE.
+
+    Normalizes all samples to (3, 512, 512) images and (1, 512, 512) binary masks.
+    FOV mask falls back to all-ones tensor if dataset-specific mask is absent.
+    Binary mask values guaranteed {0.0, 1.0} for BCEWithLogitsLoss compatibility.
+
+    Usage (MIXED notebook sets USE_MIXED = True globally):
+        from scripts.data import MIXEDDataset, USE_MIXED
+        USE_MIXED = True
+        dataset = MIXEDDataset(manifest_path, size=512)
+    """
+    def __init__(self, manifest_path: str, size: int = 512):
+        self.manifest_path = Path(manifest_path).resolve()
+        records = [json.loads(line) for line in self.manifest_path.read_text(encoding='utf-8').splitlines() if line.strip()]
+        # Validate required fields
+        for r in records:
+            if any(not r.get(k) for k in REQUIRED):
+                raise ValueError(f'Missing required fields in MIXED manifest: {REQUIRED}')
+        # Group records by source dataset for per-dataset preprocessing registry
+        self.records = records
+        self.size = size
+
+    def __len__(self):
+        return len(self.records)
+
+    def __getitem__(self, index):
+        record = self.records[index]
+        image_path = Path(record['image']).resolve()
+        mask_path = Path(record['mask']).resolve()
+
+        # Extract patient stem for FOV lookup
+        patient_stem = extract_patient_stem(image_path.name)
+
+        # Try to locate FOV directory (sibling to image parent, or manifest 'source' dir)
+        # Strategy: look for mask parent dir, then go up one level for FOV dir
+        mask_parent = Path(record['mask']).parent
+        fov_dir = mask_parent.parent  # e.g., .../training/ masks -> .../training/
+
+        sample = load_sample_normalized(
+            image_path=image_path,
+            mask_path=mask_path,
+            fov_dir=fov_dir if fov_dir.is_dir() else None,
+            target_size=(self.size, self.size),
+        )
+
+        # Return torch tensors matching original SegmentationDataset contract:
+        # (image: 3, H, W) float32 [0,1], (mask: 1, H, W) float32 {0,1}
+        return (
+            torch.from_numpy(sample['image']).float(),
+            torch.from_numpy(sample['mask']).float(),
+            torch.from_numpy(sample['fov_mask']).float(),
+            {'id': record['id'], 'dataset': record['dataset'],
+             'original_shape': sample['original_shape'], 'resized_shape': sample['resized_shape']}
+        )
