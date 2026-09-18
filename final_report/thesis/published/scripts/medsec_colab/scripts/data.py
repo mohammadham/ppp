@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import numpy as np
 import torch
+from torch.utils.data import Dataset
 from PIL import Image
 from .artifacts import sha256_file
 from .normalization import load_sample_normalized, extract_patient_stem
