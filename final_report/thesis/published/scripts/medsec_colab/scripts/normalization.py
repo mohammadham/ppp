@@ -4,6 +4,7 @@ Solves: dimension mismatches (565×584, 700×605, 999×960), format mismatches
 and FOV mask dependency. All outputs standardized to (C, 512, 512).
 """
 from pathlib import Path
+import re
 import numpy as np
 from PIL import Image
 
@@ -78,19 +79,22 @@ def extract_patient_stem(filename: str) -> str:
     Handles: Image_01L.jpg, im0001.ppm, stare_imXXXX, chase_Image_XXL etc.
     Uses pathlib stem removal + optional underscore stripping.
     """
-    p = Path(filename)
-    stem = p.stem  # removes extension
-    # Remove common prefixes/suffixes that are not patient IDs
-    # For DRIVE: "Image_01L" -> "Image" (take first part before _ if all digits after)
-    # For CHASE: "Image_01L" -> "Image_01L" (keep whole stem)
-    # For STARE: "im0001" -> "im0001"
-    # Strategy: if stem contains underscore, check if pattern is ID-like
-    if '_' in stem:
-        parts = stem.split('_')
-        # If last part is all digits (like "01L" has letter, "01" is digits)
-        # Keep the full stem for maximum compatibility
-        return stem
+    stem = Path(filename).stem  # removes extension
+    # Remove common suffixes that are NOT patient IDs (mask suffixes, manual markers)
+    stem = re.sub(r'(_manual1|_1stHO|_2ndHO|\.ah|\.vk|_mask)', '', stem, flags=re.IGNORECASE)
     return stem
+
+def resolve_mask_path(img_path, candidate_masks):
+    """Find the correct primary mask for an image from candidate list.
+    
+    Prioritizes 1stHO/manual1 masks, excludes 2ndHO to avoid duplicate pairing.
+    """
+    img_stem = extract_patient_stem(img_path)
+    for m in candidate_masks:
+        if img_stem == extract_patient_stem(m):
+            if '2ndHO' not in str(m):
+                return m
+    return None
 
 
 def load_sample_normalized(image_path: Path, mask_path: Path,

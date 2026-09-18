@@ -144,3 +144,14 @@ class MIXEDDataset(Dataset):
             {'id': record['id'], 'dataset': record['dataset'],
              'original_shape': sample['original_shape'], 'resized_shape': sample['resized_shape']}
         )
+
+    def get_roi_bytes(self, mask_tensor):
+        """Convert a 512x512 mask tensor to binary bytes for SHA-256 hashing.
+        
+        Handles channel mismatch: squeezes (1, H, W) -> (H, W), binarizes
+        to uint8 {0, 255} for deterministic SHA-256 input without buffer errors.
+        """
+        if mask_tensor.dim() == 3:
+            mask_tensor = mask_tensor.squeeze(0)
+        roi_uint8 = (mask_tensor > 0.5).cpu().numpy().astype(np.uint8) * 255
+        return roi_uint8.tobytes()
