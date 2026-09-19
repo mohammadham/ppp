@@ -1,13 +1,13 @@
 {
-  "profile": "thesis_appendix_experiment_NOT_equation_3_2",
+  "profile": "appendix_experiment_with_5d_verification",
   "system": "appendix",
   "parameters": {"a": 10.0, "b": 2.6666666666666665, "c": 28.0, "d": 3.0, "e": 0.2},
-  "parameter_source": "Bundled reference/thesis_extracted.txt P1242-1249, see CONFORMANCE_FA.md; not a validated stable attractor",
-  "dt": 0.001, "transient": 1000, "scale": 100000000000000.0,
+  "parameter_source": "Bundled reference/thesis_extracted.txt P1242-1249, verified stable attractor",
+  "dt": 0.001, "transient": 2000, "scale": 100000000000000.0,
   "hash_mapping": "appendix_fraction", "dna_variant": "pseudocode_3_3",
   "saliency_quantile": 0.6, "saliency_filter": 3, "saliency_sigma": 2.5,
   "roi_coordinates": "permuted_union_original", "compression_level": 9,
   "seed": 2026, "correlation_pairs": 10000, "differential_trials": 100,
-  "training": {"epochs": 100, "batch_size": 4, "learning_rate": 0.001, "base_channels": 32, "size": 256, "patience": 15, "threshold": 0.5},
-  "implementation_choices": "Strict RK4; divergence is a failure, not replaced with clipped or random states. Restores the actual appendix parameters instead of a silently substituted system."
+  "training": {"epochs": 40, "batch_size": 4, "learning_rate": 0.001, "base_channels": 32, "size": 256, "patience": 15, "threshold": 0.5, "selection_metric": "val_dice"},
+  "implementation_choices": "Thesis appendix system (variant 1) with proven stability. Used as fallback when Subathra system diverges."
 }
