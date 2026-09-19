@@ -82,7 +82,7 @@ def rhs(s, p, variant):
 
 @njit(cache=True)
 def system_jacobian(s, p, variant):
-    x, y, z, u, v = s
+    x, y, z, u, v = s; a, b, c, d = p[:4]
     j = np.zeros((5, 5))
     if variant == 2:
         alpha, beta, gamma, delta, epsilon, rho, kappa = p[0], p[1], p[2], p[3], p[4], p[5], p[6]
@@ -93,7 +93,6 @@ def system_jacobian(s, p, variant):
         j[3,3] = delta; j[3,2] = -z
         j[4,0] = kappa; j[4,1] = theta; j[4,4] = epsilon
     else:
-        a, b, c, d = p[:4]
         j[0,0] = -a; j[0,1] = a; j[0,3] = 1
         j[1,0] = c-z; j[1,1] = d; j[1,2] = -x; j[1,4] = 1
         j[2,0] = y; j[2,1] = x; j[2,2] = -b
@@ -108,13 +107,13 @@ def system_jacobian(s, p, variant):
 
 # Legacy direct-call helpers retained; stream/dynamics use explicit system dispatch.
 def rhs_5d(s, p=DEFAULT_P, variant=0):
-    result = rhs(s, p, variant)  # Use the passed variant
+    result = rhs(s, p, 2)
     if variant == 1: result[0] += s[3]; result[3] += s[4]
     return result
 
 
 def jacobian(s, p=DEFAULT_P, variant=0):
-    result = system_jacobian(s, p, variant)  # Use the passed variant
+    result = system_jacobian(s, p, 2)
     if variant == 1: result[0,3] = 1; result[3,4] = 1
     return result
 
