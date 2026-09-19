@@ -71,6 +71,7 @@ def rhs(s, p, variant):
         r[3] = delta * u - x * z
         r[4] = epsilon * v + kappa * x + theta * y
     else:
+        a, b, c, d = p[:4]  # Define a,b,c,d from first 4 parameters
         r[0] = a*(y-x)+u; r[1] = c*x-x*z+d*y+v; r[2] = x*y-b*z
         if variant == 0:
             r[3] = -p[4]*x; r[4] = p[5]*y-p[6]*v
