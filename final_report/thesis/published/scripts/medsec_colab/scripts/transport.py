@@ -32,6 +32,10 @@ def open_sidecar(sidecar,secret):
 def send(image,roi,payload,cfg,secret):
     start=time.perf_counter(); cipher,digest=encrypt(image,roi,cfg)
     cipher_time=time.perf_counter()-start
+    return send_prepared(image,roi,payload,cfg,secret,cipher,digest,cipher_time)
+
+def send_prepared(image,roi,payload,cfg,secret,cipher,digest,cipher_time):
+    """Package an already measured cipher; avoids rerunning the expensive ODE in experiments."""
     start=time.perf_counter(); protected=protected_mask(roi,cfg)
     eligible=embedding_mask(cipher,protected,cfg)
     stego,pos,old,info=embed(cipher,payload,eligible,cfg)

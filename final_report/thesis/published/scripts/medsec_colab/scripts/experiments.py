@@ -1,5 +1,6 @@
 """One shared pipeline; sample-level failures remain in the denominator."""
 import json
+import hashlib
 import secrets
 import time
 from pathlib import Path
@@ -13,7 +14,8 @@ from .config import validate
 from .data import load_manifest, load_sample
 from .metrics import quality, security
 from .model import Predictor, segmentation_scores
-from .transport import send, receive
+from .transport import send, send_prepared, receive
+from .stego import CapacityError
 
 def sync(device):
     if str(device).startswith('cuda'):
@@ -62,6 +64,8 @@ def run(manifest, dataset, checkpoint, cfg, payload_path, output, device='cpu', 
     if output.exists(): raise FileExistsError('Use a new run directory to avoid mixing results')
     output.mkdir(parents=True)
     provenance = {'environment': environment(), 'config': cfg, 'dataset': dataset,
+                  'schema_version': 2,
+                  'code_sha256': {p.name: sha256_file(p) for p in sorted(Path(__file__).parent.glob('*.py'))},
                   'profile_warning': 'No claim of reproducing thesis numbers or proving cryptographic/clinical security',
                   'evaluation_size': evaluation_size, 'limit': limit}
     write_json(output/'run.json', provenance)
@@ -85,43 +89,66 @@ def run(manifest, dataset, checkpoint, cfg, payload_path, output, device='cpu', 
         write_json(output/'status.json', {'status': 'blocked', 'error': f'{type(exc).__name__}: {exc}'})
         raise
     secret = secrets.token_bytes(32)  # Ephemeral test secret; not a research key or saved artifact.
-    successful, failed, optional_failed = [], 0, 0
+    successful, cipher_references, failed, optional_failed = [], [], 0, 0
     for index, r in enumerate(records):
         folder = output/f'sample_{index:05d}'; folder.mkdir()
-        row = {'id': r['id'], 'dataset': dataset, 'group_id': r['group_id'], 'folder': folder.name}
+        row = {'id': r['id'], 'dataset': dataset, 'group_id': r['group_id'], 'folder': folder.name,
+               'origin_dataset': r.get('origin_dataset', dataset), 'cipher_status': 'not_run',
+               'stage': 'load_preprocess', 'message_exact': None}
         try:
             start = time.perf_counter(); image, target, prep = load_sample(r, evaluation_size)
             row['load_preprocess_seconds'] = time.perf_counter()-start
+            row['stage'] = 'segmentation'
             start = time.perf_counter(); roi = predictor(image); sync(device)
             row['inference_seconds'] = time.perf_counter()-start
             row.update({'segmentation': segmentation_scores(roi, target), 'preprocessing': prep})
             Image.fromarray(image).save(folder/'processed.png'); np.save(folder/'roi.npy', roi)
-            start = time.perf_counter(); outcome = send(image, roi, payload, cfg, secret)
-            row['sender_seconds_excluding_io'] = time.perf_counter()-start + row['inference_seconds']
+            row['stage'] = 'encryption'
+            start = time.perf_counter(); cipher, digest = encrypt(image, roi, cfg)
+            cipher_seconds = time.perf_counter()-start
+            np.save(folder/'cipher.npy', cipher)
+            row.update({'cipher_status': 'ok', 'cipher_seconds': cipher_seconds,
+                        'security': security(cipher, cfg['correlation_pairs'], cfg['seed']),
+                        'plaintext_security': security(image, cfg['correlation_pairs'], cfg['seed']),
+                        'processed_sha256': sha256_file(folder/'processed.png')})
+            cipher_references.append((r, folder, digest))
+            row['stage'] = 'embedding'
+            start = time.perf_counter(); outcome = send_prepared(image, roi, payload, cfg, secret, cipher, digest, cipher_seconds)
+            row['sender_seconds_excluding_io'] = time.perf_counter()-start + cipher_seconds + row['inference_seconds']
+            row['stage'] = 'receiving'
             start = time.perf_counter(); recovered, message = receive(outcome['stego'], outcome['sidecar'], secret)
             row['receiver_seconds'] = time.perf_counter()-start
             if not np.array_equal(image, recovered) or message != payload: raise AssertionError('Roundtrip mismatch')
-            cipher = outcome['cipher']; digest = roi_digest(image, roi)[0]
-            np.save(folder/'cipher.npy', cipher); Image.fromarray(outcome['stego']).save(folder/'stego.png')
+            Image.fromarray(outcome['stego']).save(folder/'stego.png')
             Image.fromarray(recovered).save(folder/'recovered.png')
-            row.update({'status': 'ok', 'security': security(cipher, cfg['correlation_pairs'], cfg['seed']),
-                        'plaintext_security': security(image, cfg['correlation_pairs'], cfg['seed']),
+            (folder/'recovered_payload.bin').write_bytes(message)
+            row.update({'status': 'ok', 'stage': 'complete',
                         'stego_quality': quality(cipher, outcome['stego'], outcome['protected']),
                         'recovery_quality': quality(image, recovered, roi), 'message_exact': message == payload,
+                        'payload_sha256': hashlib.sha256(payload).hexdigest(),
+                        'recovered_payload_sha256': hashlib.sha256(message).hexdigest(),
+                        'payload_ber': float(np.count_nonzero(np.unpackbits(np.frombuffer(payload, np.uint8)) !=
+                                                            np.unpackbits(np.frombuffer(message, np.uint8))) / (8*len(payload))) if payload else 0.,
                         'transport': outcome['info'], 'processed_sha256': sha256_file(folder/'processed.png')})
             # Save success immediately: later optional experiments cannot erase successful evidence.
             write_json(folder/'result.json', row)
             successful.append((r, folder, digest))
+            damaged = corrupt(outcome['stego'], 'salt_pepper', .1, np.random.default_rng(cfg['seed']+index))
+            try:
+                receive(damaged, outcome['sidecar'], secret); rejection = False
+            except Exception: rejection = True
+            write_json(folder/'authenticated_channel.json', {'tampered_rejected': rejection})
+        except Exception as exc:
+            failed += 1; row.update({'status': 'failed', 'error': f'{type(exc).__name__}: {exc}'})
+            if isinstance(exc, CapacityError): row['capacity'] = exc.details
+            write_json(folder/'result.json', row)
+        # Security experiments are independent of steganographic payload capacity.
+        if row['cipher_status'] == 'ok':
             try:
                 write_json(folder/'key_sensitivity.json', key_experiments(image, roi, cipher, digest, cfg))
                 from .diagnostics import fixed_mask_probes
                 write_json(folder/'fixed_mask_diagnostics.json', fixed_mask_probes(image, roi, cfg))
                 write_json(folder/'channel.json', list(channel_experiments(image, roi, cipher, digest, cfg, cfg['seed']+index)))
-                damaged = corrupt(outcome['stego'], 'salt_pepper', .1, np.random.default_rng(cfg['seed']+index))
-                try:
-                    receive(damaged, outcome['sidecar'], secret); rejection = False
-                except Exception: rejection = True
-                write_json(folder/'authenticated_channel.json', {'tampered_rejected': rejection})
                 if include_ablations:
                     results = list(ablations(image, target, roi, payload, cfg, secret))
                     optional_failed += sum(r['status'] == 'failed' for r in results)
@@ -129,17 +156,15 @@ def run(manifest, dataset, checkpoint, cfg, payload_path, output, device='cpu', 
             except Exception as exc:
                 optional_failed += 1
                 write_json(folder/'optional_failure.json', {'status': 'failed', 'error': f'{type(exc).__name__}: {exc}'})
-        except Exception as exc:
-            failed += 1; row.update({'status': 'failed', 'error': f'{type(exc).__name__}: {exc}'})
-            write_json(folder/'result.json', row)
         append_jsonl(output/'samples.jsonl', row)
     rng = np.random.default_rng(cfg['seed']); trials_ok = 0
     # Exactly configured trials per DATASET, not silently 100 per image.
     for trial in range(cfg['differential_trials']):
         result = {'trial': trial, 'dataset': dataset, 'region': 'inside' if trial % 2 == 0 else 'outside'}
         try:
-            if not successful: raise ValueError('No successful reference cipher available')
-            r, folder, digest = successful[trial % len(successful)]
+            if not cipher_references: raise ValueError('No successful reference cipher available')
+            # Advance once per inside/outside pair; both regions cover all reference images.
+            r, folder, digest = cipher_references[(trial // 2) % len(cipher_references)]
             image = np.array(Image.open(folder/'processed.png')); roi = np.load(folder/'roi.npy', allow_pickle=False)
             cipher = np.load(folder/'cipher.npy', allow_pickle=False)
             result.update({'id': r['id'], **one_pixel_trial(image, roi, cipher, predictor, cfg, rng, result['region'])})
@@ -149,6 +174,7 @@ def run(manifest, dataset, checkpoint, cfg, payload_path, output, device='cpu', 
         append_jsonl(output/'differential.jsonl', result)
     status = {'status': 'completed_with_failures' if failed or optional_failed or trials_ok < cfg['differential_trials'] else 'completed',
               'attempted_samples': len(records), 'successful_samples': len(successful), 'failed_samples': failed,
+              'successful_ciphers': len(cipher_references),
               'differential_attempted': cfg['differential_trials'], 'differential_successful': trials_ok,
               'optional_failures': optional_failed,
               'full_thesis_reproduction': False}

@@ -1,5 +1,6 @@
 """Explicit, subject-split manifests. Never synthesize missing research data."""
 import json
+import re
 from pathlib import Path
 import numpy as np
 import torch
@@ -12,7 +13,7 @@ from .normalization import load_sample_normalized, extract_patient_stem
 # Default False preserves original DRIVE-only behavior exactly.
 USE_MIXED = False
 
-DATASETS = ('DRIVE', 'RITE', 'BraTS2020', 'COVID19_CXR')
+DATASETS = ('DRIVE', 'RITE', 'BraTS2020', 'COVID19_CXR', 'CHASE_DB1', 'STARE', 'CHASE_STARE_Merged')
 REQUIRED = ('id', 'dataset', 'patient_id', 'group_id', 'split', 'image', 'mask', 'source', 'mask_definition')
 
 def load_manifest(path, verify_files=True):
@@ -27,6 +28,14 @@ def load_manifest(path, verify_files=True):
         uid = (r['dataset'], r['id'])
         if uid in ids: raise ValueError(f'Duplicate sample: {uid}')
         ids.add(uid)
+        # Enforce known biological grouping even for manually supplied legacy manifests.
+        chase = re.fullmatch(r'Image_(\d+)[LR]', Path(r['image']).stem, re.IGNORECASE)
+        if chase and r['dataset'] in ('CHASE_DB1', 'CHASE_STARE_Merged'):
+            key = ('chase_subject', chase.group(1))
+            if key in groups and groups[key] != r['split']: raise ValueError(f'Patient/group leakage: {key}')
+            groups[key] = r['split']
+        if r['dataset'] in ('STARE', 'CHASE_STARE_Merged') and re.search(r'\.(ah|vk)\.', Path(r['image']).name, re.IGNORECASE):
+            raise ValueError('STARE observer mask cannot be used as an input image')
         # Both patient and shared cross-dataset groups must stay in one split.
         for key in [('patient', r['dataset'], r['patient_id']), ('group', r['group_id'])]:
             if key in groups and groups[key] != r['split']: raise ValueError(f'Patient/group leakage: {key}')
@@ -45,6 +54,8 @@ def load_manifest(path, verify_files=True):
                     raise ValueError(f'Changed file checksum: {p}')
                 r[kind + '_sha256'] = actual
         if verify_files:
+            if r['image'] == r['mask'] or r['image_sha256'] == r['mask_sha256']:
+                raise ValueError('Image is its own mask; invalid segmentation pair')
             # Entire volumes/images cannot appear across different splits, even with renamed IDs.
             digest = r['image_sha256']
             if digest in images and images[digest] != r['split']: raise ValueError('Image-content leakage across splits')
@@ -101,9 +112,10 @@ class MIXEDDataset(Dataset):
         USE_MIXED = True
         dataset = MIXEDDataset(manifest_path, size=512)
     """
-    def __init__(self, manifest_path: str, size: int = 512):
+    def __init__(self, manifest_path: str, size: int = 512, split: str = 'train'):
         self.manifest_path = Path(manifest_path).resolve()
-        records = [json.loads(line) for line in self.manifest_path.read_text(encoding='utf-8').splitlines() if line.strip()]
+        if split not in ('train', 'val', 'test'): raise ValueError('Explicit train/val/test split required')
+        records = [r for r in load_manifest(self.manifest_path) if r['split'] == split]
         # Validate required fields
         for r in records:
             if any(not r.get(k) for k in REQUIRED):

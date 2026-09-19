@@ -1,12 +1,9 @@
 """Finite-time Lyapunov spectrum: coupled variational RK4 with QR reorthogonalization."""
 import numpy as np
 from numba import njit
-from .chaos import rhs_5d, step, initial_state
-from .config import ode_parameters
+from .chaos import rhs as rhs_5d, system_jacobian as jacobian, step, initial_state
+from .config import ode_parameters, system_variant
 from .artifacts import environment, write_json
-import numpy as np
-from numba import njit
-from scripts.chaos import jacobian, rhs_5d
 
 
 # @njit(cache=True)
@@ -30,7 +27,7 @@ Dynamics analysis: Variational equations and Lyapunov tracking via QR decomposit
 
 
 
-@njit(fastmath=True)
+@njit(cache=True)
 def variational_steps(
     s: np.ndarray,
     q: np.ndarray,
@@ -67,8 +64,9 @@ def variational_steps(
         s = s + (dt / 6.0) * (k1_s + 2.0 * k2_s + 2.0 * k3_s + k4_s)
         q = q + (dt / 6.0) * (k1_q + 2.0 * k2_q + 2.0 * k3_q + k4_q)
 
-        # Renormalization using QR decomposition
-        q, r = np.linalg.qr(q)
+        # QR belongs to the caller: discarding R here destroys all growth rates.
+        if not np.isfinite(s).all() or not np.isfinite(q).all() or np.max(np.abs(s)) > 1e12:
+            raise ValueError('Variational system diverged; no Lyapunov conclusion')
 
     return s, q
 
@@ -77,7 +75,7 @@ def lyapunov(digest, cfg, steps=100000, qr_interval=10, output=None):
               'steps': steps, 'qr_interval': qr_interval, 'environment': environment(), 'proof_of_hyperchaos': False}
     try:
         if steps < 1 or qr_interval < 1: raise ValueError('Positive steps and QR interval required')
-        p = ode_parameters(cfg); variant = 0 if cfg['system'] == 'equation_3_2' else 1
+        p = ode_parameters(cfg); variant = system_variant(cfg)
         s = initial_state(digest, cfg['hash_mapping']); dt = cfg['dt']
         for _ in range(cfg['transient']):
             s = step(s, dt, p, variant)

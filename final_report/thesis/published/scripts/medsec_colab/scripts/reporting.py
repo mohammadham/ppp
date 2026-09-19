@@ -27,7 +27,8 @@ def make_report(run):
     csv_rows(output/'samples.csv', [flatten(r) for r in samples])
     summary = {'attempted': len(samples), 'successful': sum(r['status'] == 'ok' for r in samples), 'metrics': {},
                'reproduced_thesis': False, 'status': json.loads((run/'status.json').read_text())}
-    flat = [flatten(r) for r in samples if r['status'] == 'ok']
+    # Each measured field has its own n. A failed payload can still have a valid cipher measurement.
+    flat = [flatten(r) for r in samples]
     for key in sorted({k for row in flat for k in row}):
         vals = [r[key] for r in flat if isinstance(r.get(key), numbers.Real) and not isinstance(r.get(key), bool)]
         infinite_count = sum(r.get(key) == 'Infinity' for r in flat)
@@ -73,7 +74,7 @@ def make_report(run):
     (output/'REPORT_FA.md').write_text('\n'.join(lines), encoding='utf-8')
     shutil.copy2(Path(__file__).parent/'literature_reported.csv', output/'literature_reported_NOT_reproduced.csv')
     # Visual evidence generated solely from run arrays; no decorative/example images.
-    if flat:
+    if any(r['status'] == 'ok' for r in samples):
         import matplotlib
         matplotlib.use('Agg')
         import matplotlib.pyplot as plt

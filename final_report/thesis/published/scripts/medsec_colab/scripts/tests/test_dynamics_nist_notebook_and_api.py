@@ -12,7 +12,7 @@ import numpy as np
 import pytest
 
 from scripts.artifacts import write_json
-from scripts.dynamics import jacobian, lyapunov, variational_steps
+from scripts.dynamics import lyapunov, variational_steps
 from scripts.nist import FAMILIES, export_streams, run_official
 from scripts.chaos import jacobian, rhs_5d
 
@@ -40,19 +40,20 @@ def test_jacobian_matches_subathra_2025_5d_hyperchaos():
         np.testing.assert_allclose(j, fd, rtol=1e-4, atol=1e-4)
 
 def test_finite_time_qr_linear_case_near_expected_eigenvalues(stable_cfg):
-    """Test QR-based eigenvalue tracking with Subathra 2025 parameters."""
-    p = np.array([40.0, 8.0, 1.0, -0.5, -0.5, 25.5, 0.05], dtype=np.float64)
+    """Retain expansion in R; orthogonality alone cannot test Lyapunov exponents.
+
+    Appendix at equilibrium with a=2,b=3,c=0,d=-4,e=.2 has triangular
+    tangent flow and eigenvalues -2,-4,-3,.2,-.2 in this coordinate order.
+    """
+    p = np.array([2., 3., 0., -4., .2])
     s = np.zeros(5, dtype=np.float64)
     q = np.eye(5, dtype=np.float64)
-    dt = float(stable_cfg.get("dt", 0.001))
-
-    steps = 200
-    done = 0
-    while done < steps:
-        s, q = variational_steps(s, q, 20, dt, p, 0)
-        done += 20
-
-    # Orthogonality check after QR evolution
+    dt = .001; sums = np.zeros(5); steps = 2000
+    for _ in range(steps//20):
+        s, q = variational_steps(s, q, 20, dt, p, 1)
+        q, r = np.linalg.qr(q)
+        sums += np.log(np.abs(np.diag(r)))
+    np.testing.assert_allclose(sums/(steps*dt), [-2., -4., -3., .2, -.2], atol=1e-7)
     np.testing.assert_allclose(q.T @ q, np.eye(5), atol=1e-5)
 
 def test_lyapunov_failure_logging_on_divergence():

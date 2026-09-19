@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+from PIL import Image
 from torch import nn
 from torch.nn import functional as F
 
@@ -47,9 +48,11 @@ class Predictor:
 
     @torch.inference_mode()
     def __call__(self, image):
-        tensor = torch.from_numpy(image.astype(np.float32)/255)[None, None].to(self.device)
-        shape = tensor.shape[-2:]
-        tensor = F.interpolate(tensor, (self.size, self.size), mode='bilinear', align_corners=False)
+        if image.ndim != 2 or image.dtype != np.uint8: raise ValueError('Predictor expects 2D uint8 grayscale')
+        shape = image.shape
+        # Match training's Pillow resize exactly; avoid train/inference resampler drift.
+        resized = np.array(Image.fromarray(image).resize((self.size, self.size), Image.Resampling.BILINEAR))
+        tensor = torch.from_numpy(resized.astype(np.float32)/255)[None, None].to(self.device)
         probabilities = self.net(tensor).sigmoid()
         probabilities = F.interpolate(probabilities, shape, mode='bilinear', align_corners=False)
         return (probabilities[0, 0] >= self.threshold).cpu().numpy()

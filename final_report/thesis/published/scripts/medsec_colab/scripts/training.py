@@ -33,6 +33,8 @@ def loss_function(logits, target, pos_w=1.0, neg_w=1.0):
 
 def train(manifest, dataset, cfg, output, device='cpu', resume=False):
     t = dict(cfg['training']); seed = int(cfg['seed'])
+    t.setdefault('selection_metric', 'val_dice')
+    if t['selection_metric'] not in ('val_dice', 'val_soft_dice'): raise ValueError('Unknown checkpoint selection metric')
     for field in ('epochs', 'batch_size', 'base_channels', 'patience'):
         if not isinstance(t[field], int) or t[field] < 1: raise ValueError(f'Invalid training {field}')
     if t['size'] < 16 or t['learning_rate'] <= 0 or not 0 < t['threshold'] < 1: raise ValueError('Invalid training settings')
@@ -55,6 +57,9 @@ def train(manifest, dataset, cfg, output, device='cpu', resume=False):
     data_fingerprint = hashlib.sha256(json.dumps(records, sort_keys=True).encode()).hexdigest()
     if resume:
         checkpoint = torch.load(output/'last.pt', map_location=device, weights_only=True)
+        if checkpoint.get('seed') != seed: raise ValueError('Resume requires identical seed')
+        if checkpoint.get('selection_metric') != t['selection_metric']:
+            raise ValueError('Resume requires identical checkpoint selection policy; legacy weights require a new run')
         if checkpoint['manifest_sha256'] != manifest_hash or checkpoint['dataset'] != dataset or checkpoint['training'] != t:
             raise ValueError('Resume requires identical manifest, dataset and training configuration')
         if checkpoint.get('data_fingerprint') != data_fingerprint:
@@ -71,7 +76,10 @@ def train(manifest, dataset, cfg, output, device='cpu', resume=False):
     # validation/test) and derive inverse-frequency weights for the BCE term.
     pos_pixels, neg_pixels = 0, 0
     with torch.inference_mode():
-        for image, target in loaders['train']:
+        weight_loader = DataLoader(SegmentationDataset(partitions['train'], t['size']),
+                                   batch_size=t['batch_size'], shuffle=False,
+                                   generator=torch.Generator().manual_seed(seed))
+        for image, target in weight_loader:
             sum_t = int(target.sum().item())
             pos_pixels += sum_t
             neg_pixels += int(target.numel() - sum_t)
@@ -105,23 +113,21 @@ def train(manifest, dataset, cfg, output, device='cpu', resume=False):
             epoch_result[phase+'_loss'] = float(np.mean(losses))
             epoch_result[phase+'_dice'] = float(np.mean(scores))
             epoch_result[phase+'_soft_dice'] = float(np.mean(softs))
-        # Select the best checkpoint by CONTINUOUS (soft) validation Dice. Hard Dice is a
-        # step function: while every predicted probability stays below threshold it is
-        # frozen at 0 and can never beat an early lucky epoch, so early stopping trips
-        # spuriously. Soft Dice changes smoothly as probabilities improve, so real
-        # progress is captured even before the threshold is crossed.
-        soft_dice = epoch_result['val_soft_dice']
-        improved = (soft_dice > best or
-                    (abs(soft_dice - best) < 1e-9 and epoch_result['val_loss'] < best_loss))
+        # Selection follows the metric actually reported; validation loss breaks ties.
+        selected_score = epoch_result[t['selection_metric']]
+        improved = (selected_score > best or
+                    (abs(selected_score - best) < 1e-9 and epoch_result['val_loss'] < best_loss))
         if improved:
             best_loss = epoch_result['val_loss']
-        best = max(best, soft_dice)
+        best = max(best, selected_score)
         stale = 0 if improved else stale + 1
         history.append(epoch_result)
         state = {'state_dict': net.state_dict(), 'optimizer': optimizer.state_dict(), 'training': t,
                  'dataset': dataset, 'manifest_sha256': manifest_hash, 'trained_epochs': epoch+1, 'best': best,
                  'data_fingerprint': data_fingerprint,
                  'best_val_loss': best_loss,
+                 'selection_metric': t['selection_metric'],
+                 'seed': seed,
                  'stale': stale, 'history': history, 'torch_rng': torch.get_rng_state(),
                  'cuda_rng': torch.cuda.get_rng_state_all() if torch.cuda.is_available() else [],
                  'seen_groups': sorted({r['group_id'] for s in partitions.values() for r in s}),
@@ -130,4 +136,9 @@ def train(manifest, dataset, cfg, output, device='cpu', resume=False):
             temporary = output/(name+'.tmp'); torch.save(state, temporary); temporary.replace(output/name)
         write_json(output/'history.json', history)
         print(epoch_result, flush=True)
-    return {'best_checkpoint': str(output/'best.pt'), 'epochs': len(history), 'best_val_dice': best}
+    best_state = torch.load(output/'best.pt', map_location='cpu', weights_only=True)
+    chosen = best_state['history'][-1]
+    return {'best_checkpoint': str(output/'best.pt'), 'epochs': len(history),
+            'selection_metric': t['selection_metric'], 'best_selection_score': best,
+            'selected_epoch': best_state['trained_epochs'],
+            'best_val_dice': chosen['val_dice'], 'selected_val_soft_dice': chosen['val_soft_dice']}

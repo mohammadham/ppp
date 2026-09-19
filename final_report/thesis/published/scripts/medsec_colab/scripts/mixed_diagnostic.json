@@ -1,0 +1,13 @@
+{
+  "profile": "MIXED_legacy_equations_diagnostic_NOT_validated_hyperchaos",
+  "system": "subathra_2025",
+  "parameters": {"gamma": 40.0, "beta": 8.0, "partial": 1.0, "epsilon": -0.5, "theta": -0.5, "rho": 25.5, "kappa": 0.05},
+  "parameter_source": "Explicit diagnostic of equations/values found in MIXED Colab patches; attribution to Subathra is legacy and not independently verified. Not equation 3-2 or the thesis appendix.",
+  "dt": 0.001, "transient": 1000, "scale": 100000000000000.0,
+  "hash_mapping": "mod_1e8", "dna_variant": "pseudocode_3_3",
+  "saliency_quantile": 0.6, "saliency_filter": 3, "saliency_sigma": 2.5,
+  "roi_coordinates": "permuted_union_original", "compression_level": 9,
+  "seed": 2026, "correlation_pairs": 10000, "differential_trials": 100,
+  "training": {"epochs": 40, "batch_size": 4, "learning_rate": 0.001, "base_channels": 32, "size": 256, "patience": 15, "threshold": 0.5, "selection_metric": "val_dice"},
+  "implementation_choices": "Preserves notebook dt and ODE values without minmax/clamping. Uses documented ROI moments and hash mapping. Long trajectories can fail; this is a diagnostic, not promised successful encryption. Training/inference both grayscale at configured size."
+}

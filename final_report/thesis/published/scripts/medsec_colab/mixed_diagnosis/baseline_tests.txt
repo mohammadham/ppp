@@ -1,0 +1,191 @@
+.FF....F.F                                                               [100%]
+=================================== FAILURES ===================================
+_________ test_encrypt_decrypt_roundtrip_both_variants[pseudocode_3_3] _________
+
+variant = 'pseudocode_3_3'
+stable_cfg = {'profile': 'software_test_only_stable', 'system': 'subathra_2025', 'parameters': {'a': 40.0, 'b': 8.0, 'c': 1.0, 'd': -0.5, ...}, 'parameter_source': 'SOFTWARE TEST ONLY stable fixture', ...}
+tiny_image_roi = (array([[  0,   1,   2, ...,  93,  94,  95],
+       [ 96,  97,  98, ..., 189, 190, 191],
+       [192, 193, 194, ...,  ...lse, False, False, ..., False, False, False],
+       [False, False, False, ..., False, False, False]], shape=(64, 96)))
+
+    @pytest.mark.parametrize("variant", ["pseudocode_3_3", "equation_3_3_feedback"])
+    def test_encrypt_decrypt_roundtrip_both_variants(variant, stable_cfg, tiny_image_roi):
+        image, roi = tiny_image_roi
+        cfg = dict(stable_cfg)
+        cfg["dna_variant"] = variant
+>       cipher, digest = encrypt(image, roi, cfg)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+scripts/tests/test_core_cipher_and_chaos.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/cipher.py:46: in encrypt
+    keys=stream(digest,image.size,cfg)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+digest_hex = '9', length = 6144
+cfg = {'profile': 'software_test_only_stable', 'system': 'subathra_2025', 'parameters': {'a': 40.0, 'b': 8.0, 'c': 1.0, 'd': -0.5, ...}, 'parameter_source': 'SOFTWARE TEST ONLY stable fixture', ...}
+raw = False, kwargs = {}
+
+    def stream(digest_hex: str, length: int, cfg: dict, raw: bool = False, **kwargs) -> np.ndarray:
+        # استفاده از گام بهینه 0.0003 در صورت عدم تعیین، برای سرعت بالا و پایداری کامل
+        dt = float(cfg.get("dt", 0.0003))
+        transient = int(cfg.get("transient", 1000))
+        variant = int(cfg.get("variant", 0))
+        p = parse_parameters(cfg)
+        state = initial_state(digest_hex, cfg)
+    
+        total_steps = transient + length
+        raw_history = np.empty((length, 5), dtype=np.float64)
+    
+        out_idx = 0
+        for step_idx in range(total_steps):
+            state = rk4_step(state, dt, p, variant)
+    
+            # جلوگیری از خطای واگرایی با مهار عددی هوشمند
+            if np.isnan(state).any() or np.isinf(state).any():
+                state = np.nan_to_num(state, nan=0.1, posinf=10.0, neginf=-10.0)
+    
+            for i in range(5):
+                if abs(state[i]) > 1e5:
+                    state[i] = np.sign(state[i]) * (10.0 + (abs(state[i]) % 100.0))
+    
+            if step_idx >= transient:
+                raw_history[out_idx] = state
+                out_idx += 1
+    
+        if raw:
+            return raw_history
+>       return _quantize_states_parallel(raw_history)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       NameError: name '_quantize_states_parallel' is not defined
+
+scripts/chaos.py:356: NameError
+_____ test_encrypt_decrypt_roundtrip_both_variants[equation_3_3_feedback] ______
+
+variant = 'equation_3_3_feedback'
+stable_cfg = {'profile': 'software_test_only_stable', 'system': 'subathra_2025', 'parameters': {'a': 40.0, 'b': 8.0, 'c': 1.0, 'd': -0.5, ...}, 'parameter_source': 'SOFTWARE TEST ONLY stable fixture', ...}
+tiny_image_roi = (array([[  0,   1,   2, ...,  93,  94,  95],
+       [ 96,  97,  98, ..., 189, 190, 191],
+       [192, 193, 194, ...,  ...lse, False, False, ..., False, False, False],
+       [False, False, False, ..., False, False, False]], shape=(64, 96)))
+
+    @pytest.mark.parametrize("variant", ["pseudocode_3_3", "equation_3_3_feedback"])
+    def test_encrypt_decrypt_roundtrip_both_variants(variant, stable_cfg, tiny_image_roi):
+        image, roi = tiny_image_roi
+        cfg = dict(stable_cfg)
+        cfg["dna_variant"] = variant
+>       cipher, digest = encrypt(image, roi, cfg)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+scripts/tests/test_core_cipher_and_chaos.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/cipher.py:46: in encrypt
+    keys=stream(digest,image.size,cfg)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+digest_hex = '9', length = 6144
+cfg = {'profile': 'software_test_only_stable', 'system': 'subathra_2025', 'parameters': {'a': 40.0, 'b': 8.0, 'c': 1.0, 'd': -0.5, ...}, 'parameter_source': 'SOFTWARE TEST ONLY stable fixture', ...}
+raw = False, kwargs = {}
+
+    def stream(digest_hex: str, length: int, cfg: dict, raw: bool = False, **kwargs) -> np.ndarray:
+        # استفاده از گام بهینه 0.0003 در صورت عدم تعیین، برای سرعت بالا و پایداری کامل
+        dt = float(cfg.get("dt", 0.0003))
+        transient = int(cfg.get("transient", 1000))
+        variant = int(cfg.get("variant", 0))
+        p = parse_parameters(cfg)
+        state = initial_state(digest_hex, cfg)
+    
+        total_steps = transient + length
+        raw_history = np.empty((length, 5), dtype=np.float64)
+    
+        out_idx = 0
+        for step_idx in range(total_steps):
+            state = rk4_step(state, dt, p, variant)
+    
+            # جلوگیری از خطای واگرایی با مهار عددی هوشمند
+            if np.isnan(state).any() or np.isinf(state).any():
+                state = np.nan_to_num(state, nan=0.1, posinf=10.0, neginf=-10.0)
+    
+            for i in range(5):
+                if abs(state[i]) > 1e5:
+                    state[i] = np.sign(state[i]) * (10.0 + (abs(state[i]) % 100.0))
+    
+            if step_idx >= transient:
+                raw_history[out_idx] = state
+                out_idx += 1
+    
+        if raw:
+            return raw_history
+>       return _quantize_states_parallel(raw_history)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       NameError: name '_quantize_states_parallel' is not defined
+
+scripts/chaos.py:356: NameError
+_________________ test_stream_determinism_and_no_rng_fallback __________________
+
+stable_cfg = {'profile': 'software_test_only_stable', 'system': 'subathra_2025', 'parameters': {'a': 40.0, 'b': 8.0, 'c': 1.0, 'd': -0.5, ...}, 'parameter_source': 'SOFTWARE TEST ONLY stable fixture', ...}
+
+    def test_stream_determinism_and_no_rng_fallback(stable_cfg):
+        digest = "ab" * 32
+>       first = chaos.stream(digest, 128, stable_cfg)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+scripts/tests/test_core_cipher_and_chaos.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+digest_hex = 'abababababababababababababababababababababababababababababababab'
+length = 128
+cfg = {'profile': 'software_test_only_stable', 'system': 'subathra_2025', 'parameters': {'a': 40.0, 'b': 8.0, 'c': 1.0, 'd': -0.5, ...}, 'parameter_source': 'SOFTWARE TEST ONLY stable fixture', ...}
+raw = False, kwargs = {}
+
+    def stream(digest_hex: str, length: int, cfg: dict, raw: bool = False, **kwargs) -> np.ndarray:
+        # استفاده از گام بهینه 0.0003 در صورت عدم تعیین، برای سرعت بالا و پایداری کامل
+        dt = float(cfg.get("dt", 0.0003))
+        transient = int(cfg.get("transient", 1000))
+        variant = int(cfg.get("variant", 0))
+        p = parse_parameters(cfg)
+        state = initial_state(digest_hex, cfg)
+    
+        total_steps = transient + length
+        raw_history = np.empty((length, 5), dtype=np.float64)
+    
+        out_idx = 0
+        for step_idx in range(total_steps):
+            state = rk4_step(state, dt, p, variant)
+    
+            # جلوگیری از خطای واگرایی با مهار عددی هوشمند
+            if np.isnan(state).any() or np.isinf(state).any():
+                state = np.nan_to_num(state, nan=0.1, posinf=10.0, neginf=-10.0)
+    
+            for i in range(5):
+                if abs(state[i]) > 1e5:
+                    state[i] = np.sign(state[i]) * (10.0 + (abs(state[i]) % 100.0))
+    
+            if step_idx >= transient:
+                raw_history[out_idx] = state
+                out_idx += 1
+    
+        if raw:
+            return raw_history
+>       return _quantize_states_parallel(raw_history)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       NameError: name '_quantize_states_parallel' is not defined
+
+scripts/chaos.py:356: NameError
+____________ test_appendix_n65536_known_divergence_remains_reported ____________
+
+    def test_appendix_n65536_known_divergence_remains_reported():
+        cfg = json.loads((SCRIPTS / 'appendix_experiment.json').read_text())
+>       with pytest.raises(ValueError, match="ODE diverged"):
+E       Failed: DID NOT RAISE ValueError
+
+scripts/tests/test_core_cipher_and_chaos.py:103: Failed
+=========================== short test summary info ============================
+FAILED scripts/tests/test_core_cipher_and_chaos.py::test_encrypt_decrypt_roundtrip_both_variants[pseudocode_3_3]
+FAILED scripts/tests/test_core_cipher_and_chaos.py::test_encrypt_decrypt_roundtrip_both_variants[equation_3_3_feedback]
+FAILED scripts/tests/test_core_cipher_and_chaos.py::test_stream_determinism_and_no_rng_fallback
+FAILED scripts/tests/test_core_cipher_and_chaos.py::test_appendix_n65536_known_divergence_remains_reported
+4 failed, 6 passed in 1.41s

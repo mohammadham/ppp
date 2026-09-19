@@ -1,0 +1,220 @@
+{
+  "scope": "SOFTWARE NUMERICAL DIAGNOSTIC, not medical evaluation or hyperchaos proof",
+  "config": {
+    "profile": "MIXED_legacy_equations_diagnostic_NOT_validated_hyperchaos",
+    "system": "subathra_2025",
+    "parameters": {
+      "gamma": 40.0,
+      "beta": 8.0,
+      "partial": 1.0,
+      "epsilon": -0.5,
+      "theta": -0.5,
+      "rho": 25.5,
+      "kappa": 0.05
+    },
+    "parameter_source": "Explicit diagnostic of equations/values found in MIXED Colab patches; attribution to Subathra is legacy and not independently verified. Not equation 3-2 or the thesis appendix.",
+    "dt": 0.001,
+    "transient": 1000,
+    "scale": 100000000000000.0,
+    "hash_mapping": "mod_1e8",
+    "dna_variant": "pseudocode_3_3",
+    "saliency_quantile": 0.6,
+    "saliency_filter": 3,
+    "saliency_sigma": 2.5,
+    "roi_coordinates": "permuted_union_original",
+    "compression_level": 9,
+    "seed": 2026,
+    "correlation_pairs": 10000,
+    "differential_trials": 100,
+    "training": {
+      "epochs": 40,
+      "batch_size": 4,
+      "learning_rate": 0.001,
+      "base_channels": 32,
+      "size": 256,
+      "patience": 15,
+      "threshold": 0.5,
+      "selection_metric": "val_dice"
+    },
+    "implementation_choices": "Preserves notebook dt and ODE values without minmax/clamping. Uses documented ROI moments and hash mapping. Long trajectories can fail; this is a diagnostic, not promised successful encryption. Training/inference both grayscale at configured size."
+  },
+  "environment": {
+    "utc": "2026-09-19T07:26:33.245303+00:00",
+    "python": "3.11.16",
+    "platform": "Linux-6.12.94+-aarch64-with-glibc2.36",
+    "processor": "",
+    "gpu": null,
+    "packages": {
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "torch": "2.14.0+cpu",
+      "numba": "0.67.0",
+      "scikit-image": "0.26.0",
+      "Pillow": "12.3.0",
+      "nibabel": "5.4.2",
+      "cryptography": "50.0.1"
+    },
+    "source_sha256": {
+      "__init__.py": "ca0d97e51702b28ef3e3814d44d3591e365ae903a24905582728875e60038ea7",
+      "__main__.py": "159df03237b3f6dce38f66b78397fbb427921e577061fd90f256ca3821154a6b",
+      "artifacts.py": "72329cf074062eb81dcb8d43226a5cb650bbcac67e070b689b7c3ce03cb93ad5",
+      "attacks.py": "77dc3e3ebb5d8345353c51bab5df37c9abf7fb99b449c71e608484bbf088aff3",
+      "build_delivery.py": "d97f22f3f7a703a4fd94f3b3dee182d62216f79684115eb0440d0ca388cfca13",
+      "build_mixed_notebook.py": "490bdb14a714c546ea7f31b0aa437dafb7cf1c64273d118dd36137f77a483a82",
+      "chaos.py": "23a96346cbd80e963d80027a6acce021fd8f304f5afc4a4b802ba4ffbbac7070",
+      "cipher.py": "2e657a9c32f9793aa47eebafb550183648b75f708934e6b506421db3dadc5f14",
+      "config.py": "3321e33984cf23f47f7e3de0cdd1ee1848bcd67c21fda2b2d260366674881997",
+      "data.py": "12a39e29eb629c35ded9a2503c21f293981e20e3c3198498ecb7020af2a7ee51",
+      "diagnostics.py": "676422c4fe6c9a401677c0a9654393b781b70e243edb7dcd794da6d464f49e98",
+      "dynamics.py": "4507f1853c9e17201c34c968bf2bd2d9ad40be40067a643bec58a231d03c0feb",
+      "experiments.py": "37f6536889fb7fde2c7672b2584c9577e28fbf96c4dc6d15cfe779baacaec3e5",
+      "install_colab.py": "2ca39aea99018b20aa9afcbcfda4c968f7e3d8af0d898ba099aa351ec53ec164",
+      "metrics.py": "f7fdb3fb9e5cad99d570052ac0a6b82eb29e924511fcb443718d9679eecdf1d0",
+      "mixed_manifest.py": "2139e97677c5b8408678024a4ea4351c0f544afbfdc44c93ac4cff3e3031314e",
+      "model.py": "14e631e013e29939501938cb3582e7520aa0756bfc91761f50e4408f4e1dd3d7",
+      "nist.py": "4b545fdfa69bd6d4e157908dcf74c2b5b3d39ed79d8e7980e407748c53e9c88d",
+      "normalization.py": "caad4fa60b3335beab20ace240734d81803ca45453e11a4efc311d2c306485df",
+      "prepare.py": "6e18c83c4ef248543e496bb866f975ece443cc795a9d8bc6840ca47dae2510f9",
+      "reporting.py": "ea4dc917655f28301641e3526efe8f997172a0c447620334065fb4c84178196e",
+      "stego.py": "2e8964c03f0466e49f4822c77d28a389f527845a081f9a999afdf0c2a6314246",
+      "training.py": "4af5b54934a7427fadbe46dcbf52776b6f5f5f1c5fdf8d23a59fae2ee4601b1a",
+      "transport.py": "43925b35373f023b093711a6070c74432c9e5d7eaead5228a680a90283a4296a"
+    }
+  },
+  "results": [
+    {
+      "digest": "1212121212121212121212121212121212121212121212121212121212121212",
+      "n": 65536,
+      "input_type": "deterministic digest diagnostic ONLY; not patient data",
+      "status": "ok",
+      "max_abs_state": 2537.00671923089,
+      "float64_scaled_above_2pow53_fraction": 0.170196533203125,
+      "corrected_column_entropy": [
+        7.997293702282311,
+        7.9971189434786965,
+        7.996869607239451,
+        7.997311085963688,
+        6.511972068739478
+      ],
+      "legacy_minmax_column_entropy": [
+        1.3553656962034364,
+        1.4455660545242945,
+        0.4860010622005344,
+        -0.0,
+        6.93282224706676
+      ],
+      "legacy_first3_unique": [
+        3,
+        4,
+        2
+      ],
+      "warnings": [
+        "Quantization exceeds float64 exact-integer range; low-bit precision loss, not randomness"
+      ]
+    },
+    {
+      "digest": "1212121212121212121212121212121212121212121212121212121212121212",
+      "n": 423500,
+      "input_type": "deterministic digest diagnostic ONLY; not patient data",
+      "status": "ok",
+      "max_abs_state": 144677263655.7859,
+      "float64_scaled_above_2pow53_fraction": 0.1953879574970484,
+      "corrected_column_entropy": [
+        7.999550617922926,
+        7.999557561581397,
+        7.999566186970247,
+        7.999605461048039,
+        1.8546445728454477
+      ],
+      "legacy_minmax_column_entropy": [
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        2.5230517134050205
+      ],
+      "legacy_first3_unique": [
+        1,
+        1,
+        1
+      ],
+      "warnings": [
+        "Quantization exceeds float64 exact-integer range; low-bit precision loss, not randomness"
+      ]
+    },
+    {
+      "digest": "1212121212121212121212121212121212121212121212121212121212121212",
+      "n": 959040,
+      "input_type": "deterministic digest diagnostic ONLY; not patient data",
+      "status": "failed",
+      "error": "ValueError: ODE diverged/nonfinite at integration step 463165; stopped, no RNG substitution"
+    },
+    {
+      "digest": "abababababababababababababababababababababababababababababababab",
+      "n": 65536,
+      "input_type": "deterministic digest diagnostic ONLY; not patient data",
+      "status": "ok",
+      "max_abs_state": 9549.620240545572,
+      "float64_scaled_above_2pow53_fraction": 0.1954742431640625,
+      "corrected_column_entropy": [
+        7.997275686553806,
+        7.997510357987457,
+        7.9975464503200095,
+        7.99714471366855,
+        4.629748657575199
+      ],
+      "legacy_minmax_column_entropy": [
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        7.322162694891162
+      ],
+      "legacy_first3_unique": [
+        1,
+        1,
+        1
+      ],
+      "warnings": [
+        "Quantization exceeds float64 exact-integer range; low-bit precision loss, not randomness"
+      ]
+    },
+    {
+      "digest": "abababababababababababababababababababababababababababababababab",
+      "n": 423500,
+      "input_type": "deterministic digest diagnostic ONLY; not patient data",
+      "status": "ok",
+      "max_abs_state": 576055718408.4135,
+      "float64_scaled_above_2pow53_fraction": 0.19929964580873671,
+      "corrected_column_entropy": [
+        7.999580952104095,
+        7.999531102178661,
+        7.999623843047296,
+        7.999539841520972,
+        1.1901614181835543
+      ],
+      "legacy_minmax_column_entropy": [
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        2.523051684288428
+      ],
+      "legacy_first3_unique": [
+        1,
+        1,
+        1
+      ],
+      "warnings": [
+        "Quantization exceeds float64 exact-integer range; low-bit precision loss, not randomness"
+      ]
+    },
+    {
+      "digest": "abababababababababababababababababababababababababababababababab",
+      "n": 959040,
+      "input_type": "deterministic digest diagnostic ONLY; not patient data",
+      "status": "failed",
+      "error": "ValueError: ODE diverged/nonfinite at integration step 435532; stopped, no RNG substitution"
+    }
+  ]
+}
