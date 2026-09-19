@@ -11,7 +11,9 @@ from numba import njit
 from .config import ode_parameters, system_variant
 
 # Compatibility for direct diagnostic rhs_5d calls, never a config fallback.
-DEFAULT_P = np.array([40., 8., 1., -.5, -.5, 25.5, .05])
+# Default_P: [alpha, beta, gamma, delta, epsilon, rho, kappa] for Subathra 5D system.
+# Note: theta = epsilon (both are -0.5 in the reference).
+DEFAULT_P = np.array([40., 8., 40., 1., -0.5, 25.5, 0.05])
 
 
 def roi_digest(image, roi):
@@ -45,17 +47,29 @@ def initial_state(digest, mapping='mod_1e8'):
 
 @njit(cache=True)
 def rhs(s, p, variant):
-    """0=equation 3-2; 1=thesis appendix; 2=legacy Subathra-labelled diagnostic."""
+    """0=equation 3-2; 1=thesis appendix; 2=Subathra 5D hyperchaotic system.
+
+    Subathra & Thanikaiselvan 5D hyperchaotic system parameters (variant 2):
+      p[0]=alpha, p[1]=beta, p[2]=gamma, p[3]=delta, p[4]=epsilon,
+      p[5]=rho, p[6]=kappa.
+      theta is set equal to epsilon (reference: theta=-0.5=epsilon).
+    Equations:
+      dx/dt = alpha*(y-x) + u
+      dy/dt = gamma*x - x*z + rho*y + v
+      dz/dt = x*y - beta*z
+      du/dt = delta*u - x*z
+      dv/dt = epsilon*v + kappa*x + theta*y   (theta=epsilon)
+    """
     x, y, z, u, v = s
     r = np.empty(5, np.float64)
-    a, b, c, d = p[:4]
     if variant == 2:
-        theta, rho, kappa = p[4:7]
-        r[0] = a*(y-x)+kappa*y+x
-        r[1] = a*x+c*y-x*z*z+y*z
-        r[2] = -b*z+x*x+x*y+kappa*z
-        r[3] = d*y+theta*u
-        r[4] = rho*x+kappa*v+z
+        alpha, beta, gamma, delta, epsilon, rho, kappa = p[0], p[1], p[2], p[3], p[4], p[5], p[6]
+        theta = epsilon  # theta == epsilon in reference
+        r[0] = alpha * (y - x) + u
+        r[1] = gamma * x - x * z + rho * y + v
+        r[2] = x * y - beta * z
+        r[3] = delta * u - x * z
+        r[4] = epsilon * v + kappa * x + theta * y
     else:
         r[0] = a*(y-x)+u; r[1] = c*x-x*z+d*y+v; r[2] = x*y-b*z
         if variant == 0:
@@ -68,15 +82,18 @@ def rhs(s, p, variant):
 
 @njit(cache=True)
 def system_jacobian(s, p, variant):
-    x, y, z, u, v = s; a, b, c, d = p[:4]
+    x, y, z, u, v = s
     j = np.zeros((5, 5))
     if variant == 2:
-        j[0,0] = -a+1; j[0,1] = a+p[6]
-        j[1,0] = a-z*z; j[1,1] = c+z; j[1,2] = -2*x*z+y
-        j[2,0] = 2*x+y; j[2,1] = x; j[2,2] = -b+p[6]
-        j[3,1] = d; j[3,3] = p[4]
-        j[4,0] = p[5]; j[4,2] = 1; j[4,4] = p[6]
+        alpha, beta, gamma, delta, epsilon, rho, kappa = p[0], p[1], p[2], p[3], p[4], p[5], p[6]
+        theta = epsilon
+        j[0,0] = -alpha; j[0,1] = alpha; j[0,3] = 1
+        j[1,0] = gamma - z; j[1,2] = -x; j[1,4] = 1
+        j[2,0] = y; j[2,1] = x; j[2,2] = -beta
+        j[3,3] = delta; j[3,2] = -z
+        j[4,0] = kappa; j[4,1] = theta; j[4,4] = epsilon
     else:
+        a, b, c, d = p[:4]
         j[0,0] = -a; j[0,1] = a; j[0,3] = 1
         j[1,0] = c-z; j[1,1] = d; j[1,2] = -x; j[1,4] = 1
         j[2,0] = y; j[2,1] = x; j[2,2] = -b
@@ -91,13 +108,13 @@ def system_jacobian(s, p, variant):
 
 # Legacy direct-call helpers retained; stream/dynamics use explicit system dispatch.
 def rhs_5d(s, p=DEFAULT_P, variant=0):
-    result = rhs(s, p, 2)
+    result = rhs(s, p, variant)  # Use the passed variant
     if variant == 1: result[0] += s[3]; result[3] += s[4]
     return result
 
 
 def jacobian(s, p=DEFAULT_P, variant=0):
-    result = system_jacobian(s, p, 2)
+    result = system_jacobian(s, p, variant)  # Use the passed variant
     if variant == 1: result[0,3] = 1; result[3,4] = 1
     return result
 

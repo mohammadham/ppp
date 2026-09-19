@@ -23,10 +23,10 @@ def validate(c):
         if missing:
             raise ValueError('پارامترهای تعیین‌نشدهٔ سیستم پیوست: ' + ', '.join(missing))
     elif c['system'] == 'subathra_2025':
-        names = ['gamma','beta','partial','epsilon','theta','rho','kappa']
+        names = ['alpha','beta','gamma','delta','epsilon','rho','kappa']
         missing = [n for n in names if c['parameters'].get(n) is None]
         if missing:
-            raise ValueError('پارامترهای سیستم سوباترا ۲۰۲۵ تعیین‌نشده‌اند: ' + ', '.join(missing))
+            raise ValueError('پارامترهای سیستم زیرآشوبی سوباترا ۲۰۲۵ تعیین‌نشده‌اند: ' + ', '.join(missing))
     if not np.isfinite([c['parameters'][n] for n in names]).all():
         raise ValueError('Nonfinite ODE parameters')
     if set(c['parameters']) != set(names):
@@ -54,7 +54,7 @@ def ode_parameters(c):
     validate(c)
     p=c['parameters']
     names = {'equation_3_2': ['a','b','c','d','k','h','w'], 'appendix': ['a','b','c','d','e'],
-             'subathra_2025': ['gamma','beta','partial','epsilon','theta','rho','kappa']}[c['system']]
+             'subathra_2025': ['alpha','beta','gamma','delta','epsilon','rho','kappa']}[c['system']]
     return np.array([p[n] for n in names], dtype=np.float64)
 
 def system_variant(c):

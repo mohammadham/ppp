@@ -41,7 +41,7 @@ def stable_cfg():
     return {
         "profile": "software_test_only_stable",
         "system": "subathra_2025",
-        "parameters": {"gamma": 40.0, "beta": 8.0, "partial": 1.0, "epsilon": -0.5, "theta": -0.5, "rho": 25.5, "kappa": 0.05},
+        "parameters": {"alpha": 40.0, "beta": 8.0, "gamma": 40.0, "delta": 1.0, "epsilon": -0.5, "rho": 25.5, "kappa": 0.05},
         "parameter_source": "SOFTWARE TEST ONLY stable fixture",
         "dt": 0.001,
         "transient": 10,

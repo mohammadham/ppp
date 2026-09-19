@@ -37,7 +37,7 @@ def test_quantization_formula_is_float64_pointwise_not_global_minmax(stable_cfg)
 
 
 @pytest.mark.parametrize('variant,p', [(0, [2.,3.,4.,5.,6.,7.,8.]), (1,[2.,3.,4.,5.,.2]),
-                                      (2,[40.,8.,1.,-.5,-.5,25.5,.05])])
+                                      (2,[40.,8.,40.,1.,-0.5,25.5,0.05])])
 def test_all_system_jacobians_match_finite_difference(variant, p):
     s = np.array([.3,-.2,.5,.1,-.4]); p = np.array(p); delta = 1e-6
     fd = np.column_stack([(rhs(s+np.eye(5)[i]*delta,p,variant)-rhs(s-np.eye(5)[i]*delta,p,variant))/(2*delta) for i in range(5)])

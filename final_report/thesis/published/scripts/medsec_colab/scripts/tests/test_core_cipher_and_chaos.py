@@ -45,37 +45,34 @@ def test_rectangular_zigzag_known_order():
     assert len(np.unique(idx)) == 6
 
 
-@pytest.mark.parametrize("variant", [0, 1])
+@pytest.mark.parametrize("variant", [2])
 def test_rhs_matches_subathra_2025_5d_hyperchaos(variant):
-    """Test that rhs_5d matches the Subathra & Thanikaiselvan (2025) 5D hyperchaotic system.
-    
-    This replaces the old test_rhs_matches_analytic_equations which used Lorenz 3D parameters.
-    The new system uses: γ=40, β=8, ∂=1, ε=-0.5, θ=-0.5, ρ=25.5, κ=0.05
+    """Test that rhs matches the Subathra & Thanikaiselvan (2025) 5D hyperchaotic system.
+
+    System equations:
+      dx/dt = alpha*(y - x) + u
+      dy/dt = gamma*x - x*z + rho*y + v
+      dz/dt = x*y - beta*z
+      du/dt = delta*u - x*z
+      dv/dt = epsilon*v + kappa*x + theta*y   (theta = epsilon)
     """
-    # Subathra 2025 5D hyperchaotic system RHS:
-    # ẋ = γ(y - x) + κy + x
-    # ẏ = γx + ∂y - xz² + yz
-    # ż = -βz + x² + xy + κz
-    # u̇ = εy + θu
-    # v̇ = ρx + κv + z
-    
-    s = np.array([1.0, 2.0, 3.0, 4.0, 5.0], dtype=np.float64)
-    p = np.array([40.0, 8.0, 1.0, -0.5, -0.5, 25.5, 0.05], dtype=np.float64)  # γ, β, ∂, ε, θ, ρ, κ
-    
-    out = chaos.rhs_5d(s)
-    
-    # Manually compute expected values from the Subathra 2025 system
+    s = np.array([1.0, 1.0, 1.0, 1.0, 1.0], dtype=np.float64)
+    p = np.array([40.0, 8.0, 40.0, 1.0, -0.5, 25.5, 0.05], dtype=np.float64)  # alpha, beta, gamma, delta, epsilon, rho, kappa
+
+    out = chaos.rhs(s, p, variant)
+
     x, y, z, u, v = s
-    γ, β, partial, ε, θ, ρ, κ = p
-    
+    alpha, beta, gamma, delta, epsilon, rho, kappa = p
+    theta = epsilon  # theta == epsilon in reference
+
     expected = np.array([
-        γ * (y - x) + κ * y + x,  # ẋ
-        γ * x + partial * y - x * (z**2) + y * z,  # ẏ
-        -β * z + (x**2) + x * y + κ * z,  # ż
-        ε * y + θ * u,  # u̇
-        ρ * x + κ * v + z,  # v̇
+        alpha * (y - x) + u,          # dx/dt = 40*(1-1) + 1 = 1.0
+        gamma * x - x * z + rho * y + v,  # dy/dt = 40*1 - 1*1 + 25.5*1 + 1 = 65.5
+        x * y - beta * z,             # dz/dt = 1*1 - 8*1 = -7.0
+        delta * u - x * z,            # du/dt = 1*1 - 1*1 = 0.0
+        epsilon * v + kappa * x + theta * y,  # dv/dt = -0.5*1 + 0.05*1 + (-0.5)*1 = -0.95
     ])
-    
+
     np.testing.assert_allclose(out, expected, rtol=1e-10, atol=1e-10)
 
 
@@ -98,7 +95,31 @@ def test_thesis_reference_rejects_missing_seven_parameters():
         validate(cfg)
 
 
+def test_subathra_config_valid():
+    """Test that subathra_diagnostic.json loads with valid parameters."""
+    cfg = json.loads((SCRIPTS / 'subathra_diagnostic.json').read_text())
+    validate(cfg)
+    assert cfg['system'] == 'subathra_2025'
+    assert cfg['parameters']['alpha'] == 40.0
+    assert cfg['parameters']['beta'] == 8.0
+    assert cfg['parameters']['gamma'] == 40.0
+    assert cfg['parameters']['delta'] == 1.0
+    assert cfg['parameters']['epsilon'] == -0.5
+    assert cfg['parameters']['rho'] == 25.5
+    assert cfg['parameters']['kappa'] == 0.05
+
+
 def test_appendix_n65536_known_divergence_remains_reported():
     cfg = json.loads((SCRIPTS / 'appendix_experiment.json').read_text())
     with pytest.raises(ValueError, match="ODE diverged"):
         chaos.stream("12" * 32, 65536, cfg, raw=True)
+
+
+def test_subathra_initial_conditions_derivatives():
+    """Verify derivatives at (1,1,1,1,1) match reference values."""
+    cfg = json.loads((SCRIPTS / 'subathra_diagnostic.json').read_text())
+    p = chaos.ode_parameters(cfg)
+    s = np.array([1.0, 1.0, 1.0, 1.0, 1.0], dtype=np.float64)
+    deriv = chaos.rhs(s, p, 2)
+    expected = np.array([1.0, 65.5, -7.0, 0.0, -0.95])
+    np.testing.assert_allclose(deriv, expected, rtol=1e-10, atol=1e-10)

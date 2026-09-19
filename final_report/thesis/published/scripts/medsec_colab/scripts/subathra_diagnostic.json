@@ -1,8 +1,8 @@
 {
-  "profile": "MIXED_subathra_5D_hyperchaotic",
+  "profile": "subathra_2025_hyperchaotic_reference",
   "system": "subathra_2025",
   "parameters": {"alpha": 40.0, "beta": 8.0, "gamma": 40.0, "delta": 1.0, "epsilon": -0.5, "rho": 25.5, "kappa": 0.05},
-  "parameter_source": "Subathra & Thanikaiselvan (Nature Scientific Reports) 5D hyperchaotic system, standard parameters verified with initial conditions (1,1,1,1,1) -> derivatives (1, 65.5, -7, 0, -0.95)",
+  "parameter_source": "Subathra & Thanikaiselvan (Nature Scientific Reports) 5D hyperchaotic system, standard parameters",
   "dt": 0.001, "transient": 1000, "scale": 100000000000000.0,
   "hash_mapping": "mod_1e8", "dna_variant": "pseudocode_3_3",
   "saliency_quantile": 0.6, "saliency_filter": 3, "saliency_sigma": 2.5,
