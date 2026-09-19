@@ -45,6 +45,19 @@ def build(output=None):
     archive = output/'medical_thesis_colab.zip'
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as z:
         z.write(nbpath, 'medsec_colab/Thesis_Colab.ipynb')
+        if __package__:
+            from .build_mixed_notebook import notebook as mixed_notebook
+        else:
+            from build_mixed_notebook import notebook as mixed_notebook
+        mixed_path = output/'MIXED.ipynb'
+        mixed_path.write_text(json.dumps(mixed_notebook(), ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+        z.write(mixed_path, 'medsec_colab/MIXED.ipynb')
+        diagnosis_dir = scripts.parent/'mixed_diagnosis'
+        for name in ('REPORT_FA.md', 'numerical_diagnostics.json', 'final_tests.txt', 'baseline_tests.txt', 'TESTED_ENVIRONMENT.txt'):
+            diagnosis = diagnosis_dir/name
+            if diagnosis.is_file(): z.write(diagnosis, 'medsec_colab/mixed_diagnosis/'+name)
+        for diagnosis in sorted(diagnosis_dir.glob('run*_cell_*.png')):
+            z.write(diagnosis, 'medsec_colab/mixed_diagnosis/'+diagnosis.name)
         for p in sorted(scripts.rglob('*')):
             relative = p.relative_to(scripts)
             if not p.is_file() or any(part.startswith('.') or part == '__pycache__' for part in relative.parts): continue

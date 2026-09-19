@@ -12,9 +12,9 @@ import numpy as np
 import pytest
 
 from scripts.artifacts import write_json
-from scripts.dynamics import jacobian, lyapunov, variational_steps
+from scripts.dynamics import lyapunov, variational_steps
 from scripts.nist import FAMILIES, export_streams, run_official
-from scripts.chaos import jacobian, rhs_5d
+from scripts.chaos import jacobian, rhs, rhs_5d
 
 SCRIPTS = Path(__file__).resolve().parents[1]
 
@@ -22,37 +22,33 @@ SCRIPTS = Path(__file__).resolve().parents[1]
 def test_jacobian_matches_subathra_2025_5d_hyperchaos():
     """Test Jacobian against finite difference for Subathra & Thanikaiselvan (2025) 5D hyperchaos."""
     s = np.array([0.3, -0.2, 0.5, 0.1, -0.4], dtype=np.float64)
-    # Parameters: gamma=40, beta=8, partial=1, epsilon=-0.5, theta=-0.5, rho=25.5, kappa=0.05
-    p = np.array([40.0, 8.0, 1.0, -0.5, -0.5, 25.5, 0.05], dtype=np.float64)
+    p = np.array([40.0, 8.0, 40.0, 1.0, -0.5, 25.5, 0.05], dtype=np.float64)
     eps = 1e-6
 
-    for variant in (0, 1):
-        j = jacobian(s, p, variant)
-        fd = np.zeros_like(j)
-        for i in range(5):
-            ds = np.zeros(5, dtype=np.float64)
-            ds[i] = eps
-            # Fixed call: both positive and negative perturbations receive state, parameters, and variant
-            fd[:, i] = (
-                rhs_5d(s + ds, p, variant) - rhs_5d(s - ds, p, variant)
-            ) / (2.0 * eps)
+    j = jacobian(s, p, 2)
+    fd = np.zeros_like(j)
+    for i in range(5):
+        ds = np.zeros(5, dtype=np.float64)
+        ds[i] = eps
+        fd[:, i] = (rhs(s + ds, p, 2) - rhs(s - ds, p, 2)) / (2.0 * eps)
 
-        np.testing.assert_allclose(j, fd, rtol=1e-4, atol=1e-4)
+    np.testing.assert_allclose(j, fd, rtol=1e-4, atol=1e-4)
 
 def test_finite_time_qr_linear_case_near_expected_eigenvalues(stable_cfg):
-    """Test QR-based eigenvalue tracking with Subathra 2025 parameters."""
-    p = np.array([40.0, 8.0, 1.0, -0.5, -0.5, 25.5, 0.05], dtype=np.float64)
+    """Retain expansion in R; orthogonality alone cannot test Lyapunov exponents.
+
+    Appendix at equilibrium with a=2,b=3,c=0,d=-4,e=.2 has triangular
+    tangent flow and eigenvalues -2,-4,-3,.2,-.2 in this coordinate order.
+    """
+    p = np.array([2., 3., 0., -4., .2])
     s = np.zeros(5, dtype=np.float64)
     q = np.eye(5, dtype=np.float64)
-    dt = float(stable_cfg.get("dt", 0.001))
-
-    steps = 200
-    done = 0
-    while done < steps:
-        s, q = variational_steps(s, q, 20, dt, p, 0)
-        done += 20
-
-    # Orthogonality check after QR evolution
+    dt = .001; sums = np.zeros(5); steps = 2000
+    for _ in range(steps//20):
+        s, q = variational_steps(s, q, 20, dt, p, 1)
+        q, r = np.linalg.qr(q)
+        sums += np.log(np.abs(np.diag(r)))
+    np.testing.assert_allclose(sums/(steps*dt), [-2., -4., -3., .2, -.2], atol=1e-7)
     np.testing.assert_allclose(q.T @ q, np.eye(5), atol=1e-5)
 
 def test_lyapunov_failure_logging_on_divergence():

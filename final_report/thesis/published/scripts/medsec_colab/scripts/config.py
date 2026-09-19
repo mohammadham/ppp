@@ -23,15 +23,17 @@ def validate(c):
         if missing:
             raise ValueError('پارامترهای تعیین‌نشدهٔ سیستم پیوست: ' + ', '.join(missing))
     elif c['system'] == 'subathra_2025':
-        # سیستم ۵بعدی ابرآشوبی سوباترا & Thanikaiselvan (Nature Sci Rep, 2025)
-        # پارامترهای تعریف‌شده: gamma, beta, partial, epsilon, vartheta, rho, kappa
-        # در config armazenished as a,b,c,d,e برای سازگاری عقب، اما از validate شده
-        names = ['a','b','c','d','e']
+        names = ['alpha','beta','gamma','delta','epsilon','rho','kappa']
         missing = [n for n in names if c['parameters'].get(n) is None]
         if missing:
-            raise ValueError('پارامترهای سیستم سوباترا ۲۰۲۵ تعیین‌نشده‌اند: ' + ', '.join(missing))
+            raise ValueError('پارامترهای سیستم زیرآشوبی سوباترا ۲۰۲۵ تعیین‌نشده‌اند: ' + ', '.join(missing))
     if not np.isfinite([c['parameters'][n] for n in names]).all():
         raise ValueError('Nonfinite ODE parameters')
+    if set(c['parameters']) != set(names):
+        raise ValueError('Ambiguous/extra parameter names; use only names belonging to the selected system')
+    if not str(c.get('parameter_source', '')).strip(): raise ValueError('Document parameter_source')
+    if 'variant' in c or c.get('initial_state') is not None:
+        raise ValueError('Hidden variant/initial_state overrides are not supported; use explicit system/hash_mapping')
     if not np.isfinite([c['dt'], c['scale']]).all() or c['dt'] <= 0 or c['transient'] < 0 or c['scale'] <= 0:
         raise ValueError('Invalid integrator settings')
     if not isinstance(c['transient'], int): raise ValueError('Transient must be an integer')
@@ -51,5 +53,9 @@ def validate(c):
 def ode_parameters(c):
     validate(c)
     p=c['parameters']
-    names=['a','b','c','d','k','h','w'] if c['system']=='equation_3_2' else ['a','b','c','d','e']
+    names = {'equation_3_2': ['a','b','c','d','k','h','w'], 'appendix': ['a','b','c','d','e'],
+             'subathra_2025': ['alpha','beta','gamma','delta','epsilon','rho','kappa']}[c['system']]
     return np.array([p[n] for n in names], dtype=np.float64)
+
+def system_variant(c):
+    return {'equation_3_2': 0, 'appendix': 1, 'subathra_2025': 2}[c['system']]
