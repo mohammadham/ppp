@@ -66,13 +66,13 @@
 % SOURCE Appendices.txt:40-73 [python-listing]
 \begin{sourcecode}
 \begin{LTR}\ttfamily\fontsize{9}{13}\selectfont\raggedright
-\CodeLine{0.0}{def hyperchaos\_\allowbreak{}5d\_\allowbreak{}system(state, a=10.0, b=8/3, c=28.0, d=3.0, e=0.2):}
+\CodeLine{0.0}{def hyperchaos\_\allowbreak{}5d\_\allowbreak{}system(state, alpha=40.0, beta=8.0, gamma=40.0, delta=1.0, epsilon=-0.5, theta=-0.5, rho=25.5, kappa=0.05):}
 \CodeLine{2.0}{x, y, z, u, v = state}
-\CodeLine{2.0}{dx = a * (y {-} x) + u}
-\CodeLine{2.0}{dy = c * x {-} x * z + d * y + v}
-\CodeLine{2.0}{dz = x * y {-} b * z}
-\CodeLine{2.0}{du = {-}y * z + e * u}
-\CodeLine{2.0}{dv = x * z {-} e * v}
+\CodeLine{2.0}{dx = alpha * (y {-} x) + u}
+\CodeLine{2.0}{dy = gamma * x - x * z + delta * y + v}
+\CodeLine{2.0}{dz = x * y - beta * z}
+\CodeLine{2.0}{du = -y * z + epsilon * u}
+\CodeLine{2.0}{dv = rho * x * z - theta * y - kappa * v}
 \CodeLine{2.0}{return np.array([dx, dy, dz, du, dv])}
 \CodeLine{0.0}{\strut}
 \CodeLine{0.0}{def generate\_\allowbreak{}5d\_\allowbreak{}chaotic\_\allowbreak{}sequences(k\_\allowbreak{}hash\_\allowbreak{}hex, num\_\allowbreak{}samples):}
