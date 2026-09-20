@@ -136,7 +136,7 @@
 
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:28-28 [paragraph]
-از آنجایی که فاز پنهان‌نگاری فراداده صراحتاً محدود به نواحی کم‌برجستگی پس‌زمینه بوده و ناحیه تشخیصی \lr{ROI} ۱۰۰\SourceGlyph{066A} دست‌نخورده باقی می‌ماند ($\mathrm{ROI} \cap \mathrm{Payload} = \emptyset$)، پیکسل‌های ناحیه \lr{ROI} در تصویر استگوی دریافتی $I_{\mathrm{Stego}}$ دقیقاً برابر با پیکسل‌های \lr{ROI} در تصویر واضح اولیه $I$ می‌باشند. بنابراین، با اعمال شبکه \lr{U{-}Net} در سمت گیرنده، ماسک \lr{ROI} و ویژگی‌های آماری استخراج‌شده کاملاً متناظر با فرستنده بوده و چکیده ۲۵۶ بیتی \lr{SHA{-}256} و شرایط اولیه سیستم ۵ بعدی عینا و بدون کوچک‌ترین خطایی بازسازی می‌گردند ($K_{\mathrm{Rec}} \equiv K_{\text{Send}}$) \ThesisCite{1}, \ThesisCite{4}.\par
+از آنجایی که فاز پنهان‌نگاری فراداده صراحتاً محدود به نواحی کم‌برجستگی پس‌زمینه بوده و ناحیه تشخیصی \lr{ROI} ۱۰۰\SourceGlyph{066A} دست‌نخورده باقی می‌ماند ($\mathrm{ROI} \cap \mathrm{Payload} = \emptyset$)، پیکسل‌های ناحیه \lr{ROI} در تصویر استگوی دریافتی $I_{\mathrm{Stego}}$ دقیقاً برابر با پیکسل‌های \lr{ROI} در تصویر واضح اولیه $I$ می‌باشند. بنابراین، با اعمال شبکه \lr{U{-}Net} در سمت گیرنده، ماسک \lr{ROI} و ویژگی‌های آماری استخراج‌شده کاملاً متناظر با فرستنده بوده و چکیده ۲۵۶ بیتی \lr{SHA{-}256} و شرایط اولیه سیستم ۵ بعدی عینا و بدون کوچک‌ترین خطایی بازسازی می‌گردند ($K_{\mathrm{Rec}} \equiv K_{\text{Send}}$) \ThesisCite{1}, \ThesisCite{4}. با این حال، به دلیل تغییرات جزئی ایجادشده در لایه‌های کم‌ارزش پس‌زمینه تصویر استگو توسط فرآیند پنهان‌نگاری، بازسازی بیت‌به‌بیت و قطعی ناحیه حساس بالینی مستقیماً نیازمند دریافت یک پرونده کمکی احرازهویت‌شده موسوم به \lr{Recovery Sidecar} (\texttt{recovery.msr}) است که حاوی مقادیر اصلی بیت‌های جایگزین‌شده و تگ احرازهویت \lr{AES-GCM-256} بوده و در صورت صحت‌آزمایی، دسترسی به تصویر اصلی بدون هیچ‌گونه اتلاف اطلاعات بالینی ($\text{PSNR}_{\mathrm{ROI}} = \infty$) میسر می‌سازد \ThesisCite{2}.\par
 
 % SOURCE Architecture_Dataflow_Chapter3.txt:29-29 [spacing]
 
@@ -237,19 +237,21 @@
 
 
 % SOURCE UNet_KeyGen_Chapter3.txt:17-17 [paragraph]
-بردار ویژگی‌های آماری حاصل به همراه ابعاد تصویر به عنوان ورودی به تابع هش یک‌طرفه و امن \lr{SHA{-}256} تغذیه می‌شوند تا چکیده باینری ۲۵۶ بیتی $K_{\mathrm{hash}}$ تولید گردد:\par
+بردار ویژگی‌های آماری حاصل به همراه ابعاد تصویر به عنوان ورودی به تابع هش یک‌طرفه و امن \lr{SHA{-}256} تغذیه می‌شوند تا چکیده باینری ۲۵۶ بیتی $K_{\mathrm{hash}}$ تولید گردد. به منظور جلوگیری از خطاهای ناشی از گردکردن اعشاری در محیط‌های محاسباتی مختلف، مقادیر گشتاورهای آماری با دقت ممیز شناور ۶۴ بیتی و ۱۷ رقم بااهمیت \lr{(IEEE 754 double-precision)} و با استفاده از کاراکتر جداکننده خط عمودی (\texttt{|}) و درج صریح ابعاد تصویر سریال‌سازی می‌شوند:\par
 
 % SOURCE UNet_KeyGen_Chapter3.txt:18-18 [spacing]
 
 
 % SOURCE UNet_KeyGen_Chapter3.txt:19-19 [paragraph]
-\[K_{\mathrm{hash}} = \mathrm{SHA256}\Big( \mu_{\mathrm{ROI}} \,\allowbreak{}||\,\allowbreak{} \sigma_{\mathrm{ROI}}^2 \,\allowbreak{}||\,\allowbreak{} S_{\mathrm{ROI}} \,\allowbreak{}||\,\allowbreak{} K_{\mathrm{ROI}} \,\allowbreak{}||\,\allowbreak{} W \,\allowbreak{}||\,\allowbreak{} H \Big)\]\par
+\[\mathcal{F}_{\mathrm{str}} = \mathrm{Format}(\mu_{\mathrm{ROI}}, \text{'.17g'}) \parallel \texttt{|} \parallel \mathrm{Format}(\sigma_{\mathrm{ROI}}^2, \text{'.17g'}) \parallel \texttt{|} \parallel \mathrm{Format}(S_{\mathrm{ROI}}, \text{'.17g'}) \parallel \texttt{|} \parallel \mathrm{Format}(K_{\mathrm{ROI}}, \text{'.17g'}) \parallel \texttt{|} \parallel \mathrm{Str}(W) \parallel \texttt{|} \parallel \mathrm{Str}(H)
+\end{equation}
+K_{\mathrm{hash}} = \mathrm{SHA256}(\mathcal{F}_{\mathrm{str}})\]\par
 
 % SOURCE UNet_KeyGen_Chapter3.txt:20-20 [spacing]
 
 
 % SOURCE UNet_KeyGen_Chapter3.txt:21-21 [paragraph]
-در گام سوم، کلید باینری ۲۵۶ بیتی $K_{\mathrm{hash}}$ به ۵ بلوک ۴۸ بیتی مجزا ($K_{b1},\allowbreak{} K_{b2},\allowbreak{} K_{b3},\allowbreak{} K_{b4},\allowbreak{} K_{b5}$) تقسیم شده و از طریق روابط ریاضی مشخص، به ۵ عدد اعشاری پیوسته در بازه $(0,\allowbreak{} 1)$ نرمال‌سازی می‌شوند تا شرایط اولیه $(x_0,\allowbreak{} y_0,\allowbreak{} z_0,\allowbreak{} u_0,\allowbreak{} v_0)$ برای راه‌اندازی دستگاه معادلات دیفرانسیل ۵بعدی ابرآشوبی حاصل گردد. فرمول‌بندی کامل این فرآیند در رابطه ۳{-}۲ ارائه شده است.\par
+در گام سوم، کلید باینری ۲۵۶ بیتی $K_{\mathrm{hash}}$ به ۵ بلوک ۴۸ بیتی مجزا ($K_{b1},\allowbreak{} K_{b2},\allowbreak{} K_{b3},\allowbreak{} K_{b4},\allowbreak{} K_{b5}$) تقسیم شده و از طریق روابط ریاضی مشخص، به ۵ عدد اعشاری پیوسته در بازه متقارن $[-2.0, +2.0]$ نگاشت می‌شوند تا شرایط اولیه $(x_0,\allowbreak{} y_0,\allowbreak{} z_0,\allowbreak{} u_0,\allowbreak{} v_0)$ برای راه‌اندازی دستگاه معادلات دیفرانسیل ۵بعدی ابرآشوبی حاصل گردد. این نگاشت خطی به صورت $s_0 = \left( \frac{K_b \bmod 10^8}{10^8} \right) \times 4.0 - 2.0$ انجام شده و تضمین می‌کند که متغیرهای حالت بلافاصله در حوضه جاذب غریب \lr{(Strange Attractor)} سیستم قرار می‌گیرند. فرمول‌بندی کامل این فرآیند در رابطه ۳{-}۲ ارائه شده است.\par
 
 % SOURCE UNet_KeyGen_Chapter3.txt:22-22 [spacing]
 
@@ -310,7 +312,7 @@
 \SourceHeading{2}{۳{-}۴{-}۱. فرمول‌بندی ریاضی دستگاه معادلات دیفرانسیل ۵ بعدی}
 
 % SOURCE Hyperchaos_5D_Chapter3.txt:6-6 [paragraph]
-دستگاه معادلات دیفرانسیل حالت پیوسته سیستم ۵ بعدی ابرآشوبی شامل ۵ متغیر حالت \lr{(x, y, z, u, v)} و ۷ پارامتر کنترلی غیرخطی \lr{(a, b, c, d, k, h, w)} به صورت زیر فرمول‌بندی می‌گردد \ThesisCite{1}:\par
+دستگاه معادلات دیفرانسیل حالت پیوسته سیستم ۵ بعدی ابرآشوبی خودم autonomous سوباترا و تانیکایسلوَن \cite{Subathra2025} شامل ۵ متغیر حالت $(x, y, z, u, v)$ و پارامترهای کنترلی تثبیت‌شده در پیاده‌سازی محاسباتی به صورت زیر فرمول‌بندی می‌گردد:\par
 
 % SOURCE Hyperchaos_5D_Chapter3.txt:7-7 [spacing]
 
@@ -445,7 +447,7 @@
 \SourceHeading{2}{۳{-}۵{-}۱. مرحله اول: جایگشت زیگ‌زاگی \lr{(Zig{-}zag Scrambling / Confusion Stage)}}
 
 % SOURCE Zigzag_DNA_Chapter3.txt:8-8 [paragraph]
-در مرحله جایگشت، ماتریس تصویر ورودی واضح $I$ با ابعاد $W \times H$ با استفاده از الگوی پیمایش قطری زیگ‌زاگی (مطابق با استاندارد پردازش تصاویر و کوانتایش \lr{JPEG}) آشفته می‌گردد. در الگوریتم‌های سنتی رمزشده، جایگشت‌های سطری یا ستونی ساده به تنهایی توانایی شکستن همبستگی دو‌بعدی پیکسل‌ها را ندارند؛ اما پیمایش زیگ‌زاگی با تغییر موقعیت مکانی پیکسل‌ها بر روی قطرهای فرعی و اصلی، ساختار هندسی تصویر را تماماً برهم زده و ضریب همبستگی پیکسل‌های مجاور ($r_{xy}$) را در سه جهت افقی، عمودی و قطری از حدود $1.0$ به نزدیک صفر ($r_{xy} \approx 0.0$) کاهش می‌دهد.\par
+در مرحله جایگشت، ماتریس تصویر ورودی واضح $I$ با ابعاد $W \times H$ با استفاده از آشفته‌سازی مکانی پویا بر اساس مرتب‌سازی اندیس‌های کلید اول سیستم ابرآشوبی ($K_1$) آشفته می‌گردد. در الگوریتم‌های سنتی رمزشده، جایگشت‌های سطری یا ستونی ساده به تنهایی توانایی شکستن همبستگی دو‌بعدی پیکسل‌ها را ندارند؛ اما استفاده از تابع \lr{argsort} روی بردار کلید شبه‌تصادفی $K_1$ برای ایجاد جایگشت یک‌تایی بر روی قطرهای فرعی و اصلی، ساختار هندسی تصویر را تماماً برهم زده و ضریب همبستگی پیکسل‌های مجاور ($r_{xy}$) را در سه جهت افقی، عمودی و قطری از حدود $1.0$ به نزدیک صفر ($r_{xy} \approx 0.0$) کاهش می‌دهد.\par
 
 % SOURCE Zigzag_DNA_Chapter3.txt:9-9 [spacing]
 
@@ -753,11 +755,11 @@
 \CodeLine{3.0}{X\_\allowbreak{}\{n+1\} = RK4\_\allowbreak{}Integrate\_\allowbreak{}5D(X\_\allowbreak{}n, h)}
 \CodeLine{0.0}{4. Discard first N\_\allowbreak{}0 states (Transient Elimination)}
 \CodeLine{0.0}{5. For i = 1 to W * H:}
-\CodeLine{3.0}{K1[i] = floor(abs(x[N\_\allowbreak{}0 + i]) * 10\SourceGlyph{005E}14) mod 256}
-\CodeLine{3.0}{K2[i] = floor(abs(y[N\_\allowbreak{}0 + i]) * 10\SourceGlyph{005E}14) mod 256}
-\CodeLine{3.0}{K3[i] = floor(abs(z[N\_\allowbreak{}0 + i]) * 10\SourceGlyph{005E}14) mod 256}
-\CodeLine{3.0}{K4[i] = floor(abs(u[N\_\allowbreak{}0 + i]) * 10\SourceGlyph{005E}14) mod 256}
-\CodeLine{3.0}{K5[i] = floor(abs(v[N\_\allowbreak{}0 + i]) * 10\SourceGlyph{005E}14) mod 256}
+\CodeLine{3.0}{K1[i] = floor((abs(x[N\_\allowbreak{}0 + i]) mod 1.0) * 10\SourceGlyph{005E}8) mod 256}
+\CodeLine{3.0}{K2[i] = floor((abs(y[N\_\allowbreak{}0 + i]) mod 1.0) * 10\SourceGlyph{005E}8) mod 256}
+\CodeLine{3.0}{K3[i] = floor((abs(z[N\_\allowbreak{}0 + i]) mod 1.0) * 10\SourceGlyph{005E}8) mod 256}
+\CodeLine{3.0}{K4[i] = floor((abs(u[N\_\allowbreak{}0 + i]) mod 1.0) * 10\SourceGlyph{005E}8) mod 256}
+\CodeLine{3.0}{K5[i] = floor((abs(v[N\_\allowbreak{}0 + i]) mod 1.0) * 10\SourceGlyph{005E}8) mod 256}
 \CodeLine{0.0}{6. Return K1, K2, K3, K4, K5}
 \end{LTR}
 \end{sourcecode}

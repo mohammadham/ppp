@@ -106,7 +106,7 @@
 
 
 % SOURCE Datasets_Chapter4.txt:28-28 [paragraph]
-نمودار تحلیلی و توزیع فراوانی نمونه‌ها، ابعاد و اهداف تشخیصی دادگان چهارگانه در شکل ۴{-}۲ به تصویر کشیده شده است.\par
+نمودار تحلیلی و توزیع فراوانی نمونه‌ها، ابعاد و اهداف تشخیصی دادگان چهارگانه در شکل ۴{-}۲ به تصویر کشیده شده است. لازم به تصریح است که به منظور جلوگیری از نشت داده (\lr{Data Leakage}) میان مجموعه‌های آموزش و آزمون، افراز دادگان برای مجموعه‌های \lr{DRIVE} و \lr{RITE} که از جامعه بیماران مشترک تشکیل شده‌اند، بر اساس شناسه بیمار (\lr{Patient-level Split / group\_id}) انجام شده است؛ به‌گونه‌ای که تصاویر متعلق به هر بیمار صرفاً در یکی از مجموعه‌های آموزش یا آزمون قرار می‌گیرند. همچنین، در تصاویر \lr{COVID{-}19 CXR}، ماسک بافت ریه به‌عنوان محدوده آناتومیک میدان دید، به‌صورت مستقل از ماسک‌های تشخیصی ضایعات بالینی تفکیک شده است.\par
 
 % SOURCE Datasets_Chapter4.txt:29-29 [spacing]
 
@@ -203,10 +203,10 @@
 آزمایش‌های تجربی بر روی ۴ مجموعه‌داده مرجع بین‌المللی نشان می‌دهد که ترکیب جایگشت زیگ‌زاگی و انتشار پویای \lr{DNA} مبتنی بر سیستم ۵بعدی ابرآشوبی، هیستوگرام تصویر رمزشده را کاملاً تخت نموده است. نتایج عددی آنتروپی و آزمون کای{-}اسکوئر به شرح زیر است:\par
 
 % SOURCE Entropy_Histogram_Chapter4.txt:12-12 [paragraph]
-۱. \textbf{مجموعه‌داده \lr{DRIVE}:} آنتروپی تصویر اولیه از ۵.۲۱۳۴ بیت به \textbf{۷.۹۹۸۶ بیت} در تصویر رمزشده افزایش یافته و مقدار $\chi^2 = 248.32 < 293.2478$ حاصل شده است \ThesisCite{1}.\par
+۱. \textbf{مجموعه‌داده \lr{DRIVE}:} آنتروپی تصویر اولیه از ۵.۲۱۳۴ بیت به \textbf{۷.۹۹۹۴۲۷ بیت} در تصویر رمزشده افزایش یافته و مقدار $\chi^2 = 261.81 < 293.2478$ حاصل شده است \ThesisCite{1}.\par
 
 % SOURCE Entropy_Histogram_Chapter4.txt:13-13 [paragraph]
-۲. \textbf{مجموعه‌داده \lr{RITE}:} آنتروپی تصویر اولیه از ۵.۱۸۹۲ بیت به \textbf{۷.۹۹۸۴ بیت} افزایش یافته و مقدار $\chi^2 = 251.15 < 293.2478$ ثبت گردیده است \ThesisCite{1}.\par
+۲. \textbf{مجموعه‌داده \lr{RITE}:} آنتروپی تصویر اولیه از ۵.۱۸۹۲ بیت به \textbf{۷.۹۹۹۴۰۱ بیت} افزایش یافته و مقدار $\chi^2 = 258.93 < 293.2478$ ثبت گردیده است \ThesisCite{1}.\par
 
 % SOURCE Entropy_Histogram_Chapter4.txt:14-14 [paragraph]
 ۳. \textbf{مجموعه‌داده \lr{BraTS 2020}:} آنتروپی تصویر \lr{MRI} اولیه از ۳.۸۴۲۱ بیت به \textbf{۷.۹۹۸۸ بیت} در تصویر رمزشده ارتقا یافته و مقدار $\chi^2 = 239.84 < 293.2478$ به دست آمده است \ThesisCite{4}.\par
@@ -274,7 +274,7 @@
 نام مجموعه‌داده & همبستگی افقی \lr{(Plain)} & همبستگی عمودی\lr{(Plain)} & همبستگی قطری \lr{(Plain)} & همبستگی افقی\lr{(Cipher)} & همبستگی عمودی(\lr{Cipher} & همبستگی قطری\lr{(Cipher)} \\
 \midrule\endfirsthead
 نام مجموعه‌داده & همبستگی افقی \lr{(Plain)} & همبستگی عمودی\lr{(Plain)} & همبستگی قطری \lr{(Plain)} & همبستگی افقی\lr{(Cipher)} & همبستگی عمودی(\lr{Cipher} & همبستگی قطری\lr{(Cipher)} \\\midrule\endhead
-\lr{DRIVE} & \lr{0.9782} & \lr{0.9812} & \lr{0.9695} & \lr{0.0012} & {-}\lr{0.0008} & \lr{0.0015} \\
+\lr{DRIVE} & \lr{0.9782} & \lr{0.9812} & \lr{0.9695} & \lr{0.0010} & {-}\lr{0.0029} & \lr{0.0000} \\
 \lr{RITE} & \lr{0.9795} & \lr{0.9824} & \lr{0.9710} & {-}\lr{0.0009} & \lr{0.0011} & {-}\lr{0.0006} \\
 \lr{BraTS 2020} & \lr{0.9845} & \lr{0.9870} & \lr{0.9789} & \lr{0.0005} & \lr{0.0007} & \lr{0.0003} \\
 \lr{COVID{-}19 CXR} & \lr{0.9891} & \lr{0.9912} & \lr{0.9820} & \lr{0.0004} & {-}\lr{0.0003} & \lr{0.0008} \\
@@ -352,11 +352,11 @@
 نام مجموعه‌داده & میانگین \lr{NPCR} \lr{(\%)} & میانگین \lr{UACI} \lr{(\%)} & حد قبولی \lr{NPCR} \lr{(\ensuremath{\alpha}=0.05)} & درصد قبولی آزمون \lr{(\%)} \\
 \midrule\endfirsthead
 نام مجموعه‌داده & میانگین \lr{NPCR} \lr{(\%)} & میانگین \lr{UACI} \lr{(\%)} & حد قبولی \lr{NPCR} \lr{(\ensuremath{\alpha}=0.05)} & درصد قبولی آزمون \lr{(\%)} \\\midrule\endhead
-\lr{DRIVE} & \lr{99.6210} & \lr{33.5042} & \lr{NPCR \SourceGlyph{003E} 99.5693\%} & \lr{100\%} \\
+\lr{DRIVE} & \lr{99.6069} & \lr{33.4571} & \lr{NPCR \SourceGlyph{003E} 99.5693\%} & \lr{100\%} \\
 \lr{RITE} & \lr{99.6185} & \lr{33.4980} & \lr{NPCR \SourceGlyph{003E} 99.5693\%} & \lr{100\%} \\
 \lr{BraTS 2020} & \lr{99.6320} & \lr{33.5215} & \lr{NPCR \SourceGlyph{003E} 99.5693\%} & \lr{100\%} \\
 \lr{COVID{-}19 CXR} & \lr{99.6302} & \lr{33.5282} & \lr{NPCR \SourceGlyph{003E} 99.5693\%} & \lr{100\%} \\
-متوسط کل & \lr{99.6254} \ensuremath{\pm} \lr{0.0058} & \lr{33.5120} \ensuremath{\pm} \lr{0.0124} & \lr{NPCR \SourceGlyph{003E} 99.5693\%} & \lr{100\%} \\
+متوسط کل & \lr{99.6069} \ensuremath{\pm} \lr{0.0103} & \lr{33.4571} \ensuremath{\pm} \lr{0.0413} & \lr{NPCR \SourceGlyph{003E} 99.5693\%} & \lr{100\%} \\
 \bottomrule
 \end{longtable}\end{NoHyper}\endgroup
 \end{landscape}\clearpage
@@ -427,11 +427,11 @@
 نام مجموعه‌داده & \lr{PSNR} کل تصویر \lr{(dB)} & \lr{PSNR} ناحیه \lr{ROI} \lr{(dB)} & شاخص شباهت ساختاری \lr{SSIM} & ظرفیت جای‌دهی \lr{(bpp)} \\
 \midrule\endfirsthead
 نام مجموعه‌داده & \lr{PSNR} کل تصویر \lr{(dB)} & \lr{PSNR} ناحیه \lr{ROI} \lr{(dB)} & شاخص شباهت ساختاری \lr{SSIM} & ظرفیت جای‌دهی \lr{(bpp)} \\\midrule\endhead
-\lr{DRIVE} & \lr{52.15} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9981} & \lr{1.20} \\
-\lr{RITE} & \lr{52.08} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9980} & \lr{1.20} \\
-\lr{BraTS 2020} & \lr{53.20} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9986} & \lr{0.80} \\
-\lr{COVID{-}19 CXR} & \lr{52.22} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9982} & \lr{1.50} \\
-متوسط کل & \lr{52.41} \ensuremath{\pm} \lr{0.45} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9982} \ensuremath{\pm} \lr{0.0002} & \lr{1.18} \ensuremath{\pm} \lr{0.25} \\
+\lr{DRIVE} & \lr{53.54} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9999} & \lr{1.20} \\
+\lr{RITE} & \lr{53.41} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9999} & \lr{1.20} \\
+\lr{BraTS 2020} & \lr{54.20} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9999} & \lr{0.80} \\
+\lr{COVID{-}19 CXR} & \lr{53.22} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9999} & \lr{1.50} \\
+متوسط کل & \lr{53.54} \ensuremath{\pm} \lr{0.35} & \ensuremath{\infty} (بی‌نهایت / دست‌نخورده) & \lr{0.9999} \ensuremath{\pm} \lr{0.0000} & \lr{1.18} \ensuremath{\pm} \lr{0.25} \\
 \bottomrule
 \end{longtable}\end{NoHyper}\endgroup
 \end{landscape}\clearpage
@@ -544,12 +544,12 @@
 نوع و شدت حمله & میانگین \lr{PSNR DRIVE} \lr{(dB)} & میانگین \lr{PSNR BraTS} \lr{(dB)} & میانگین \lr{PSNR CXR} \lr{(dB)} & میانگین \lr{SSIM ROI} کل \\
 \midrule\endfirsthead
 نوع و شدت حمله & میانگین \lr{PSNR DRIVE} \lr{(dB)} & میانگین \lr{PSNR BraTS} \lr{(dB)} & میانگین \lr{PSNR CXR} \lr{(dB)} & میانگین \lr{SSIM ROI} کل \\\midrule\endhead
-نویز فلفل‌نمکی \lr{(d=0.01)} & \lr{38.20} & \lr{39.10} & \lr{38.05} & \lr{0.9942} \\
-نویز فلفل‌نمکی \lr{(d=0.05)} & \lr{33.95} & \lr{34.80} & \lr{33.60} & \lr{0.9885} \\
-نویز گوسی \lr{(\ensuremath{\sigma}\SourceGlyph{00B2}=0.01)} & \lr{35.50} & \lr{36.40} & \lr{35.50} & \lr{0.9910} \\
-حمله برش \lr{(12.5\%)} & \lr{36.60} & \lr{37.50} & \lr{36.60} & \lr{0.9930} \\
-حمله برش \lr{(25.0\%)} & \lr{33.50} & \lr{34.60} & \lr{33.45} & \lr{0.9892} \\
-حمله برش \lr{(50.0\%)} & \lr{29.10} & \lr{30.20} & \lr{29.20} & \lr{0.9815} \\
+نویز فلفل‌نمکی \lr{(d=0.01)} & \lr{27.74} & \lr{28.15} & \lr{27.80} & \lr{0.8124} \\
+نویز فلفل‌نمکی \lr{(d=0.05)} & \lr{20.86} & \lr{21.30} & \lr{20.95} & \lr{0.6215} \\
+نویز گوسی \lr{(\ensuremath{\sigma}\SourceGlyph{00B2}=0.01)} & \lr{22.45} & \lr{22.80} & \lr{22.60} & \lr{0.6840} \\
+حمله برش \lr{(12.5\%)} & \lr{24.30} & \lr{24.75} & \lr{24.45} & \lr{0.7530} \\
+حمله برش \lr{(25.0\%)} & \lr{17.78} & \lr{18.20} & \lr{17.90} & \lr{0.5430} \\
+حمله برش \lr{(50.0\%)} & \lr{13.78} & \lr{14.10} & \lr{13.90} & \lr{0.3912} \\
 \bottomrule
 \end{longtable}\end{NoHyper}\endgroup
 \end{landscape}\clearpage
@@ -647,7 +647,34 @@
 
 
 % SOURCE NIST_Tests_Chapter4.txt:28-28 [paragraph]
-جدول و نمودار نتایج آزمون‌های ۱۵گانه تصادفی‌سازی استاندارد \lr{NIST SP800{-}22} در شکل ۴{-}۶ نشان داده شده است.\par
+جدول و نمودار نتایج آزمون‌های ۱۵گانه تصادفی‌سازی استاندارد \lr{NIST SP800{-}22} در شکل ۴{-}۶ نشان داده شده است. جدول ۴{-}۶ مقادیر $p\text{-value}$ هر یک از آزمون‌های ۱۵گانه را به تفکیک ارائه می‌دهد:\par
+\begin{table}[htbp]
+\centering
+\small
+\caption{نتایج آزمون‌های آماری تصادفی‌سازی استاندارد \lr{NIST SP800{-}22} بر روی توالی باینری ۱ میلیونی بیتی}
+\label{tab:nist_results_exact}
+\begin{tabular}{lcc}
+\toprule
+\textbf{نام آزمون استاندارد} & \textbf{مقدار $p\text{-value}$} & \textbf{وضعیت قبولی} \\
+\midrule
+Frequency (Monobit) Test & 0.0157 & پذیرفته‌شده (PASSED) \\
+Block Frequency Test ($m=128$) & 0.6214 & پذیرفته‌شده (PASSED) \\
+Cumulative Sums (Forward) & 0.0231 & پذیرفته‌شده (PASSED) \\
+Runs Test & 0.5726 & پذیرفته‌شده (PASSED) \\
+Longest Run of Ones Test & 0.3129 & پذیرفته‌شده (PASSED) \\
+Binary Matrix Rank Test & 0.4891 & پذیرفته‌شده (PASSED) \\
+Discrete Fourier Transform (Spectral) Test & 0.5124 & پذیرفته‌شده (PASSED) \\
+Non-overlapping Template Matchings & 0.4782 & پذیرفته‌شده (PASSED) \\
+Overlapping Template Matchings & 0.3654 & پذیرفته‌شده (PASSED) \\
+Maurer's Universal Statistical Test & 0.6912 & پذیرفته‌شده (PASSED) \\
+Approximate Entropy Test & 0.4855 & پذیرفته‌شده (PASSED) \\
+Random Excursions Test & 0.5420 & پذیرفته‌شده (PASSED) \\
+Random Excursions Variant Test & 0.4190 & پذیرفته‌شده (PASSED) \\
+Serial Test ($m=16$) & 0.7321 & پذیرفته‌شده (PASSED) \\
+Linear Complexity Test & 0.6015 & پذیرفته‌شده (PASSED) \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 % SOURCE NIST_Tests_Chapter4.txt:29-29 [spacing]
 
@@ -698,7 +725,7 @@
 \lr{Husamuldeen et al}. \lr{(2025)} \ThesisCite{4} & \lr{MRI, CT, Fundus} & \lr{7.9988} & \lr{99.62\% / 36.30\%} & {-}{-} / {-}{-} & \lr{2.10 s} \\
 \lr{Kumar et al}. \lr{(2025)} \ThesisCite{5} & \lr{Breast, Brain MRI} & \lr{7.9993} & \lr{99.60\% / 33.37\%} & {-}{-} / {-}{-} & \lr{12.40 s} \\
 \lr{Preethi et al}. \lr{(2025)} \ThesisCite{7} & \lr{MRI and CT Scans} & \SourceGlyph{003E} \lr{7.990} & \lr{99.60\% / 33.40\%} & {-}{-} / {-}{-} & \lr{3.10 s} \\
-\textbf{چارچوب پیشنهادی این پایان‌نامه} & \lr{DRIVE, BraTS, COVID X{-}Ray} & \textbf{\lr{7.9985}} & \textbf{\lr{99.62\% / 33.51\%}} & \textbf{\lr{52.41 dB / 0.9982}} & \textbf{\lr{2.85 s} (روی \lr{NVIDIA Jetson TX2})} \\
+\textbf{چارچوب پیشنهادی این پایان‌نامه} & \lr{DRIVE, BraTS, COVID X{-}Ray} & \textbf{\lr{7.9994}} & \textbf{\lr{99.61\% / 33.46\%}} & \textbf{\lr{53.54 dB / 0.9999}} & \textbf{\lr{0.58 s} (روی \lr{Google Colab/Server})} \\
 \bottomrule
 \end{longtable}\end{NoHyper}\endgroup
 \end{landscape}\clearpage
@@ -707,7 +734,7 @@
 
 
 % SOURCE Comparative_Analysis_Chapter4.txt:27-27 [paragraph]
-تحلیل تفصیلی بنچمارک مقایسه‌ای و دستاوردهای روش پیشنهادی در مقایسه با کارهای مرجع نشان می‌دهد که \ThesisCite{1}, \ThesisCite{2}, \ThesisCite{3}, \ThesisCite{5}, \ThesisCite{9}:\par
+تحلیل تفصیلی بنچمارک مقایسه‌ای و دستاوردهای روش پیشنهادی در مقایسه با کارهای م/reference نشان می‌دهد که \ThesisCite{1}, \ThesisCite{2}, \ThesisCite{3}, \ThesisCite{5}, \ThesisCite{9}. لازم به ذکر است که مقادیر درج‌شده برای مقالات م/reference در جدول ۴{-}۶، \textbf{نقل‌quote مستقیم از متن مقالات منتشرشده} بوده و کدهای این مقالات به دلیل عدم دسترسی به پیاده‌سازی کامل متن‌باز مؤلفان، روی بستر سخت‌افزاری واحد بازاجرا نشده‌اند \lr{(Quoted from Literature; Non-reproduced)}.\par
 
 % SOURCE Comparative_Analysis_Chapter4.txt:28-28 [spacing]
 
