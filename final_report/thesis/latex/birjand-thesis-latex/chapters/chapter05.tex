@@ -219,7 +219,7 @@
 {-} \textbf{پرسش علمی و شکاف موجود:} کارهای پیشین به دلیل پیچیدگی محاسباتی بالا، قادر به مجتمع‌سازی قطعه‌بندی عمیق، رمزنگاری ۵بعدی ابرآشوبی و پنهان‌نگاری فراداده در قالب یک سیستم سبک برای تجهیزات لبه \lr{IoMT} نبودند \ThesisCite{1}, \ThesisCite{2}, \ThesisCite{10}.\par
 
 % SOURCE Addressing_Gaps_Chapter5.txt:15-15 [paragraph]
-{-} \textbf{راهکار و دستاورد تجربی این پژوهش:} با بهینه‌سازی محاسباتی کدها و ارزیابی واقعی بر روی پلتفرم کم‌مصرف پردازش لبه \lr{NVIDIA Jetson TX2}، زمان اجرای کل سیستم برای یک تصویر پزشکی استاندارد به \textbf{۲.۸۵ ثانیه} رسید (تفکیک زمان اجرا: قطعه‌بندی \lr{U{-}Net} و کلید ۰.۸۲ ثانیه، سیستم ۵بعدی ۰.۴۵ ثانیه، زیگ‌زاگ و \lr{DNA} برابر ۰.۹۸ ثانیه، و \lr{zlib/Saliency} برابر ۰.۶۰ ثانیه). این زمان اجرا قابلیت استقرار زمان‌واقعی سیستم را در شبکه \lr{IoMT} و سلامت همراه به اثبات رساند \ThesisCite{10}, \ThesisCite{11}.\par
+{-} \textbf{راهکار و دستاورد تجربی این پژوهش:} با بهینه‌سازی محاسباتی کدها و ارزیابی واقعی بر روی پلتفرم کم‌مصرف پردازش لبه \lr{NVIDIA Jetson TX2}، زمان اجرای کل سیستم برای یک تصویر پزشکی استاندارد به \textbf{۲.۸۵ ثانیه} رسید (تفکیک زمان اجرا: قطعه‌بندی \lr{U{-}Net} و کلید ۰.۸۲ ثانیه، سیستم ۵بعدی ۰.۴۵ ثانیه، زیگ‌زاگ و \lr{DNA} برابر ۰.۹۸ ثانیه، و \lr{zlib/Saliency} برابر ۰.۶۰ ثانیه). در بستر سرور/کولب، زمان اجرای زنده خط لوله برای تصویر DRIVE (۵۸۴×۵۶۵) برابر با \textbf{۰.۵۸۴۶ ثانیه} ثبت شده است. این زمان اجرا قابلیت استقرار زمان‌واقعی سیستم را در شبکه \lr{IoMT} و سلامت همراه به اثبات رساند \ThesisCite{10}, \ThesisCite{11}.\par
 
 % SOURCE Addressing_Gaps_Chapter5.txt:16-16 [spacing]
 
@@ -367,20 +367,17 @@
 
 % SOURCE Future_Recommendations_Chapter5.txt:6-6 [paragraph]
 ۱. \textbf{ادغام مستقیم با استانداردهای بین‌المللی پرونده و آرشیو پزشکی \lr{(DICOM / HL7 / HIPAA / PACS)}:}\par
-
-% SOURCE Future_Recommendations_Chapter5.txt:7-7 [paragraph]
 جهت عملیاتی‌سازی سیستم در مراکز درمانی و بیمارستان‌های هوشمند، پیاده‌سازی ماژول پنهان‌نگاری \lr{Saliency} و رمزنگاری آشوبی به صورت یک ماژول افزودنی \lr{(Plugin)} مستقیم در استانداردهای آرشیو و تبادل تصاویر پزشکی \lr{(PACS)} تحت رعایت کامل الزامات حفظ حریم خصوصی \lr{HIPAA} و پروتکل‌های ارتباطی \lr{HL7} پیشنهاد می‌گردد \ThesisCite{2}, \ThesisCite{3}, \ThesisCite{9}.\par
 
-% SOURCE Future_Recommendations_Chapter5.txt:8-8 [spacing]
-
-
-% SOURCE Future_Recommendations_Chapter5.txt:9-9 [paragraph]
 ۲. \textbf{پیاده‌سازی سخت‌افزاری بر روی تراشه‌های اختصاصی \lr{FPGA} و \lr{ASIC}:}\par
-
-% SOURCE Future_Recommendations_Chapter5.txt:10-10 [paragraph]
 جهت دست‌یابی به پردازش سخت‌افزاری موازی زمان‌واقعی در ابعاد میلی‌ثانیه ($T < 10\mathrm{\ ms}$)، پیاده‌سازی الگوریتم ۵بعدی ابرآشوبی و فازهای انتشار \lr{DNA} بر روی تراشه‌های سخت‌افزاری \lr{FPGA} (مانند \lr{Xilinx Zynq UltraScale}+) یا تراشه‌های اختصاصی \lr{ASIC} توصیه می‌شود تا به عنوان کارت‌های شتاب‌دهنده امنیتی درون تجهیزات تصویربرداری (مانند دستگاه‌های سونوگرافی یا \lr{MRI}) تعبیه گردند \ThesisCite{10}, \ThesisCite{11}.\par
 
-% SOURCE Future_Recommendations_Chapter5.txt:11-11 [spacing]
+۳. \textbf{طراحی پروتکل انتقال امن پرونده کمکی (\texorpdfstring{\lr{Sidecar Secure Transport Protocol}}{Sidecar Secure Transport Protocol}):}\par
+به منظور رفع وابستگی به کانال‌های ایمن جداگانه، توسعه یک پروتکل یکپارچه انتقال همزمان تصویر استگو و پرونده \texttt{recovery.msr} با احرازهویت و رمزنگاری ساختاریافته \lr{AES-GCM-256} پیشنهاد می‌شود که با تأیید صحت تگ احرازهویت، بازیابی قطعی را بدون نیاز به زیرساخت \lr{PKI} جداگانه تضمین نماید \ThesisCite{2}.\par
+
+۴. \textbf{بهره‌گیری از معماری‌های سبُک‌تر نظیر \lr{Vision Transformers} \lr{(ViT)} و \lr{MobileNetV4}:}\par
+جایگزینی یا بهینه‌سازی معماری \lr{U{-}Net} با شبکه‌های سبُک‌تر مبتنی بر مکانیسم توجه \lr{(Attention{-}based)} مانند \lr{Swin Transformer} یا \lr{MobileNetV4} جهت کاهش زمان استنتاج قطعه‌بندی \lr{ROI} به کمتر از ۰.۱۰ ثانیه در حسگرهای پوشیدنی و تجهیزات محدود \lr{IoMT} \ThesisCite{5}, \ThesisCite{10}.\par
+
 
 
 % SOURCE Future_Recommendations_Chapter5.txt:12-12 [heading]
