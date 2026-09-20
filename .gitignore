@@ -1,3 +1,5 @@
 # Ignore .mimosa and .remember folders in all directories
 .mimosa/
 .remember/
+/final_report/thesis/published/scripts/nn
+/final_report/thesis/published/scripts/node_modules
